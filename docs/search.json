@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Analyzing Candian demographic and housing data using R",
+    "section": "",
+    "text": "This book is intended for people interested in learning how to access, process, analyze, and visualize Canadian demographic, economic, and housing data using R. The target audience we have in mind ranges from interested individuals interested in understanding their environment through data, community activists and community groups interested in introducing data-based approached into their work, non-profits or people involved in policy who are looking for data-based answers to their questions.\nThe most important prerequisite is a keen interest in using data to help understand how housing and demographics shape cities and rural areas in Canada, and a willingness to learn. Prior knowledge of R is not necessary, but may be beneficial.\nCanada has high quality demographic, economic and housing data. While significant data gaps exist, the available data often remains under-utilized in policy and planning analyses. Moreover, many analyses that do come out go quickly out of date and can’t easily be updated because they rely on non-reproducible and non-adaptable workflows.\nIn this book we will maintain a strong emphasis on reproducible and adaptable work flows to ensure the analysis is transparent, can easily be updated as new data becomes available, and can be tweaked or adapted to address related questions.\n\n\nThis book will take a project based approach to to teach through examples, with one project per section. Each project will be loosely broken up into four parts.\n\nFormulating the question. What is the question we are interested in? Asking a clear question will help focus our efforts and ensure that we don’t aimlessly trawl through data.\nIdentifying possible data sources. Here we try to identify data sources that can speak to our question. We will also take the time to read up on definitions and background concepts to better understand the data and prepare us for data analysis.\nData acquisition. In this step we will import the data into our current working session. This could be as simple as an API call, or more complicated like scraping we table from the web, or involve even more complex techniques to acquire the data.\nData preparation. In this step we will reshape and filter the data to prepare it for analysis.\nAnalysis. This step could be as simple as computing percentages or even doing nothing, is the quantities we are interested in already come with the dataset, if our question can be answered by a simple descriptive analysis. In other cases, when our question is more complex, this step may be much more involved. The book will try to slowly build up analysis skills along the way, with increasing complexity of questions and required analysis.\nVisualization. The final step is to visualize and communicate the results. In some cases this can be done via a table or a couple of paragraphs of text explaining the results, but in most cases it is useful to produce graphs or maps or even interactive visualizations to effectively communicate the results.\n\nWhile we won’t always follow this step by step process to the letter, it will be our guiding principle throughout the book. Sometimes things won’t go so clean, where after the visualization step we notice that something looks off or is unexpected, and we may jump back up a couple of steps and add more data and redo parts of the analysis to better understand our data and how it speaks to our initial questions. We might even come to understand that our initial question was not helpful or was ill-posed, and we will come back to refine it.\n\n\n\nBy taking this approach we have several goals in mind:\n\nStay motivated by using real world Canada-focused and (hopefully) interesting examples.\nTeach basic data literacy, appreciate definitions and quirks in the data.\nExpose the world of Canadian data and make it more accessible.\nLearn how data can be interpreted in different ways, and data and analysis is not necessarily “neutral”.\nLearn how to effectively communicate results.\nLearn how to adapt and leverage off of previous work to answer new questions.\nLearn how to reproduce and critique data analysis.\nBuild a community around Canadian data, where people interested in similar questions, or people using the same data, can learn from each other.\nRaise the level of understanding of Canadian data and data analysis so we are better equipped to tackle the problems Canada faces.\n\nThis is setting a very high goal for this book, and we are not sure we can achieve all of this. But we will try our best to be accessible and interesting as possible."
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "Statistics Canada produces a lot of high quality demographic and economic data for Canada. CMHC complements this with housing data, and municipalities across Canada often provide relevant data through their Open Data portals."
+  },
+  {
+    "objectID": "intro.html#r-and-rstudio",
+    "href": "intro.html#r-and-rstudio",
+    "title": "1  Introduction",
+    "section": "1.1 R and RStudio",
+    "text": "1.1 R and RStudio\nWe will be working in R and the RStudio IDE, although using a different editor like Visual Studio Code works just as well, especially if you are already familiar with it. Within R we will be operating within the tidyverse framework, a group of R packages that work well together and allow for intuitive operations on data via pipes.\nWhile an introduction to R is part of the goal of this book, an we will slowly build up skills as we go, we not give a systematic introduction but rather build up skills slowly as we work on concrete examples. It may be beneficial to supplement this with a more principled introduction to R and the tidyverse.\nDuring the course of this book we will make heavy use of several R packages to facilitate data access, in particular."
+  },
+  {
+    "objectID": "intro.html#the-cansim-r-package",
+    "href": "intro.html#the-cansim-r-package",
+    "title": "1  Introduction",
+    "section": "1.2 The cansim R package",
+    "text": "1.2 The cansim R package\n\nThe cansim R package interfaces with the StatCan NDM that replaces the former CANSIM tables. It can be queried for\n\nwhole tables\nspecific vectors\ndata discovery searching through tables\n\nIt encodes the metadata and allows to work with the internal hierarchical structure of the fields.\nLarger tables can also be imported into a local SQLite database for reuse across sessions without the need to re-download the data, and better performance when subsetting the data."
+  },
+  {
+    "objectID": "intro.html#the-cancensus-r-package",
+    "href": "intro.html#the-cancensus-r-package",
+    "title": "1  Introduction",
+    "section": "1.3 The cancensus R package",
+    "text": "1.3 The cancensus R package\n\nThe cancensus R package interfaces with the CensusMapper API server. It can be queried for\n\ncensus geographies\ncensus data\nhierarchical metadata of census variables\nsome non-census data that comes on census geographies, e.g. T1FF taxfiler data\n\nA slight complication, the cancensus packageneeds an API key. You can sign up for one on CensusMapper."
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "Statistics Canada produces a lot of high quality demographic and economic data for Canada. CMHC complements this with housing data, and municipalities across Canada often provide relevant data through their Open Data portals.\nWhile an introduction to R is part of the goal of this book, we not give a systematic introduction but rather build up skills slowly as we work on concrete examples. It may be beneficial to supplement this with a more principled introduction to R and the tidyverse.\nDuring the course of this book we will make heavy use of several R packages to facilitate data access, in particular."
+  },
+  {
+    "objectID": "summary.html#the-cansim-r-package",
+    "href": "summary.html#the-cansim-r-package",
+    "title": "2  Summary",
+    "section": "2.1 The cansim R package",
+    "text": "2.1 The cansim R package\n\n\n\nThe cansim R package interfaces with the StatCan NDM that replaces the former CANSIM tables. It can be queried for\n\nwhole tables\nspecific vectors\ndata discovery searching through tables\n\nIt encodes the metadata and allows to work with the internal hierarchical structure of the fields.\nLarger tables can also be imported into a local SQLite database for reuse across sessions without the need to re-download the data, and better performance when subsetting the data."
+  },
+  {
+    "objectID": "summary.html#the-cancensus-r-package",
+    "href": "summary.html#the-cancensus-r-package",
+    "title": "2  Summary",
+    "section": "2.2 The cancensus R package",
+    "text": "2.2 The cancensus R package\n\n\n\nThe cancensus R package interfaces with the CensusMapper API server. It can be queried for\n\ncensus geographies\ncensus data\nhierarchical metadata of census variables\nsome non-census data that comes on census geographies, e.g. T1FF taxfiler data\n\nA slight complication, the cancensus packageneeds an API key. You can sign up for one on CensusMapper."
+  }
+]

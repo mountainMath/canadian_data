@@ -1,0 +1,46 @@
+# Preface {.unnumbered}
+
+This book is intended for people interested in learning how to access, process, analyze, and visualize Canadian demographic, economic, and housing data using R. The target audience we have in mind ranges from interested individuals interested in understanding their environment through data, community activists and community groups interested in introducing data-based approached into their work, non-profits or people involved in policy who are looking for data-based answers to their questions.
+
+The most important prerequisite is a keen interest in using data to help understand how housing and demographics shape cities and rural areas in Canada, and a willingness to learn. Prior knowledge of R is not necessary, but may be beneficial.
+
+Canada has high quality demographic, economic and housing data. While significant data gaps exist, the available data often remains under-utilized in policy and planning analyses. Moreover, many analyses that do come out go quickly out of date and can't easily be updated because they rely on non-reproducible and non-adaptable workflows.
+
+In this book we will maintain a strong emphasis on reproducible and adaptable work flows to ensure the analysis is transparent, can easily be updated as new data becomes available, and can be tweaked or adapted to address related questions.
+
+## Project based approach
+
+This book will take a project based approach to to teach through examples, with one project per section. Each project will be loosely broken up into four parts.
+
+1.  **Formulating the question.** What is the question we are interested in? Asking a clear question will help focus our efforts and ensure that we don't aimlessly trawl through data.
+2.  **Identifying possible data sources.** Here we try to identify data sources that can speak to our question. We will also take the time to read up on definitions and background concepts to better understand the data and prepare us for data analysis.
+3.  **Data acquisition.** In this step we will import the data into our current working session. This could be as simple as an API call, or more complicated like scraping we table from the web, or involve even more complex techniques to acquire the data.
+4.  **Data preparation.** In this step we will reshape and filter the data to prepare it for analysis.
+5.  **Analysis.** This step could be as simple as computing percentages or even doing nothing, is the quantities we are interested in already come with the dataset, if our question can be answered by a simple descriptive analysis. In other cases, when our question is more complex, this step may be much more involved. The book will try to slowly build up analysis skills along the way, with increasing complexity of questions and required analysis.
+6.  **Visualization.** The final step is to visualize and communicate the results. In some cases this can be done via a table or a couple of paragraphs of text explaining the results, but in most cases it is useful to produce graphs or maps or even interactive visualizations to effectively communicate the results.
+
+While we won't always follow this step by step process to the letter, it will be our guiding principle throughout the book. Sometimes things won't go so clean, where after the visualization step we notice that something looks off or is unexpected, and we may jump back up a couple of steps and add more data and redo parts of the analysis to better understand our data and how it speaks to our initial questions. We might even come to understand that our initial question was not helpful or was ill-posed, and we will come back to refine it.
+
+## Goals
+
+By taking this approach we have several goals in mind:
+
+-   Stay motivated by using real world Canada-focused and (hopefully) interesting examples.
+
+-   Teach basic data literacy, appreciate definitions and quirks in the data.
+
+-   Expose the world of Canadian data and make it more accessible.
+
+-   Learn how data can be interpreted in different ways, and data and analysis is not necessarily "neutral".
+
+-   Learn how to effectively communicate results.
+
+-   Learn how to adapt and leverage off of previous work to answer new questions.
+
+-   Learn how to reproduce and critique data analysis.
+
+-   Build a community around Canadian data, where people interested in similar questions, or people using the same data, can learn from each other.
+
+-   Raise the level of understanding of Canadian data and data analysis so we are better equipped to tackle the problems Canada faces.
+
+This is setting a very high goal for this book, and we are not sure we can achieve all of this. But we will try our best to be accessible and interesting as possible.

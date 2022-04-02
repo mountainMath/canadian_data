@@ -1,0 +1,23 @@
+project:
+  type: book
+
+book:
+  title: "Analyzing Candian demographic and housing data using R"
+  author: "Jens von Bergmann"
+  date: "2022-04-01"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

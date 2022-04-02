@@ -39,7 +39,7 @@
     "href": "summary.html",
     "title": "2  Summary",
     "section": "",
-    "text": "Statistics Canada produces a lot of high quality demographic and economic data for Canada. CMHC complements this with housing data, and municipalities across Canada often provide relevant data through their Open Data portals.\nWhile an introduction to R is part of the goal of this book, we not give a systematic introduction but rather build up skills slowly as we work on concrete examples. It may be beneficial to supplement this with a more principled introduction to R and the tidyverse.\nDuring the course of this book we will make heavy use of several R packages to facilitate data access, in particular."
+    "text": "Nothing here yet…"
   },
   {
     "objectID": "summary.html#the-cansim-r-package",

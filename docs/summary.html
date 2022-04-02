@@ -54,7 +54,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
-<body class="floating">
+<body class="floating fullcontent">
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -106,55 +106,16 @@
     </div>
 </nav>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
-<h2 id="toc-title">Table of contents</h2>
-<ul>
-<li><a href="#the-cansim-r-package" class="nav-link active" data-scroll-target="#the-cansim-r-package"> <span class="header-section-number">2.1</span> The cansim R package</a></li>
-<li><a href="#the-cancensus-r-package" class="nav-link" data-scroll-target="#the-cancensus-r-package"> <span class="header-section-number">2.2</span> The cancensus R package</a></li>
-</ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 <header id="title-block-header" class="quarto-title-block default">
 
 <div class="quarto-title"><h1 class="title d-none d-lg-block display-7"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></h1></div></header>
-
-<p>Statistics Canada produces a lot of high quality demographic and economic data for Canada. CMHC complements this with housing data, and municipalities across Canada often provide relevant data through their Open Data portals.</p>
-<p>While an introduction to R is part of the goal of this book, we not give a systematic introduction but rather build up skills slowly as we work on concrete examples. It may be beneficial to supplement this with a <a href="https://r4ds.had.co.nz/index.html">more principled introduction to <strong>R</strong> and the <strong>tidyverse</strong></a><strong>.</strong></p>
-<p>During the course of this book we will make heavy use of several R packages to facilitate data access, in particular.</p>
-<section id="the-cansim-r-package" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="the-cansim-r-package"><span class="header-section-number">2.1</span> The cansim R package</h2>
-<div id="cansim-logo">
-<p><a href="https://mountainmath.github.io/cansim/"><img src="https://raw.githubusercontent.com/mountainMath/cansim/master/images/cansim-sticker.png" class="img-fluid" style="float:right;margin-left:3em;" width="250"></a></p>
-</div>
-<p>The <a href="https://mountainmath.github.io/cansim/"><strong>cansim</strong> R package</a> interfaces with the StatCan NDM that replaces the former CANSIM tables. It can be queried for</p>
-<ul>
-<li><p>whole tables</p></li>
-<li><p>specific vectors</p></li>
-<li><p>data discovery searching through tables</p></li>
-</ul>
-<p>It encodes the metadata and allows to work with the internal hierarchical structure of the fields.</p>
-<p>Larger tables can also be imported into a local SQLite database for reuse across sessions without the need to re-download the data, and better performance when subsetting the data.</p>
-</section>
-<section id="the-cancensus-r-package" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="the-cancensus-r-package"><span class="header-section-number">2.2</span> The cancensus R package</h2>
-<div id="cancensus-logo">
-<p><a href="https://mountainmath.github.io/cancensus/"><img src="https://raw.githubusercontent.com/mountainMath/cancensus/master/images/cancensus-sticker.png" class="img-fluid" style="float:right;margin-left:3em;" alt="cancensus" width="250"></a></p>
-</div>
-<p>The <strong>cancensus</strong> R package interfaces with the CensusMapper API server. It can be queried for</p>
-<ul>
-<li><p>census geographies</p></li>
-<li><p>census data</p></li>
-<li><p>hierarchical metadata of census variables</p></li>
-<li><p>some non-census data that comes on census geographies, e.g.&nbsp;T1FF taxfiler data</p></li>
-</ul>
-<p>A slight complication, the <a href="https://mountainmath.github.io/cancensus/"><strong>cancensus</strong> package</a>needs an API key. You can sign up for one on <a href="https://censusmapper.ca/users/sign_up">CensusMapper</a>.</p>
+<p>Nothing here yet…</p>
 
 
 
-</section>
 </main> <!-- /main -->
 <script type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

@@ -1,43 +1,157 @@
 # Introduction
 
-Statistics Canada produces a lot of high quality demographic and economic data for Canada. CMHC complements this with housing data, and municipalities across Canada often provide relevant data through their Open Data portals.
+In this section we give a taste of what's to come. Some of the concepts introduced in the preface may be too abstract to picture for people just starting out in this space. People probably grasp the importance of having a principled approach to data analysis, from formulating a question all the way to sharing results. But why so much emphasis on reproducibility and adaptability? And do we really need to learn a new framework like R for this?
 
-## R and RStudio
+This is best understood by walking through a simple example of what analysis of Canadian data in R, and a Canadian data community might look like. We won't explain all steps in full detail here, this is to serve to illustrate the concepts talked above in the preface and give the reader a taste of what's to come.
 
-We will be working in R and the [RStudio IDE](https://www.rstudio.com/products/rstudio/download/ "Download RStudio"), although using a different editor like [Visual Studio Code](https://visualstudio.microsoft.com) works just as well, especially if you are already familiar with it. Within R we will be operating within the [tidyverse framework](https://www.tidyverse.org), a group of R packages that work well together and allow for intuitive operations on data via pipes.
+## A hypothetical example
 
-While an introduction to R is part of the goal of this book, an we will slowly build up skills as we go, we not give a systematic introduction but rather build up skills slowly as we work on concrete examples. It may be beneficial to supplement this with a [more principled introduction to **R** and the **tidyverse**](https://r4ds.had.co.nz/index.html)**.**
+Imagine Amy, a Toronto-based social services worker looking to pilot a community intervention targeted at children in low income. She is in the process of putting together a proposal describing her intervention and is trying to locate a good neighbourhood for her pilot and make a compelling case to possible funders.
 
-During the course of this book we will make heavy use of several R packages to facilitate data access, in particular.
+Amy knows that census data has a good geographic breakdown of children in poverty, but the latest available data is from 2016, using 2015 income data. CRA tax data is available up to 2019, but also has information on families in low income, but nothing directly on children in the standard release tables at fine geographies. As a first step she settles on census data, with the goal to re-run the analysis once the 2021 data comes out later in the year.
 
-## The cansim R package
+She refers to the [Census Dictionary](https://www12.statcan.gc.ca/census-recensement/2016/ref/dict/index-eng.cfm) to understand the various low income measures, and uses CensusMapper's interactive [map that allows to explore these concepts](https://censusmapper.ca/maps/844?index=3#11/43.6535/-79.3839). She would have liked to use the Market Based Measure, but due to data availability she settles for LICO-AT.
 
-![](https://raw.githubusercontent.com/mountainMath/cansim/master/images/cansim-sticker.png){#cansim-logo style="float:right;margin-left:3em;" width="250"}
+She sets up a new Notebook and loads in the R libraries that she will need for this, [ggplot2](https://ggplot2.tidyverse.org)for graphing and [**cancensus**](https://mountainmath.github.io/cancensus/index.html) for ingesting the data.
 
-The [**cansim** R package](https://mountainmath.github.io/cansim/) interfaces with the StatCan NDM that replaces the former CANSIM tables. It can be queried for
+```{r}
+library(cancensus)
+library(ggplot2)
+```
 
--   whole tables
+Next she pull in the data. the [CensusMapper API GUI tool](https://censusmapper.ca/api) helps her locate the StatCan geographic identifier for Toronto, (3520005), and the internal CensusMapper vector for the percentage of children in LICO-AT (v_CA16_2573).
 
--    specific vectors
+```{r}
+lico_yyz <- get_census("CA16",regions=list(CSD="3520005"), vectors=c(lico="v_CA16_2573"),
+                        level="CT",geo_format="sf", quiet=TRUE)
+```
 
--   data discovery searching through tables
+Here Amy specified that she wants data for the 2016 Canadian census ("CA16"), the region and vectors, at the census tract ("CT") level, with geographies as well as the low income data.
 
-It encodes the metadata and allows to work with the internal hierarchical structure of the fields.
+Now that she has the data at her finger times her first step is to make a map. For that she needs to tell **ggplot** is what variable to use as fill colour, and maybe give it a nicer colour scale and some labels to explain what the map is about.
 
-Larger tables can also be imported into a local SQLite database for reuse across sessions without the need to re-download the data, and better performance when subsetting the data.
+```{r}
+ggplot(lico_yyz, aes(fill=(lico/100))) +
+  geom_sf() +
+  scale_fill_viridis_c(labels=scales::percent) +
+  coord_sf(datum=NA) +
+  labs(title="Children in low income (LICO-AT)",
+       fill="Share",
+       caption="StatCan census 2016")
+```
 
-## The cancensus R package
+Based on this she locates a couple of good candidate neighbourhoods for her pilot and sends the map in a email to her colleague Peter to get input on which neighbourhood might be best suited.
 
-![](https://raw.githubusercontent.com/mountainMath/cancensus/master/images/cancensus-sticker.png){#cancensus-logo style="float:right;margin-left:3em;" fig-alt="cancensus" width="250"}
+Peter has some good feedback for Amy, but also gets an idea to try and set up something similar in Vancouver. Peter asks Amy if she can share the code, and Amy sends along the above code snippets. Peter looks up the geographic identifier for Vancouver and subs that in instead of Toronto's.
 
-The **cancensus** R package interfaces with the CensusMapper API server. It can be queried for
+```{r}
+lico_yvr <- get_census("CA16",regions=list(CSD="5915022"), vectors=c(lico="v_CA16_2573"),
+                        level="CT",geo_format="sf", quiet=TRUE)
 
--   census geographies
+ggplot(lico_yvr, aes(fill=(lico/100))) +
+  geom_sf() +
+  scale_fill_viridis_c(labels=scales::percent) +
+  coord_sf(datum=NA) +
+  labs(title="Children in low income (LICO-AT)",
+       fill="Share",
+       caption="StatCan census 2016")
+```
 
--   census data
+Easy pesy, thanks to Amy's previous work. Peter takes the map to his friend Yuko and asks her for advice where a community-based intervention for low-income children might make sense in Calgary. Yuko asks for the code from Peter to take a closer look herself.
 
--   hierarchical metadata of census variables
+Yuko is interested in a finer geographic breakdown, so she swaps our the geographic level from census tracts to dissemination areas.
 
--   some non-census data that comes on census geographies, e.g. T1FF taxfiler data
+```{r}
+lico_yvr_da <- get_census("CA16",regions=list(CSD="5915022"), vectors=c(lico="v_CA16_2573"),
+                        level="DA",geo_format="sf", quiet=TRUE)
 
-A slight complication, the [**cancensus** package](https://mountainmath.github.io/cancensus/)needs an API key. You can sign up for one on [CensusMapper](https://censusmapper.ca/users/sign_up).
+ggplot(lico_yvr_da, aes(fill=(lico/100))) +
+  geom_sf(size=0.1) +
+  scale_fill_viridis_c(labels=scales::percent) +
+  coord_sf(datum=NA) +
+  labs(title="Children in low income (LICO-AT)",
+       fill="Share",
+       caption="StatCan census 2016")
+```
+
+But then Yuko pauses to think that maybe looking at share of the low income population is not the right metric. She decides to query the number of children in low income (vector "v_CA16_2558") and prepare the data for a dotdensity map.
+
+```{r message=FALSE, warning=FALSE}
+library(dotdensity)
+library(dplyr)
+
+lico_dots_yvr <- get_census("CA16",regions=list(CSD="5915022"),geo_format="sf",
+                            vectors=c(lico="v_CA16_2558"), level="DA") %>%
+  compute_dots("lico")
+yvr_city <- get_census("CA16",regions=list(CSD="5915022"),geo_format="sf")
+
+ggplot(lico_dots_yvr) +
+  geom_sf(data = yvr_city) +
+  geom_sf(size=0.25,colour="brown",alpha=0.1) +
+  coord_sf(datum=NA) +
+  labs(title="Children in low income (LICO-AT)",
+       fill="Share",
+       caption="StatCan census 2016")
+```
+
+That paints a somewhat different picture, and Yuko feels this is much better suited to pinpoint where to best stage a community intervention. She lets Peter and Amy know and emails them her modifications to the code.
+
+Meanwhile, Yuko's Vancouver friend Stephanie is looking specifically at children below the age of 6 in low income, and wants to understand how the geographic distribution of low income children has changed over time. Comparing census data through time can be tricky because census geographies change, but this problem has been completely solved via the [**tongfen** R package](https://mountainmath.github.io/tongfen/articles/tongfen_ca.html). Looking at Yuko's work she thinks it might be best to look at both, the change in share of children in low income as well as the change in absolute number.
+
+```{r message=FALSE, warning=FALSE}
+library(tongfen)
+meta <- meta_for_ca_census_vectors(c(total_2006="v_CA06_1982",lico_share_2006="v_CA06_1984",
+                                     lico_2016="v_CA16_2561",lico_share_2016="v_CA16_2576"))
+lico_data <- get_tongfen_ca_census(regions=list(CSD="5915022"),meta,level="CT",quiet = TRUE) %>%
+  mutate(lico_2006=total_2006*lico_share_2006/100) %>%
+  mutate(`Absolute change`=lico_2016-lico_2006,
+         `Percentage point change`=lico_share_2016-lico_share_2006)
+```
+
+```{r}
+ggplot(lico_data,aes(fill=`Absolute change`)) +
+  geom_sf() +
+  scale_fill_gradient2() +
+  coord_sf(datum=NA) +
+  labs(title="Change in number of children under 6 in low income",
+       caption="StatCan Census 2006, 2016")
+```
+
+```{r}
+ggplot(lico_data,aes(fill=`Percentage point change`/100)) +
+  geom_sf() +
+  scale_fill_gradient2(labels=scales::percent) +
+  coord_sf(datum=NA) +
+  labs(title="Change in share of children under 6 in low income",
+       fill="Percentage\npoint change",
+       caption="StatCan Census 2006, 2016")
+```
+
+Stephanie shares her results with Amy in Toronto in case there are components of Amy's pilot specifically targeting children below 6 in low income.
+
+Meanwhile Amy has been trying to understand more broadly how the share of low income children has evolved since the 2016 census (using 2015 income data) at the metropolitan level over longer time spans, so she looks through the StatCan socioeconomic tables and settles on table 11-10-0135, which also allows her to compare various low income concepts.
+
+```{r}
+#| warning: false
+library(cansim)
+mbm_timeline <- get_cansim("11-10-0135") %>%
+  filter(`Persons in low income`=="Persons under 18 years",
+         GEO=="Toronto, Ontario",
+         Statistics=="Percentage of persons in low income")
+
+ggplot(mbm_timeline,aes(x=Date,y=val_norm,colour=`Low income lines`)) +
+  geom_point(shape=21) +
+  geom_line() +
+  scale_y_continuous(labels=scales::percent) +
+  labs(title="Children in low income in Metro Toronto",
+       y="Share of children in low income",
+       x=NULL,
+       caption="StatCan Table 11-10-0135")
+
+```
+
+She notes that there has been a substantial overall drop in children in low income since 2015 across all measures, which is excellent news. She considers pushing off her pilot project until after the 2021 census data comes out to first understand if the geographic patterns have changed.
+
+## What you will learn in this book
+
+Hopefully the above hypothetical scenario have explained how the adaptability of the R code has made life much easier for several of the subsequent analysis steps. Looking at R code for the first time can be intimidating, this book will start out slowly and build up skills step by step.

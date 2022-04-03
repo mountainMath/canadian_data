@@ -1,0 +1,43 @@
+# Introduction
+
+Statistics Canada produces a lot of high quality demographic and economic data for Canada. CMHC complements this with housing data, and municipalities across Canada often provide relevant data through their Open Data portals.
+
+## R and RStudio
+
+We will be working in R and the [RStudio IDE](https://www.rstudio.com/products/rstudio/download/ "Download RStudio"), although using a different editor like [Visual Studio Code](https://visualstudio.microsoft.com) works just as well, especially if you are already familiar with it. Within R we will be operating within the [tidyverse framework](https://www.tidyverse.org), a group of R packages that work well together and allow for intuitive operations on data via pipes.
+
+While an introduction to R is part of the goal of this book, an we will slowly build up skills as we go, we not give a systematic introduction but rather build up skills slowly as we work on concrete examples. It may be beneficial to supplement this with a [more principled introduction to **R** and the **tidyverse**](https://r4ds.had.co.nz/index.html)**.**
+
+During the course of this book we will make heavy use of several R packages to facilitate data access, in particular.
+
+## The cansim R package
+
+![](https://raw.githubusercontent.com/mountainMath/cansim/master/images/cansim-sticker.png){#cansim-logo style="float:right;margin-left:3em;" width="250"}
+
+The [**cansim** R package](https://mountainmath.github.io/cansim/) interfaces with the StatCan NDM that replaces the former CANSIM tables. It can be queried for
+
+-   whole tables
+
+-    specific vectors
+
+-   data discovery searching through tables
+
+It encodes the metadata and allows to work with the internal hierarchical structure of the fields.
+
+Larger tables can also be imported into a local SQLite database for reuse across sessions without the need to re-download the data, and better performance when subsetting the data.
+
+## The cancensus R package
+
+![](https://raw.githubusercontent.com/mountainMath/cancensus/master/images/cancensus-sticker.png){#cancensus-logo style="float:right;margin-left:3em;" fig-alt="cancensus" width="250"}
+
+The **cancensus** R package interfaces with the CensusMapper API server. It can be queried for
+
+-   census geographies
+
+-   census data
+
+-   hierarchical metadata of census variables
+
+-   some non-census data that comes on census geographies, e.g. T1FF taxfiler data
+
+A slight complication, the [**cancensus** package](https://mountainmath.github.io/cancensus/)needs an API key. You can sign up for one on [CensusMapper](https://censusmapper.ca/users/sign_up).

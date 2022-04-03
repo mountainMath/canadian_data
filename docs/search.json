@@ -72,28 +72,28 @@
   {
     "objectID": "intro_to_r.html",
     "href": "intro_to_r.html",
-    "title": "2  Introduction",
+    "title": "2  Getting started with R and RStudio",
     "section": "",
     "text": "Statistics Canada produces a lot of high quality demographic and economic data for Canada. CMHC complements this with housing data, and municipalities across Canada often provide relevant data through their Open Data portals."
   },
   {
     "objectID": "intro_to_r.html#r-and-rstudio",
     "href": "intro_to_r.html#r-and-rstudio",
-    "title": "2  Introduction",
+    "title": "2  Getting started with R and RStudio",
     "section": "2.1 R and RStudio",
     "text": "2.1 R and RStudio\nWe will be working in R and the RStudio IDE, although using a different editor like Visual Studio Code works just as well, especially if you are already familiar with it. Within R we will be operating within the tidyverse framework, a group of R packages that work well together and allow for intuitive operations on data via pipes.\nWhile an introduction to R is part of the goal of this book, an we will slowly build up skills as we go, we not give a systematic introduction but rather build up skills slowly as we work on concrete examples. It may be beneficial to supplement this with a more principled introduction to R and the tidyverse.\nDuring the course of this book we will make heavy use of several R packages to facilitate data access, in particular."
   },
   {
     "objectID": "intro_to_r.html#the-cansim-r-package",
     "href": "intro_to_r.html#the-cansim-r-package",
-    "title": "2  Introduction",
+    "title": "2  Getting started with R and RStudio",
     "section": "2.2 The cansim R package",
     "text": "2.2 The cansim R package\n\nThe cansim R package interfaces with the StatCan NDM that replaces the former CANSIM tables. It can be queried for\n\nwhole tables\nspecific vectors\ndata discovery searching through tables\n\nIt encodes the metadata and allows to work with the internal hierarchical structure of the fields.\nLarger tables can also be imported into a local SQLite database for reuse across sessions without the need to re-download the data, and better performance when subsetting the data."
   },
   {
     "objectID": "intro_to_r.html#the-cancensus-r-package",
     "href": "intro_to_r.html#the-cancensus-r-package",
-    "title": "2  Introduction",
+    "title": "2  Getting started with R and RStudio",
     "section": "2.3 The cancensus R package",
     "text": "2.3 The cancensus R package\n\nThe cancensus R package interfaces with the CensusMapper API server. It can be queried for\n\ncensus geographies\ncensus data\nhierarchical metadata of census variables\nsome non-census data that comes on census geographies, e.g. T1FF taxfiler data\n\nA slight complication, the cancensus packageneeds an API key. You can sign up for one on CensusMapper."
   }

@@ -1,4 +1,4 @@
-# Introduction
+# Getting started with R and RStudio
 
 Statistics Canada produces a lot of high quality demographic and economic data for Canada. CMHC complements this with housing data, and municipalities across Canada often provide relevant data through their Open Data portals.
 

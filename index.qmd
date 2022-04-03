@@ -1,6 +1,6 @@
 # Preface {.unnumbered}
 
-This book is intended for people interested in learning how to access, process, analyze, and visualize Canadian demographic, economic, and housing data using R. The target audience we have in mind ranges from interested individuals interested in understanding their environment through data, community activists and community groups interested in introducing data-based approached into their work, non-profits or people involved in policy who are looking for data-based answers to their questions.
+This book is intended for people interested in learning how to access, process, analyze, and visualize Canadian demographic, economic, and housing data using R. The target audience we have in mind ranges from interested individuals interested in understanding their environment through data, community activists and community groups interested in introducing data-based approached into their work, journalists who want to report on data in their stories or aim to incorporate their own descriptive data analysis, non-profits or people involved in policy who are looking for data-based answers to their questions.
 
 The most important prerequisite is a keen interest in using data to help understand how housing and demographics shape cities and rural areas in Canada, and a willingness to learn. Prior knowledge of R is not necessary, but may be beneficial.
 
@@ -63,4 +63,10 @@ R is not the only framework to do this in, there are other options like python o
 
 Which brings us to our most ambitious goal, to help create a community around Canadian data analysis. When analysis is transparent, reproducible and adaptable people can piggy-back of each other's work, reusing parts of analysis others have done and building and improving upon it. Or Critiquing and correcting analysis, or taking it toward a different direction. A community that grows in their understanding of data, and a community using a shared set of tools to access and process Canadian data, enabling discussions to move forward instead of in circles. A community that builds up expertise from the bottom up.
 
-The book tries to address both of these requirements for building a Canadian data community, a principled approach to data and data analysis, while introducing R as a common framework to work in.
+The book tries to address both of these requirements for building a Canadian data community, a principled approach to data and data analysis, while introducing R as a common framework to work in hoping that the reader will come away with
+
+-   better data literacy skills to understand and critique data analysis,
+
+-   technical skills to reproduce and perform their own data analysis, and
+
+-   a common tool set for acquiring, processing and analyzing Canadian data that facilitates collaborative practices.

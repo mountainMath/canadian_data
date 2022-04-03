@@ -57,7 +57,7 @@ ggplot(lico_yvr, aes(fill=(lico/100))) +
        caption="StatCan census 2016")
 ```
 
-Easy pesy, thanks to Amy's previous work. Peter takes the map to his friend Yuko and asks her for advice where a community-based intervention for low-income children might make sense in Calgary. Yuko asks for the code from Peter to take a closer look herself.
+Easy peasy, thanks to Amy's previous work. Peter takes the map to his friend Yuko and asks her for advice where a community-based intervention for low-income children might make sense in Calgary. Yuko asks for the code from Peter to take a closer look herself.
 
 Yuko is interested in a finer geographic breakdown, so she swaps our the geographic level from census tracts to dissemination areas.
 
@@ -74,7 +74,7 @@ ggplot(lico_yvr_da, aes(fill=(lico/100))) +
        caption="StatCan census 2016")
 ```
 
-But then Yuko pauses to think that maybe looking at share of the low income population is not the right metric. She decides to query the number of children in low income (vector "v_CA16_2558") and prepare the data for a dotdensity map.
+But then Yuko pauses to think that maybe looking at share of the low income population is not the right metric. She decides to query the number of children in low income (vector "v_CA16_2558") and prepare the data for a dot-density map.
 
 ```{r message=FALSE, warning=FALSE}
 library(dotdensity)
@@ -154,4 +154,4 @@ She notes that there has been a substantial overall drop in children in low inco
 
 ## What you will learn in this book
 
-Hopefully the above hypothetical scenario have explained how the adaptability of the R code has made life much easier for several of the subsequent analysis steps. Looking at R code for the first time can be intimidating, this book will start out slowly and build up skills step by step.
+Hopefully the above hypothetical scenario have explained how the adaptability of the R code has made life much easier for several of the subsequent analysis steps. Looking at R code for the first time can be intimidating, this book will start out slowly and build up skills step by step. Readers will learn how to reproduce analysis, how to critique analysis, and adapt it for their own purposes. And readers will learn how to conduct their own analysis in the Canadian context, based on questions and use cases relevant to them.

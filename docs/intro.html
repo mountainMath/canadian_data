@@ -232,7 +232,7 @@
 <p><img src="intro_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Easy pesy, thanks to Amy’s previous work. Peter takes the map to his friend Yuko and asks her for advice where a community-based intervention for low-income children might make sense in Calgary. Yuko asks for the code from Peter to take a closer look herself.</p>
+<p>Easy peasy, thanks to Amy’s previous work. Peter takes the map to his friend Yuko and asks her for advice where a community-based intervention for low-income children might make sense in Calgary. Yuko asks for the code from Peter to take a closer look herself.</p>
 <p>Yuko is interested in a finer geographic breakdown, so she swaps our the geographic level from census tracts to dissemination areas.</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lico_yvr_da <span class="ot">&lt;-</span> <span class="fu">get_census</span>(<span class="st">"CA16"</span>,<span class="at">regions=</span><span class="fu">list</span>(<span class="at">CSD=</span><span class="st">"5915022"</span>), <span class="at">vectors=</span><span class="fu">c</span>(<span class="at">lico=</span><span class="st">"v_CA16_2573"</span>),</span>
@@ -249,7 +249,7 @@
 <p><img src="intro_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>But then Yuko pauses to think that maybe looking at share of the low income population is not the right metric. She decides to query the number of children in low income (vector “v_CA16_2558”) and prepare the data for a dotdensity map.</p>
+<p>But then Yuko pauses to think that maybe looking at share of the low income population is not the right metric. She decides to query the number of children in low income (vector “v_CA16_2558”) and prepare the data for a dot-density map.</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dotdensity)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -329,7 +329,7 @@
 </section>
 <section id="what-you-will-learn-in-this-book" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="what-you-will-learn-in-this-book"><span class="header-section-number">1.2</span> What you will learn in this book</h2>
-<p>Hopefully the above hypothetical scenario have explained how the adaptability of the R code has made life much easier for several of the subsequent analysis steps. Looking at R code for the first time can be intimidating, this book will start out slowly and build up skills step by step.</p>
+<p>Hopefully the above hypothetical scenario have explained how the adaptability of the R code has made life much easier for several of the subsequent analysis steps. Looking at R code for the first time can be intimidating, this book will start out slowly and build up skills step by step. Readers will learn how to reproduce analysis, how to critique analysis, and adapt it for their own purposes. And readers will learn how to conduct their own analysis in the Canadian context, based on questions and use cases relevant to them.</p>
 
 
 

@@ -4,6 +4,8 @@ In this section we give a taste of what's to come. Some of the concepts introduc
 
 This is best understood by walking through a simple example of what analysis of Canadian data in R, and a Canadian data community might look like. We won't explain all steps in full detail here, this is to serve to illustrate the concepts talked above in the preface and give the reader a taste of what's to come.
 
+If you don't understand all the code now, don't worry, that's part of the point of this book. We will work out and explain these examples in detail in the first chapter of the book. What's important right now is to illustrate the principle of reproducible and adaptable code, and how this can function to foster a community of Canadian data analysis. And to note how little code is needed to make this work.
+
 ## A hypothetical example
 
 Imagine Amy, a Toronto-based social services worker looking to pilot a community intervention targeted at children in low income. She is in the process of putting together a proposal describing her intervention and is trying to locate a good neighbourhood for her pilot and make a compelling case to possible funders.
@@ -21,9 +23,9 @@ library(ggplot2)
 
 Next she pull in the data. the [CensusMapper API GUI tool](https://censusmapper.ca/api) helps her locate the StatCan geographic identifier for Toronto, (3520005), and the internal CensusMapper vector for the percentage of children in LICO-AT (v_CA16_2573).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lico_yyz <- get_census("CA16",regions=list(CSD="3520005"), vectors=c(lico="v_CA16_2573"),
-                        level="CT",geo_format="sf", quiet=TRUE)
+                        level="CT",geo_format="sf")
 ```
 
 Here Amy specified that she wants data for the 2016 Canadian census ("CA16"), the region and vectors, at the census tract ("CT") level, with geographies as well as the low income data.
@@ -44,9 +46,9 @@ Based on this she locates a couple of good candidate neighbourhoods for her pilo
 
 Peter has some good feedback for Amy, but also gets an idea to try and set up something similar in Vancouver. Peter asks Amy if she can share the code, and Amy sends along the above code snippets. Peter looks up the geographic identifier for Vancouver and subs that in instead of Toronto's.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lico_yvr <- get_census("CA16",regions=list(CSD="5915022"), vectors=c(lico="v_CA16_2573"),
-                        level="CT",geo_format="sf", quiet=TRUE)
+                        level="CT",geo_format="sf")
 
 ggplot(lico_yvr, aes(fill=(lico/100))) +
   geom_sf() +
@@ -61,9 +63,9 @@ Easy peasy, thanks to Amy's previous work. Peter takes the map to his friend Yuk
 
 Yuko is interested in a finer geographic breakdown, so she swaps our the geographic level from census tracts to dissemination areas.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lico_yvr_da <- get_census("CA16",regions=list(CSD="5915022"), vectors=c(lico="v_CA16_2573"),
-                        level="DA",geo_format="sf", quiet=TRUE)
+                        level="DA",geo_format="sf")
 
 ggplot(lico_yvr_da, aes(fill=(lico/100))) +
   geom_sf(size=0.1) +
@@ -102,11 +104,14 @@ Meanwhile, Yuko's Vancouver friend Stephanie is looking specifically at children
 library(tongfen)
 meta <- meta_for_ca_census_vectors(c(total_2006="v_CA06_1982",lico_share_2006="v_CA06_1984",
                                      lico_2016="v_CA16_2561",lico_share_2016="v_CA16_2576"))
-lico_data <- get_tongfen_ca_census(regions=list(CSD="5915022"),meta,level="CT",quiet = TRUE) %>%
+
+lico_data <- get_tongfen_ca_census(regions=list(CSD="5915022"),meta,level="CT") %>%
   mutate(lico_2006=total_2006*lico_share_2006/100) %>%
   mutate(`Absolute change`=lico_2016-lico_2006,
          `Percentage point change`=lico_share_2016-lico_share_2006)
 ```
+
+Armed with this data Stephanie can plot the absolute and percentage point change in children below 6 in low income.
 
 ```{r}
 ggplot(lico_data,aes(fill=`Absolute change`)) +
@@ -131,8 +136,7 @@ Stephanie shares her results with Amy in Toronto in case there are components of
 
 Meanwhile Amy has been trying to understand more broadly how the share of low income children has evolved since the 2016 census (using 2015 income data) at the metropolitan level over longer time spans, so she looks through the StatCan socioeconomic tables and settles on table 11-10-0135, which also allows her to compare various low income concepts.
 
-```{r}
-#| warning: false
+```{r message=FALSE, warning=FALSE}
 library(cansim)
 mbm_timeline <- get_cansim("11-10-0135") %>%
   filter(`Persons in low income`=="Persons under 18 years",
@@ -154,4 +158,8 @@ She notes that there has been a substantial overall drop in children in low inco
 
 ## What you will learn in this book
 
-Hopefully the above hypothetical scenario have explained how the adaptability of the R code has made life much easier for several of the subsequent analysis steps. Looking at R code for the first time can be intimidating, this book will start out slowly and build up skills step by step. Readers will learn how to reproduce analysis, how to critique analysis, and adapt it for their own purposes. And readers will learn how to conduct their own analysis in the Canadian context, based on questions and use cases relevant to them.
+Looking at R code for the first time can be intimidating. If the code looks opaque right now, there is no need to worry. It will be explained in detail in the first chapter and is very much part of the rationale for writing this book. If decisions around what low income metric to pick, or why **tongfen** is needed to compare census data through time are not clear, again, that will be explained in this book in detail and expanding understanding of data and data analysis is the other big rationale for this book.
+
+Readers will learn how to reproduce analysis, how to critique analysis, and adapt it for their own purposes. And readers will learn how to conduct their own analysis in the Canadian context, based on questions and use cases relevant to them.
+
+Hopefully the above hypothetical scenario have explained how the adaptability of the R code has made life much easier for several of the subsequent analysis steps, and how little code was needed to gain some insights and communicate results.

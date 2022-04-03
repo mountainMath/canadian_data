@@ -83,7 +83,7 @@
   <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="site_libs/quarto-search/fuse.min.js"></script>
   <script src="site_libs/quarto-search/quarto-search.js"></script>
-  <link href="./intro_to_r.html" rel="next">
+  <link href="./references.html" rel="next">
   <link href="./index.html" rel="prev">
   <script src="site_libs/quarto-html/quarto.js"></script>
   <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -157,11 +157,6 @@
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro_to_r.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
@@ -186,6 +181,7 @@
 
 <p>In this section we give a taste of what’s to come. Some of the concepts introduced in the preface may be too abstract to picture for people just starting out in this space. People probably grasp the importance of having a principled approach to data analysis, from formulating a question all the way to sharing results. But why so much emphasis on reproducibility and adaptability? And do we really need to learn a new framework like R for this?</p>
 <p>This is best understood by walking through a simple example of what analysis of Canadian data in R, and a Canadian data community might look like. We won’t explain all steps in full detail here, this is to serve to illustrate the concepts talked above in the preface and give the reader a taste of what’s to come.</p>
+<p>If you don’t understand all the code now, don’t worry, that’s part of the point of this book. We will work out and explain these examples in detail in the first chapter of the book. What’s important right now is to illustrate the principle of reproducible and adaptable code, and how this can function to foster a community of Canadian data analysis. And to note how little code is needed to make this work.</p>
 <section id="a-hypothetical-example" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="a-hypothetical-example"><span class="header-section-number">1.1</span> A hypothetical example</h2>
 <p>Imagine Amy, a Toronto-based social services worker looking to pilot a community intervention targeted at children in low income. She is in the process of putting together a proposal describing her intervention and is trying to locate a good neighbourhood for her pilot and make a compelling case to possible funders.</p>
@@ -199,7 +195,7 @@
 <p>Next she pull in the data. the <a href="https://censusmapper.ca/api">CensusMapper API GUI tool</a> helps her locate the StatCan geographic identifier for Toronto, (3520005), and the internal CensusMapper vector for the percentage of children in LICO-AT (v_CA16_2573).</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lico_yyz <span class="ot">&lt;-</span> <span class="fu">get_census</span>(<span class="st">"CA16"</span>,<span class="at">regions=</span><span class="fu">list</span>(<span class="at">CSD=</span><span class="st">"3520005"</span>), <span class="at">vectors=</span><span class="fu">c</span>(<span class="at">lico=</span><span class="st">"v_CA16_2573"</span>),</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">level=</span><span class="st">"CT"</span>,<span class="at">geo_format=</span><span class="st">"sf"</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">level=</span><span class="st">"CT"</span>,<span class="at">geo_format=</span><span class="st">"sf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here Amy specified that she wants data for the 2016 Canadian census (“CA16”), the region and vectors, at the census tract (“CT”) level, with geographies as well as the low income data.</p>
 <p>Now that she has the data at her finger times her first step is to make a map. For that she needs to tell <strong>ggplot</strong> is what variable to use as fill colour, and maybe give it a nicer colour scale and some labels to explain what the map is about.</p>
@@ -219,7 +215,7 @@
 <p>Peter has some good feedback for Amy, but also gets an idea to try and set up something similar in Vancouver. Peter asks Amy if she can share the code, and Amy sends along the above code snippets. Peter looks up the geographic identifier for Vancouver and subs that in instead of Toronto’s.</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lico_yvr <span class="ot">&lt;-</span> <span class="fu">get_census</span>(<span class="st">"CA16"</span>,<span class="at">regions=</span><span class="fu">list</span>(<span class="at">CSD=</span><span class="st">"5915022"</span>), <span class="at">vectors=</span><span class="fu">c</span>(<span class="at">lico=</span><span class="st">"v_CA16_2573"</span>),</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">level=</span><span class="st">"CT"</span>,<span class="at">geo_format=</span><span class="st">"sf"</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">level=</span><span class="st">"CT"</span>,<span class="at">geo_format=</span><span class="st">"sf"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lico_yvr, <span class="fu">aes</span>(<span class="at">fill=</span>(lico<span class="sc">/</span><span class="dv">100</span>))) <span class="sc">+</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
@@ -236,7 +232,7 @@
 <p>Yuko is interested in a finer geographic breakdown, so she swaps our the geographic level from census tracts to dissemination areas.</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lico_yvr_da <span class="ot">&lt;-</span> <span class="fu">get_census</span>(<span class="st">"CA16"</span>,<span class="at">regions=</span><span class="fu">list</span>(<span class="at">CSD=</span><span class="st">"5915022"</span>), <span class="at">vectors=</span><span class="fu">c</span>(<span class="at">lico=</span><span class="st">"v_CA16_2573"</span>),</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">level=</span><span class="st">"DA"</span>,<span class="at">geo_format=</span><span class="st">"sf"</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">level=</span><span class="st">"DA"</span>,<span class="at">geo_format=</span><span class="st">"sf"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lico_yvr_da, <span class="fu">aes</span>(<span class="at">fill=</span>(lico<span class="sc">/</span><span class="dv">100</span>))) <span class="sc">+</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">size=</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
@@ -276,11 +272,13 @@
 <div class="sourceCode" id="cb7"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tongfen)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>meta <span class="ot">&lt;-</span> <span class="fu">meta_for_ca_census_vectors</span>(<span class="fu">c</span>(<span class="at">total_2006=</span><span class="st">"v_CA06_1982"</span>,<span class="at">lico_share_2006=</span><span class="st">"v_CA06_1984"</span>,</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">lico_2016=</span><span class="st">"v_CA16_2561"</span>,<span class="at">lico_share_2016=</span><span class="st">"v_CA16_2576"</span>))</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>lico_data <span class="ot">&lt;-</span> <span class="fu">get_tongfen_ca_census</span>(<span class="at">regions=</span><span class="fu">list</span>(<span class="at">CSD=</span><span class="st">"5915022"</span>),meta,<span class="at">level=</span><span class="st">"CT"</span>,<span class="at">quiet =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lico_2006=</span>total_2006<span class="sc">*</span>lico_share_2006<span class="sc">/</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Absolute change</span><span class="st">`</span><span class="ot">=</span>lico_2016<span class="sc">-</span>lico_2006,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Percentage point change</span><span class="st">`</span><span class="ot">=</span>lico_share_2016<span class="sc">-</span>lico_share_2006)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>lico_data <span class="ot">&lt;-</span> <span class="fu">get_tongfen_ca_census</span>(<span class="at">regions=</span><span class="fu">list</span>(<span class="at">CSD=</span><span class="st">"5915022"</span>),meta,<span class="at">level=</span><span class="st">"CT"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lico_2006=</span>total_2006<span class="sc">*</span>lico_share_2006<span class="sc">/</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Absolute change</span><span class="st">`</span><span class="ot">=</span>lico_2016<span class="sc">-</span>lico_2006,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Percentage point change</span><span class="st">`</span><span class="ot">=</span>lico_share_2016<span class="sc">-</span>lico_share_2006)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Armed with this data Stephanie can plot the absolute and percentage point change in children below 6 in low income.</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lico_data,<span class="fu">aes</span>(<span class="at">fill=</span><span class="st">`</span><span class="at">Absolute change</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
@@ -329,7 +327,9 @@
 </section>
 <section id="what-you-will-learn-in-this-book" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="what-you-will-learn-in-this-book"><span class="header-section-number">1.2</span> What you will learn in this book</h2>
-<p>Hopefully the above hypothetical scenario have explained how the adaptability of the R code has made life much easier for several of the subsequent analysis steps. Looking at R code for the first time can be intimidating, this book will start out slowly and build up skills step by step. Readers will learn how to reproduce analysis, how to critique analysis, and adapt it for their own purposes. And readers will learn how to conduct their own analysis in the Canadian context, based on questions and use cases relevant to them.</p>
+<p>Looking at R code for the first time can be intimidating. If the code looks opaque right now, there is no need to worry. It will be explained in detail in the first chapter and is very much part of the rationale for writing this book. If decisions around what low income metric to pick, or why <strong>tongfen</strong> is needed to compare census data through time are not clear, again, that will be explained in this book in detail and expanding understanding of data and data analysis is the other big rationale for this book.</p>
+<p>Readers will learn how to reproduce analysis, how to critique analysis, and adapt it for their own purposes. And readers will learn how to conduct their own analysis in the Canadian context, based on questions and use cases relevant to them.</p>
+<p>Hopefully the above hypothetical scenario have explained how the adaptability of the R code has made life much easier for several of the subsequent analysis steps, and how little code was needed to gain some insights and communicate results.</p>
 
 
 
@@ -418,8 +418,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro_to_r.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

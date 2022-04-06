@@ -1,12 +1,10 @@
----
-title: "BC population growth"
----
+## BC population growth
 
 This example is motivated by a [BC government press release](https://news.gov.bc.ca/releases/2022PREM0019-000505) titeled "**B.C. welcomes more than 100,000 people -- the most in 60 years**". This is the type of attention-grabbing headline where our gut reaction usually is to question if this is true. Let's take that as our question:
 
 ### Question
 
-#### Has BC's population really grown by over 100,000, is this the most in 60 years, and how should I interpret this number?
+**Has BC's population really grown by over 100,000, is this the most in 60 years, and how should I interpret this number?**
 
 ### Data sources
 

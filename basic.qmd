@@ -1,0 +1,7 @@
+---
+title: "Basic descriptive analysis"
+---
+
+In this section we will look at how to do basic descriptive analysis. The questions we ask here will be quite simple, for example: How has income changed over time? Or: Which areas of Toronto have the highest incomes?
+
+The accompanying analysis won't be very involved, sometimes we will compute percentages or make other simple data manipulations, but generally the analysis will be quite straight-forward. We will focus on how to find data sources that can inform on our question, how to get the data, and how to present and interpret it.

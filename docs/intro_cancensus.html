@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.9.165">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Analyzing Candian demographic and housing data using R - References</title>
+  <title>Analyzing Candian demographic and housing data using R - 3&nbsp; Introduction to cancensus</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -11,25 +11,6 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-    }
-    .hanging div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }
   </style>
 
   <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -39,7 +20,8 @@
   <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="site_libs/quarto-search/fuse.min.js"></script>
   <script src="site_libs/quarto-search/quarto-search.js"></script>
-  <link href="./basic_bc_pop.html" rel="prev">
+  <link href="./basic.html" rel="next">
+  <link href="./intro_cansim.html" rel="prev">
   <script src="site_libs/quarto-html/quarto.js"></script>
   <script src="site_libs/quarto-html/popper.min.js"></script>
   <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -72,12 +54,12 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
-<body class="floating fullcontent">
+<body class="floating">
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">References</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to cancensus</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -125,7 +107,7 @@
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro_cancensus.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to cancensus</span></a>
+  <a href="./intro_cancensus.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to cancensus</span></a>
   </div>
 </li>
     </ul>
@@ -147,25 +129,42 @@
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul>
+<li><a href="#the-cancensus-r-package" class="nav-link active" data-scroll-target="#the-cancensus-r-package"> <span class="header-section-number">3.1</span> The cancensus R package</a></li>
+</ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 <header id="title-block-header" class="quarto-title-block default">
 
-<div class="quarto-title"><h1 class="title d-none d-lg-block display-7">References</h1></div></header>
-<div id="refs" role="doc-bibliography" style="display: none">
+<div class="quarto-title"><h1 class="title d-none d-lg-block display-7"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to cancensus</span></h1></div></header>
 
-</div>
+<section id="the-cancensus-r-package" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="the-cancensus-r-package"><span class="header-section-number">3.1</span> The cancensus R package</h2>
+<p><img src="images/cancensus-sticker.png" id="cancensus-logo" class="img-fluid" style="float:right;margin-left:3em;" alt="cancensus" width="250"></p>
+<p>The <strong>cancensus</strong> R package interfaces with the CensusMapper API server. It can be queried for</p>
+<ul>
+<li><p>census geographies</p></li>
+<li><p>census data</p></li>
+<li><p>hierarchical metadata of census variables</p></li>
+<li><p>some non-census data that comes on census geographies, e.g.&nbsp;T1FF taxfiler data</p></li>
+</ul>
+<p>A slight complication, the <a href="https://mountainmath.github.io/cancensus/"><strong>cancensus</strong> package</a>needs an API key. You can sign up for one on <a href="https://censusmapper.ca/users/sign_up">CensusMapper</a>.</p>
 
 
 
+</section>
 </main> <!-- /main -->
 <script type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -245,11 +244,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./basic_bc_pop.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">BC population growth</span></span>
+      <a href="./intro_cansim.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to cansim</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./basic.html" class="pagination-link">
+        <span class="nav-page-text">Basic descriptive analysis</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

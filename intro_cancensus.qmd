@@ -1,0 +1,19 @@
+---
+title: "Introduction to cancensus"
+---
+
+## The cancensus R package
+
+![](images/cancensus-sticker.png){#cancensus-logo style="float:right;margin-left:3em;" fig-alt="cancensus" width="250"}
+
+The **cancensus** R package interfaces with the CensusMapper API server. It can be queried for
+
+-   census geographies
+
+-   census data
+
+-   hierarchical metadata of census variables
+
+-   some non-census data that comes on census geographies, e.g. T1FF taxfiler data
+
+A slight complication, the [**cancensus** package](https://mountainmath.github.io/cancensus/)needs an API key. You can sign up for one on [CensusMapper](https://censusmapper.ca/users/sign_up).

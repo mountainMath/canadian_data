@@ -9,7 +9,13 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
-    #- intro_to_r.qmd
+    - part: intro_to_r.qmd
+      chapters:
+      - intro_cansim.qmd
+      - intro_cancensus.qmd
+    - part: basic.qmd
+      chapters:
+      - basic_bc_pop.qmd
     - references.qmd
 
 bibliography: references.bib

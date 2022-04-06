@@ -1,0 +1,112 @@
+---
+title: "BC population growth"
+---
+
+This example is motivated by a [BC government press release](https://news.gov.bc.ca/releases/2022PREM0019-000505) titeled "**B.C. welcomes more than 100,000 people -- the most in 60 years**". This is the type of attention-grabbing headline where our gut reaction usually is to question if this is true. Let's take that as our question:
+
+### Question
+
+#### Has BC's population really grown by over 100,000, is this the most in 60 years, and how should I interpret this number?
+
+### Data sources
+
+To start, let's figure out where that data point comes from. The press release references StatCan as the source, let's search through the StatCan tables. Google usually works reasonably well, but we can also search programmatically. We are looking for population estimates from the quarterly demographic estimates to get the most up-to-data population estimates from StatCan. For results we just need the first two columns, that table number and the title.
+
+```{r message=FALSE}
+library(tidyverse)
+library(cansim)
+
+search_cansim_cubes("population estimates") %>%
+  filter(surveyEn=="Quarterly Demographic Estimates") %>%
+  select(1:2)
+```
+
+It looks like Table 17-10-0009 is exactly what we are looking for. Let's load in the data and inspect the first couple of rows for BC.
+
+### Data aquisition
+
+```{r}
+pop_data <- get_cansim("17-10-0009") 
+
+pop_data %>%
+  filter(GEO=="British Columbia") %>% 
+  select(Date,Population=val_norm) %>%
+  head(10)
+```
+
+This looks good.
+
+### Data preparation, analysis and visualization
+
+Time to make a graph. We again only take the data for British Columbia and pass it to `ggplot` to make a graph, specifying that we want `Date` on the x-axis, the population value (`val_norm`) on the y-axis and we want a line graph.
+
+```{r}
+pop_data %>% 
+  filter(GEO=="British Columbia") %>%
+  ggplot(aes(x=Date,y=val_norm)) +
+  geom_line()
+```
+
+While this is fine for just getting a quick visual, it's good practice to clean this up a bit and add proper labels so that others looking at the graph will know what it is about. And also so that we understand it if for example we come back to look at this a week later.
+
+```{r}
+pop_data %>% 
+  filter(GEO=="British Columbia") %>%
+  ggplot(aes(x=Date,y=val_norm)) +
+  geom_line() +
+  scale_y_continuous(labels=scales::comma) +
+  labs(title="Population estimates for British Columbia",
+       y="Number of people",
+       x=NULL,
+       caption="StatCan Table 17-10-0009")
+```
+
+We formated the y-axis values by adding thousand separators, gave it a title, a y-axis label, and noted the data source in the caption.
+
+So far so good, but our question was about population change, not total population. To compute population change we have to take the population estimate and subtract the value from 4 quarters prior. We can do that with the `lag` function.
+
+```{r}
+pop_data %>% 
+  filter(GEO=="British Columbia") %>%
+  mutate(change=val_norm-lag(val_norm, order_by = Date, n=4)) %>%
+  ggplot(aes(x=Date,y=change)) +
+  geom_line() +
+  scale_y_continuous(labels=scales::comma, breaks=seq(0,200000,10000)) +
+  labs(title="Year over year population change for British Columbia",
+       y="Number of people",
+       x=NULL,
+       caption="StatCan Table 17-10-0009")
+```
+
+Here we also specified manual `breaks` for the y-axis that should be used for labelling, putting a mark for every 10k.
+
+### Interpretation
+
+This answers the first part of our question, the latest year over year population change edges just over the 100,000 people mark. But the second part of the question, if this is the most in 60 years, is definitely false. We see that year over year population growth was higher on several occasions during the past 60 years.
+
+Nonetheless, it is interesting to see the fairly continuous increase in year over year population growth since 2000, with several major dips. The most recent one lines up with the COVID pandemic. Other than that our current growth looks pretty much on target with past trends. It will be interesting to see how it continues, if there will be some over-shoot to make up for the deep dip during the pandemic, or if it will roughly follow the previous path.
+
+When it comes to interpreting the data, looking back up to the first graph, we notice that British Columbia's population has quintupled over the time frame we are looking at. That's a huge change, the British Columbia from the 50s is very different from the British Columbia today. Does it really make sense to use the total number BC gained year over year when comparing over such long time frames? A more meaningful metric would be to look at the percent change of the population. Let's do that.
+
+### Back to analysis
+
+We only need minimal adjustments, to compute the percentage change we take the quotient (and subtract 1) instead of taking year over year differences.
+
+```{r}
+pop_data %>% 
+  filter(GEO=="British Columbia") %>%
+  mutate(change=val_norm/lag(val_norm, order_by = Date, n=4)-1) %>%
+  ggplot(aes(x=Date,y=change)) +
+  geom_line() +
+  scale_y_continuous(labels=scales::percent) +
+  labs(title="Year over year population change for British Columbia",
+       y="Annual growth rate",
+       x=NULL,
+       caption="StatCan Table 17-10-0009")
+```
+
+This makes our recent growth much less impressive, although we still see that trajectory of increasing growth since 2000.
+
+### More interpretation
+
+So what is our interpretation of this statistic? While historically over the past 60 years British Columbia has seen higher absolute growth and higher growth rates than currently, our present population growth rate is the highest it has been since the late 90s, and has been slowly increasing since 2000. The current record (since 2000) high fits well into this trend. It is preceded by a record drop in growth rate during the COVID-19 pandemic, which makes it difficult to say how much of the current high is simply a bounce-back from the COVID-19 dip, or part of an ongoing trend to higher growth.

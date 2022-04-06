@@ -1,0 +1,19 @@
+---
+title: "Introduction to cansim"
+---
+
+## The cansim R package
+
+![](images/cansim-sticker.png){#cansim-logo style="float:right;margin-left:3em;" width="250"}
+
+The [**cansim** R package](https://mountainmath.github.io/cansim/) interfaces with the StatCan NDM that replaces the former CANSIM tables. It can be queried for
+
+-   whole tables
+
+-    specific vectors
+
+-   data discovery searching through tables
+
+It encodes the metadata and allows to work with the internal hierarchical structure of the fields.
+
+Larger tables can also be imported into a local SQLite database for reuse across sessions without the need to re-download the data, and better performance when subsetting the data.

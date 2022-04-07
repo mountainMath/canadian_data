@@ -13,9 +13,10 @@ book:
       chapters:
       - intro_cansim.qmd
       - intro_cancensus.qmd
-    - part: basic.qmd
+    - part: basic_descriptive.qmd
+    - part: advanced_descriptive.qmd
       chapters:
-      - basic_bc_pop.qmd
+      - advanced_descriptive_bc_migration.qmd
     - references.qmd
 
 bibliography: references.bib

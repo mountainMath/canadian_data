@@ -1,0 +1,5 @@
+---
+title: "Advanced descriptive analysis"
+---
+
+Building on the section of basic descriptive analysis we will move into more advanced data processing and descriptive analysis. This will involve mixing of different datasets to tease out finer aspects. We will learn how to group and summarize data, and how to use joins.

@@ -30,7 +30,7 @@ It looks like Table 17-10-0020 and 17-10-0040 are what we are looking for. Let's
 
 ### Data acquisition
 
-```{r}
+```{r message=FALSE}
 interprovincial <- get_cansim("17-10-0020")
 international <- get_cansim("17-10-0040")
 
@@ -117,7 +117,7 @@ This shows us that the press report was most likely talking did not mean to talk
 
 And the net migration is indeed at record levels. At least in absolute terms. But B.C. now is very different from B.C. in the 60s at the start of this time series. How can we compare net migration over time in a more meaningful way? Normalizing by population is a good option here. Let's grab the data and take a look how B.C. population has changed.
 
-```{r}
+```{r message=FALSE}
 pop_data <- get_cansim("17-10-0009") %>%
   select(GEO,Date,Population=val_norm)
 

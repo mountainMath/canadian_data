@@ -1,4 +1,4 @@
-## BC population growth
+## BC migration
 
 This example is motivated by a [BC government press release](https://news.gov.bc.ca/releases/2022PREM0019-000505) titeled "**B.C. welcomes more than 100,000 people -- the most in 60 years**". This is the type of attention-grabbing headline where our gut reaction usually is to question if this is true.
 
@@ -108,7 +108,7 @@ ggplot(migration_data %>% filter(GEO=="British Columbia")) +
   geom_line(data=net_migration %>% filter(GEO=="British Columbia"),
             aes(x=Date,y=annual)) +
   MetBrewer::scale_fill_met_d("Archambault") +
-  labs(title="BC Year over year components of population change",
+  labs(title="BC Year over year migration",
        y="Year over year change",x=NULL,fill="Components of population change",
        caption="StatCan Tables 17-10-0020, 17-10-0040")
 ```
@@ -141,22 +141,94 @@ migration_data %>%
   ggplot() +
   geom_area(aes(x=Date,y=annual/Population,fill=fct_rev(`Components of population growth`)),
            stat="identity") +
-  scale_y_continuous(labels=scales::comma) +
+  scale_y_continuous(labels=scales::percent) +
   geom_line(data=net_migration %>% 
               left_join(pop_data, by=c("GEO","Date")) %>%
               filter(GEO=="British Columbia"),
             aes(x=Date,y=annual/Population)) +
   MetBrewer::scale_fill_met_d("Archambault") +
-  labs(title="BC Year over year components of population change",
-       y="Year over year change per population",x=NULL,fill="Components of population change",
+  labs(title="BC Year over year BC Year over year migration",
+       y="Year over year change per population",x=NULL,
+       fill="Components of population change",
        caption="StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009")
 ```
 
 Here the picture looks a little different. Net migration per capita is at its highest since the 90s, but the past 60 years there were several periods where it was larger.
 
+The press report also mentioned that B.C.'s interprovincial migration numbers are higher than any other province. This is easy to check now.
+
+```{r}
+migration_data_interprovinicial <- migration_data %>%
+  left_join(pop_data, by=c("GEO","Date")) %>%
+  filter(grepl("Interprovincial",`Components of population growth`))
+
+net_interprovincial <- migration_data_interprovinicial %>%
+  group_by(GEO,Date) %>%
+  summarize(value=sum(value),
+            annual=sum(annual),
+            Population=first(Population),
+            .groups="drop")
+
+migration_data_interprovinicial %>% 
+  filter(GEO!="Canada") %>%
+  filter(Date==max(Date)) %>%
+  ggplot(aes(y=GEO,x=annual)) +
+  geom_bar(stat="identity",
+           aes(fill=fct_rev(`Components of population growth`))) +
+  geom_boxplot(data=net_interprovincial %>% 
+                 filter(GEO!="Canada") %>%
+                 filter(Date==max(Date))) +
+  MetBrewer::scale_fill_met_d("Archambault") +
+  scale_x_continuous(labels=scales::comma) +
+  labs(title="Most recent year migration",
+       fill="Components of population growth",
+       y=NULL,x="Year over year change per capita",
+       caption="StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009")
+```
+
+In absolute number B.C. indeed has both the highest interprovincial in-migration and interprovincial net-migration among all provinces. But the provinces have vastly different sizes, so that's not really a fair comparison. Again, we can normalize by population.
+
+```{r}
+migration_data_interprovinicial %>% 
+  filter(GEO!="Canada") %>%
+  filter(Date==max(Date)) %>%
+  ggplot(aes(y=GEO,x=annual/Population)) +
+  geom_bar(stat="identity",
+           aes(fill=fct_rev(`Components of population growth`))) +
+  geom_boxplot(data=net_interprovincial %>% 
+                 filter(GEO!="Canada") %>%
+                 filter(Date==max(Date))) +
+  MetBrewer::scale_fill_met_d("Archambault") +
+  scale_x_continuous(labels=scales::percent) +
+  labs(title="Most recent year migration",
+       fill="Components of population growth",
+       y=NULL,x="Year over year change per capita",
+       caption="StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009")
+```
+
+Viewed this way B.C.'s interprovincial in-migration and net migration still looks good, but many of the other provinces beat out that growth rate.
+
+For completeness we can also just show the full graph that includes the international migration components.
+
+```{r}
+migration_data %>% 
+  left_join(pop_data, by=c("GEO","Date")) %>%
+  filter(Date==max(Date)) %>%
+  ggplot(aes(y=GEO,x=annual/Population)) +
+  geom_bar(stat="identity",aes(fill=fct_rev(`Components of population growth`))) +
+  geom_boxplot(data=net_migration %>% 
+                 left_join(pop_data, by=c("GEO","Date")) %>% 
+                 filter(Date==max(Date))) +
+  MetBrewer::scale_fill_met_d("Archambault") +
+  labs(title="Most recent year migration",
+       fill="Components of population growth",
+       y=NULL,x="Year over year change per capita",
+       caption="StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009")
+```
+
 ### Interpretation
 
-This answers our question, the latest annual net migration edges over the 100,000 people mark, and in absolute terms this is the highest it's been over at least 60 years. But what can we learn from that?
+This answers our question, the latest annual net migration edges over the 100,000 people mark, and in absolute terms this is the highest it's been over at least 60 years. And B.C.'s interprovincial (net) in-migration was the highest in Canada in absolute terms. But what can we learn from that?
 
 B.C. 60 years ago is very different from B.C. today. To account for that we can normalize by population, and the relative net migration has been higher at several times during the past 60 years, most recently in the 90s.
 

@@ -101,13 +101,17 @@ net_migration <- migration_data %>%
 Time to make a graph.
 
 ```{r}
+migration_colours <- setNames(MetBrewer::met.brewer("Archambault",7),
+                              migration_data$`Components of population growth` %>% 
+                                levels %>% rev)
+
 ggplot(migration_data %>% filter(GEO=="British Columbia")) +
   geom_area(aes(x=Date,y=annual,fill=fct_rev(`Components of population growth`)),
            stat="identity") +
   scale_y_continuous(labels=scales::comma) +
   geom_line(data=net_migration %>% filter(GEO=="British Columbia"),
             aes(x=Date,y=annual)) +
-  MetBrewer::scale_fill_met_d("Archambault") +
+  scale_fill_manual(values=migration_colours) +
   labs(title="BC Year over year migration",
        y="Year over year change",x=NULL,fill="Components of population change",
        caption="StatCan Tables 17-10-0020, 17-10-0040")
@@ -146,7 +150,7 @@ migration_data %>%
               left_join(pop_data, by=c("GEO","Date")) %>%
               filter(GEO=="British Columbia"),
             aes(x=Date,y=annual/Population)) +
-  MetBrewer::scale_fill_met_d("Archambault") +
+  scale_fill_manual(values=migration_colours) +
   labs(title="BC Year over year BC Year over year migration",
        y="Year over year change per population",x=NULL,
        fill="Components of population change",
@@ -178,11 +182,11 @@ migration_data_interprovinicial %>%
   geom_boxplot(data=net_interprovincial %>% 
                  filter(GEO!="Canada") %>%
                  filter(Date==max(Date))) +
-  MetBrewer::scale_fill_met_d("Archambault") +
+  scale_fill_manual(values=migration_colours[grepl("Interprov",names(migration_colours))]) +
   scale_x_continuous(labels=scales::comma) +
   labs(title="Most recent year migration",
        fill="Components of population growth",
-       y=NULL,x="Year over year change per capita",
+       y=NULL,x="Year over year change",
        caption="StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009")
 ```
 
@@ -198,7 +202,7 @@ migration_data_interprovinicial %>%
   geom_boxplot(data=net_interprovincial %>% 
                  filter(GEO!="Canada") %>%
                  filter(Date==max(Date))) +
-  MetBrewer::scale_fill_met_d("Archambault") +
+  scale_fill_manual(values=migration_colours[grepl("Interprov",names(migration_colours))]) +
   scale_x_continuous(labels=scales::percent) +
   labs(title="Most recent year migration",
        fill="Components of population growth",
@@ -219,7 +223,8 @@ migration_data %>%
   geom_boxplot(data=net_migration %>% 
                  left_join(pop_data, by=c("GEO","Date")) %>% 
                  filter(Date==max(Date))) +
-  MetBrewer::scale_fill_met_d("Archambault") +
+  scale_fill_manual(values=migration_colours) +
+  scale_x_continuous(labels=scales::percent) +
   labs(title="Most recent year migration",
        fill="Components of population growth",
        y=NULL,x="Year over year change per capita",

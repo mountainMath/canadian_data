@@ -205,11 +205,10 @@
 <ul>
 <li><a href="#question" class="nav-link active" data-scroll-target="#question"> <span class="header-section-number">4.0.1</span> Question</a></li>
 <li><a href="#data-sources" class="nav-link" data-scroll-target="#data-sources"> <span class="header-section-number">4.0.2</span> Data sources</a></li>
-<li><a href="#data-aquisition" class="nav-link" data-scroll-target="#data-aquisition"> <span class="header-section-number">4.0.3</span> Data aquisition</a></li>
-<li><a href="#data-preparation-analysis-and-visualization" class="nav-link" data-scroll-target="#data-preparation-analysis-and-visualization"> <span class="header-section-number">4.0.4</span> Data preparation, analysis and visualization</a></li>
-<li><a href="#interpretation" class="nav-link" data-scroll-target="#interpretation"> <span class="header-section-number">4.0.5</span> Interpretation</a></li>
-<li><a href="#back-to-analysis" class="nav-link" data-scroll-target="#back-to-analysis"> <span class="header-section-number">4.0.6</span> Back to analysis</a></li>
-<li><a href="#more-interpretation" class="nav-link" data-scroll-target="#more-interpretation"> <span class="header-section-number">4.0.7</span> More interpretation</a></li>
+<li><a href="#data-acquisition" class="nav-link" data-scroll-target="#data-acquisition"> <span class="header-section-number">4.0.3</span> Data acquisition</a></li>
+<li><a href="#data-preparation" class="nav-link" data-scroll-target="#data-preparation"> <span class="header-section-number">4.0.4</span> Data preparation</a></li>
+<li><a href="#analysis-and-visualization" class="nav-link" data-scroll-target="#analysis-and-visualization"> <span class="header-section-number">4.0.5</span> Analysis and visualization</a></li>
+<li><a href="#interpretation" class="nav-link" data-scroll-target="#interpretation"> <span class="header-section-number">4.0.6</span> Interpretation</a></li>
 </ul>
 </nav>
     </div>
@@ -219,143 +218,197 @@
 
 <div class="quarto-title"><h1 class="title d-none d-lg-block display-7"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">BC population growth</span></h1></div></header>
 
-<p>This example is motivated by a <a href="https://news.gov.bc.ca/releases/2022PREM0019-000505">BC government press release</a> titeled “<strong>B.C. welcomes more than 100,000 people – the most in 60 years</strong>”. This is the type of attention-grabbing headline where our gut reaction usually is to question if this is true. Let’s take that as our question:</p>
+<p>This example is motivated by a <a href="https://news.gov.bc.ca/releases/2022PREM0019-000505">BC government press release</a> titeled “<strong>B.C. welcomes more than 100,000 people – the most in 60 years</strong>”. This is the type of attention-grabbing headline where our gut reaction usually is to question if this is true.</p>
+<p>Let’s first try and understand what the headline really means. B.C. “welcoming” people refers to people moving to the province from elsewhere, either from other provinces or internationally. So this is referring to gross in-migration. But reading the text of the press release it immediately pivots to a different concept, saying that “B.C.’s net migration reached 100,797 people in 2021”. It helpfully explains that net migration is the difference between people moving here and people moving away. Which is quite different from the number of people B.C. “welcomed” that year, or the number of people “moving to the province in 2021” as implied by the title and the first sentence of the press release.</p>
+<p>So here comes the first difficulty, the press release is contradicting itself by mixing two concepts. That leads us to formulate a fairly broad question that should help clear this up.</p>
 <section id="question" class="level3" data-number="4.0.1">
 <h3 data-number="4.0.1" class="anchored" data-anchor-id="question"><span class="header-section-number">4.0.1</span> Question</h3>
-<p><strong>Has BC’s population really grown by over 100,000, is this the most in 60 years, and how should I interpret this number?</strong></p>
+<p><strong>How many people has B.C. welcomed, net and gross, how has that changed over the last 6 decades, and how should this be interpreted?</strong></p>
 </section>
 <section id="data-sources" class="level3" data-number="4.0.2">
 <h3 data-number="4.0.2" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">4.0.2</span> Data sources</h3>
-<p>To start, let’s figure out where that data point comes from. The press release references StatCan as the source, let’s search through the StatCan tables. Google usually works reasonably well, but we can also search programmatically. We are looking for population estimates from the quarterly demographic estimates to get the most up-to-data population estimates from StatCan. For results we just need the first two columns, that table number and the title.</p>
+<p>To start, let’s figure out where that data point comes from.</p>
+<p>The press release references StatCan as the source, let’s search through the StatCan tables. Google usually works reasonably well, but we can also search programmatically. We are looking for migration estimates from the quarterly demographic estimates to get the most up-to-data population estimates from StatCan. For results we just need the first two columns, that table number and the title.</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cansim)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">search_cansim_cubes</span>(<span class="st">"population estimates"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(surveyEn<span class="sc">==</span><span class="st">"Quarterly Demographic Estimates"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">search_cansim_cubes</span>(<span class="st">"migration"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">"quarterly"</span>,cubeTitleEn)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(cubeEndDate)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
-<pre><code># A tibble: 1 × 2
-  cansim_table_number cubeTitleEn                    
-  &lt;chr&gt;               &lt;chr&gt;                          
-1 17-10-0009          Population estimates, quarterly</code></pre>
+<pre><code># A tibble: 2 × 2
+  cansim_table_number cubeTitleEn                                               
+  &lt;chr&gt;               &lt;chr&gt;                                                     
+1 17-10-0020          Estimates of the components of interprovincial migration,…
+2 17-10-0040          Estimates of the components of international migration, q…</code></pre>
 </div>
 </div>
-<p>It looks like Table 17-10-0009 is exactly what we are looking for. Let’s load in the data and inspect the first couple of rows for BC.</p>
+<p>It looks like Table 17-10-0020 and 17-10-0040 are what we are looking for. Let’s load in the data and inspect the first couple of rows for BC.</p>
 </section>
-<section id="data-aquisition" class="level3" data-number="4.0.3">
-<h3 data-number="4.0.3" class="anchored" data-anchor-id="data-aquisition"><span class="header-section-number">4.0.3</span> Data aquisition</h3>
+<section id="data-acquisition" class="level3" data-number="4.0.3">
+<h3 data-number="4.0.3" class="anchored" data-anchor-id="data-acquisition"><span class="header-section-number">4.0.3</span> Data acquisition</h3>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pop_data <span class="ot">&lt;-</span> <span class="fu">get_cansim</span>(<span class="st">"17-10-0009"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>interprovincial <span class="ot">&lt;-</span> <span class="fu">get_cansim</span>(<span class="st">"17-10-0020"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stderr">
+<pre><code>Accessing CANSIM NDM product 17-10-0020 from Statistics Canada</code></pre>
+</div>
+<div class="cell-output-stderr">
+<pre><code>Parsing data</code></pre>
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>international <span class="ot">&lt;-</span> <span class="fu">get_cansim</span>(<span class="st">"17-10-0040"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stderr">
+<pre><code>Accessing CANSIM NDM product 17-10-0040 from Statistics Canada
+Parsing data</code></pre>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>interprovincial <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEO<span class="sc">==</span><span class="st">"British Columbia"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(GEO,Date,<span class="st">`</span><span class="at">Interprovincial migration</span><span class="st">`</span>,val_norm) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tail</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  GEO              Date       `Interprovincial migration` val_norm
+  &lt;chr&gt;            &lt;date&gt;     &lt;fct&gt;                          &lt;dbl&gt;
+1 British Columbia 2021-04-01 In-migrants                    31926
+2 British Columbia 2021-04-01 Out-migrants                   16636
+3 British Columbia 2021-07-01 In-migrants                    19352
+4 British Columbia 2021-07-01 Out-migrants                   13575
+5 British Columbia 2021-10-01 In-migrants                    12120
+6 British Columbia 2021-10-01 Out-migrants                    8787</code></pre>
+</div>
+</div>
+<p>For inter-provincial migration we get in and out migration counts for every quarter. Let’s also inspect the international migration data.</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>international <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEO<span class="sc">==</span><span class="st">"British Columbia"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(GEO,Date,<span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span>,val_norm) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tail</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  GEO              Date       `Components of population growth` val_norm
+  &lt;chr&gt;            &lt;date&gt;     &lt;fct&gt;                                &lt;dbl&gt;
+1 British Columbia 2021-07-01 Net non-permanent residents           9035
+2 British Columbia 2021-10-01 Immigrants                           23281
+3 British Columbia 2021-10-01 Emigrants                             3759
+4 British Columbia 2021-10-01 Returning emigrants                    581
+5 British Columbia 2021-10-01 Net temporary emigrants                779
+6 British Columbia 2021-10-01 Net non-permanent residents          -6718</code></pre>
+</div>
+</div>
+<p>Here we get immigrants, emigrants, returning emigrants, but for temporary emigrants and non-permanent residents we only get net change. That puts a bit of a damper on our ambition to look at gross migration, for those last two categories net is all we have.</p>
+</section>
+<section id="data-preparation" class="level3" data-number="4.0.4">
+<h3 data-number="4.0.4" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">4.0.4</span> Data preparation</h3>
+<p>Next we got to wrangle this data into a useful format. We are interested in all of these components, so we need to join these two data series together. We will retain the <code>GeoUID</code>, <code>GEO</code>, <code>Components of population growth</code>, <code>Date</code> and <code>val_norm</code> columns, which requires some renaming and then defining factor levels so that they stack nicely later in our plots. We also flip the sign on out-migrants and emigrants, as these are out-flows. To make sure those two time series start at the same time we cut it off appropriately.</p>
+<p>The press release talked about annual change, so we do a rolling sum over 4 quarters, right-aligning the data so it’s for the period of the preceding year.</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>migration_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  interprovincial <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(GeoUID,GEO,Date,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span><span class="ot">=</span><span class="st">`</span><span class="at">Interprovincial migration</span><span class="st">`</span>,val_norm) <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span><span class="ot">=</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>             <span class="fu">paste0</span>(<span class="st">"Interprovincial "</span>,<span class="fu">tolower</span>(<span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span>))),</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  international <span class="sc">%&gt;%</span> </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(GeoUID,GEO,Date,<span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span>,val_norm)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span><span class="ot">=</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>           <span class="fu">factor</span>(<span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span>,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>                  <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"Interprovincial out-migrants"</span>,</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Emigrants"</span>,</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Interprovincial in-migrants"</span>,</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Immigrants"</span>,</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Returning emigrants"</span>,</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Net temporary emigrants"</span>,</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Net non-permanent residents"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value=</span><span class="fu">ifelse</span>(<span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span> <span class="sc">%in%</span> </span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">c</span>(<span class="st">"Interprovincial out-migrants"</span>,<span class="st">"Emigrants"</span>),</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>                      <span class="sc">-</span>val_norm,val_norm)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Date<span class="sc">&gt;=</span><span class="fu">pmax</span>(<span class="fu">min</span>(interprovincial<span class="sc">$</span>Date),<span class="fu">min</span>(international<span class="sc">$</span>Date))) <span class="sc">%&gt;%</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(GeoUID,<span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Date) <span class="sc">%&gt;%</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">annual=</span>zoo<span class="sc">::</span><span class="fu">rollsum</span>(value,<span class="at">k=</span><span class="dv">4</span>,<span class="at">na.pad =</span> <span class="cn">TRUE</span>,<span class="at">align =</span> <span class="st">"right"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(annual)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will also need net migration stats, so let’s compute these by summing of the components,</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>net_migration <span class="ot">&lt;-</span> migration_data <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Date,GEO,GeoUID) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">value=</span><span class="fu">sum</span>(value),<span class="at">annual=</span><span class="fu">sum</span>(annual),<span class="at">.groups=</span><span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span><span class="ot">=</span><span class="st">"Net migration"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="analysis-and-visualization" class="level3" data-number="4.0.5">
+<h3 data-number="4.0.5" class="anchored" data-anchor-id="analysis-and-visualization"><span class="header-section-number">4.0.5</span> Analysis and visualization</h3>
+<p>Time to make a graph.</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(migration_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(GEO<span class="sc">==</span><span class="st">"British Columbia"</span>)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>annual,<span class="at">fill=</span><span class="fu">fct_rev</span>(<span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span>)),</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">stat=</span><span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>net_migration <span class="sc">%&gt;%</span> <span class="fu">filter</span>(GEO<span class="sc">==</span><span class="st">"British Columbia"</span>),</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>annual)) <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  MetBrewer<span class="sc">::</span><span class="fu">scale_fill_met_d</span>(<span class="st">"Archambault"</span>) <span class="sc">+</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"BC Year over year components of population change"</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Year over year change"</span>,<span class="at">x=</span><span class="cn">NULL</span>,<span class="at">fill=</span><span class="st">"Components of population change"</span>,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Tables 17-10-0020, 17-10-0040"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="basic_bc_pop_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This shows us that the press report was most likely talking did not mean to talk about number of people B.C. has “welcomed” or that “moved to the province” but instead the difference between the number of people it welcomed and the number of people it bid farewell.</p>
+<p>And the net migration is indeed at record levels. At least in absolute terms. But B.C. now is very different from B.C. in the 60s at the start of this time series. How can we compare net migration over time in a more meaningful way? Normalizing by population is a good option here. Let’s grab the data and take a look how B.C. population has changed.</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pop_data <span class="ot">&lt;-</span> <span class="fu">get_cansim</span>(<span class="st">"17-10-0009"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(GEO,Date,<span class="at">Population=</span>val_norm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stderr">
 <pre><code>Accessing CANSIM NDM product 17-10-0009 from Statistics Canada</code></pre>
 </div>
 <div class="cell-output-stderr">
 <pre><code>Parsing data</code></pre>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pop_data <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEO<span class="sc">==</span><span class="st">"British Columbia"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Date,<span class="at">Population=</span>val_norm) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code># A tibble: 10 × 2
-   Date       Population
-   &lt;date&gt;          &lt;dbl&gt;
- 1 1951-07-01    1168000
- 2 1951-10-01    1179000
- 3 1952-01-01    1189000
- 4 1952-04-01    1198000
- 5 1952-07-01    1209000
- 6 1952-10-01    1222000
- 7 1953-01-01    1233000
- 8 1953-04-01    1242000
- 9 1953-07-01    1253000
-10 1953-10-01    1265000</code></pre>
-</div>
-</div>
-<p>This looks good.</p>
-</section>
-<section id="data-preparation-analysis-and-visualization" class="level3" data-number="4.0.4">
-<h3 data-number="4.0.4" class="anchored" data-anchor-id="data-preparation-analysis-and-visualization"><span class="header-section-number">4.0.4</span> Data preparation, analysis and visualization</h3>
-<p>Time to make a graph. We again only take the data for British Columbia and pass it to <code>ggplot</code> to make a graph, specifying that we want <code>Date</code> on the x-axis, the population value (<code>val_norm</code>) on the y-axis and we want a line graph.</p>
-<div class="cell">
-<div class="sourceCode" id="cb8"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pop_data <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEO<span class="sc">==</span><span class="st">"British Columbia"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>val_norm)) <span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>pop_data <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEO<span class="sc">==</span><span class="st">"British Columbia"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>Population)) <span class="sc">+</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Population estimates for British Columbia"</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Number of people"</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Table 17-10-0009"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="basic_bc_pop_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="basic_bc_pop_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>While this is fine for just getting a quick visual, it’s good practice to clean this up a bit and add proper labels so that others looking at the graph will know what it is about. And also so that we understand it if for example we come back to look at this a week later.</p>
+<p>Indeed, the trend is quite strong. Let’s fold that in and normalize by population.</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pop_data <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEO<span class="sc">==</span><span class="st">"British Columbia"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>val_norm)) <span class="sc">+</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Population estimates for British Columbia"</span>,</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Number of people"</span>,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Table 17-10-0009"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>migration_data <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(pop_data, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"GEO"</span>,<span class="st">"Date"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEO<span class="sc">==</span><span class="st">"British Columbia"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>annual<span class="sc">/</span>Population,<span class="at">fill=</span><span class="fu">fct_rev</span>(<span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span>)),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">stat=</span><span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>net_migration <span class="sc">%&gt;%</span> </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>              <span class="fu">left_join</span>(pop_data, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"GEO"</span>,<span class="st">"Date"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>              <span class="fu">filter</span>(GEO<span class="sc">==</span><span class="st">"British Columbia"</span>),</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>annual<span class="sc">/</span>Population)) <span class="sc">+</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  MetBrewer<span class="sc">::</span><span class="fu">scale_fill_met_d</span>(<span class="st">"Archambault"</span>) <span class="sc">+</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"BC Year over year components of population change"</span>,</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Year over year change per population"</span>,<span class="at">x=</span><span class="cn">NULL</span>,<span class="at">fill=</span><span class="st">"Components of population change"</span>,</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="basic_bc_pop_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="basic_bc_pop_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>We formated the y-axis values by adding thousand separators, gave it a title, a y-axis label, and noted the data source in the caption.</p>
-<p>So far so good, but our question was about population change, not total population. To compute population change we have to take the population estimate and subtract the value from 4 quarters prior. We can do that with the <code>lag</code> function.</p>
-<div class="cell">
-<div class="sourceCode" id="cb10"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pop_data <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEO<span class="sc">==</span><span class="st">"British Columbia"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">change=</span>val_norm<span class="sc">-</span><span class="fu">lag</span>(val_norm, <span class="at">order_by =</span> Date, <span class="at">n=</span><span class="dv">4</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>change)) <span class="sc">+</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>comma, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">200000</span>,<span class="dv">10000</span>)) <span class="sc">+</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Year over year population change for British Columbia"</span>,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Number of people"</span>,</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Table 17-10-0009"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stderr">
-<pre><code>Warning: Removed 4 row(s) containing missing values (geom_path).</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="basic_bc_pop_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Here we also specified manual <code>breaks</code> for the y-axis that should be used for labelling, putting a mark for every 10k.</p>
+<p>Here the picture looks a little different. Net migration per capita is at its highest since the 90s, but the past 60 years there were several periods where it was larger.</p>
 </section>
-<section id="interpretation" class="level3" data-number="4.0.5">
-<h3 data-number="4.0.5" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">4.0.5</span> Interpretation</h3>
-<p>This answers the first part of our question, the latest year over year population change edges just over the 100,000 people mark. But the second part of the question, if this is the most in 60 years, is definitely false. We see that year over year population growth was higher on several occasions during the past 60 years.</p>
-<p>Nonetheless, it is interesting to see the fairly continuous increase in year over year population growth since 2000, with several major dips. The most recent one lines up with the COVID pandemic. Other than that our current growth looks pretty much on target with past trends. It will be interesting to see how it continues, if there will be some over-shoot to make up for the deep dip during the pandemic, or if it will roughly follow the previous path.</p>
-<p>When it comes to interpreting the data, looking back up to the first graph, we notice that British Columbia’s population has quintupled over the time frame we are looking at. That’s a huge change, the British Columbia from the 50s is very different from the British Columbia today. Does it really make sense to use the total number BC gained year over year when comparing over such long time frames? A more meaningful metric would be to look at the percent change of the population. Let’s do that.</p>
-</section>
-<section id="back-to-analysis" class="level3" data-number="4.0.6">
-<h3 data-number="4.0.6" class="anchored" data-anchor-id="back-to-analysis"><span class="header-section-number">4.0.6</span> Back to analysis</h3>
-<p>We only need minimal adjustments, to compute the percentage change we take the quotient (and subtract 1) instead of taking year over year differences.</p>
-<div class="cell">
-<div class="sourceCode" id="cb12"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pop_data <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEO<span class="sc">==</span><span class="st">"British Columbia"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">change=</span>val_norm<span class="sc">/</span><span class="fu">lag</span>(val_norm, <span class="at">order_by =</span> Date, <span class="at">n=</span><span class="dv">4</span>)<span class="sc">-</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>change)) <span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Year over year population change for British Columbia"</span>,</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Annual growth rate"</span>,</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Table 17-10-0009"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stderr">
-<pre><code>Warning: Removed 4 row(s) containing missing values (geom_path).</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="basic_bc_pop_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>This makes our recent growth much less impressive, although we still see that trajectory of increasing growth since 2000.</p>
-</section>
-<section id="more-interpretation" class="level3" data-number="4.0.7">
-<h3 data-number="4.0.7" class="anchored" data-anchor-id="more-interpretation"><span class="header-section-number">4.0.7</span> More interpretation</h3>
-<p>So what is our interpretation of this statistic? While historically over the past 60 years British Columbia has seen higher absolute growth and higher growth rates than currently, our present population growth rate is the highest it has been since the late 90s, and has been slowly increasing since 2000. The current record (since 2000) high fits well into this trend. It is preceded by a record drop in growth rate during the COVID-19 pandemic, which makes it difficult to say how much of the current high is simply a bounce-back from the COVID-19 dip, or part of an ongoing trend to higher growth.</p>
+<section id="interpretation" class="level3" data-number="4.0.6">
+<h3 data-number="4.0.6" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">4.0.6</span> Interpretation</h3>
+<p>This answers our question, the latest annual net migration edges over the 100,000 people mark, and in absolute terms this is the highest it’s been over at least 60 years. But what can we learn from that?</p>
+<p>B.C. 60 years ago is very different from B.C. today. To account for that we can normalize by population, and the relative net migration has been higher at several times during the past 60 years, most recently in the 90s.</p>
+<p>We also note that big dip in net-migration during COVID-19. It is not clear if the current heights are a bounce-back to make up for the comparatively low net in-migration during the pandemic, or if it is simply reverting back to the increasing trend we have seen over the past 10 years.</p>
 
 
 

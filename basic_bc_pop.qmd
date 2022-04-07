@@ -1,56 +1,129 @@
 ## BC population growth
 
-This example is motivated by a [BC government press release](https://news.gov.bc.ca/releases/2022PREM0019-000505) titeled "**B.C. welcomes more than 100,000 people -- the most in 60 years**". This is the type of attention-grabbing headline where our gut reaction usually is to question if this is true. Let's take that as our question:
+This example is motivated by a [BC government press release](https://news.gov.bc.ca/releases/2022PREM0019-000505) titeled "**B.C. welcomes more than 100,000 people -- the most in 60 years**". This is the type of attention-grabbing headline where our gut reaction usually is to question if this is true.
+
+Let's first try and understand what the headline really means. B.C. "welcoming" people refers to people moving to the province from elsewhere, either from other provinces or internationally. So this is referring to gross in-migration. But reading the text of the press release it immediately pivots to a different concept, saying that "B.C.'s net migration reached 100,797 people in 2021". It helpfully explains that net migration is the difference between people moving here and people moving away. Which is quite different from the number of people B.C. "welcomed" that year, or the number of people "moving to the province in 2021" as implied by the title and the first sentence of the press release.
+
+So here comes the first difficulty, the press release is contradicting itself by mixing two concepts. That leads us to formulate a fairly broad question that should help clear this up.
 
 ### Question
 
-**Has BC's population really grown by over 100,000, is this the most in 60 years, and how should I interpret this number?**
+**How many people has B.C. welcomed, net and gross, how has that changed over the last 6 decades, and how should this be interpreted?**
 
 ### Data sources
 
-To start, let's figure out where that data point comes from. The press release references StatCan as the source, let's search through the StatCan tables. Google usually works reasonably well, but we can also search programmatically. We are looking for population estimates from the quarterly demographic estimates to get the most up-to-data population estimates from StatCan. For results we just need the first two columns, that table number and the title.
+To start, let's figure out where that data point comes from.
+
+The press release references StatCan as the source, let's search through the StatCan tables. Google usually works reasonably well, but we can also search programmatically. We are looking for migration estimates from the quarterly demographic estimates to get the most up-to-data population estimates from StatCan. For results we just need the first two columns, that table number and the title.
 
 ```{r message=FALSE}
 library(tidyverse)
 library(cansim)
 
-search_cansim_cubes("population estimates") %>%
-  filter(surveyEn=="Quarterly Demographic Estimates") %>%
+search_cansim_cubes("migration") %>% 
+  filter(grepl("quarterly",cubeTitleEn)) %>%
+  arrange(desc(cubeEndDate)) %>% 
   select(1:2)
 ```
 
-It looks like Table 17-10-0009 is exactly what we are looking for. Let's load in the data and inspect the first couple of rows for BC.
+It looks like Table 17-10-0020 and 17-10-0040 are what we are looking for. Let's load in the data and inspect the first couple of rows for BC.
 
-### Data aquisition
+### Data acquisition
 
 ```{r}
-pop_data <- get_cansim("17-10-0009") 
+interprovincial <- get_cansim("17-10-0020")
+international <- get_cansim("17-10-0040")
 
-pop_data %>%
-  filter(GEO=="British Columbia") %>% 
-  select(Date,Population=val_norm) %>%
-  head(10)
+interprovincial %>%
+  filter(GEO=="British Columbia") %>%
+  select(GEO,Date,`Interprovincial migration`,val_norm) %>%
+  tail()
 ```
 
-This looks good.
-
-### Data preparation, analysis and visualization
-
-Time to make a graph. We again only take the data for British Columbia and pass it to `ggplot` to make a graph, specifying that we want `Date` on the x-axis, the population value (`val_norm`) on the y-axis and we want a line graph.
+For inter-provincial migration we get in and out migration counts for every quarter. Let's also inspect the international migration data.
 
 ```{r}
-pop_data %>% 
+international %>%
   filter(GEO=="British Columbia") %>%
-  ggplot(aes(x=Date,y=val_norm)) +
-  geom_line()
+  select(GEO,Date,`Components of population growth`,val_norm) %>%
+  tail()
 ```
 
-While this is fine for just getting a quick visual, it's good practice to clean this up a bit and add proper labels so that others looking at the graph will know what it is about. And also so that we understand it if for example we come back to look at this a week later.
+Here we get immigrants, emigrants, returning emigrants, but for temporary emigrants and non-permanent residents we only get net change. That puts a bit of a damper on our ambition to look at gross migration, for those last two categories net is all we have.
+
+### Data preparation
+
+Next we got to wrangle this data into a useful format. We are interested in all of these components, so we need to join these two data series together. We will retain the `GeoUID`, `GEO`, `Components of population growth`, `Date` and `val_norm` columns, which requires some renaming and then defining factor levels so that they stack nicely later in our plots. We also flip the sign on out-migrants and emigrants, as these are out-flows. To make sure those two time series start at the same time we cut it off appropriately.
+
+The press release talked about annual change, so we do a rolling sum over 4 quarters, right-aligning the data so it's for the period of the preceding year.
 
 ```{r}
+migration_data <- bind_rows(
+  interprovincial %>% 
+    select(GeoUID,GEO,Date,
+           `Components of population growth`=`Interprovincial migration`,val_norm) %>%
+    mutate(`Components of population growth`=
+             paste0("Interprovincial ",tolower(`Components of population growth`))),
+  international %>% 
+    select(GeoUID,GEO,Date,`Components of population growth`,val_norm)
+) %>%
+  mutate(`Components of population growth`=
+           factor(`Components of population growth`,
+                  levels=c("Interprovincial out-migrants",
+                           "Emigrants",
+                           "Interprovincial in-migrants",
+                           "Immigrants",
+                           "Returning emigrants",
+                           "Net temporary emigrants",
+                           "Net non-permanent residents"))) %>%
+  mutate(value=ifelse(`Components of population growth` %in% 
+                        c("Interprovincial out-migrants","Emigrants"),
+                      -val_norm,val_norm)) %>%
+  filter(Date>=pmax(min(interprovincial$Date),min(international$Date))) %>%
+  group_by(GeoUID,`Components of population growth`) %>%
+  arrange(Date) %>%
+  mutate(annual=zoo::rollsum(value,k=4,na.pad = TRUE,align = "right")) %>%
+  filter(!is.na(annual)) %>%
+  ungroup()
+```
+
+We will also need net migration stats, so let's compute these by summing of the components,
+
+```{r}
+net_migration <- migration_data %>% 
+  group_by(Date,GEO,GeoUID) %>%
+  summarize(value=sum(value),annual=sum(annual),.groups="drop") %>%
+  mutate(`Components of population growth`="Net migration")
+```
+
+### Analysis and visualization
+
+Time to make a graph.
+
+```{r}
+ggplot(migration_data %>% filter(GEO=="British Columbia")) +
+  geom_area(aes(x=Date,y=annual,fill=fct_rev(`Components of population growth`)),
+           stat="identity") +
+  scale_y_continuous(labels=scales::comma) +
+  geom_line(data=net_migration %>% filter(GEO=="British Columbia"),
+            aes(x=Date,y=annual)) +
+  MetBrewer::scale_fill_met_d("Archambault") +
+  labs(title="BC Year over year components of population change",
+       y="Year over year change",x=NULL,fill="Components of population change",
+       caption="StatCan Tables 17-10-0020, 17-10-0040")
+```
+
+This shows us that the press report was most likely talking did not mean to talk about number of people B.C. has "welcomed" or that "moved to the province" but instead the difference between the number of people it welcomed and the number of people it bid farewell.
+
+And the net migration is indeed at record levels. At least in absolute terms. But B.C. now is very different from B.C. in the 60s at the start of this time series. How can we compare net migration over time in a more meaningful way? Normalizing by population is a good option here. Let's grab the data and take a look how B.C. population has changed.
+
+```{r}
+pop_data <- get_cansim("17-10-0009") %>%
+  select(GEO,Date,Population=val_norm)
+
 pop_data %>% 
   filter(GEO=="British Columbia") %>%
-  ggplot(aes(x=Date,y=val_norm)) +
+  ggplot(aes(x=Date,y=Population)) +
   geom_line() +
   scale_y_continuous(labels=scales::comma) +
   labs(title="Population estimates for British Columbia",
@@ -59,52 +132,32 @@ pop_data %>%
        caption="StatCan Table 17-10-0009")
 ```
 
-We formated the y-axis values by adding thousand separators, gave it a title, a y-axis label, and noted the data source in the caption.
-
-So far so good, but our question was about population change, not total population. To compute population change we have to take the population estimate and subtract the value from 4 quarters prior. We can do that with the `lag` function.
+Indeed, the trend is quite strong. Let's fold that in and normalize by population.
 
 ```{r}
-pop_data %>% 
+migration_data %>% 
+  left_join(pop_data, by=c("GEO","Date")) %>%
   filter(GEO=="British Columbia") %>%
-  mutate(change=val_norm-lag(val_norm, order_by = Date, n=4)) %>%
-  ggplot(aes(x=Date,y=change)) +
-  geom_line() +
-  scale_y_continuous(labels=scales::comma, breaks=seq(0,200000,10000)) +
-  labs(title="Year over year population change for British Columbia",
-       y="Number of people",
-       x=NULL,
-       caption="StatCan Table 17-10-0009")
+  ggplot() +
+  geom_area(aes(x=Date,y=annual/Population,fill=fct_rev(`Components of population growth`)),
+           stat="identity") +
+  scale_y_continuous(labels=scales::comma) +
+  geom_line(data=net_migration %>% 
+              left_join(pop_data, by=c("GEO","Date")) %>%
+              filter(GEO=="British Columbia"),
+            aes(x=Date,y=annual/Population)) +
+  MetBrewer::scale_fill_met_d("Archambault") +
+  labs(title="BC Year over year components of population change",
+       y="Year over year change per population",x=NULL,fill="Components of population change",
+       caption="StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009")
 ```
 
-Here we also specified manual `breaks` for the y-axis that should be used for labelling, putting a mark for every 10k.
+Here the picture looks a little different. Net migration per capita is at its highest since the 90s, but the past 60 years there were several periods where it was larger.
 
 ### Interpretation
 
-This answers the first part of our question, the latest year over year population change edges just over the 100,000 people mark. But the second part of the question, if this is the most in 60 years, is definitely false. We see that year over year population growth was higher on several occasions during the past 60 years.
+This answers our question, the latest annual net migration edges over the 100,000 people mark, and in absolute terms this is the highest it's been over at least 60 years. But what can we learn from that?
 
-Nonetheless, it is interesting to see the fairly continuous increase in year over year population growth since 2000, with several major dips. The most recent one lines up with the COVID pandemic. Other than that our current growth looks pretty much on target with past trends. It will be interesting to see how it continues, if there will be some over-shoot to make up for the deep dip during the pandemic, or if it will roughly follow the previous path.
+B.C. 60 years ago is very different from B.C. today. To account for that we can normalize by population, and the relative net migration has been higher at several times during the past 60 years, most recently in the 90s.
 
-When it comes to interpreting the data, looking back up to the first graph, we notice that British Columbia's population has quintupled over the time frame we are looking at. That's a huge change, the British Columbia from the 50s is very different from the British Columbia today. Does it really make sense to use the total number BC gained year over year when comparing over such long time frames? A more meaningful metric would be to look at the percent change of the population. Let's do that.
-
-### Back to analysis
-
-We only need minimal adjustments, to compute the percentage change we take the quotient (and subtract 1) instead of taking year over year differences.
-
-```{r}
-pop_data %>% 
-  filter(GEO=="British Columbia") %>%
-  mutate(change=val_norm/lag(val_norm, order_by = Date, n=4)-1) %>%
-  ggplot(aes(x=Date,y=change)) +
-  geom_line() +
-  scale_y_continuous(labels=scales::percent) +
-  labs(title="Year over year population change for British Columbia",
-       y="Annual growth rate",
-       x=NULL,
-       caption="StatCan Table 17-10-0009")
-```
-
-This makes our recent growth much less impressive, although we still see that trajectory of increasing growth since 2000.
-
-### More interpretation
-
-So what is our interpretation of this statistic? While historically over the past 60 years British Columbia has seen higher absolute growth and higher growth rates than currently, our present population growth rate is the highest it has been since the late 90s, and has been slowly increasing since 2000. The current record (since 2000) high fits well into this trend. It is preceded by a record drop in growth rate during the COVID-19 pandemic, which makes it difficult to say how much of the current high is simply a bounce-back from the COVID-19 dip, or part of an ongoing trend to higher growth.
+We also note that big dip in net-migration during COVID-19. It is not clear if the current heights are a bounce-back to make up for the comparatively low net in-migration during the pandemic, or if it is simply reverting back to the increasing trend we have seen over the past 10 years.

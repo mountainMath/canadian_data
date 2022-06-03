@@ -6,13 +6,24 @@ book:
   title: "Analyzing Candian demographic and housing data using R"
   author: "Jens von Bergmann"
   date: "2022-04-01"
+  description: "Building skills and community to analyse Canadian demographic and housing data."
+  search: true
+  page-footer: 
+    left: "Copyright 2022, Jens von Bergmann" 
+    right: 
+      - icon: github
+        href: https://github.com/mountainmath
+      - icon: twitter 
+        href: https://twitter.com/vb_jens
+      - icon: linkedin 
+        href: https://www.linkedin.com/in/vb-jens/
   chapters:
     - index.qmd
     - intro.qmd
-    - part: intro_to_r/intro_to_r.qmd
+    - part: intro/intro_to_r.qmd
       chapters:
-      - intro_to_r/intro_cansim.qmd
-      - intro_to_r/intro_cancensus.qmd
+      - intro/intro_cansim.qmd
+      - intro/intro_cancensus.qmd
     - part: basic_descriptive/basic_descriptive.qmd
       chapters:
       - basic_descriptive/cars_vs_suvs.qmd

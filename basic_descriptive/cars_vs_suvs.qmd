@@ -1,4 +1,4 @@
-# Cars vs SUVs in Canada
+## Cars vs SUVs in Canada
 
 Private motor vehicles in Canada seem to be getting larger and it feels like SUVs and light trucks are taking over. This subjective feeling prompts us to ask the following question to check if this is just our imagination or a real phemominon.
 
@@ -12,7 +12,7 @@ This question is somewhat vague, it's not clear what *taking over* means. But th
 
 Data discovery can be challenging, but just typing "statcan motor vehicle sales" into a search engine is a good start and gets us to the StatCan table enumerating data on new motor vehicle sales. We can also use the built-in search functionality in the {cansim} package.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(dplyr)
 library(ggplot2)
 library(cansim)
@@ -29,7 +29,7 @@ To access the web we can simply type `view_cansim_webpage("20-10-0001")` into th
 get_cansim_table_overview("20-10-0001")
 ```
 
-This tells us that Table 20-10-0001 might have the information we need, we check the table notes to better understand what "Trucks" entails.
+This tells us that Table 20-10-0001 might have the information we need, we check the table notes to better understand what "Trucks" entails, selecting the two columns we are interested in.
 
 ```{r}
 get_cansim_table_notes("20-10-0001") %>% 
@@ -97,7 +97,7 @@ ggplot(plot_data,aes(x=Date,y=VALUE,colour=`Vehicle type`)) +
   geom_point(shape=21) +
   geom_line() +
   scale_y_continuous(labels=scales::comma) +
-  scale_color_manual(labels=c("Light trucks"="Light trucks, SUVs\nminvans and vans"),
+  scale_color_manual(labels=c("Light trucks"="Light trucks, SUVs,\nminvans and vans"),
                      values=c("Light trucks"="brown","Passenger cars"="steelblue")) +
   labs(title="New motor vehicle sales in Canada",
        x=NULL,y="Annual number of vehicles.",
@@ -129,7 +129,7 @@ plot_data2 %>%
   geom_line()
 ```
 
-There is a strong seasonal pattern in vehicle sales, for now we will just aggregate it to annual sales so we can compare it with the previous data.
+There is a strong seasonal pattern in vehicle sales, for now we will just aggregate it to annual sales so we can compare it with the previous data. For this we extract they `Year` from the `Date` column, group by `Year` and `Vehicle type` and summarize by adding up the \`VALUE\` column. We added a count column to keep track how many months we added up so we can later ensure we are only showing years for which we have complete data.
 
 ```{r}
 plot_data2_annual <- plot_data2 |>
@@ -143,7 +143,7 @@ ggplot(plot_data2_annual,aes(x=Date,y=VALUE,colour=`Vehicle type`)) +
   geom_line()
 ```
 
-Time to combine this with our previous data. This tells us that the most interesting change happened 1985 and onward, so we will discard earlier years. One quick sanity check is to see if the annual passenger car sales derived from the two series agree for the years where they are in common.
+Time to combine this with our previous data. This tells us that the most interesting change happened 1985 and onward, so we will discard earlier years. One quick sanity check is to see if the annual passenger car sales derived from the two series agree for the years where they are in common. Here we join the two data tables by `Date` and `Vehicle type` in order to compare the two estimate. We rename the `VALUE` column on the first one in order to avoid name conflicts.
 
 ```{r}
 plot_data %>%
@@ -163,7 +163,8 @@ bind_rows(plot_data %>% filter(`Vehicle type`!="Passenger cars"),
   geom_point(shape=21) +
   geom_line() +
   scale_y_continuous(labels=scales::comma) +
-  scale_color_manual(labels=c("Light trucks"="Light trucks, SUVs\nminvans and vans"),
+  scale_color_manual(labels=c("Light trucks"="Light trucks, SUVs,\nminvans and vans",
+                              "Trucks"="Trucks, SUVs,\nminivans, vans and buses"),
                      values=c("Light trucks"="brown","Passenger cars"="steelblue",
                               "Trucks"="purple")) +
   theme(legend.position = "bottom") +

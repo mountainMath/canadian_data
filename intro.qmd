@@ -79,11 +79,11 @@ ggplot(lico_yvr_da, aes(fill=(lico/100))) +
 But then Yuko pauses to think that maybe looking at share of the low income population is not the right metric. She decides to query the number of children in low income (vector "v_CA16_2558") and prepare the data for a dot-density map.
 
 ```{r message=FALSE, warning=FALSE}
+# remotes::install_github("mountainmath/dotdensity")
 library(dotdensity)
-library(dplyr)
 
 lico_dots_yvr <- get_census("CA16",regions=list(CSD="5915022"),geo_format="sf",
-                            vectors=c(lico="v_CA16_2558"), level="DA") %>%
+                            vectors=c(lico="v_CA16_2558"), level="DA") |>
   compute_dots("lico")
 yvr_city <- get_census("CA16",regions=list(CSD="5915022"),geo_format="sf")
 
@@ -105,8 +105,8 @@ library(tongfen)
 meta <- meta_for_ca_census_vectors(c(total_2006="v_CA06_1982",lico_share_2006="v_CA06_1984",
                                      lico_2016="v_CA16_2561",lico_share_2016="v_CA16_2576"))
 
-lico_data <- get_tongfen_ca_census(regions=list(CSD="5915022"),meta,level="CT") %>%
-  mutate(lico_2006=total_2006*lico_share_2006/100) %>%
+lico_data <- get_tongfen_ca_census(regions=list(CSD="5915022"),meta,level="CT") |>
+  mutate(lico_2006=total_2006*lico_share_2006/100) |>
   mutate(`Absolute change`=lico_2016-lico_2006,
          `Percentage point change`=lico_share_2016-lico_share_2006)
 ```
@@ -138,7 +138,7 @@ Meanwhile Amy has been trying to understand more broadly how the share of low in
 
 ```{r message=FALSE, warning=FALSE}
 library(cansim)
-mbm_timeline <- get_cansim("11-10-0135") %>%
+mbm_timeline <- get_cansim("11-10-0135") |>
   filter(`Persons in low income`=="Persons under 18 years",
          GEO=="Toronto, Ontario",
          Statistics=="Percentage of persons in low income")

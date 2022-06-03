@@ -9,14 +9,16 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
-    - part: intro_to_r.qmd
+    - part: intro_to_r/intro_to_r.qmd
       chapters:
-      - intro_cansim.qmd
-      - intro_cancensus.qmd
-    - part: basic_descriptive.qmd
-    - part: advanced_descriptive.qmd
+      - intro_to_r/intro_cansim.qmd
+      - intro_to_r/intro_cancensus.qmd
+    - part: basic_descriptive/basic_descriptive.qmd
       chapters:
-      - advanced_descriptive_bc_migration.qmd
+      - basic_descriptive/cars_vs_suvs.qmd
+    - part: advanced_descriptive/advanced_descriptive.qmd
+      chapters:
+      - advanced_descriptive/advanced_descriptive_bc_migration.qmd
     - references.qmd
 
 bibliography: references.bib

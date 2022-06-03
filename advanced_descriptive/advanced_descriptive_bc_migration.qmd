@@ -20,9 +20,9 @@ The press release references StatCan as the source, let's search through the Sta
 library(tidyverse)
 library(cansim)
 
-search_cansim_cubes("migration") %>% 
-  filter(grepl("quarterly",cubeTitleEn)) %>%
-  arrange(desc(cubeEndDate)) %>% 
+search_cansim_cubes("migration") |> 
+  filter(grepl("quarterly",cubeTitleEn)) |>
+  arrange(desc(cubeEndDate)) |> 
   select(1:2)
 ```
 
@@ -34,18 +34,18 @@ It looks like Table 17-10-0020 and 17-10-0040 are what we are looking for. Let's
 interprovincial <- get_cansim("17-10-0020")
 international <- get_cansim("17-10-0040")
 
-interprovincial %>%
-  filter(GEO=="British Columbia") %>%
-  select(GEO,Date,`Interprovincial migration`,val_norm) %>%
+interprovincial |>
+  filter(GEO=="British Columbia") |>
+  select(GEO,Date,`Interprovincial migration`,val_norm) |>
   tail()
 ```
 
 For inter-provincial migration we get in and out migration counts for every quarter. Let's also inspect the international migration data.
 
 ```{r}
-international %>%
-  filter(GEO=="British Columbia") %>%
-  select(GEO,Date,`Components of population growth`,val_norm) %>%
+international |>
+  filter(GEO=="British Columbia") |>
+  select(GEO,Date,`Components of population growth`,val_norm) |>
   tail()
 ```
 
@@ -59,14 +59,14 @@ The press release talked about annual change, so we do a rolling sum over 4 quar
 
 ```{r}
 migration_data <- bind_rows(
-  interprovincial %>% 
+  interprovincial |> 
     select(GeoUID,GEO,Date,
-           `Components of population growth`=`Interprovincial migration`,val_norm) %>%
+           `Components of population growth`=`Interprovincial migration`,val_norm) |>
     mutate(`Components of population growth`=
              paste0("Interprovincial ",tolower(`Components of population growth`))),
-  international %>% 
+  international |> 
     select(GeoUID,GEO,Date,`Components of population growth`,val_norm)
-) %>%
+) |>
   mutate(`Components of population growth`=
            factor(`Components of population growth`,
                   levels=c("Interprovincial out-migrants",
@@ -75,24 +75,24 @@ migration_data <- bind_rows(
                            "Immigrants",
                            "Returning emigrants",
                            "Net temporary emigrants",
-                           "Net non-permanent residents"))) %>%
+                           "Net non-permanent residents"))) |>
   mutate(value=ifelse(`Components of population growth` %in% 
                         c("Interprovincial out-migrants","Emigrants"),
-                      -val_norm,val_norm)) %>%
-  filter(Date>=pmax(min(interprovincial$Date),min(international$Date))) %>%
-  group_by(GeoUID,`Components of population growth`) %>%
-  arrange(Date) %>%
-  mutate(annual=zoo::rollsum(value,k=4,na.pad = TRUE,align = "right")) %>%
-  filter(!is.na(annual)) %>%
+                      -val_norm,val_norm)) |>
+  filter(Date>=pmax(min(interprovincial$Date),min(international$Date))) |>
+  group_by(GeoUID,`Components of population growth`) |>
+  arrange(Date) |>
+  mutate(annual=zoo::rollsum(value,k=4,na.pad = TRUE,align = "right")) |>
+  filter(!is.na(annual)) |>
   ungroup()
 ```
 
 We will also need net migration stats, so let's compute these by summing of the components,
 
 ```{r}
-net_migration <- migration_data %>% 
-  group_by(Date,GEO,GeoUID) %>%
-  summarize(value=sum(value),annual=sum(annual),.groups="drop") %>%
+net_migration <- migration_data |> 
+  group_by(Date,GEO,GeoUID) |>
+  summarize(value=sum(value),annual=sum(annual),.groups="drop") |>
   mutate(`Components of population growth`="Net migration")
 ```
 
@@ -105,11 +105,11 @@ migration_colours <- setNames(MetBrewer::met.brewer("Archambault",7),
                               migration_data$`Components of population growth` %>% 
                                 levels %>% rev)
 
-ggplot(migration_data %>% filter(GEO=="British Columbia")) +
+ggplot(migration_data |> filter(GEO=="British Columbia")) +
   geom_area(aes(x=Date,y=annual,fill=fct_rev(`Components of population growth`)),
            stat="identity") +
   scale_y_continuous(labels=scales::comma) +
-  geom_line(data=net_migration %>% filter(GEO=="British Columbia"),
+  geom_line(data=net_migration |> filter(GEO=="British Columbia"),
             aes(x=Date,y=annual)) +
   scale_fill_manual(values=migration_colours) +
   labs(title="BC Year over year migration",
@@ -122,11 +122,11 @@ This shows us that the press report was most likely talking did not mean to talk
 And the net migration is indeed at record levels. At least in absolute terms. But B.C. now is very different from B.C. in the 60s at the start of this time series. How can we compare net migration over time in a more meaningful way? Normalizing by population is a good option here. Let's grab the data and take a look how B.C. population has changed.
 
 ```{r message=FALSE}
-pop_data <- get_cansim("17-10-0009") %>%
+pop_data <- get_cansim("17-10-0009") |>
   select(GEO,Date,Population=val_norm)
 
-pop_data %>% 
-  filter(GEO=="British Columbia") %>%
+pop_data |> 
+  filter(GEO=="British Columbia") |>
   ggplot(aes(x=Date,y=Population)) +
   geom_line() +
   scale_y_continuous(labels=scales::comma) +
@@ -139,15 +139,15 @@ pop_data %>%
 Indeed, the trend is quite strong. Let's fold that in and normalize by population.
 
 ```{r}
-migration_data %>% 
-  left_join(pop_data, by=c("GEO","Date")) %>%
-  filter(GEO=="British Columbia") %>%
+migration_data |> 
+  left_join(pop_data, by=c("GEO","Date")) |>
+  filter(GEO=="British Columbia") |>
   ggplot() +
   geom_area(aes(x=Date,y=annual/Population,fill=fct_rev(`Components of population growth`)),
            stat="identity") +
   scale_y_continuous(labels=scales::percent) +
-  geom_line(data=net_migration %>% 
-              left_join(pop_data, by=c("GEO","Date")) %>%
+  geom_line(data=net_migration |> 
+              left_join(pop_data, by=c("GEO","Date")) |>
               filter(GEO=="British Columbia"),
             aes(x=Date,y=annual/Population)) +
   scale_fill_manual(values=migration_colours) +
@@ -162,25 +162,25 @@ Here the picture looks a little different. Net migration per capita is at its hi
 The press report also mentioned that B.C.'s interprovincial migration numbers are higher than any other province. This is easy to check now.
 
 ```{r}
-migration_data_interprovinicial <- migration_data %>%
-  left_join(pop_data, by=c("GEO","Date")) %>%
+migration_data_interprovinicial <- migration_data |>
+  left_join(pop_data, by=c("GEO","Date")) |>
   filter(grepl("Interprovincial",`Components of population growth`))
 
-net_interprovincial <- migration_data_interprovinicial %>%
-  group_by(GEO,Date) %>%
+net_interprovincial <- migration_data_interprovinicial |>
+  group_by(GEO,Date) |>
   summarize(value=sum(value),
             annual=sum(annual),
             Population=first(Population),
             .groups="drop")
 
-migration_data_interprovinicial %>% 
-  filter(GEO!="Canada") %>%
-  filter(Date==max(Date)) %>%
+migration_data_interprovinicial |> 
+  filter(GEO!="Canada") |>
+  filter(Date==max(Date)) |>
   ggplot(aes(y=GEO,x=annual)) +
   geom_bar(stat="identity",
            aes(fill=fct_rev(`Components of population growth`))) +
-  geom_boxplot(data=net_interprovincial %>% 
-                 filter(GEO!="Canada") %>%
+  geom_boxplot(data=net_interprovincial |> 
+                 filter(GEO!="Canada") |>
                  filter(Date==max(Date))) +
   scale_fill_manual(values=migration_colours[grepl("Interprov",names(migration_colours))]) +
   scale_x_continuous(labels=scales::comma) +
@@ -193,14 +193,14 @@ migration_data_interprovinicial %>%
 In absolute number B.C. indeed has both the highest interprovincial in-migration and interprovincial net-migration among all provinces. But the provinces have vastly different sizes, so that's not really a fair comparison. Again, we can normalize by population.
 
 ```{r}
-migration_data_interprovinicial %>% 
-  filter(GEO!="Canada") %>%
-  filter(Date==max(Date)) %>%
+migration_data_interprovinicial |> 
+  filter(GEO!="Canada") |>
+  filter(Date==max(Date)) |>
   ggplot(aes(y=GEO,x=annual/Population)) +
   geom_bar(stat="identity",
            aes(fill=fct_rev(`Components of population growth`))) +
-  geom_boxplot(data=net_interprovincial %>% 
-                 filter(GEO!="Canada") %>%
+  geom_boxplot(data=net_interprovincial |> 
+                 filter(GEO!="Canada") |>
                  filter(Date==max(Date))) +
   scale_fill_manual(values=migration_colours[grepl("Interprov",names(migration_colours))]) +
   scale_x_continuous(labels=scales::percent) +
@@ -215,13 +215,13 @@ Viewed this way B.C.'s interprovincial in-migration and net migration still look
 For completeness we can also just show the full graph that includes the international migration components.
 
 ```{r}
-migration_data %>% 
-  left_join(pop_data, by=c("GEO","Date")) %>%
-  filter(Date==max(Date)) %>%
+migration_data |> 
+  left_join(pop_data, by=c("GEO","Date")) |>
+  filter(Date==max(Date)) |>
   ggplot(aes(y=GEO,x=annual/Population)) +
   geom_bar(stat="identity",aes(fill=fct_rev(`Components of population growth`))) +
-  geom_boxplot(data=net_migration %>% 
-                 left_join(pop_data, by=c("GEO","Date")) %>% 
+  geom_boxplot(data=net_migration |> 
+                 left_join(pop_data, by=c("GEO","Date")) |> 
                  filter(Date==max(Date))) +
   scale_fill_manual(values=migration_colours) +
   scale_x_continuous(labels=scales::percent) +

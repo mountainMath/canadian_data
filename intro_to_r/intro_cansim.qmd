@@ -10,7 +10,7 @@ The [**cansim** R package](https://mountainmath.github.io/cansim/) interfaces wi
 
 -   whole tables
 
--    specific vectors
+-   specific vectors
 
 -   data discovery searching through tables
 

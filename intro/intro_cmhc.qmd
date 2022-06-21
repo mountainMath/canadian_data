@@ -1,0 +1,19 @@
+---
+title: "Introduction to cmhc"
+---
+
+## The cmhc R package
+
+![](images/cmhc-sticker.png){#cansim-logo style="float:right;margin-left:3em;" width="250"}
+
+The [cmhc R package](https://mountainmath.github.io/cmhc/) interfaces with the CMHC Housing Market Information Portal (HMIP) and allows programmatic and reproducible access to CMHC data. This gives access to data from four major CMHC surveys
+
+-   Starts and Completions Survey (Scss), which has data on housing construction covering starts, completions, units under construction, length of construction, absorbed and unabsorbed units and their prices.
+
+-   Rental Market Survey (Rms), which surveys the purpose-built rental market on an annual (and for some time twice-annual) basis. It has data on vacancy rates, availability rates, rents, fixed sample rent change and the overall rental universe by bedroom type, structure size, and year of construction.
+
+-   Secondary Rental Market Survey (Srms), which covers parts of the secondary market rental market with data on condominium apartment vacancy ratesm rents, and number and share of rented units, as well as some information on other secondary rentals.
+
+-   Senior's housing (Seniors), which gives data on seniors housing of various levels of assistance.
+
+The package is designed to work in conjunction with the **cancensus** package and census geographic identifiers.

@@ -8,7 +8,7 @@
 
 <meta name="description" content="Building skills and community to analyse Canadian demographic and housing data.">
 
-<title>Analyzing Candian Demographic and Housing Data - Advanced descriptive analysis</title>
+<title>Analyzing Candian Demographic and Housing Data - 4&nbsp; Introduction to cmhc</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,8 +26,8 @@ ul.task-list{list-style: none;}
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../advanced_descriptive/advanced_descriptive_bc_migration.html" rel="next">
-<link href="../basic_descriptive/cars_vs_suvs.html" rel="prev">
+<link href="../basic_descriptive/basic_descriptive.html" rel="next">
+<link href="../intro/intro_cancensus.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -66,7 +66,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Advanced descriptive analysis</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to cmhc</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -119,7 +119,7 @@ ul.task-list{list-style: none;}
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro/intro_cmhc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to cmhc</span></a>
+  <a href="../intro/intro_cmhc.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to cmhc</span></a>
   </div>
 </li>
     </ul>
@@ -146,7 +146,7 @@ ul.task-list{list-style: none;}
   </li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
-        <a href="../advanced_descriptive/advanced_descriptive.html" class="sidebar-item-text sidebar-link active">Advanced descriptive analysis</a>
+        <a href="../advanced_descriptive/advanced_descriptive.html" class="sidebar-item-text sidebar-link">Advanced descriptive analysis</a>
       <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
@@ -169,14 +169,20 @@ ul.task-list{list-style: none;}
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#the-cmhc-r-package" id="toc-the-cmhc-r-package" class="nav-link active" data-scroll-target="#the-cmhc-r-package"> <span class="header-section-number">4.1</span> The cmhc R package</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Advanced descriptive analysis</h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to cmhc</span></h1>
 </div>
 
 <div>
@@ -195,9 +201,20 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<p>Building on the section of basic descriptive analysis we will move into more advanced data processing and descriptive analysis. This will involve mixing of different datasets to tease out finer aspects. We will learn how to group and summarize data, and how to use joins.</p>
+<section id="the-cmhc-r-package" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="the-cmhc-r-package"><span class="header-section-number">4.1</span> The cmhc R package</h2>
+<p><img src="images/cmhc-sticker.png" id="cansim-logo" class="img-fluid" style="float:right;margin-left:3em;" width="250"></p>
+<p>The <a href="https://mountainmath.github.io/cmhc/">cmhc R package</a> interfaces with the CMHC Housing Market Information Portal (HMIP) and allows programmatic and reproducible access to CMHC data. This gives access to data from four major CMHC surveys</p>
+<ul>
+<li><p>Starts and Completions Survey (Scss), which has data on housing construction covering starts, completions, units under construction, length of construction, absorbed and unabsorbed units and their prices.</p></li>
+<li><p>Rental Market Survey (Rms), which surveys the purpose-built rental market on an annual (and for some time twice-annual) basis. It has data on vacancy rates, availability rates, rents, fixed sample rent change and the overall rental universe by bedroom type, structure size, and year of construction.</p></li>
+<li><p>Secondary Rental Market Survey (Srms), which covers parts of the secondary market rental market with data on condominium apartment vacancy ratesm rents, and number and share of rented units, as well as some information on other secondary rentals.</p></li>
+<li><p>Senior’s housing (Seniors), which gives data on seniors housing of various levels of assistance.</p></li>
+</ul>
+<p>The package is designed to work in conjunction with the <strong>cancensus</strong> package and census geographic identifiers.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -281,13 +298,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../basic_descriptive/cars_vs_suvs.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Cars vs SUVs in Canada</span></span>
+      <a href="../intro/intro_cancensus.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to cancensus</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../advanced_descriptive/advanced_descriptive_bc_migration.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BC migration</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../basic_descriptive/basic_descriptive.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basic descriptive analysis</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

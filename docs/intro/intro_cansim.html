@@ -8,7 +8,7 @@
 
 <meta name="description" content="Building skills and community to analyse Canadian demographic and housing data.">
 
-<title>Analyzing Candian demographic and housing data using R - 2&nbsp; Introduction to cansim</title>
+<title>Analyzing Candian Demographic and Housing Data - 2&nbsp; Introduction to cansim</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,7 +79,7 @@ ul.task-list{list-style: none;}
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Analyzing Candian demographic and housing data using R</a> 
+      <a href="../">Analyzing Candian Demographic and Housing Data</a> 
     </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -117,26 +117,21 @@ ul.task-list{list-style: none;}
   <a href="../intro/intro_cancensus.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to cancensus</span></a>
   </div>
 </li>
-    </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="../basic_descriptive/basic_descriptive.html" class="sidebar-item-text sidebar-link">Basic descriptive analysis</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../basic_descriptive/cars_vs_suvs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cars vs SUVs in Canada</span></a>
+  <a href="../intro/intro_cmhc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to cmhc</span></a>
   </div>
 </li>
     </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_descriptive/basic_descriptive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basic descriptive analysis</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
-        <a href="../advanced_descriptive/advanced_descriptive.html" class="sidebar-item-text sidebar-link">Advanced descriptive analysis</a>
+        <a href="../basic_descriptive/high_income_new_housing.html" class="sidebar-item-text sidebar-link">High income households vs new housing</a>
       <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
@@ -144,7 +139,22 @@ ul.task-list{list-style: none;}
     <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../advanced_descriptive/advanced_descriptive_bc_migration.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">BC migration</span></a>
+  <a href="../basic_descriptive/cars_vs_suvs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Cars vs SUVs in Canada</span></a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../advanced_descriptive/advanced_descriptive.html" class="sidebar-item-text sidebar-link">Advanced descriptive analysis</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../advanced_descriptive/advanced_descriptive_bc_migration.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BC migration</span></a>
   </div>
 </li>
     </ul>
@@ -201,7 +211,13 @@ ul.task-list{list-style: none;}
 <li><p>data discovery searching through tables</p></li>
 </ul>
 <p>It encodes the metadata and allows to work with the internal hierarchical structure of the fields.</p>
-<p>Larger tables can also be imported into a local SQLite database for reuse across sessions without the need to re-download the data, and better performance when subsetting the data.</p>
+<p>Larger tables can also be imported into a local SQLite database for reuse across sessions without the need to re-download the data, and better performance when subsetting the data or performing other basic data operations at the database level before loading the data into memory.</p>
+<p>Data discovery is can be cumbersome, the <code>list_cansim_cubes</code> function from the <strong>cansim</strong> package fetches the newest list of all available tables and can be filtered by survey, release date or dates of data coverage. The table list is cached for the duration of the R session. The <code>seach_cansim_cubes</code> function provides a convenient shortcut to narrow down this list.</p>
+<p>In some cases searching the web for “StatCan Table xxxx”, where “xxxx” contains search phrases for the data of interest, is sometimes a useful way to discover data. In reverse, we can bring up the StatCan webpage for a specific table number using the <code>view_cansim_webpage</code> function and explore the data via the web interface. Especially for large datasets this can be a faster way to determine if a specific table contains the information we are interested in without first having to download the data.</p>
+<p>To get overview information for a table we have already downloaded the <code>get_cansim_table_overview</code> function provides a high-level overview over the variables contained in the table. The <code>get_cansim_column_list</code> function returns a list of the available columns or dimensions in the table, and <code>get_cansim_column_categories</code> returns the list of levels in a specific dimension. The <code>get_cansim_table_nots</code> provides the data notes that can hold important information to guide interpretation of some of the dimensions or levels.</p>
+<p>The data is accessed via <code>get_cansim</code> function, or alternatively the <code>get_cansim_sqlite</code> function that stores the data permanently for use across R sessions in a local SQLite database. By default the English language tables are accessed, setting the <code>language="fr" parameter changes that to the French version.</code> The SQLite option is especially useful for larger tables. The <strong>cansim</strong> package will emit a warning if an SQLite table is outdated and newer data is available, if the <code>auto_refresh=TRUE</code> option is passed to the function call it will automatically download any new data if available. When accessing data from the SQLite version we can use normal <code>dplyr</code> verbs to filter the data or perform basic <code>select</code>, <code>group_by</code> or <code>summarize</code> operations before calling <code>collect_and_normalize</code> to fetch the result from the database and enrich it with metadata.</p>
+<p>Metadata added by the <strong>cansim</strong> package includes converting the dimension values to factors and adding information on the hierarchical structure of the levels. Moreover, the package creates a native <code>Date</code> field and a <code>val_norm</code> field with normalized values. The values shipped by StatCan are sometimes expressed in “thousands of units”, the <code>val_norm</code> converts this to base units for easier interpretation and uniformity across tables.</p>
+<p>More information can be found in the <a href="https://mountainmath.github.io/cansim/">package documentation</a> and the package vignettes.</p>
 
 
 </section>

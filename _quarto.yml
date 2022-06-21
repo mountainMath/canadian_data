@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 book:
-  title: "Analyzing Candian demographic and housing data using R"
+  title: "Analyzing Candian Demographic and Housing Data"
   author: "Jens von Bergmann"
   date: "2022-04-01"
   description: "Building skills and community to analyse Canadian demographic and housing data."
@@ -24,7 +24,9 @@ book:
       chapters:
       - intro/intro_cansim.qmd
       - intro/intro_cancensus.qmd
+      - intro/intro_cmhc.qmd
     - part: basic_descriptive/basic_descriptive.qmd
+    - part: basic_descriptive/high_income_new_housing.qmd
       chapters:
       - basic_descriptive/cars_vs_suvs.qmd
     - part: advanced_descriptive/advanced_descriptive.qmd

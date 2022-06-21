@@ -16,4 +16,16 @@ The [**cansim** R package](https://mountainmath.github.io/cansim/) interfaces wi
 
 It encodes the metadata and allows to work with the internal hierarchical structure of the fields.
 
-Larger tables can also be imported into a local SQLite database for reuse across sessions without the need to re-download the data, and better performance when subsetting the data.
+Larger tables can also be imported into a local SQLite database for reuse across sessions without the need to re-download the data, and better performance when subsetting the data or performing other basic data operations at the database level before loading the data into memory.
+
+Data discovery is can be cumbersome, the `list_cansim_cubes` function from the **cansim** package fetches the newest list of all available tables and can be filtered by survey, release date or dates of data coverage. The table list is cached for the duration of the R session. The `seach_cansim_cubes` function provides a convenient shortcut to narrow down this list.
+
+In some cases searching the web for "StatCan Table xxxx", where "xxxx" contains search phrases for the data of interest, is sometimes a useful way to discover data. In reverse, we can bring up the StatCan webpage for a specific table number using the `view_cansim_webpage` function and explore the data via the web interface. Especially for large datasets this can be a faster way to determine if a specific table contains the information we are interested in without first having to download the data.
+
+To get overview information for a table we have already downloaded the `get_cansim_table_overview` function provides a high-level overview over the variables contained in the table. The `get_cansim_column_list` function returns a list of the available columns or dimensions in the table, and `get_cansim_column_categories` returns the list of levels in a specific dimension. The `get_cansim_table_nots` provides the data notes that can hold important information to guide interpretation of some of the dimensions or levels.
+
+The data is accessed via `get_cansim` function, or alternatively the `get_cansim_sqlite` function that stores the data permanently for use across R sessions in a local SQLite database. By default the English language tables are accessed, setting the `language="fr" parameter changes that to the French version.` The SQLite option is especially useful for larger tables. The **cansim** package will emit a warning if an SQLite table is outdated and newer data is available, if the `auto_refresh=TRUE` option is passed to the function call it will automatically download any new data if available. When accessing data from the SQLite version we can use normal `dplyr` verbs to filter the data or perform basic `select`, `group_by` or `summarize` operations before calling `collect_and_normalize` to fetch the result from the database and enrich it with metadata.
+
+Metadata added by the **cansim** package includes converting the dimension values to factors and adding information on the hierarchical structure of the levels. Moreover, the package creates a native `Date` field and a `val_norm` field with normalized values. The values shipped by StatCan are sometimes expressed in "thousands of units", the `val_norm` converts this to base units for easier interpretation and uniformity across tables.
+
+More information can be found in the [package documentation](https://mountainmath.github.io/cansim/) and the package vignettes.

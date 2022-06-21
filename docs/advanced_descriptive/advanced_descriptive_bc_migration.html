@@ -8,7 +8,7 @@
 
 <meta name="description" content="Building skills and community to analyse Canadian demographic and housing data.">
 
-<title>Analyzing Candian demographic and housing data using R - 5&nbsp; BC migration</title>
+<title>Analyzing Candian Demographic and Housing Data - 7&nbsp; BC migration</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,7 +129,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">BC migration</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BC migration</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -142,7 +142,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Analyzing Candian demographic and housing data using R</a> 
+      <a href="../">Analyzing Candian Demographic and Housing Data</a> 
     </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -180,26 +180,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../intro/intro_cancensus.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to cancensus</span></a>
   </div>
 </li>
-    </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="../basic_descriptive/basic_descriptive.html" class="sidebar-item-text sidebar-link">Basic descriptive analysis</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../basic_descriptive/cars_vs_suvs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cars vs SUVs in Canada</span></a>
+  <a href="../intro/intro_cmhc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to cmhc</span></a>
   </div>
 </li>
     </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_descriptive/basic_descriptive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basic descriptive analysis</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
-        <a href="../advanced_descriptive/advanced_descriptive.html" class="sidebar-item-text sidebar-link">Advanced descriptive analysis</a>
+        <a href="../basic_descriptive/high_income_new_housing.html" class="sidebar-item-text sidebar-link">High income households vs new housing</a>
       <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
@@ -207,7 +202,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../advanced_descriptive/advanced_descriptive_bc_migration.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">BC migration</span></a>
+  <a href="../basic_descriptive/cars_vs_suvs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Cars vs SUVs in Canada</span></a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../advanced_descriptive/advanced_descriptive.html" class="sidebar-item-text sidebar-link">Advanced descriptive analysis</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../advanced_descriptive/advanced_descriptive_bc_migration.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BC migration</span></a>
   </div>
 </li>
     </ul>
@@ -226,12 +236,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question"> <span class="header-section-number">5.0.1</span> Question</a></li>
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"> <span class="header-section-number">5.0.2</span> Data sources</a></li>
-  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition"> <span class="header-section-number">5.0.3</span> Data acquisition</a></li>
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"> <span class="header-section-number">5.0.4</span> Data preparation</a></li>
-  <li><a href="#analysis-and-visualization" id="toc-analysis-and-visualization" class="nav-link" data-scroll-target="#analysis-and-visualization"> <span class="header-section-number">5.0.5</span> Analysis and visualization</a></li>
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"> <span class="header-section-number">5.0.6</span> Interpretation</a></li>
+  <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question"> <span class="header-section-number">7.0.1</span> Question</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"> <span class="header-section-number">7.0.2</span> Data sources</a></li>
+  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition"> <span class="header-section-number">7.0.3</span> Data acquisition</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"> <span class="header-section-number">7.0.4</span> Data preparation</a></li>
+  <li><a href="#analysis-and-visualization" id="toc-analysis-and-visualization" class="nav-link" data-scroll-target="#analysis-and-visualization"> <span class="header-section-number">7.0.5</span> Analysis and visualization</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"> <span class="header-section-number">7.0.6</span> Interpretation</a></li>
   </ul>
 </nav>
     </div>
@@ -240,7 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">BC migration</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BC migration</span></h1>
 </div>
 
 <div>
@@ -262,12 +272,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This example is motivated by a <a href="https://news.gov.bc.ca/releases/2022PREM0019-000505">BC government press release</a> titeled “<strong>B.C. welcomes more than 100,000 people – the most in 60 years</strong>”. This is the type of attention-grabbing headline where our gut reaction usually is to question if this is true.</p>
 <p>Let’s first try and understand what the headline really means. B.C. “welcoming” people refers to people moving to the province from elsewhere, either from other provinces or internationally. So this is referring to gross in-migration. But reading the text of the press release it immediately pivots to a different concept, saying that “B.C.’s net migration reached 100,797 people in 2021”. It helpfully explains that net migration is the difference between people moving here and people moving away. Which is quite different from the number of people B.C. “welcomed” that year, or the number of people “moving to the province in 2021” as implied by the title and the first sentence of the press release.</p>
 <p>So here comes the first difficulty, the press release is contradicting itself by mixing two concepts. That leads us to formulate a fairly broad question that should help clear this up.</p>
-<section id="question" class="level3" data-number="5.0.1">
-<h3 data-number="5.0.1" class="anchored" data-anchor-id="question"><span class="header-section-number">5.0.1</span> Question</h3>
+<section id="question" class="level3" data-number="7.0.1">
+<h3 data-number="7.0.1" class="anchored" data-anchor-id="question"><span class="header-section-number">7.0.1</span> Question</h3>
 <p><strong>How many people has B.C. welcomed, net and gross, how has that changed over the last 6 decades, and how should this be interpreted?</strong></p>
 </section>
-<section id="data-sources" class="level3" data-number="5.0.2">
-<h3 data-number="5.0.2" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">5.0.2</span> Data sources</h3>
+<section id="data-sources" class="level3" data-number="7.0.2">
+<h3 data-number="7.0.2" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">7.0.2</span> Data sources</h3>
 <p>To start, let’s figure out where that data point comes from.</p>
 <p>The press release references StatCan as the source, let’s search through the StatCan tables. Google usually works reasonably well, but we can also search programmatically. We are looking for migration estimates from the quarterly demographic estimates to get the most up-to-data population estimates from StatCan. For results we just need the first two columns, that table number and the title.</p>
 <div class="cell">
@@ -288,8 +298,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>It looks like Table 17-10-0020 and 17-10-0040 are what we are looking for. Let’s load in the data and inspect the first couple of rows for BC.</p>
 </section>
-<section id="data-acquisition" class="level3" data-number="5.0.3">
-<h3 data-number="5.0.3" class="anchored" data-anchor-id="data-acquisition"><span class="header-section-number">5.0.3</span> Data acquisition</h3>
+<section id="data-acquisition" class="level3" data-number="7.0.3">
+<h3 data-number="7.0.3" class="anchored" data-anchor-id="data-acquisition"><span class="header-section-number">7.0.3</span> Data acquisition</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>interprovincial <span class="ot">&lt;-</span> <span class="fu">get_cansim</span>(<span class="st">"17-10-0020"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>international <span class="ot">&lt;-</span> <span class="fu">get_cansim</span>(<span class="st">"17-10-0040"</span>)</span>
@@ -330,8 +340,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Here we get immigrants, emigrants, returning emigrants, but for temporary emigrants and non-permanent residents we only get net change. That puts a bit of a damper on our ambition to look at gross migration, for those last two categories net is all we have.</p>
 </section>
-<section id="data-preparation" class="level3" data-number="5.0.4">
-<h3 data-number="5.0.4" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">5.0.4</span> Data preparation</h3>
+<section id="data-preparation" class="level3" data-number="7.0.4">
+<h3 data-number="7.0.4" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">7.0.4</span> Data preparation</h3>
 <p>Next we got to wrangle this data into a useful format. We are interested in all of these components, so we need to join these two data series together. We will retain the <code>GeoUID</code>, <code>GEO</code>, <code>Components of population growth</code>, <code>Date</code> and <code>val_norm</code> columns, which requires some renaming and then defining factor levels so that they stack nicely later in our plots. We also flip the sign on out-migrants and emigrants, as these are out-flows. To make sure those two time series start at the same time we cut it off appropriately.</p>
 <p>The press release talked about annual change, so we do a rolling sum over 4 quarters, right-aligning the data so it’s for the period of the preceding year.</p>
 <div class="cell">
@@ -371,8 +381,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span><span class="ot">=</span><span class="st">"Net migration"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="analysis-and-visualization" class="level3" data-number="5.0.5">
-<h3 data-number="5.0.5" class="anchored" data-anchor-id="analysis-and-visualization"><span class="header-section-number">5.0.5</span> Analysis and visualization</h3>
+<section id="analysis-and-visualization" class="level3" data-number="7.0.5">
+<h3 data-number="7.0.5" class="anchored" data-anchor-id="analysis-and-visualization"><span class="header-section-number">7.0.5</span> Analysis and visualization</h3>
 <p>Time to make a graph.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>migration_colours <span class="ot">&lt;-</span> <span class="fu">setNames</span>(MetBrewer<span class="sc">::</span><span class="fu">met.brewer</span>(<span class="st">"Archambault"</span>,<span class="dv">7</span>),</span>
@@ -510,8 +520,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="interpretation" class="level3" data-number="5.0.6">
-<h3 data-number="5.0.6" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">5.0.6</span> Interpretation</h3>
+<section id="interpretation" class="level3" data-number="7.0.6">
+<h3 data-number="7.0.6" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">7.0.6</span> Interpretation</h3>
 <p>This answers our question, the latest annual net migration edges over the 100,000 people mark, and in absolute terms this is the highest it’s been over at least 60 years. And B.C.’s interprovincial (net) in-migration was the highest in Canada in absolute terms. But what can we learn from that?</p>
 <p>B.C. 60 years ago is very different from B.C. today. To account for that we can normalize by population, and the relative net migration has been higher at several times during the past 60 years, most recently in the 90s.</p>
 <p>We also note that big dip in net-migration during COVID-19. It is not clear if the current heights are a bounce-back to make up for the comparatively low net in-migration during the pandemic, or if it is simply reverting back to the increasing trend we have seen over the past 10 years.</p>

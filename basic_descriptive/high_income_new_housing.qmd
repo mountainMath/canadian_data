@@ -7,7 +7,7 @@ execute:
 
 We saw this interesting [stat on twitter claiming that "America produces 2M households earning \$100K+ every year, and only 1.4M brand-new houses."](https://twitter.com/paytonchung/status/1533112343890206721?s=20&t=KiSbca8flS7bflYu1FHcOg) based on a [post that looks in more detail on movements in house prices in response to COVID-induced changes in migration patterns](https://fullstackeconomics.com/the-rise-of-the-mountain-lion-economies/). One natural question is what the corresponding statistics looks like in Canada.
 
-Before we get into this we want to think for a moment \[what a household is\](https://doodles.mountainmath.ca/blog/2017/12/01/what-s-a-household/), by definition \[a household is an occupied dwelling unit\](https://www12.statcan.gc.ca/census-recensement/2021/ref/dict/az/definition-eng.cfm?ID=households-menage014). While households is the right unit of analysis if we are thinking about how lives in housing, households aren't quite the right unit if we are interesting in how people make decisions about housing. Take a hypothetical roommate household that is getting evicted. They won't necessarily look for housing together, some individual household members might find new accommodation on their own, others might move back in with parents for a while and some others might join up and form a new roommate household, possibly with additional people that weren't part of the original roommate household.
+Before we get into this we want to think for a moment [what a household is](https://doodles.mountainmath.ca/blog/2017/12/01/what-s-a-household/), by definition [a household is an occupied dwelling unit](https://www12.statcan.gc.ca/census-recensement/2021/ref/dict/az/definition-eng.cfm?ID=households-menage014). While households is the right unit of analysis if we are thinking about how lives in housing, households aren't quite the right unit if we are interesting in how people make decisions about housing. Take a hypothetical roommate household that is getting evicted. They won't necessarily look for housing together, some individual household members might find new accommodation on their own, others might move back in with parents for a while and some others might join up and form a new roommate household, possibly with additional people that weren't part of the original roommate household.
 
 What is a better unit when we are interested in groups making housing decisions together? Either economic or census family units, and unattached individuals, generally will make housing decisions together. Also, what's the logic behind the \$100k cutoff? Comparing this to new housing, the basic idea is that these family units should be able to afford new housing, is \$100k going to cut it? Or should we go a bit higher in the Canadian context, using Canadian dollars? Based on this, we will ask the following question.
 
@@ -130,83 +130,3 @@ ggplot(aes(x=Date,y=Value,colour=Series)) +
 ```
 
 This shows that in Canada overall completions line up quite well with the change in the number of family units with income of \$100k or higher.
-
-```{r}
-income_data <- get_cansim_sqlite("11-10-0012") |>
-  filter(GEO %in% c("Vancouver, British Columbia","Toronto, Ontario","Montréal, Quebec","Calgary, Alberta"),
-         `Age of older adult`=="Total all ages",
-         `Family income`=="$100,000 and over") |>
-  collect_and_normalize(disconnect = TRUE) |>
-  select(GeoUID,GEO,Date,`Family type`,VALUE)
-
-income_change <- income_data |>
-  group_by(Date,GeoUID,GEO) |>
-  summarise(VALUE=sum(VALUE),.groups="drop") |>
-  group_by(GeoUID) |>
-  mutate(Change=VALUE-lag(VALUE,order_by = Date)) |>
-  filter(!is.na(Change))
-
-completions_data <- get_cansim("34-10-0134") |>
-  filter(GEO %in% c("Vancouver, British Columbia","Toronto, Ontario","Montréal, Quebec","Calgary, Alberta"),
-         `Type of unit`=="Total units",
-         `Housing estimates`=="Housing completions")
-
-bind_rows(income_change |> 
-            select(Date,GEO,GeoUID,Value=Change) |> 
-            mutate(Series="Change in family units with income $100k or over"),
-          completions_data |> 
-            filter(Date>=min(income_change$Date)) |> 
-            select(Date,GEO,GeoUID,Value=VALUE) |>
-            mutate(Series="Housing completions")) |> 
-ggplot(aes(x=Date,y=Value,colour=Series)) +
-  geom_line() +
-  geom_smooth(method="lm",formula = y~1, se=FALSE) +
-  scale_y_continuous(labels=scales::comma) +
-  facet_wrap(~GEO) +
-  labs(title="Change in family units with income $100k or over in Canada",
-       y="Annual number of family units", x=NULL,
-       caption="StatCan Table 11-10-0012")
-
-```
-
-```{r}
-cis_data <- get_cansim_sqlite("11-10-0237") |>
-  filter(GEO=="Canada",
-         `Income concept`=="Total income",
-         `Economic family type`=="Economic families and persons not in an economic family",
-         Statistics %in% c("Number of families","$100,000 and over")) |>
-  collect_and_normalize(disconnect = TRUE) |>
-  select(Date,Statistics,val_norm) |>
-  pivot_wider(names_from=Statistics,values_from=val_norm) |>
-  mutate(Value=`Number of families`*`$100,000 and over`)
-
-ggplot(cis_data,aes(x=Date,y=Value)) +
-  geom_line() +
-  scale_y_continuous(labels=scales::comma) +
-  labs(title="Economic family units with income $100k or over in Canda",
-       subtitle = "(constant 2020 dollars)",
-       y="Number of family units",x=NULL,
-       caption="StatCan Table 11-10-0237")
-```
-
-```{r}
-cis_income_change <- cis_data |>
-  mutate(Change=Value-lag(Value,order_by = Date)) |>
-  filter(!is.na(Change))
-
-
-bind_rows(cis_income_change |> 
-            select(Date,Value=Change) |> 
-            mutate(Series="Change in family units with income $150k or over"),
-          completions_data |> 
-            filter(Date>=min(cis_income_change$Date)) |> 
-            select(Date,Value=VALUE) |>
-            mutate(Series="Housing completions")) |> 
-ggplot(aes(x=Date,y=Value,colour=Series)) +
-  geom_line() +
-  geom_smooth(method="lm",formula = y~1, se=FALSE) +
-  scale_y_continuous(labels=scales::comma) +
-  labs(title="Change in family units with income $150k or over in Canada",
-       y="Annual number of family units", x=NULL,
-       caption="StatCan Table 11-10-0012")
-```

@@ -26,8 +26,8 @@ book:
       - intro/intro_cancensus.qmd
       - intro/intro_cmhc.qmd
     - part: basic_descriptive/basic_descriptive.qmd
-    - part: basic_descriptive/high_income_new_housing.qmd
       chapters:
+      #- basic_descriptive/high_income_new_housing.qmd
       - basic_descriptive/cars_vs_suvs.qmd
     - part: advanced_descriptive/advanced_descriptive.qmd
       chapters:

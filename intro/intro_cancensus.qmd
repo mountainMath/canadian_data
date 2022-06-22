@@ -46,7 +46,7 @@ cancensus::set_cache_path(cache_path = "<local path ot cache data>", install=TRU
 
 As an example we will retried the share of the population in Toronto, Mississauga, and Brampton spending 30% or more of income on shelter costs in 2016.
 
-```{r}
+```{r warning=FALSE}
 library(cancensus)
 library(dplyr)
 regions <- list(CSD=c("3520005","3521005","3521010"))

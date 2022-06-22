@@ -49,7 +49,7 @@ We can also type `View(penguins)` into the console to view the dataset in a spre
 
 To manipulate and visualize the data we load the tidyverse package.
 
-```{r}
+```{r warning=FALSE}
 library(tidyverse)
 ```
 
@@ -81,7 +81,7 @@ Here we explicitly specify how missing values should be treated when summarizing
 
 We can visualize the data using `ggplot`. For this we have to specify the mapping aesthetics, we plot the bill length on the x-axis, the depth on the y-axis, colour by species and plot the data as points. The `labs()` function allows us to customize the graph labels.
 
-```{r}
+```{r warning=FALSE}
 ggplot(penguins,aes(x=bill_length_mm,y=bill_depth_mm,colour=species)) +
   geom_point() +
   labs(title="Penguin bill length vs depth",
@@ -94,7 +94,7 @@ ggplot(penguins,aes(x=bill_length_mm,y=bill_depth_mm,colour=species)) +
 
 As an aside we note the Simpson's paradox, in the overall dataset the bill depth declines with length, but if we look separately within each species the bill depth increases with bill length. To make that explicit we can add regression lines using the `geom_smooth` function using `lm` (linear model) as the smoothing method.
 
-```{r}
+```{r warning=FALSE}
 ggplot(penguins,aes(x=bill_length_mm,y=bill_depth_mm,colour=species)) +
   geom_point() +
   geom_smooth(method="lm") +

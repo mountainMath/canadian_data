@@ -94,7 +94,7 @@ ggplot(penguins,aes(x=bill_length_mm,y=bill_depth_mm,colour=species)) +
 
 As an aside we note the Simpson's paradox, in the overall dataset the bill depth declines with length, but if we look separately within each species the bill depth increases with bill length. To make that explicit we can add regression lines using the `geom_smooth` function using `lm` (linear model) as the smoothing method.
 
-```{r warning=FALSE}
+```{r warning=FALSE, message=FALSE}
 ggplot(penguins,aes(x=bill_length_mm,y=bill_depth_mm,colour=species)) +
   geom_point() +
   geom_smooth(method="lm") +
@@ -113,11 +113,65 @@ There are several common data manipulation steps that we will employ frequently.
 
 #### Filtering rows
 
+Often we are only interested in subsets of the data, we can filter the rows in the dataset by using the `filter` verb from the **dplyr** package that is part of **tidyverse**. For example, if we want to take the previous plot but only show it for penguins on the island of Biscoe we can filter the data accordingly before plotting it.
+
+```{r warning=FALSE, message=FALSE}
+penguins |>
+  filter(island=="Biscoe") |>
+ggplot(aes(x=bill_length_mm,y=bill_depth_mm,colour=species)) +
+  geom_point() +
+  geom_smooth(method="lm") +
+  geom_smooth(method="lm", colour="black") +
+  labs(title="Penguin bill length vs depth",
+       subtitle="Biscoe island only",
+       x="Bill length  (mm)",y="Bill depth (mm)",
+       colour="Penguin species",
+       caption="Palmer Station Antarctica LTER")
+```
+
 #### Selecting columns
+
+Instead of filtering rows It can be useful to select a subset of the columns to remove columns we don't need and de-clutter the dataset. This is especially useful when producing tables. If we want a table of the numeric data fields of all female Adelie penguins on the island of Biscoe observed in 2007 we can filter by sex and island and select the columns we want.
+
+```{r}
+penguins |>
+  filter(island=="Biscoe", sex=="female", species=="Adelie", year==2007) |>
+  select(is.numeric,-year) 
+```
 
 #### Mutating data
 
+We often want to change data fields, or compute new columns from existing ones. For example, if we want to convert the body mass from *g* to *kg* we can add a new column using `mutate` for that.
+
+```{r}
+penguin_selection <- penguins |>
+  filter(island=="Biscoe", sex=="female", species=="Adelie", year==2007) |>
+  mutate(body_mass_kg=body_mass_g/1000) |>
+  select(is.numeric,-year,-body_mass_g)
+
+penguin_selection
+```
+
 #### Pivoting data
+
+The data in our `penguin_selection` dataset above is in **wide form**, all the different variables are in their own column. Often it is useful to convert it to **long form**, where we only have one value column with the numeric values and another column specifying the type of measurement. In this case it is useful to add an identification column so that we know which measurements belong to the same penguin. We can just label the penguins by row number.
+
+```{r}
+penguin_selection_long <- penguin_selection |>
+  mutate(ID=row_number()) |>
+  pivot_longer(-ID,names_to="Metric",values_to="Value")
+
+penguin_selection_long |> head()
+```
+
+We can do the reverse transformation, going **from long** form to **wide form**, using `pivot_wider`.
+
+```{r}
+penguin_selection_long |>
+  pivot_wider(names_from = Metric,values_from = Value)
+```
+
+This recovers the previous form of the data, with the added `ID` column.
 
 ## Canadian data packages
 

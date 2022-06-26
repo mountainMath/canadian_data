@@ -136,7 +136,7 @@ Instead of filtering rows It can be useful to select a subset of the columns to 
 ```{r}
 penguins |>
   filter(island=="Biscoe", sex=="female", species=="Adelie", year==2007) |>
-  select(is.numeric,-year) 
+  select(where(is.numeric),-year) 
 ```
 
 #### Mutating data

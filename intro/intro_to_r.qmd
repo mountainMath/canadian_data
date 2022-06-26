@@ -147,7 +147,7 @@ We often want to change data fields, or compute new columns from existing ones. 
 penguin_selection <- penguins |>
   filter(island=="Biscoe", sex=="female", species=="Adelie", year==2007) |>
   mutate(body_mass_kg=body_mass_g/1000) |>
-  select(is.numeric,-year,-body_mass_g)
+  select(where(is.numeric),-year,-body_mass_g)
 
 penguin_selection
 ```

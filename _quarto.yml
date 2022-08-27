@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 book:
-  title: "Analyzing Candian Demographic and Housing Data"
+  title: "Analyzing Canadian Demographic and Housing Data"
   author: "Jens von Bergmann"
   date: "2022-04-01"
   description: "Building skills and community to analyse Canadian demographic and housing data."

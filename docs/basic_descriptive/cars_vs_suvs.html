@@ -8,7 +8,7 @@
 
 <meta name="description" content="Building skills and community to analyse Canadian demographic and housing data.">
 
-<title>Analyzing Candian Demographic and Housing Data - 5&nbsp; Cars vs SUVs in Canada</title>
+<title>Analyzing Canadian Demographic and Housing Data - 5&nbsp; Cars vs SUVs in Canada</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -142,7 +142,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Analyzing Candian Demographic and Housing Data</a> 
+      <a href="../">Analyzing Canadian Demographic and Housing Data</a> 
     </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -282,10 +282,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(cansim_table_number,cubeTitleEn,cubeStartDate,cubeEndDate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
-  cansim_table_number cubeTitleEn                      cubeStartDate cubeEndDate
-  &lt;chr&gt;               &lt;chr&gt;                            &lt;date&gt;        &lt;date&gt;     
-1 20-10-0001          New motor vehicle sales          1946-01-01    2022-04-01 
-2 20-10-0002          New motor vehicle sales, by typ… 2010-01-01    2021-01-01 </code></pre>
+  cansim_table_number cubeTitleEn                          cubeStar…¹ cubeEndD…²
+  &lt;chr&gt;               &lt;chr&gt;                                &lt;date&gt;     &lt;date&gt;    
+1 20-10-0001          New motor vehicle sales              1946-01-01 2022-06-01
+2 20-10-0002          New motor vehicle sales, by type of… 2010-01-01 2021-01-01
+# … with abbreviated variable names ¹​cubeStartDate, ²​cubeEndDate</code></pre>
 </div>
 </div>
 <p>There are two tables with motor vehicle sales, we can inspect them on the web or via the {cansim} package. The second table covers a much shorter time period, and is also less recent. We will check out the first table to see if it fits our needs.</p>
@@ -301,7 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output cell-output-stderr">
 <pre><code>New motor vehicle sales
 CANSIM Table 20-10-0001
-Start Reference Period: 1946-01-01, End Reference Period: 2022-04-01, Frequency: Monthly
+Start Reference Period: 1946-01-01, End Reference Period: 2022-06-01, Frequency: Monthly
 
 Column Geography (11)
 Newfoundland and Labrador, Prince Edward Island, Nova Scotia, New Brunswick, Quebec, Ontario, Manitoba, Saskatchewan, Alberta, British Columbia and the Territories, ...

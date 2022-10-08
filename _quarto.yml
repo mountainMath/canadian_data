@@ -12,6 +12,7 @@ book:
   image: cover.png
   card-style: summary_large_image
   site-url: "https://mountainmath.github.io/canadian_data/"
+  downloads: [pdf, epub]
   citations-hover: true
   citeproc: true
   fig-responsive: true
@@ -42,6 +43,7 @@ book:
       - intro/intro_cansim.qmd
       - intro/intro_cancensus.qmd
       - intro/intro_cmhc.qmd
+      - intro/tongfen.qmd
     - part: basic_descriptive/basic_descriptive.qmd
       chapters:
       #- basic_descriptive/high_income_new_housing.qmd

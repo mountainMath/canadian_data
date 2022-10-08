@@ -2,50 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mountainmath.github.io/canadian_data/index.html</loc>
-    <lastmod>2022-10-08T04:28:30.522Z</lastmod>
+    <lastmod>2022-10-08T18:35:16.306Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/intro.html</loc>
-    <lastmod>2022-10-08T04:28:30.523Z</lastmod>
+    <lastmod>2022-10-08T18:35:16.307Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/intro/intro_to_r.html</loc>
-    <lastmod>2022-10-08T04:28:30.524Z</lastmod>
+    <lastmod>2022-10-08T18:35:16.308Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/intro/intro_cansim.html</loc>
-    <lastmod>2022-10-08T04:28:30.525Z</lastmod>
+    <lastmod>2022-10-08T18:35:16.309Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/intro/intro_cancensus.html</loc>
-    <lastmod>2022-10-08T04:28:30.525Z</lastmod>
+    <lastmod>2022-10-08T18:35:16.309Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/intro/intro_cmhc.html</loc>
-    <lastmod>2022-10-08T04:28:30.526Z</lastmod>
+    <lastmod>2022-10-08T18:35:16.309Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/basic_descriptive/basic_descriptive.html</loc>
-    <lastmod>2022-10-08T04:28:30.526Z</lastmod>
+    <lastmod>2022-10-08T18:35:16.310Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/basic_descriptive/cerb.html</loc>
-    <lastmod>2022-10-08T04:28:30.527Z</lastmod>
+    <lastmod>2022-10-08T18:35:16.311Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/basic_descriptive/cars_vs_suvs.html</loc>
-    <lastmod>2022-10-08T04:28:30.528Z</lastmod>
+    <lastmod>2022-10-08T18:35:16.312Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mountainmath.github.io/canadian_data/basic_descriptive/geography_of_income_change.html</loc>
+    <lastmod>2022-10-08T18:35:16.313Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/advanced_descriptive/advanced_descriptive.html</loc>
-    <lastmod>2022-10-08T04:28:30.529Z</lastmod>
+    <lastmod>2022-10-08T18:35:16.313Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/advanced_descriptive/advanced_descriptive_bc_migration.html</loc>
-    <lastmod>2022-10-08T04:28:30.531Z</lastmod>
+    <lastmod>2022-10-08T18:35:16.315Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/references.html</loc>
-    <lastmod>2022-10-08T04:28:30.531Z</lastmod>
+    <lastmod>2022-10-08T18:35:16.317Z</lastmod>
   </url>
 </urlset>

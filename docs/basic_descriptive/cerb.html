@@ -224,6 +224,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../basic_descriptive/cars_vs_suvs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Cars vs SUVs in Canada</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_descriptive/geography_of_income_change.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Geography of income change</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -236,7 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../advanced_descriptive/advanced_descriptive_bc_migration.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BC migration</span></a>
+  <a href="../advanced_descriptive/advanced_descriptive_bc_migration.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BC migration</span></a>
   </div>
 </li>
       </ul>
@@ -295,7 +300,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="data-sources" class="level3" data-number="5.0.2">
 <h3 data-number="5.0.2" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">5.0.2</span> Data sources</h3>
-<p>Standard T1FF taxfiler data has this for large geographies, to understand fine geographic distribution we turn to Census data from the 2021 census, which reports on 2020 income.</p>
+<p>Standard T1FF taxfiler data has this for large geographies, to understand fine geographic distribution we turn to Census data from the 2021 census, which reports on 2020 income. The <a href="https://www12.statcan.gc.ca/census-recensement/2021/ref/dict/az/Definition-eng.cfm?ID=pop256">census dictionary explains</a></p>
+<blockquote class="blockquote">
+<p>Canada Emergency Response Benefit (CERB) payments received during the reference period. This benefit was intended to provide financial support to employees and self‑employed Canadians who had lost their job or were working fewer hours due to the COVID‑19 pandemic and the public health measures implemented to minimize the spread of the virus.</p>
+</blockquote>
+<p>Census income data is taken directly from T1 tax returns and linked at the individual person level.</p>
 </section>
 <section id="data-acquisition" class="level3" data-number="5.0.3">
 <h3 data-number="5.0.3" class="anchored" data-anchor-id="data-acquisition"><span class="header-section-number">5.0.3</span> Data acquisition</h3>
@@ -317,7 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> ottawa_cerb <span class="sc">|&gt;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Share=</span>cerb<span class="sc">/</span>base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>There is not much to do, computing a percentage is a simple division.</p>
+<p>There is not much to do, computing a percentage is a simple division. The <code>mutate</code> verb creates a new column called <code>Share</code> holding the computed ratios.</p>
 </section>
 <section id="analysis-and-visualization" class="level3" data-number="5.0.5">
 <h3 data-number="5.0.5" class="anchored" data-anchor-id="analysis-and-visualization"><span class="header-section-number">5.0.5</span> Analysis and visualization</h3>

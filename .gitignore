@@ -5,6 +5,6 @@
 
 /.quarto/
 *_cache/*
-into/*_cache/*
+intro/*_cache/*
 basic_descriptive/*_cache/*
 advanced_descriptive/*_cache/*

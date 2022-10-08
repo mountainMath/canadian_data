@@ -12,12 +12,19 @@ book:
   image: cover.png
   card-style: summary_large_image
   site-url: "https://mountainmath.github.io/canadian_data/"
-  fig-format: png
+  citations-hover: true
+  citeproc: true
+  fig-responsive: true
+  # fig-dpi: 150
+  # fig-width: 8
+  # fig-height: 6
+  # fig-format: png
   sidebar:
     style: docked
     background: light
     logo: cover.png
   top-level-division: part
+  code-fold: show
   page-footer: 
     left: "Copyright 2022, Jens von Bergmann" 
     right: 
@@ -56,6 +63,10 @@ execute:
 
 format:
   html:
+    # fig-dpi: 150
+    # fig-width: 8
+    # fig-height: 6
+    # fig-format: png
     #theme: cosmo
     theme:
       light: flatly
@@ -63,6 +74,9 @@ format:
     code-copy: true
   pdf:
     documentclass: scrreprt
-
+    fig-format: png
+  epub:
+    cover-image: cover.png
+    
 editor: visual
 

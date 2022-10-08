@@ -63,10 +63,11 @@ execute:
 
 format:
   html:
-    # fig-dpi: 150
-    # fig-width: 8
-    # fig-height: 6
-    # fig-format: png
+    fig-dpi: 150
+    fig-width: 8
+    fig-height: 6
+    fig-format: png
+    fig-responsive: true
     #theme: cosmo
     theme:
       light: flatly
@@ -77,6 +78,7 @@ format:
     fig-format: png
   epub:
     cover-image: cover.png
+    fig-format: png
     
 editor: visual
 

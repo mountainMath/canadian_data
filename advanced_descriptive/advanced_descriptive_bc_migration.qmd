@@ -1,16 +1,16 @@
 ## BC migration
 
-This example is motivated by a [BC government press release](https://news.gov.bc.ca/releases/2022PREM0019-000505) titeled "**B.C. welcomes more than 100,000 people -- the most in 60 years**". This is the type of attention-grabbing headline where our gut reaction usually is to question if this is true.
+This example is motivated by a [BC government press release](https://news.gov.bc.ca/releases/2022PREM0019-000505) titled "**B.C. welcomes more than 100,000 people -- the most in 60 years**". This is the type of attention-grabbing headline where our gut reaction usually is to question if this is true.
 
 Let's first try and understand what the headline really means. B.C. "welcoming" people refers to people moving to the province from elsewhere, either from other provinces or internationally. So this is referring to gross in-migration. But reading the text of the press release it immediately pivots to a different concept, saying that "B.C.'s net migration reached 100,797 people in 2021". It helpfully explains that net migration is the difference between people moving here and people moving away. Which is quite different from the number of people B.C. "welcomed" that year, or the number of people "moving to the province in 2021" as implied by the title and the first sentence of the press release.
 
 So here comes the first difficulty, the press release is contradicting itself by mixing two concepts. That leads us to formulate a fairly broad question that should help clear this up.
 
-### Question
+## Question
 
 **How many people has B.C. welcomed, net and gross, how has that changed over the last 6 decades, and how should this be interpreted?**
 
-### Data sources
+## Data sources
 
 To start, let's figure out where that data point comes from.
 
@@ -28,7 +28,7 @@ search_cansim_cubes("migration") |>
 
 It looks like Table 17-10-0020 and 17-10-0040 are what we are looking for. Let's load in the data and inspect the first couple of rows for BC.
 
-### Data acquisition
+## Data acquisition
 
 ```{r message=FALSE}
 interprovincial <- get_cansim("17-10-0020")
@@ -51,7 +51,7 @@ international |>
 
 Here we get immigrants, emigrants, returning emigrants, but for temporary emigrants and non-permanent residents we only get net change. That puts a bit of a damper on our ambition to look at gross migration, for those last two categories net is all we have.
 
-### Data preparation
+## Data preparation
 
 Next we got to wrangle this data into a useful format. We are interested in all of these components, so we need to join these two data series together. We will retain the `GeoUID`, `GEO`, `Components of population growth`, `Date` and `val_norm` columns, which requires some renaming and then defining factor levels so that they stack nicely later in our plots. We also flip the sign on out-migrants and emigrants, as these are out-flows. To make sure those two time series start at the same time we cut it off appropriately.
 
@@ -96,7 +96,7 @@ net_migration <- migration_data |>
   mutate(`Components of population growth`="Net migration")
 ```
 
-### Analysis and visualization
+## Analysis and visualization
 
 Time to make a graph.
 
@@ -231,7 +231,7 @@ migration_data |>
        caption="StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009")
 ```
 
-### Interpretation
+## Interpretation
 
 This answers our question, the latest annual net migration edges over the 100,000 people mark, and in absolute terms this is the highest it's been over at least 60 years. And B.C.'s interprovincial (net) in-migration was the highest in Canada in absolute terms. But what can we learn from that?
 

@@ -260,12 +260,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question"><span class="toc-section-number">8.0.1</span>  Question</a></li>
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="toc-section-number">8.0.2</span>  Data sources</a></li>
-  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition"><span class="toc-section-number">8.0.3</span>  Data acquisition</a></li>
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="toc-section-number">8.0.4</span>  Data preparation</a></li>
-  <li><a href="#analysis-and-visualization" id="toc-analysis-and-visualization" class="nav-link" data-scroll-target="#analysis-and-visualization"><span class="toc-section-number">8.0.5</span>  Analysis and visualization</a></li>
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="toc-section-number">8.0.6</span>  Interpretation</a></li>
+  <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question"><span class="toc-section-number">8.1</span>  Question</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="toc-section-number">8.2</span>  Data sources</a></li>
+  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition"><span class="toc-section-number">8.3</span>  Data acquisition</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="toc-section-number">8.4</span>  Data preparation</a></li>
+  <li><a href="#analysis-and-visualization" id="toc-analysis-and-visualization" class="nav-link" data-scroll-target="#analysis-and-visualization"><span class="toc-section-number">8.5</span>  Analysis and visualization</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="toc-section-number">8.6</span>  Interpretation</a></li>
   </ul>
 </nav>
     </div>
@@ -293,18 +293,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>This example is motivated by a <a href="https://news.gov.bc.ca/releases/2022PREM0019-000505">BC government press release</a> titeled “<strong>B.C. welcomes more than 100,000 people – the most in 60 years</strong>”. This is the type of attention-grabbing headline where our gut reaction usually is to question if this is true.</p>
+<p>This example is motivated by a <a href="https://news.gov.bc.ca/releases/2022PREM0019-000505">BC government press release</a> titled “<strong>B.C. welcomes more than 100,000 people – the most in 60 years</strong>”. This is the type of attention-grabbing headline where our gut reaction usually is to question if this is true.</p>
 <p>Let’s first try and understand what the headline really means. B.C. “welcoming” people refers to people moving to the province from elsewhere, either from other provinces or internationally. So this is referring to gross in-migration. But reading the text of the press release it immediately pivots to a different concept, saying that “B.C.’s net migration reached 100,797 people in 2021”. It helpfully explains that net migration is the difference between people moving here and people moving away. Which is quite different from the number of people B.C. “welcomed” that year, or the number of people “moving to the province in 2021” as implied by the title and the first sentence of the press release.</p>
 <p>So here comes the first difficulty, the press release is contradicting itself by mixing two concepts. That leads us to formulate a fairly broad question that should help clear this up.</p>
-<section id="question" class="level3" data-number="8.0.1">
-<h3 data-number="8.0.1" class="anchored" data-anchor-id="question"><span class="header-section-number">8.0.1</span> Question</h3>
+<section id="question" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="question"><span class="header-section-number">8.1</span> Question</h2>
 <p><strong>How many people has B.C. welcomed, net and gross, how has that changed over the last 6 decades, and how should this be interpreted?</strong></p>
 </section>
-<section id="data-sources" class="level3" data-number="8.0.2">
-<h3 data-number="8.0.2" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">8.0.2</span> Data sources</h3>
+<section id="data-sources" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">8.2</span> Data sources</h2>
 <p>To start, let’s figure out where that data point comes from.</p>
 <p>The press release references StatCan as the source, let’s search through the StatCan tables. Google usually works reasonably well, but we can also search programmatically. We are looking for migration estimates from the quarterly demographic estimates to get the most up-to-data population estimates from StatCan. For results we just need the first two columns, that table number and the title.</p>
-<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-1_4909e0455a5ba9aafb0b80ee5edb2e34">
+<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-1_e12cbd8c51eb5d75437e186981bb6fe7">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cansim)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -322,9 +322,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>It looks like Table 17-10-0020 and 17-10-0040 are what we are looking for. Let’s load in the data and inspect the first couple of rows for BC.</p>
 </section>
-<section id="data-acquisition" class="level3" data-number="8.0.3">
-<h3 data-number="8.0.3" class="anchored" data-anchor-id="data-acquisition"><span class="header-section-number">8.0.3</span> Data acquisition</h3>
-<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-2_44b41b18aeb10c166a3b008d042c5fe9">
+<section id="data-acquisition" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="data-acquisition"><span class="header-section-number">8.3</span> Data acquisition</h2>
+<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-2_0962e0afd64507da2ed02dec239acc89">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>interprovincial <span class="ot">&lt;-</span> <span class="fu">get_cansim</span>(<span class="st">"17-10-0020"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>international <span class="ot">&lt;-</span> <span class="fu">get_cansim</span>(<span class="st">"17-10-0040"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -345,7 +345,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>For inter-provincial migration we get in and out migration counts for every quarter. Let’s also inspect the international migration data.</p>
-<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-3_80d291bde8a18b933e57aade72330e6b">
+<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-3_8bf98b37bdbe88402acf9a6ce80cccd7">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>international <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEO<span class="sc">==</span><span class="st">"British Columbia"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(GEO,Date,<span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span>,val_norm) <span class="sc">|&gt;</span></span>
@@ -364,11 +364,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Here we get immigrants, emigrants, returning emigrants, but for temporary emigrants and non-permanent residents we only get net change. That puts a bit of a damper on our ambition to look at gross migration, for those last two categories net is all we have.</p>
 </section>
-<section id="data-preparation" class="level3" data-number="8.0.4">
-<h3 data-number="8.0.4" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">8.0.4</span> Data preparation</h3>
+<section id="data-preparation" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">8.4</span> Data preparation</h2>
 <p>Next we got to wrangle this data into a useful format. We are interested in all of these components, so we need to join these two data series together. We will retain the <code>GeoUID</code>, <code>GEO</code>, <code>Components of population growth</code>, <code>Date</code> and <code>val_norm</code> columns, which requires some renaming and then defining factor levels so that they stack nicely later in our plots. We also flip the sign on out-migrants and emigrants, as these are out-flows. To make sure those two time series start at the same time we cut it off appropriately.</p>
 <p>The press release talked about annual change, so we do a rolling sum over 4 quarters, right-aligning the data so it’s for the period of the preceding year.</p>
-<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-4_f47ae1d9d7ac8b035efe6fbb76db6a45">
+<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-4_1a9936482dfe6c8274d36b511955d424">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>migration_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  interprovincial <span class="sc">|&gt;</span> </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(GeoUID,GEO,Date,</span>
@@ -398,17 +398,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will also need net migration stats, so let’s compute these by summing of the components,</p>
-<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-5_c12d8c1cb09f7b268be7a101960e2fc5">
+<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-5_7542ae0629024951f17d6378992025b8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>net_migration <span class="ot">&lt;-</span> migration_data <span class="sc">|&gt;</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Date,GEO,GeoUID) <span class="sc">|&gt;</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">value=</span><span class="fu">sum</span>(value),<span class="at">annual=</span><span class="fu">sum</span>(annual),<span class="at">.groups=</span><span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span><span class="ot">=</span><span class="st">"Net migration"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="analysis-and-visualization" class="level3" data-number="8.0.5">
-<h3 data-number="8.0.5" class="anchored" data-anchor-id="analysis-and-visualization"><span class="header-section-number">8.0.5</span> Analysis and visualization</h3>
+<section id="analysis-and-visualization" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="analysis-and-visualization"><span class="header-section-number">8.5</span> Analysis and visualization</h2>
 <p>Time to make a graph.</p>
-<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-6_ab9903ca8ccf66bad343b7aa43acefdf">
+<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-6_fc954dad0dfb2046d9c20899d8699b70">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>migration_colours <span class="ot">&lt;-</span> <span class="fu">setNames</span>(MetBrewer<span class="sc">::</span><span class="fu">met.brewer</span>(<span class="st">"Archambault"</span>,<span class="dv">7</span>),</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                              migration_data<span class="sc">$</span><span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span> <span class="sc">%&gt;%</span> </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                                levels <span class="sc">%&gt;%</span> rev)</span>
@@ -424,12 +424,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Year over year change"</span>,<span class="at">x=</span><span class="cn">NULL</span>,<span class="at">fill=</span><span class="st">"Components of population change"</span>,</span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Tables 17-10-0020, 17-10-0040"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="advanced_descriptive_bc_migration_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<p><img src="advanced_descriptive_bc_migration_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>This shows us that the press report was most likely talking did not mean to talk about number of people B.C. has “welcomed” or that “moved to the province” but instead the difference between the number of people it welcomed and the number of people it bid farewell.</p>
 <p>And the net migration is indeed at record levels. At least in absolute terms. But B.C. now is very different from B.C. in the 60s at the start of this time series. How can we compare net migration over time in a more meaningful way? Normalizing by population is a good option here. Let’s grab the data and take a look how B.C. population has changed.</p>
-<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-7_ef29cd98e52271c907b9d63f71fbaf49">
+<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-7_1af8e44eb18b503f8beea53b0ae3e2fc">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pop_data <span class="ot">&lt;-</span> <span class="fu">get_cansim</span>(<span class="st">"17-10-0009"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(GEO,Date,<span class="at">Population=</span>val_norm)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -443,11 +443,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,</span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Table 17-10-0009"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="advanced_descriptive_bc_migration_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<p><img src="advanced_descriptive_bc_migration_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Indeed, the trend is quite strong. Let’s fold that in and normalize by population.</p>
-<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-8_57bb6c6b3be6621fe68368a302ef0d11">
+<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-8_e397fdd63285b7f84f150504ffacb844">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>migration_data <span class="sc">|&gt;</span> </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(pop_data, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"GEO"</span>,<span class="st">"Date"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEO<span class="sc">==</span><span class="st">"British Columbia"</span>) <span class="sc">|&gt;</span></span>
@@ -465,12 +465,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill=</span><span class="st">"Components of population change"</span>,</span>
 <span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="advanced_descriptive_bc_migration_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="advanced_descriptive_bc_migration_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Here the picture looks a little different. Net migration per capita is at its highest since the 90s, but the past 60 years there were several periods where it was larger.</p>
 <p>The press report also mentioned that B.C.’s interprovincial migration numbers are higher than any other province. This is easy to check now.</p>
-<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-9_94e4481b8a42c1ce1b2b9813715cac32">
+<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-9_38bb31816a20ea0ce6bb9b07ff425ca3">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>migration_data_interprovinicial <span class="ot">&lt;-</span> migration_data <span class="sc">|&gt;</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(pop_data, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"GEO"</span>,<span class="st">"Date"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">"Interprovincial"</span>,<span class="st">`</span><span class="at">Components of population growth</span><span class="st">`</span>))</span>
@@ -498,11 +498,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="cn">NULL</span>,<span class="at">x=</span><span class="st">"Year over year change"</span>,</span>
 <span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="advanced_descriptive_bc_migration_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="advanced_descriptive_bc_migration_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>In absolute number B.C. indeed has both the highest interprovincial in-migration and interprovincial net-migration among all provinces. But the provinces have vastly different sizes, so that’s not really a fair comparison. Again, we can normalize by population.</p>
-<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-10_cc123e6672d5025a2767c657a4972af6">
+<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-10_60017dc572d674df98d21c6f23a7f146">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>migration_data_interprovinicial <span class="sc">|&gt;</span> </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEO<span class="sc">!=</span><span class="st">"Canada"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Date<span class="sc">==</span><span class="fu">max</span>(Date)) <span class="sc">|&gt;</span></span>
@@ -519,12 +519,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="cn">NULL</span>,<span class="at">x=</span><span class="st">"Year over year change per capita"</span>,</span>
 <span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="advanced_descriptive_bc_migration_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<p><img src="advanced_descriptive_bc_migration_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Viewed this way B.C.’s interprovincial in-migration and net migration still looks good, but many of the other provinces beat out that growth rate.</p>
 <p>For completeness we can also just show the full graph that includes the international migration components.</p>
-<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-11_3aafc98b233c0a77bc70839d3862f1c5">
+<div class="cell" data-hash="advanced_descriptive_bc_migration_cache/html/unnamed-chunk-11_eef1dfd905066e7066260b63a12c49b8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>migration_data <span class="sc">|&gt;</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(pop_data, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"GEO"</span>,<span class="st">"Date"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Date<span class="sc">==</span><span class="fu">max</span>(Date)) <span class="sc">|&gt;</span></span>
@@ -540,12 +540,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="cn">NULL</span>,<span class="at">x=</span><span class="st">"Year over year change per capita"</span>,</span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="advanced_descriptive_bc_migration_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<p><img src="advanced_descriptive_bc_migration_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
-<section id="interpretation" class="level3" data-number="8.0.6">
-<h3 data-number="8.0.6" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">8.0.6</span> Interpretation</h3>
+<section id="interpretation" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">8.6</span> Interpretation</h2>
 <p>This answers our question, the latest annual net migration edges over the 100,000 people mark, and in absolute terms this is the highest it’s been over at least 60 years. And B.C.’s interprovincial (net) in-migration was the highest in Canada in absolute terms. But what can we learn from that?</p>
 <p>B.C. 60 years ago is very different from B.C. today. To account for that we can normalize by population, and the relative net migration has been higher at several times during the past 60 years, most recently in the 90s.</p>
 <p>We also note that big dip in net-migration during COVID-19. It is not clear if the current heights are a bounce-back to make up for the comparatively low net in-migration during the pandemic, or if it is simply reverting back to the increasing trend we have seen over the past 10 years.</p>

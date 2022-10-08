@@ -260,12 +260,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question"><span class="toc-section-number">5.0.1</span>  Question</a></li>
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="toc-section-number">5.0.2</span>  Data sources</a></li>
-  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition"><span class="toc-section-number">5.0.3</span>  Data acquisition</a></li>
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="toc-section-number">5.0.4</span>  Data preparation</a></li>
-  <li><a href="#analysis-and-visualization" id="toc-analysis-and-visualization" class="nav-link" data-scroll-target="#analysis-and-visualization"><span class="toc-section-number">5.0.5</span>  Analysis and visualization</a></li>
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="toc-section-number">5.0.6</span>  Interpretation</a></li>
+  <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question"><span class="toc-section-number">5.1</span>  Question</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="toc-section-number">5.2</span>  Data sources</a></li>
+  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition"><span class="toc-section-number">5.3</span>  Data acquisition</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="toc-section-number">5.4</span>  Data preparation</a></li>
+  <li><a href="#analysis-and-visualization" id="toc-analysis-and-visualization" class="nav-link" data-scroll-target="#analysis-and-visualization"><span class="toc-section-number">5.5</span>  Analysis and visualization</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="toc-section-number">5.6</span>  Interpretation</a></li>
   </ul>
 </nav>
     </div>
@@ -294,52 +294,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <p>In 2020 Canada introduced the COVID-19 Emergency Recovery Benefit (CERB), a program to support people with who lost income during the pandemic.</p>
-<section id="question" class="level3" data-number="5.0.1">
-<h3 data-number="5.0.1" class="anchored" data-anchor-id="question"><span class="header-section-number">5.0.1</span> Question</h3>
+<section id="question" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="question"><span class="header-section-number">5.1</span> Question</h2>
 <p><strong>Where did CERB benefits go?</strong></p>
 </section>
-<section id="data-sources" class="level3" data-number="5.0.2">
-<h3 data-number="5.0.2" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">5.0.2</span> Data sources</h3>
+<section id="data-sources" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">5.2</span> Data sources</h2>
 <p>Standard T1FF taxfiler data has this for large geographies, to understand fine geographic distribution we turn to Census data from the 2021 census, which reports on 2020 income. The <a href="https://www12.statcan.gc.ca/census-recensement/2021/ref/dict/az/Definition-eng.cfm?ID=pop256">census dictionary explains</a></p>
 <blockquote class="blockquote">
 <p>Canada Emergency Response Benefit (CERB) payments received during the reference period. This benefit was intended to provide financial support to employees and self‑employed Canadians who had lost their job or were working fewer hours due to the COVID‑19 pandemic and the public health measures implemented to minimize the spread of the virus.</p>
 </blockquote>
 <p>Census income data is taken directly from T1 tax returns and linked at the individual person level.</p>
 </section>
-<section id="data-acquisition" class="level3" data-number="5.0.3">
-<h3 data-number="5.0.3" class="anchored" data-anchor-id="data-acquisition"><span class="header-section-number">5.0.3</span> Data acquisition</h3>
+<section id="data-acquisition" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="data-acquisition"><span class="header-section-number">5.3</span> Data acquisition</h2>
 <p>We can use the <a href="https://censusmapper.ca/api">CensusMapper API tool</a> and search for “COVID-19” in the <em>Variable Selection</em> tab to locate available census variables. Since we are interested in where people lived that received the benefit we select <strong>v_CA21_593</strong>, the number of recipients, as well as <strong>v_CA21_554</strong>, the baseline of people 15 years or older who are in principle eligible for this benefit.</p>
 <p>We also need to decide which region we want to investigate, let’s take a look at the City of Ottawa. We can select the city in the <em>Region Selection</em> tab and read off the geographic identifier <strong>3506008</strong> for the City of Ottawa in the <em>Overview</em> tab.</p>
 <p>Now we have all we need to pull in the data, we just need to decide on the geographic granularity. Let’s use <strong>census tracts</strong>, a standard geographic region aiming to capture between 2,500 and 7,500 people in metropolitan areas. We also specify that we want the geographies, not just the tabular data.</p>
-<div class="cell" data-hash="cerb_cache/html/unnamed-chunk-1_1d7c9f7610450459c11ee7c97e5f7ad1">
+<div class="cell" data-hash="cerb_cache/html/unnamed-chunk-1_e27e325480e0b0aeb4da1320135bfb44">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cancensus)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ottawa_cerb <span class="ot">&lt;-</span> <span class="fu">get_census</span>(<span class="st">"CA21"</span>,<span class="at">regions=</span><span class="fu">list</span>(<span class="at">CSD=</span><span class="st">"3506008"</span>),</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">vectors=</span><span class="fu">c</span>(<span class="at">cerb=</span><span class="st">"v_CA21_593"</span>, <span class="at">base=</span><span class="st">"v_CA21_554"</span>),</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">level=</span><span class="st">"CT"</span>, <span class="at">geo_format=</span><span class="st">"sf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="data-preparation" class="level3" data-number="5.0.4">
-<h3 data-number="5.0.4" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">5.0.4</span> Data preparation</h3>
+<section id="data-preparation" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">5.4</span> Data preparation</h2>
 <p>To understand the geographic distribution we compute the percentage of people 15 years and over receiving CERB. Generally in this book we work in the <strong>tidyverse</strong> to help with data manipulation and visualization, so we load that library too.</p>
-<div class="cell" data-hash="cerb_cache/html/unnamed-chunk-2_7d0a2e4f2ac38ed7743de20956754f8f">
+<div class="cell" data-hash="cerb_cache/html/unnamed-chunk-2_ae11a95a7c5f9dfac2ff8f7df542d1f3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> ottawa_cerb <span class="sc">|&gt;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Share=</span>cerb<span class="sc">/</span>base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>There is not much to do, computing a percentage is a simple division. The <code>mutate</code> verb creates a new column called <code>Share</code> holding the computed ratios.</p>
 </section>
-<section id="analysis-and-visualization" class="level3" data-number="5.0.5">
-<h3 data-number="5.0.5" class="anchored" data-anchor-id="analysis-and-visualization"><span class="header-section-number">5.0.5</span> Analysis and visualization</h3>
+<section id="analysis-and-visualization" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="analysis-and-visualization"><span class="header-section-number">5.5</span> Analysis and visualization</h2>
 <p>All that’s left is to visualize the data. To plot geographic data we use <code>ggplot</code> and the <code>geom_sf</code> geometry. We need to tell it how to colour the map, the <em>aesthetic</em>, and we specify to fill each area by the share of CERB recipients.</p>
-<div class="cell" data-hash="cerb_cache/html/unnamed-chunk-3_1e3a17e6515f19299b161b99230b467d">
+<div class="cell" data-hash="cerb_cache/html/unnamed-chunk-3_88cd0e085fb4021e5adbe7a078a61c35">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_data) <span class="sc">+</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>Share))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="cerb_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="cerb_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>To make this a little nicer we add labels, remove the coordinate grid and choose nicer colours and reduce the boundary line size.</p>
-<div class="cell" data-hash="cerb_cache/html/unnamed-chunk-4_39c683eac4df6f0746dd6415a9da2873">
+<div class="cell" data-hash="cerb_cache/html/unnamed-chunk-4_687d92f3649c9e23d66bd0c609419d1c">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_data) <span class="sc">+</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>Share), <span class="at">size=</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">labels=</span>scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
@@ -348,12 +348,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill=</span><span class="st">"Share of people</span><span class="sc">\n</span><span class="st">15+ reveiving</span><span class="sc">\n</span><span class="st">CERB"</span>,</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Census 2021"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="cerb_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="cerb_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>It is difficult to see the central parts, we might want to zoom in a little. At the same time, it might be useful to add in Gatineau and surrounding municipalities, so maybe we want the data for the entire metro area.</p>
 <p>To do this we copy the code from above and paste it into a single pip, from data acquisition (using the CMA 505 for Ottawa CMA) and cut the region to the central parts by looking at the grid from the first map.</p>
-<div class="cell" data-hash="cerb_cache/html/unnamed-chunk-5_1da1bfdeb2b386451f89896d84a8c04b">
+<div class="cell" data-hash="cerb_cache/html/unnamed-chunk-5_3af4bdf8436dca88ca4e550f858782ec">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_census</span>(<span class="st">"CA21"</span>,<span class="at">regions=</span><span class="fu">list</span>(<span class="at">CMA=</span><span class="st">"505"</span>),</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">vectors=</span><span class="fu">c</span>(<span class="at">cerb=</span><span class="st">"v_CA21_593"</span>, <span class="at">base=</span><span class="st">"v_CA21_554"</span>),</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">level=</span><span class="st">"CT"</span>, <span class="at">geo_format=</span><span class="st">"sf"</span>) <span class="sc">|&gt;</span></span>
@@ -366,11 +366,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill=</span><span class="st">"Share of people</span><span class="sc">\n</span><span class="st">15+ reveiving</span><span class="sc">\n</span><span class="st">CERB"</span>,</span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Census 2021"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="cerb_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="cerb_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>This brings out the central regions much better. We could also try this with finer geographies, setting the level to dissemination areas instead of census tracts. The same code as before works, except changing the <code>level="CT"</code> to <code>level="DA"</code>.</p>
-<div class="cell" data-hash="cerb_cache/html/unnamed-chunk-6_d75859c99ffe661d3e2ccacf48cbe114">
+<div class="cell" data-hash="cerb_cache/html/unnamed-chunk-6_0f78764c77d2302d9c3e2f4260868e6f">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_census</span>(<span class="st">"CA21"</span>,<span class="at">regions=</span><span class="fu">list</span>(<span class="at">CMA=</span><span class="st">"505"</span>),</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">vectors=</span><span class="fu">c</span>(<span class="at">cerb=</span><span class="st">"v_CA21_593"</span>, <span class="at">base=</span><span class="st">"v_CA21_554"</span>),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">level=</span><span class="st">"DA"</span>, <span class="at">geo_format=</span><span class="st">"sf"</span>) <span class="sc">|&gt;</span></span>
@@ -383,12 +383,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill=</span><span class="st">"Share of people</span><span class="sc">\n</span><span class="st">15+ reveiving</span><span class="sc">\n</span><span class="st">CERB"</span>,</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Census 2021"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="cerb_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<p><img src="cerb_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
-<section id="interpretation" class="level3" data-number="5.0.6">
-<h3 data-number="5.0.6" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">5.0.6</span> Interpretation</h3>
+<section id="interpretation" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">5.6</span> Interpretation</h2>
 <p>We notice substantial differences in the share of people receiving CERB benefits, with rural areas generally having lower shares, and central areas being more mixed, varying between under 10% to well over 40% of people 15 years and over receiving CERB. Generally areas with lower incomes have benefited more from CERB.</p>
 
 

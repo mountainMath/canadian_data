@@ -4,7 +4,11 @@
 .Ruserdata
 
 /.quarto/
-*_cache/*
+/*_cache/*
 intro/*_cache/*
 basic_descriptive/*_cache/*
 advanced_descriptive/*_cache/*
+/*_files/*
+intro/*_files/*
+basic_descriptive/*_files/*
+advanced_descriptive/*_files/*

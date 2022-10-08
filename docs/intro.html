@@ -298,18 +298,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Amy knows that census data has a good geographic breakdown of children in poverty, but the latest available data is from 2016, using 2015 income data. CRA tax data is available up to 2019, but also has information on families in low income, but nothing directly on children in the standard release tables at fine geographies. As a first step she settles on census data, with the goal to re-run the analysis once the 2021 data comes out later in the year.</p>
 <p>She refers to the <a href="https://www12.statcan.gc.ca/census-recensement/2016/ref/dict/index-eng.cfm">Census Dictionary</a> to understand the various low income measures, and uses CensusMapper’s interactive <a href="https://censusmapper.ca/maps/844?index=3#11/43.6535/-79.3839">map that allows to explore these concepts</a>. She would have liked to use the Market Based Measure, but due to data availability she settles for LICO-AT.</p>
 <p>She sets up a new Notebook and loads in the R libraries that she will need for this, <a href="https://ggplot2.tidyverse.org">ggplot2</a>for graphing and <a href="https://mountainmath.github.io/cancensus/index.html"><strong>cancensus</strong></a> for ingesting the data.</p>
-<div class="cell" data-hash="intro_cache/html/unnamed-chunk-1_f1aa33f8fae06f56f78e46b4154ab2b1">
+<div class="cell" data-hash="intro_cache/html/unnamed-chunk-1_58e8a5ff291dc78ddc3899ab01cb29d9">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cancensus)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next she pull in the data. the <a href="https://censusmapper.ca/api">CensusMapper API GUI tool</a> helps her locate the StatCan geographic identifier for Toronto, (3520005), and the internal CensusMapper vector for the percentage of children in LICO-AT (v_CA16_2573).</p>
-<div class="cell" data-hash="intro_cache/html/unnamed-chunk-2_a5b2f4451150743638deb55cc06aacbc">
+<div class="cell" data-hash="intro_cache/html/unnamed-chunk-2_92a9437f9cae646d2a4c0fa5a4f3bf3b">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lico_yyz <span class="ot">&lt;-</span> <span class="fu">get_census</span>(<span class="st">"CA16"</span>,<span class="at">regions=</span><span class="fu">list</span>(<span class="at">CSD=</span><span class="st">"3520005"</span>), <span class="at">vectors=</span><span class="fu">c</span>(<span class="at">lico=</span><span class="st">"v_CA16_2573"</span>),</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">level=</span><span class="st">"CT"</span>,<span class="at">geo_format=</span><span class="st">"sf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here Amy specified that she wants data for the 2016 Canadian census (“CA16”), the region and vectors, at the census tract (“CT”) level, with geographies as well as the low income data.</p>
 <p>Now that she has the data at her finger times her first step is to make a map. For that she needs to tell <strong>ggplot</strong> is what variable to use as fill colour, and maybe give it a nicer colour scale and some labels to explain what the map is about.</p>
-<div class="cell" data-hash="intro_cache/html/unnamed-chunk-3_0d985422c475ca95de5d5215439b4a7e">
+<div class="cell" data-hash="intro_cache/html/unnamed-chunk-3_5bbed457d20c4a2c3dd8e5486da18229">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lico_yyz, <span class="fu">aes</span>(<span class="at">fill=</span>(lico<span class="sc">/</span><span class="dv">100</span>))) <span class="sc">+</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">labels=</span>scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
@@ -318,12 +318,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill=</span><span class="st">"Share"</span>,</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan census 2016"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="intro_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Based on this she locates a couple of good candidate neighbourhoods for her pilot and sends the map in a email to her colleague Peter to get input on which neighbourhood might be best suited.</p>
 <p>Peter has some good feedback for Amy, but also gets an idea to try and set up something similar in Vancouver. Peter asks Amy if she can share the code, and Amy sends along the above code snippets. Peter looks up the geographic identifier for Vancouver and subs that in instead of Toronto’s.</p>
-<div class="cell" data-hash="intro_cache/html/unnamed-chunk-4_4c15cf41c0abd5fcdaa6c8ce93835953">
+<div class="cell" data-hash="intro_cache/html/unnamed-chunk-4_7bb3fb48683f7c6010b0748cad5fe21f">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lico_yvr <span class="ot">&lt;-</span> <span class="fu">get_census</span>(<span class="st">"CA16"</span>,<span class="at">regions=</span><span class="fu">list</span>(<span class="at">CSD=</span><span class="st">"5915022"</span>), <span class="at">vectors=</span><span class="fu">c</span>(<span class="at">lico=</span><span class="st">"v_CA16_2573"</span>),</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">level=</span><span class="st">"CT"</span>,<span class="at">geo_format=</span><span class="st">"sf"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -335,12 +335,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill=</span><span class="st">"Share"</span>,</span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan census 2016"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="intro_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Easy peasy, thanks to Amy’s previous work. Peter takes the map to his friend Yuko and asks her for advice where a community-based intervention for low-income children might make sense in Calgary. Yuko asks for the code from Peter to take a closer look herself.</p>
 <p>Yuko is interested in a finer geographic breakdown, so she swaps our the geographic level from census tracts to dissemination areas.</p>
-<div class="cell" data-hash="intro_cache/html/unnamed-chunk-5_f6eb6317c37c892f6de1045c5ceee636">
+<div class="cell" data-hash="intro_cache/html/unnamed-chunk-5_e33963b7b3e0c8bbef36d9de6d9ceb01">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lico_yvr_da <span class="ot">&lt;-</span> <span class="fu">get_census</span>(<span class="st">"CA16"</span>,<span class="at">regions=</span><span class="fu">list</span>(<span class="at">CSD=</span><span class="st">"5915022"</span>), <span class="at">vectors=</span><span class="fu">c</span>(<span class="at">lico=</span><span class="st">"v_CA16_2573"</span>),</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">level=</span><span class="st">"DA"</span>,<span class="at">geo_format=</span><span class="st">"sf"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -352,11 +352,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill=</span><span class="st">"Share"</span>,</span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan census 2016"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="intro_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>But then Yuko pauses to think that maybe looking at share of the low income population is not the right metric. She decides to query the number of children in low income (vector “v_CA16_2558”) and prepare the data for a dot-density map.</p>
-<div class="cell" data-hash="intro_cache/html/unnamed-chunk-6_eb84c788fd18acd45a20bb4d532a2aba">
+<div class="cell" data-hash="intro_cache/html/unnamed-chunk-6_cb87dfcd9d93d9564b26766c43319f47">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github("mountainmath/dotdensity")</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dotdensity)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -373,12 +373,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill=</span><span class="st">"Share"</span>,</span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan census 2016"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="intro_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>That paints a somewhat different picture, and Yuko feels this is much better suited to pinpoint where to best stage a community intervention. She lets Peter and Amy know and emails them her modifications to the code.</p>
 <p>Meanwhile, Yuko’s Vancouver friend Stephanie is looking specifically at children below the age of 6 in low income, and wants to understand how the geographic distribution of low income children has changed over time. Comparing census data through time can be tricky because census geographies change, but this problem has been completely solved via the <a href="https://mountainmath.github.io/tongfen/articles/tongfen_ca.html"><strong>tongfen</strong> R package</a>. Looking at Yuko’s work she thinks it might be best to look at both, the change in share of children in low income as well as the change in absolute number.</p>
-<div class="cell" data-hash="intro_cache/html/unnamed-chunk-7_ee8de02a8ae9484c042056859ca058fb">
+<div class="cell" data-hash="intro_cache/html/unnamed-chunk-7_e47f402da29f31f12c1cd5e3633608e2">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tongfen)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>meta <span class="ot">&lt;-</span> <span class="fu">meta_for_ca_census_vectors</span>(<span class="fu">c</span>(<span class="at">total_2006=</span><span class="st">"v_CA06_1982"</span>,<span class="at">lico_share_2006=</span><span class="st">"v_CA06_1984"</span>,</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">lico_2016=</span><span class="st">"v_CA16_2561"</span>,<span class="at">lico_share_2016=</span><span class="st">"v_CA16_2576"</span>))</span>
@@ -389,7 +389,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Percentage point change</span><span class="st">`</span><span class="ot">=</span>lico_share_2016<span class="sc">-</span>lico_share_2006)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Armed with this data Stephanie can plot the absolute and percentage point change in children below 6 in low income.</p>
-<div class="cell" data-hash="intro_cache/html/unnamed-chunk-8_9e33f18579acea7be650fd9d325b7413">
+<div class="cell" data-hash="intro_cache/html/unnamed-chunk-8_1d571f2b9bf0daf2cc607537090b101d">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lico_data,<span class="fu">aes</span>(<span class="at">fill=</span><span class="st">`</span><span class="at">Absolute change</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>() <span class="sc">+</span></span>
@@ -397,10 +397,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Change in number of children under 6 in low income"</span>,</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Census 2006, 2016"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="intro_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-hash="intro_cache/html/unnamed-chunk-9_d007d892ef8d82e97aeef99923297183">
+<div class="cell" data-hash="intro_cache/html/unnamed-chunk-9_2b73b3c8d95a202f611242c023063eba">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lico_data,<span class="fu">aes</span>(<span class="at">fill=</span><span class="st">`</span><span class="at">Percentage point change</span><span class="st">`</span><span class="sc">/</span><span class="dv">100</span>)) <span class="sc">+</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">labels=</span>scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
@@ -409,12 +409,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill=</span><span class="st">"Percentage</span><span class="sc">\n</span><span class="st">point change"</span>,</span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Census 2006, 2016"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="intro_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Stephanie shares her results with Amy in Toronto in case there are components of Amy’s pilot specifically targeting children below 6 in low income.</p>
 <p>Meanwhile Amy has been trying to understand more broadly how the share of low income children has evolved since the 2016 census (using 2015 income data) at the metropolitan level over longer time spans, so she looks through the StatCan socioeconomic tables and settles on table 11-10-0135, which also allows her to compare various low income concepts.</p>
-<div class="cell" data-hash="intro_cache/html/unnamed-chunk-10_3b52c978d5220e22d62912f3455970ab">
+<div class="cell" data-hash="intro_cache/html/unnamed-chunk-10_9a6488fae9feff1e365126cd987d2af8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cansim)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>mbm_timeline <span class="ot">&lt;-</span> <span class="fu">get_cansim</span>(<span class="st">"11-10-0135"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Persons in low income</span><span class="st">`</span><span class="sc">==</span><span class="st">"Persons under 18 years"</span>,</span>
@@ -430,7 +430,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,</span>
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Table 11-10-0135"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="intro_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>She notes that there has been a substantial overall drop in children in low income since 2015 across all measures, which is excellent news. She considers pushing off her pilot project until after the 2021 census data comes out to first understand if the geographic patterns have changed.</p>

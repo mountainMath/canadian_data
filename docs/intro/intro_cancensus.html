@@ -301,11 +301,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>A slight complication, the <a href="https://mountainmath.github.io/cancensus/"><strong>cancensus</strong> package</a>needs an API key. You can sign up for one for free on <a href="https://censusmapper.ca/users/sign_up">CensusMapper</a>.</p>
 <p>Once you have your API key it’s useful to store it as an environment variable in your .Renviron configuration file so it’s available in all your R sessions.</p>
-<div class="cell" data-hash="intro_cancensus_cache/html/unnamed-chunk-1_0fbdbb7769817698450c685433d2537e">
+<div class="cell" data-hash="intro_cancensus_cache/html/unnamed-chunk-1_e27f35e34c5cfd7ad2a2b39b39045e75">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cancensus<span class="sc">::</span><span class="fu">set_api_key</span>(<span class="at">key =</span> <span class="st">"CensusMapper_XXXX...XXXX"</span>, <span class="at">install=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>By default {cancensus} cached downloaded census data, which makes it easier and faster to re-run analysis and protects from overusing the CensusMapper API quota. To use caching an local path needs to be designated for data caching. The cache is shared across R sessions.</p>
-<div class="cell" data-hash="intro_cancensus_cache/html/unnamed-chunk-2_ca31f8f204252df29d68207d172108c0">
+<div class="cell" data-hash="intro_cancensus_cache/html/unnamed-chunk-2_7e922320ec3f49ff7f32197430e2c200">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cancensus<span class="sc">::</span><span class="fu">set_cache_path</span>(<span class="at">cache_path =</span> <span class="st">"&lt;local path ot cache data&gt;"</span>, <span class="at">install=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>{cancensus} provides convenient access to census data. Calls to {cancensus} require to spectify</p>
@@ -317,7 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>The <code>geo_format</code> parameters allows to select if geographic data should also be downloaded, and if yes, in what format. In this post we will only access data via the modern “sf” format, but data can also be accessed in the legacy “sp” spatial data format.</p></li>
 </ul>
 <p>As an example we will retried the share of the population in Toronto, Mississauga, and Brampton spending 30% or more of income on shelter costs in 2016.</p>
-<div class="cell" data-hash="intro_cancensus_cache/html/unnamed-chunk-3_dece7cb31d2c72850da35be426bc7d31">
+<div class="cell" data-hash="intro_cancensus_cache/html/unnamed-chunk-3_f8b888a83b463666df8373f2c11b49c4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cancensus)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>regions <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">CSD=</span><span class="fu">c</span>(<span class="st">"3520005"</span>,<span class="st">"3521005"</span>,<span class="st">"3521010"</span>))</span>

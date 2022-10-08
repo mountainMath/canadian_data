@@ -260,12 +260,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question"><span class="toc-section-number">6.0.1</span>  Question</a></li>
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="toc-section-number">6.0.2</span>  Data sources</a></li>
-  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition"><span class="toc-section-number">6.0.3</span>  Data acquisition</a></li>
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="toc-section-number">6.0.4</span>  Data preparation</a></li>
-  <li><a href="#analysis-and-visualization" id="toc-analysis-and-visualization" class="nav-link" data-scroll-target="#analysis-and-visualization"><span class="toc-section-number">6.0.5</span>  Analysis and visualization</a></li>
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="toc-section-number">6.0.6</span>  Interpretation</a></li>
+  <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question"><span class="toc-section-number">6.1</span>  Question</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="toc-section-number">6.2</span>  Data sources</a></li>
+  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition"><span class="toc-section-number">6.3</span>  Data acquisition</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="toc-section-number">6.4</span>  Data preparation</a></li>
+  <li><a href="#analysis-and-visualization" id="toc-analysis-and-visualization" class="nav-link" data-scroll-target="#analysis-and-visualization"><span class="toc-section-number">6.5</span>  Analysis and visualization</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="toc-section-number">6.6</span>  Interpretation</a></li>
   </ul>
 </nav>
     </div>
@@ -294,15 +294,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <p>Private motor vehicles in Canada seem to be getting larger and it feels like SUVs and light trucks are taking over. This subjective feeling prompts us to ask the following question to check if this is just our imagination or a real phemominon.</p>
-<section id="question" class="level3" data-number="6.0.1">
-<h3 data-number="6.0.1" class="anchored" data-anchor-id="question"><span class="header-section-number">6.0.1</span> Question</h3>
+<section id="question" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="question"><span class="header-section-number">6.1</span> Question</h2>
 <p><strong>Are SUVs and light trucks taking over in Canada?</strong></p>
 <p>This question is somewhat vague, it’s not clear what <em>taking over</em> means. But the question is clear enough to get us started on some descriptive analysis.</p>
 </section>
-<section id="data-sources" class="level3" data-number="6.0.2">
-<h3 data-number="6.0.2" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">6.0.2</span> Data sources</h3>
+<section id="data-sources" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">6.2</span> Data sources</h2>
 <p>Data discovery can be challenging, but just typing “statcan motor vehicle sales” into a search engine is a good start and gets us to the StatCan table enumerating data on new motor vehicle sales. We can also use the built-in search functionality in the {cansim} package.</p>
-<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-1_fcc5bc39e74d9daf5fe4951f919d8450">
+<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-1_086c50e85bc0794c6f94347cd0b5635c">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cansim)</span>
@@ -320,11 +320,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>There are two tables with motor vehicle sales, we can inspect them on the web or via the {cansim} package. The second table covers a much shorter time period, and is also less recent. We will check out the first table to see if it fits our needs.</p>
 <p>To access the web we can simply type <code>view_cansim_webpage("20-10-0001")</code> into the console, which will open the StatCan webpage for Table 20-10-0001. Getting table overview data via the {cansim} package requires to load the table first, which can be slow for larger tables.</p>
-<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-2_5898a111c4bcfff44cf6391f6f2bc679">
+<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-2_0e8660bde18e18af0f7d624be1a6c5a4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cansim_table_overview</span>(<span class="st">"20-10-0001"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This tells us that Table 20-10-0001 might have the information we need, we check the table notes to better understand what “Trucks” entails, selecting the two columns we are interested in.</p>
-<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-3_78427b9b9262da60931ec0c65bb9c925">
+<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-3_04a8b9c934a63ad689e2cac3142e1db0">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cansim_table_notes</span>(<span class="st">"20-10-0001"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">Member Name</span><span class="st">`</span>,Note) <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -368,11 +368,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>It looks like “Trucks” does includes SUVs, but next to light trucks it also includes heavy trucks and buses. It also includes minivans, and thinking back at our original question, we might want to refine it to include minivans.</p>
 <p>This allows us to separate passenger cars from basically everything else. Thinking that heavy truck and bus sales probably only make up a small portion, we could use that as a stand-in for our “SUVs and light trucks” in our question. But the match is not ideal and this leaves questions open.</p>
 <p>Maybe Table 20-10-0002 works better for our purposes, time to look at the table overview.</p>
-<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-4_5b09c9102939216380cdb422e152d674">
+<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-4_dfd32ed25d755ac0b5dcca4ae3eb626c">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cansim_table_overview</span>(<span class="st">"20-10-0002"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The frequency is only annual as opposed to the monthly data from the previous table, but the breakdown of vehicle types looks much better for our purposes, it allows us to distinguish light trucks from heavy trucks and buses. Time to check the table notes for more details on the definitions.</p>
-<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-5_f90b076c3e2271ce27458dd53f3e026d">
+<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-5_fea0e50a8ef6756fd835c5f3e2aa7457">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cansim_table_notes</span>(<span class="st">"20-10-0002"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">Member Name</span><span class="st">`</span>,Note) <span class="sc">%&gt;%</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -411,10 +411,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>This looks like it fits what we need, we want to compare unit sales of Passenger cars to Light trucks.</p>
 </section>
-<section id="data-acquisition" class="level3" data-number="6.0.3">
-<h3 data-number="6.0.3" class="anchored" data-anchor-id="data-acquisition"><span class="header-section-number">6.0.3</span> Data acquisition</h3>
+<section id="data-acquisition" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="data-acquisition"><span class="header-section-number">6.3</span> Data acquisition</h2>
 <p>Getting the data is easy now. The {cansim} package will automatically add a native <code>Date</code> column, to convert annual data to dates it defaults to July 1st of that year. While it is a sensible default to assign a mid-year date to annual data, later on for plotting it will be more convenient for us to set the date at January 1st, so we change override the default using the optional <code>default_month</code> argument.</p>
-<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-6_008d7c8c0f00d5b3774d0e51001adfe5">
+<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-6_d105cc512df0449cc45da608eeaa3c86">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_cansim</span>(<span class="st">"20-10-0002"</span>, <span class="at">default_month =</span> <span class="dv">1</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">select</span>(Date,GEO,<span class="st">`</span><span class="at">Vehicle type</span><span class="st">`</span>,Sales,val_norm) <span class="sc">%&gt;%</span></span>
@@ -433,28 +433,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Quick inspection of the data, using the columns we identified in the overview, helps identify the basic structure of the data.</p>
 </section>
-<section id="data-preparation" class="level3" data-number="6.0.4">
-<h3 data-number="6.0.4" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">6.0.4</span> Data preparation</h3>
+<section id="data-preparation" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">6.4</span> Data preparation</h2>
 <p>There is not much data preparation needed, we just filter down to the data we are interested in.</p>
-<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-7_6ae91b99f95def0de048fbf0f10ce817">
+<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-7_374ff80ece9502a760fe3d16970e1b9e">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Vehicle type</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Passenger cars"</span>,<span class="st">"Light trucks"</span>),</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>         Sales<span class="sc">==</span><span class="st">"Units"</span>,</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>         GEO<span class="sc">==</span><span class="st">"Canada"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="analysis-and-visualization" class="level3" data-number="6.0.5">
-<h3 data-number="6.0.5" class="anchored" data-anchor-id="analysis-and-visualization"><span class="header-section-number">6.0.5</span> Analysis and visualization</h3>
+<section id="analysis-and-visualization" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="analysis-and-visualization"><span class="header-section-number">6.5</span> Analysis and visualization</h2>
 <p>Time to lake a look what this looks like, to plot we filter for the overall Canadian data series, and tell <code>ggplot</code> to map <em>Date</em> on the x-axis, the values colum `<code>VALUE`</code> on the y-axis, and colour by vehicle type.</p>
-<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-8_0a762a7ddb71593770be84255f754e6a">
+<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-8_11b08673fb9b62bd08b725957183d873">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_data,<span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>VALUE,<span class="at">colour=</span><span class="st">`</span><span class="at">Vehicle type</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="cars_vs_suvs_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="cars_vs_suvs_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>This is looking good, time to clean up the graph a bit. We add markers for the data points, nicer axis labels, as well as a title and labels.</p>
-<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-9_94768bba02a8dc532c14882d1800db8d">
+<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-9_be982233df13a343b0dd57d7df2ce515">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_data,<span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>VALUE,<span class="at">colour=</span><span class="st">`</span><span class="at">Vehicle type</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">21</span>) <span class="sc">+</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
@@ -465,13 +465,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,<span class="at">y=</span><span class="st">"Annual number of vehicles."</span>,</span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Table 20-10-0002"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="cars_vs_suvs_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="cars_vs_suvs_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>This answers our question in that more light trucks, SUVs, minivans and vans are sold than cars, and the gap has been growing. But the data only starts in 2010, and we suspect that things weren’t always this way. At what point did SUVs and light trucks overtake new car sales?</p>
 <p>To answer than we need to jump back and load the other time series. It won’t let us separate out heavy trucks and buses, but we can estimate how bad the difference is by comparing it to this data.</p>
 <p>We load the data and filter it down to the parts that we are interested in.</p>
-<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-10_4642f546c7017872a49fac7eba8fc498">
+<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-10_96fbc251d80db75a9d9468f000c9ad78">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">get_cansim</span>(<span class="st">"20-10-0001"</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>plot_data2 <span class="ot">&lt;-</span> data2 <span class="sc">|&gt;</span></span>
@@ -482,16 +482,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>         GEO<span class="sc">==</span><span class="st">"Canada"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A quick plot gives us a general idea what this looks like.</p>
-<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-11_316b2a8cf1c3602a1c0e85819d8ffed1">
+<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-11_27aba2d42c4b834aac07c78d576a86b4">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plot_data2 <span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>VALUE,<span class="at">colour=</span><span class="st">`</span><span class="at">Vehicle type</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="cars_vs_suvs_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<p><img src="cars_vs_suvs_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>There is a strong seasonal pattern in vehicle sales, for now we will just aggregate it to annual sales so we can compare it with the previous data. For this we extract they <code>Year</code> from the <code>Date</code> column, group by <code>Year</code> and <code>Vehicle type</code> and summarize by adding up the `VALUE` column. We added a count column to keep track how many months we added up so we can later ensure we are only showing years for which we have complete data.</p>
-<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-12_b83f4c3037a62e96c926958ef753f91a">
+<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-12_da520f510c7982c6d8b4e63a81c9617e">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plot_data2_annual <span class="ot">&lt;-</span> plot_data2 <span class="sc">|&gt;</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Year=</span><span class="fu">strftime</span>(Date,<span class="st">"%Y"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year,<span class="st">`</span><span class="at">Vehicle type</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
@@ -502,11 +502,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_data2_annual,<span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>VALUE,<span class="at">colour=</span><span class="st">`</span><span class="at">Vehicle type</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="cars_vs_suvs_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<p><img src="cars_vs_suvs_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Time to combine this with our previous data. This tells us that the most interesting change happened 1985 and onward, so we will discard earlier years. One quick sanity check is to see if the annual passenger car sales derived from the two series agree for the years where they are in common. Here we join the two data tables by <code>Date</code> and <code>Vehicle type</code> in order to compare the two estimate. We rename the <code>VALUE</code> column on the first one in order to avoid name conflicts.</p>
-<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-13_6c038293e62bc781b0ce12af7a734f22">
+<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-13_01f65cb7ec7a14b0cd18d6a231c39b96">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plot_data <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Vehicle type</span><span class="st">`</span><span class="sc">==</span><span class="st">"Passenger cars"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Date,<span class="st">`</span><span class="at">Vehicle type</span><span class="st">`</span>,<span class="at">VALUE1=</span>VALUE) <span class="sc">%&gt;%</span></span>
@@ -532,7 +532,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>The data for all years agrees, except for 2013 where one series counts 4 more passenger cars.</p>
-<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-14_4b2fe88c85ab4a5fc6b9ab80a4f3eb76">
+<div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-14_79c8a9cc6e80f88d6c8b17a53eaef3cb">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(plot_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="st">`</span><span class="at">Vehicle type</span><span class="st">`</span><span class="sc">!=</span><span class="st">"Passenger cars"</span>),</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>          plot_data2_annual <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Date<span class="sc">&gt;=</span><span class="fu">as.Date</span>(<span class="st">"1985-01-01"</span>))) <span class="sc">%&gt;%</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>VALUE,<span class="at">colour=</span><span class="st">`</span><span class="at">Vehicle type</span><span class="st">`</span>)) <span class="sc">+</span></span>
@@ -548,12 +548,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,<span class="at">y=</span><span class="st">"Annual number of vehicles."</span>,</span>
 <span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Tables 20-10-0001, 20-10-0002"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="cars_vs_suvs_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<p><img src="cars_vs_suvs_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
-<section id="interpretation" class="level3" data-number="6.0.6">
-<h3 data-number="6.0.6" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">6.0.6</span> Interpretation</h3>
+<section id="interpretation" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">6.6</span> Interpretation</h2>
 <p>This confirms our initial suspicion that the “Trucks” category is dominated by light trucks, SUVs, minivans and vans, at least for the years 2010 onwards where we have data for both. Which gives us confidence to say that truck and SUV sales caught up to passenger cars sales by around 1997, and the two evolved fairly parallel until 2009, after which SUVs and light trucks increased dramatically and passenger car sales fell.</p>
 
 

@@ -260,13 +260,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question"><span class="toc-section-number">7.0.1</span>  Question</a></li>
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="toc-section-number">7.0.2</span>  Data sources</a></li>
-  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition"><span class="toc-section-number">7.0.3</span>  Data acquisition</a></li>
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="toc-section-number">7.0.4</span>  Data preparation</a></li>
-  <li><a href="#analysis-and-visualization" id="toc-analysis-and-visualization" class="nav-link" data-scroll-target="#analysis-and-visualization"><span class="toc-section-number">7.0.5</span>  Analysis and visualization</a></li>
-  <li><a href="#data-acquisition-part-2" id="toc-data-acquisition-part-2" class="nav-link" data-scroll-target="#data-acquisition-part-2"><span class="toc-section-number">7.0.6</span>  Data acquisition (part 2)</a></li>
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="toc-section-number">7.0.7</span>  Interpretation</a></li>
+  <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question"><span class="toc-section-number">7.1</span>  Question</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="toc-section-number">7.2</span>  Data sources</a></li>
+  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition"><span class="toc-section-number">7.3</span>  Data acquisition</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="toc-section-number">7.4</span>  Data preparation</a></li>
+  <li><a href="#analysis-and-visualization" id="toc-analysis-and-visualization" class="nav-link" data-scroll-target="#analysis-and-visualization"><span class="toc-section-number">7.5</span>  Analysis and visualization</a></li>
+  <li><a href="#data-acquisition-part-2" id="toc-data-acquisition-part-2" class="nav-link" data-scroll-target="#data-acquisition-part-2"><span class="toc-section-number">7.6</span>  Data acquisition (part 2)</a></li>
+  <li><a href="#analysis-and-visualization-1" id="toc-analysis-and-visualization-1" class="nav-link" data-scroll-target="#analysis-and-visualization-1"><span class="toc-section-number">7.7</span>  Analysis and visualization</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="toc-section-number">7.8</span>  Interpretation</a></li>
   </ul>
 </nav>
     </div>
@@ -295,20 +296,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <p>Incomes in a region change by people getting higher (or lower) incomes as well as people moving in and out of a region. We can observe the aggregate effects by looking at change in income statistics.</p>
-<section id="question" class="level3" data-number="7.0.1">
-<h3 data-number="7.0.1" class="anchored" data-anchor-id="question"><span class="header-section-number">7.0.1</span> Question</h3>
+<section id="question" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="question"><span class="header-section-number">7.1</span> Question</h2>
 <p><strong>Where and how did incomes change in the City of Vancouver?</strong></p>
 </section>
-<section id="data-sources" class="level3" data-number="7.0.2">
-<h3 data-number="7.0.2" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">7.0.2</span> Data sources</h3>
+<section id="data-sources" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">7.2</span> Data sources</h2>
 <p>The main data sources for fine-geography income data is the census, although custom tabulations of T1FF taxfiler data can offer insight of this on an annual basis at the census tract geography. For our question we are interested in broad temporal ranges, so the 5-year census data will work well.</p>
 <p>We need to decide which income concept is best suited for our question, it is worthwhile to spend some time with the <a href="https://www12.statcan.gc.ca/census-recensement/2021/ref/98-500/004/98-500-x2021004-eng.cfm">Census Income Reference Guide</a> to understand how the data was collected and what income concept to use. Prior to 2011 the income data was part of the long form census. In 2011 the mandatory long form was replaced with the voluntary NHS, given people the option to link directly to T1FF taxfiler data or to detail the income data manually. Starting 2016 income data was linked for all people to the T1FF taxfiler data.</p>
 <p>The question what income concept to use, e.g.&nbsp;individual income, household income, family income, employment income, etc, depends on the particular question we are interested in. For now we will go with family income, trying to understand how the income situation of families varies across Vancouver and across time. Family income is less affected by demographic factors like the distribution of single vs multiple person households, but is still impacted by e.g.&nbsp;differences in shares of seniors vs young families vs families at the peak of their earnings.</p>
 </section>
-<section id="data-acquisition" class="level3" data-number="7.0.3">
-<h3 data-number="7.0.3" class="anchored" data-anchor-id="data-acquisition"><span class="header-section-number">7.0.3</span> Data acquisition</h3>
+<section id="data-acquisition" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="data-acquisition"><span class="header-section-number">7.3</span> Data acquisition</h2>
 <p>We again use the <a href="https://censusmapper.ca/api">CensusMapper API tool</a> to locate the internal CensusMapper identifiers for Median Total Income of Economic Families for the years 2006 through 2021. For 2001 the standard census products reported income for census families instead of economic families, so they aren’t directly comparable. As geographic breakdown we choose census tracts.</p>
-<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-1_c51b226422fb9d3e74934bd709037812">
+<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-1_bf5300ce369853400b38391fb1692060">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>regions <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">CSD=</span><span class="st">"5915022"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>income_vectors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"2021"</span><span class="ot">=</span><span class="st">"v_CA21_965"</span>,</span>
@@ -317,7 +318,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"2006"</span><span class="ot">=</span><span class="st">"v_CA06_1741"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To facilitate the data import we write a wrapper function to acquire the census data for each of our four years. For a given census year we create the corresponding dataset identifier and select the appropriate income variable. to reduce clutter we select just the income variable and also keep the geographic identifier, and add the census year to the table.</p>
-<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-2_9542db4b5ec1923a8593f9f6f48286d2">
+<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-2_00a450c75737bfb70984e8aa8a999cf8">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>get_census_data <span class="ot">&lt;-</span> <span class="cf">function</span>(year){</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  year <span class="ot">&lt;-</span> <span class="fu">as.character</span>(year)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  dataset <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"CA"</span>,<span class="fu">substr</span>(year,<span class="dv">3</span>,<span class="dv">4</span>))</span>
@@ -329,13 +330,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Importing the data is easy now, we just call our function for each census year and collect it into a data frame.</p>
-<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-3_f7d50c9d48f7427c88052820057e8672">
+<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-3_874ab3ace8b9fcf73da93ccab57e4142">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cancensus)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>income_data <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2006</span>,<span class="dv">2021</span>,<span class="dv">5</span>) <span class="sc">|&gt;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(get_census_data) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s take a quick look.</p>
-<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-4_e0c0e0c6383d67a694240febbf02dc88">
+<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-4_beee6f39ff4c2aa1c46996033e417397">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(income_data) <span class="sc">+</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>ef_income),<span class="at">size=</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option=</span><span class="st">"inferno"</span>, <span class="at">labels=</span>scales<span class="sc">::</span>dollar) <span class="sc">+</span></span>
@@ -345,14 +346,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill=</span><span class="st">"Current dollars"</span>,</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Census 2006-2021"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="geography_of_income_change_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="geography_of_income_change_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
-<section id="data-preparation" class="level3" data-number="7.0.4">
-<h3 data-number="7.0.4" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">7.0.4</span> Data preparation</h3>
+<section id="data-preparation" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">7.4</span> Data preparation</h2>
 <p>Looking at the above graph we can see the geographic variation in each year, but it is difficult to discern geographic trends over time as incomes have gone up a lot during this timeframe. It makes sense to look at inflation-adjusted incomes instead. For this we use annual consumer price index data from <a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1810000501">StatCan Table 18-10-0005</a>. To simplify things we locate the specific vector <strong>v41693271</strong> for the all-time CPI.</p>
-<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-5_3eadbf0d845984bb7ac597602c9a193c">
+<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-5_38a8bbce3fe099431c6451d233b7b38b">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cansim)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>inflation <span class="ot">&lt;-</span> <span class="fu">get_cansim_vector</span>(<span class="st">"v41693271"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Year=</span><span class="fu">strftime</span>(Date,<span class="st">"%Y"</span>)) <span class="sc">|&gt;</span></span>
@@ -371,15 +372,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="analysis-and-visualization" class="level3" data-number="7.0.5">
-<h3 data-number="7.0.5" class="anchored" data-anchor-id="analysis-and-visualization"><span class="header-section-number">7.0.5</span> Analysis and visualization</h3>
+<section id="analysis-and-visualization" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="analysis-and-visualization"><span class="header-section-number">7.5</span> Analysis and visualization</h2>
 <p>With this, we can adjust the census data by inflation. We choose to base everything on 2021 dollars.</p>
-<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-6_48f4ed4d304cc75585e9af617400750d">
+<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-6_de2dd5475a9fd0272837194cf3a40409">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>inflation <span class="ot">&lt;-</span> inflation <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">CPI=</span>CPI<span class="sc">/</span><span class="fu">last</span>(CPI,<span class="at">order_by =</span> Year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we just join the inflation data onto our income data by year, this adds the <code>CPI</code> column from the inflation data farme to our income with the CPI value corresponding to the value in the <code>Year</code> column in each of the two data frames. We then colour by inflation-adjusted income using the same code for graphing as above.</p>
-<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-7_0a9d67f27d5d75e869037ca166a761e0">
+<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-7_0cbb0d28741966fff60a2adf7e3ff591">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>income_data <span class="sc">|&gt;</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(inflation,<span class="at">by=</span><span class="st">"Year"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
@@ -391,16 +392,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill=</span><span class="st">"Constant 2021</span><span class="sc">\n</span><span class="st">dollars"</span>,</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Census 2006-2021"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="geography_of_income_change_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<p><img src="geography_of_income_change_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>This shows more clearly how incomes have increased over time, but it would be nice to compute the change in income 2006 to 2021 for each individual census tract. But keen observers will notice that some census tracts have changed over the years, making it very difficult to compare data directly.</p>
 </section>
-<section id="data-acquisition-part-2" class="level3" data-number="7.0.6">
-<h3 data-number="7.0.6" class="anchored" data-anchor-id="data-acquisition-part-2"><span class="header-section-number">7.0.6</span> Data acquisition (part 2)</h3>
+<section id="data-acquisition-part-2" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="data-acquisition-part-2"><span class="header-section-number">7.6</span> Data acquisition (part 2)</h2>
 <p>Fortunately the problem of making census data comparable across time has been solved with the t<a href="https://mountainmath.github.io/tongfen/index.html">ongfen package</a>. This allows us to create a semi-custom tabulation on the fly on a harmonized geography based on census tracts by aggregating census data appropriately. One problem is that medians can’t be aggregated, so we need to either use average income instead or be content that medians can only be approximated. By default the <strong>tongfen</strong> package aggregates medians as if they were averages and emits a warning. This is the route we will take for this.</p>
 <p>To start out, we need to create metadata for the <strong>tongfen</strong> procedure. This is automated for Canadian census data, leveraging the metadata built into CensusMapper.</p>
-<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-8_053e006753c61c9dd3ad8a3254c175f3">
+<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-8_e34ee5defc2f4eb6224388616b164170">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tongfen)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>meta <span class="ot">&lt;-</span> <span class="fu">meta_for_ca_census_vectors</span>(income_vectors)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -421,30 +422,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>The metadata contains our original income data, as well as extra variables needed to properly aggregate the data. Getting the income data on a common geography is easy now.</p>
-<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-9_fa130059e1cf49e74712f2ce6a1710f2">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>unified_income_data <span class="ot">&lt;-</span> <span class="fu">get_tongfen_ca_census</span>(regions,meta)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>inflation_2006_2021 <span class="ot">&lt;-</span> inflation <span class="sc">|&gt;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year<span class="sc">==</span><span class="st">"2006"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(CPI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-9_f414d80b1ed7941bfe8b4e23f2609cf4">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>unified_income_data <span class="ot">&lt;-</span> <span class="fu">get_tongfen_ca_census</span>(regions,meta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We also grab the inflation adjustment factor for 2006 to 2021. With that we can simply plot the data, mapping the inflation-adjusted percent change 2006 to 2021.</p>
-<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-10_12e254d1a9a94e63a5bbf1840eec6e07">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>unified_income_data <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span><span class="st">`</span><span class="at">2021</span><span class="st">`</span><span class="sc">/</span><span class="st">`</span><span class="at">2006</span><span class="st">`</span><span class="sc">*</span>inflation_2006_2021<span class="dv">-1</span>),<span class="at">size=</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option=</span><span class="st">"cividis"</span>, <span class="at">labels=</span>scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">datum=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Change in economic family income"</span>,</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill=</span><span class="st">"Change 2006-2021</span><span class="sc">\n</span><span class="st">(inflation adjusted)"</span>,</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Census 2006-2021"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="analysis-and-visualization-1" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="analysis-and-visualization-1"><span class="header-section-number">7.7</span> Analysis and visualization</h2>
+<p>In line with what we did before we want look at inflation-adjusted income change. To this end we extract the adjustment factor for the 2006-2021 timeframe.</p>
+<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-10_577735381f8e939f3822d3335be3d3a5">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>inflation_2006_2021 <span class="ot">&lt;-</span> inflation <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year<span class="sc">==</span><span class="st">"2006"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(CPI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>With that we can simply plot the data, mapping the inflation-adjusted percent change 2006 to 2021.</p>
+<div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-11_2b3c72d4cf4c1300f68a7643b664af49">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>unified_income_data <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span><span class="st">`</span><span class="at">2021</span><span class="st">`</span><span class="sc">/</span><span class="st">`</span><span class="at">2006</span><span class="st">`</span><span class="sc">*</span>inflation_2006_2021<span class="dv">-1</span>),<span class="at">size=</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option=</span><span class="st">"cividis"</span>, <span class="at">labels=</span>scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">datum=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Change in economic family income"</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill=</span><span class="st">"Change 2006-2021</span><span class="sc">\n</span><span class="st">(inflation adjusted)"</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Census 2006-2021"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="geography_of_income_change_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<p><img src="geography_of_income_change_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
-<section id="interpretation" class="level3" data-number="7.0.7">
-<h3 data-number="7.0.7" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">7.0.7</span> Interpretation</h3>
+<section id="interpretation" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">7.8</span> Interpretation</h2>
 <p>In summary we see that income of economic families changed fasted in the Downtown Eastside, Grandview-Woodlands and Strathcona neighbourhoods, effectively doubling. Incomes increased least on the West Side, where they were already quite high to start with, and increased by about 50% throughout much of the East Side.</p>
 
 

@@ -5,11 +5,11 @@ editor: visual
 
 In 2020 Canada introduced the COVID-19 Emergency Recovery Benefit (CERB), a program to support people with who lost income during the pandemic.
 
-### Question
+## Question
 
 **Where did CERB benefits go?**
 
-### Data sources
+## Data sources
 
 Standard T1FF taxfiler data has this for large geographies, to understand fine geographic distribution we turn to Census data from the 2021 census, which reports on 2020 income. The [census dictionary explains](https://www12.statcan.gc.ca/census-recensement/2021/ref/dict/az/Definition-eng.cfm?ID=pop256)
 
@@ -17,7 +17,7 @@ Standard T1FF taxfiler data has this for large geographies, to understand fine g
 
 Census income data is taken directly from T1 tax returns and linked at the individual person level.
 
-### Data acquisition
+## Data acquisition
 
 We can use the [CensusMapper API tool](https://censusmapper.ca/api) and search for "COVID-19" in the *Variable Selection* tab to locate available census variables. Since we are interested in where people lived that received the benefit we select **v_CA21_593**, the number of recipients, as well as **v_CA21_554**, the baseline of people 15 years or older who are in principle eligible for this benefit.
 
@@ -32,7 +32,7 @@ ottawa_cerb <- get_census("CA21",regions=list(CSD="3506008"),
                           level="CT", geo_format="sf")
 ```
 
-### Data preparation
+## Data preparation
 
 To understand the geographic distribution we compute the percentage of people 15 years and over receiving CERB. Generally in this book we work in the **tidyverse** to help with data manipulation and visualization, so we load that library too.
 
@@ -44,7 +44,7 @@ plot_data <- ottawa_cerb |>
 
 There is not much to do, computing a percentage is a simple division. The `mutate` verb creates a new column called `Share` holding the computed ratios.
 
-### Analysis and visualization
+## Analysis and visualization
 
 All that's left is to visualize the data. To plot geographic data we use `ggplot` and the `geom_sf` geometry. We need to tell it how to colour the map, the *aesthetic*, and we specify to fill each area by the share of CERB recipients.
 
@@ -99,6 +99,6 @@ get_census("CA21",regions=list(CMA="505"),
        caption="StatCan Census 2021")
 ```
 
-### Interpretation
+## Interpretation
 
 We notice substantial differences in the share of people receiving CERB benefits, with rural areas generally having lower shares, and central areas being more mixed, varying between under 10% to well over 40% of people 15 years and over receiving CERB. Generally areas with lower incomes have benefited more from CERB.

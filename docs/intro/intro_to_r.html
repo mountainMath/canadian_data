@@ -306,7 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="packages" class="level2">
 <h2 class="anchored" data-anchor-id="packages">Packages</h2>
 <p>Packages are bundled sets of functionality that expand base R. We install or upgrade packages with the <code>install.packages`</code>. For example, to install the <a href="https://www.tidyverse.org">tidyverse framework</a> we type</p>
-<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-1_ac17d307cc6d8841e9b3f5d62a974249">
+<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-1_ce1f36f71bcb84f0fc7477e7128176b3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>into the R console. This will install or upgrade the package and required dependencies. To make the functionality, for example the <code>tibble</code> function from the <strong>tibble</strong> package that is part of <strong>tidyverse</strong>, available to use we can then either access functions from the package using the <code>::</code> namespace selector <code>tibble::tibble()</code> or first load the <strong>tibble</strong> or <strong>tidyverse</strong> package via <code>library(tidyverse)</code> that makes the <code>tibble()</code> function available without having to use the namespace selector.</p>
@@ -314,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="basic-data-manipulation-patterns" class="level2">
 <h2 class="anchored" data-anchor-id="basic-data-manipulation-patterns">Basic data manipulation patterns</h2>
 <p>There are several basic data manipulation patterns that we will use throughout, and we want to give a quick overview using the Palmer Penguins dataset from the <strong>palmerpenguins</strong> package.</p>
-<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-2_29386b49b828806b62ec8f62481edf3f">
+<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-2_c3229c78d2001ebc3cd0a0cb41955b28">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("palmerpenguins") # install the package if needed</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -322,7 +322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="exploring-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="exploring-the-data">Exploring the data</h3>
 <p>With the <strong>palmerpenguins</strong> package comes the <code>penguins</code> dataset, we can expect the first few rows using the <code>head()</code> function which displays the first few rows.</p>
-<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-3_dc1b599e905f62f8aa58ad442a9ed601">
+<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-3_fffafbbe3f9a229adba51921248d4bdd">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 8
@@ -338,7 +338,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>The <code>str()</code> function offers another convenient way to get an overview over the data.</p>
-<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-4_e96b62bcf1662b0bba266919db739140">
+<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-4_b2ae9037eaf343257326724d5f6a7386">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
@@ -357,14 +357,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="basic-data-manipulation" class="level3">
 <h3 class="anchored" data-anchor-id="basic-data-manipulation">Basic data manipulation</h3>
 <p>To manipulate and visualize the data we load the tidyverse package.</p>
-<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-5_cb69bf7b4ba74eb6807d19999b8d97cb">
+<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-5_c505bc25ee238386166bb155524d34d7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will explore some common data manipulation and visualization workflows.</p>
 <section id="count-groups" class="level4">
 <h4 class="anchored" data-anchor-id="count-groups">Count groups</h4>
 <p>To see how many rows there are for each species we ‘pipe’ the <code>penguins</code> dataset into the <code>count()</code> verb. Pipes are how we can stepwise transform data, the pipe operator is given by <code>%&gt;%</code> withing the <strong>tidyverse</strong> framework and now also available natively in base R via <code>|&gt;</code>. These two function (almost) the same way, and we will use both in this book.</p>
-<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-6_6d1dcbf9b3908dfe432ebade6a3d56d3">
+<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-6_23c61780a7fb7d7704ff73f02300ddca">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> <span class="fu">count</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
@@ -380,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="group-and-summarize" class="level4">
 <h4 class="anchored" data-anchor-id="group-and-summarize">Group and summarize</h4>
 <p>The usefulness of the pipe operator becomes clear when we chain several data transformation. If we want to know the mean bill length by species, we group by species and summarize the data.</p>
-<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-7_25d0f5c2735ae9cc748298e08c353360">
+<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-7_01541e51b9f04bb704c839430162078b">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">bill_length_mm=</span><span class="fu">mean</span>(bill_length_mm, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -399,7 +399,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="visualizing-data" class="level3">
 <h3 class="anchored" data-anchor-id="visualizing-data">Visualizing data</h3>
 <p>We can visualize the data using <code>ggplot</code>. For this we have to specify the mapping aesthetics, we plot the bill length on the x-axis, the depth on the y-axis, colour by species and plot the data as points. The <code>labs()</code> function allows us to customize the graph labels.</p>
-<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-8_5e1e04fb0df188cd7c65186e07fd8bf3">
+<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-8_7fa7e0ebf9c8ae478a79a7f63ccb1b79">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins,<span class="fu">aes</span>(<span class="at">x=</span>bill_length_mm,<span class="at">y=</span>bill_depth_mm,<span class="at">colour=</span>species)) <span class="sc">+</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Penguin bill length vs depth"</span>,</span>
@@ -407,13 +407,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour=</span><span class="st">"Penguin species"</span>,</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"Palmer Station Antarctica LTER"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="intro_to_r_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="intro_to_r_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid"></p>
 </div>
 </div>
 <section id="add-regression-lines" class="level4">
 <h4 class="anchored" data-anchor-id="add-regression-lines">Add regression lines</h4>
 <p>As an aside we note the Simpson’s paradox, in the overall dataset the bill depth declines with length, but if we look separately within each species the bill depth increases with bill length. To make that explicit we can add regression lines using the <code>geom_smooth</code> function using <code>lm</code> (linear model) as the smoothing method.</p>
-<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-9_fd49e4ae5a46f05e546f18d66b1ea26e">
+<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-9_fa859b64f0ddc3a7468cdf7a06c47819">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins,<span class="fu">aes</span>(<span class="at">x=</span>bill_length_mm,<span class="at">y=</span>bill_depth_mm,<span class="at">colour=</span>species)) <span class="sc">+</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>) <span class="sc">+</span></span>
@@ -423,7 +423,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour=</span><span class="st">"Penguin species"</span>,</span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"Palmer Station Antarctica LTER"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="intro_to_r_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="intro_to_r_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>The first <code>geom_smooth()</code> function will add a regression line for each species, distinguished by colour in the plot aesthetics. Overriding the <code>colour</code> argument in the second <code>geom_smooth()</code> function will forget that the data was coloured by species and add the black regression line run on the entire dataset.</p>
@@ -435,7 +435,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="filtering-rows" class="level4">
 <h4 class="anchored" data-anchor-id="filtering-rows">Filtering rows</h4>
 <p>Often we are only interested in subsets of the data, we can filter the rows in the dataset by using the <code>filter</code> verb from the <strong>dplyr</strong> package that is part of <strong>tidyverse</strong>. For example, if we want to take the previous plot but only show it for penguins on the island of Biscoe we can filter the data accordingly before plotting it.</p>
-<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-10_ba3d6a517c66c7f1dc404eee0ef00819">
+<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-10_7ed2b0f57f697a73b1ffe911958fe024">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(island<span class="sc">==</span><span class="st">"Biscoe"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>bill_length_mm,<span class="at">y=</span>bill_depth_mm,<span class="at">colour=</span>species)) <span class="sc">+</span></span>
@@ -448,14 +448,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour=</span><span class="st">"Penguin species"</span>,</span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"Palmer Station Antarctica LTER"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="intro_to_r_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<p><img src="intro_to_r_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
 <section id="selecting-columns" class="level4">
 <h4 class="anchored" data-anchor-id="selecting-columns">Selecting columns</h4>
 <p>Instead of filtering rows It can be useful to select a subset of the columns to remove columns we don’t need and de-clutter the dataset. This is especially useful when producing tables. If we want a table of the numeric data fields of all female Adelie penguins on the island of Biscoe observed in 2007 we can filter by sex and island and select the columns we want.</p>
-<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-11_fec0df3f87bc81f91467bc0d5b38ffb2">
+<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-11_e25dc5376308f97d178ea80e51ae8e4b">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(island<span class="sc">==</span><span class="st">"Biscoe"</span>, sex<span class="sc">==</span><span class="st">"female"</span>, species<span class="sc">==</span><span class="st">"Adelie"</span>, year<span class="sc">==</span><span class="dv">2007</span>) <span class="sc">|&gt;</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric),<span class="sc">-</span>year) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -474,7 +474,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="mutating-data" class="level4">
 <h4 class="anchored" data-anchor-id="mutating-data">Mutating data</h4>
 <p>We often want to change data fields, or compute new columns from existing ones. For example, if we want to convert the body mass from <em>g</em> to <em>kg</em> we can add a new column using <code>mutate</code> for that.</p>
-<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-12_1f10861e353aaf02c2169a5b7cf08977">
+<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-12_4c2620a83d504b7ed88793e0a88f4d32">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>penguin_selection <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(island<span class="sc">==</span><span class="st">"Biscoe"</span>, sex<span class="sc">==</span><span class="st">"female"</span>, species<span class="sc">==</span><span class="st">"Adelie"</span>, year<span class="sc">==</span><span class="dv">2007</span>) <span class="sc">|&gt;</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">body_mass_kg=</span>body_mass_g<span class="sc">/</span><span class="dv">1000</span>) <span class="sc">|&gt;</span></span>
@@ -496,7 +496,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="pivoting-data" class="level4">
 <h4 class="anchored" data-anchor-id="pivoting-data">Pivoting data</h4>
 <p>The data in our <code>penguin_selection</code> dataset above is in <strong>wide form</strong>, all the different variables are in their own column. Often it is useful to convert it to <strong>long form</strong>, where we only have one value column with the numeric values and another column specifying the type of measurement. In this case it is useful to add an identification column so that we know which measurements belong to the same penguin. We can just label the penguins by row number.</p>
-<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-13_be62a8678657249616f032a0a10b4b68">
+<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-13_bc4783e022b850291f58a812734801e5">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>penguin_selection_long <span class="ot">&lt;-</span> penguin_selection <span class="sc">|&gt;</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ID=</span><span class="fu">row_number</span>()) <span class="sc">|&gt;</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>ID,<span class="at">names_to=</span><span class="st">"Metric"</span>,<span class="at">values_to=</span><span class="st">"Value"</span>)</span>
@@ -515,7 +515,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>We can do the reverse transformation, going <strong>from long</strong> form to <strong>wide form</strong>, using <code>pivot_wider</code>.</p>
-<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-14_193fc216c945529aa0679a6bf484481f">
+<div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-14_2e5a203054a60f23177c8839e60763cc">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>penguin_selection_long <span class="sc">|&gt;</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Metric,<span class="at">values_from =</span> Value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">

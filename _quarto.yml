@@ -6,8 +6,18 @@ book:
   title: "Analyzing Canadian Demographic and Housing Data"
   author: "Jens von Bergmann"
   date: "2022-04-01"
-  description: "Building skills and community to analyse Canadian demographic and housing data."
+  description: "Building skills and community to analyze Canadian demographic and housing data."
   search: true
+  twitter-card: true
+  image: cover.png
+  card-style: summary_large_image
+  site-url: "https://mountainmath.github.io/canadian_data/"
+  fig-format: png
+  sidebar:
+    style: docked
+    background: light
+    logo: cover.png
+  top-level-division: part
   page-footer: 
     left: "Copyright 2022, Jens von Bergmann" 
     right: 
@@ -28,6 +38,7 @@ book:
     - part: basic_descriptive/basic_descriptive.qmd
       chapters:
       #- basic_descriptive/high_income_new_housing.qmd
+      - basic_descriptive/cerb.qmd
       - basic_descriptive/cars_vs_suvs.qmd
     - part: advanced_descriptive/advanced_descriptive.qmd
       chapters:
@@ -35,10 +46,20 @@ book:
     - references.qmd
 
 bibliography: references.bib
+# csl: citestyle.csl
+
+execute:
+  message: false
+  warning: false
+  cache: true
 
 format:
   html:
-    theme: cosmo
+    #theme: cosmo
+    theme:
+      light: flatly
+      dark: darkly
+    code-copy: true
   pdf:
     documentclass: scrreprt
 

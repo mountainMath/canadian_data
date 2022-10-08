@@ -89,7 +89,7 @@ inflation <- inflation |>
   mutate(CPI=CPI/last(CPI,order_by = Year))
 ```
 
-Now we just join the inflation data onto our income data by year, and colour by inflation-adjusted income using the same code for graphing as above.
+Now we just join the inflation data onto our income data by year, this adds the `CPI` column from the inflation data farme to our income with the CPI value corresponding to the value in the `Year` column in each of the two data frames. We then colour by inflation-adjusted income using the same code for graphing as above.
 
 ```{r}
 income_data |>

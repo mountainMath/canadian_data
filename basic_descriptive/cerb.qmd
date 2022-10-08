@@ -11,7 +11,11 @@ In 2020 Canada introduced the COVID-19 Emergency Recovery Benefit (CERB), a prog
 
 ### Data sources
 
-Standard T1FF taxfiler data has this for large geographies, to understand fine geographic distribution we turn to Census data from the 2021 census, which reports on 2020 income.
+Standard T1FF taxfiler data has this for large geographies, to understand fine geographic distribution we turn to Census data from the 2021 census, which reports on 2020 income. The [census dictionary explains](https://www12.statcan.gc.ca/census-recensement/2021/ref/dict/az/Definition-eng.cfm?ID=pop256)
+
+> Canada Emergency Response Benefit (CERB) payments received during the reference period. This benefit was intended to provide financial support to employees and self‑employed Canadians who had lost their job or were working fewer hours due to the COVID‑19 pandemic and the public health measures implemented to minimize the spread of the virus.
+
+Census income data is taken directly from T1 tax returns and linked at the individual person level.
 
 ### Data acquisition
 
@@ -38,7 +42,7 @@ plot_data <- ottawa_cerb |>
   mutate(Share=cerb/base)
 ```
 
-There is not much to do, computing a percentage is a simple division.
+There is not much to do, computing a percentage is a simple division. The `mutate` verb creates a new column called `Share` holding the computed ratios.
 
 ### Analysis and visualization
 

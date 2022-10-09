@@ -331,7 +331,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="data-acquisition" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="data-acquisition"><span class="header-section-number">8.3</span> Data acquisition</h2>
 <p>The <a href="https://mountainmath.github.io/cmhc/"><strong>cmhc</strong> package</a> facilitates importing data from CMHC. This pries data out the <a href="https://www03.cmhc-schl.gc.ca/hmip-pimh/en">Housing Market Information Portal</a> where data is organized across a variety of tables. The easiest way to locate a table of interest is to use the <code>select_cmhc_table()</code> function from the <strong>cmhc</strong> package in the console to interactively step through the process. In our case, we are interested in data from the Starts and Completions Survey (<strong>Scss</strong>), look at the <strong>Under Construction</strong> series, after which we can select to have data broken down by B<strong>edroom Type</strong> or I<strong>ntended Market</strong>, where we select the former. Lastly we need to decide the breakdown type, either a level of geography or <strong>Historical Time Periods</strong> for a fixed geography, which is what we are interested in.</p>
-<p>Going through this process gives us the code we need to access the data, all we need to do is fill in the geographic identifier. The <strong>cmhc</strong> package is designed to work in conjunction with other census data, so it uses the same geographic identifiers and translates them to CMHC’s own internal geographic identifiers under the hood. For Toronto, we need to decided if we are interested in the City of the metro area and grab the geographic identifier from the CensusMapper API tool. We will query data for the City of Toronto.</p>
+<p>Going through this process gives us the code we need to access the data, all we need to do is fill in the geographic identifier. The <strong>cmhc</strong> package is designed to work in conjunction with other census data, so it uses the same geographic identifiers and translates them to CMHC’s own internal geographic identifiers under the hood. For Toronto, we need to decided if we are interested in the City of the metro area and grab the geographic identifier from the <a href="https://censusmapper.ca/api/">CensusMapper API tool</a>. We will query data for the City of Toronto with standard StatCan geographic identifier “3520005” .</p>
 <div class="cell" data-hash="under_construction_cache/html/unnamed-chunk-1_8315094a1c3dc8d1d578ba29e32ba195">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cmhc)</span>
@@ -363,18 +363,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="analysis-and-visualization" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="analysis-and-visualization"><span class="header-section-number">8.5</span> Analysis and visualization</h2>
 <p>What’s left is to plot the data, broken out by dwelling type.</p>
-<div class="cell" data-hash="under_construction_cache/html/unnamed-chunk-3_26a825b8593c175565a6ad0fa340b84a">
+<div class="cell" data-hash="under_construction_cache/html/unnamed-chunk-3_d97290c184236128d421fe8a72247c71">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(under_construction, <span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>Value,<span class="at">colour=</span><span class="st">`</span><span class="at">Dwelling Type</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"City of Toronto dwelling units under construction"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,<span class="at">y=</span><span class="st">"Number of units"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,<span class="at">y=</span><span class="st">"Number of units"</span>, <span class="at">caption=</span><span class="st">"CMHC Scss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="under_construction_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>It looks like the number of units under construction, especially apartment units, has increased considerably over time. Let’s cross-check that against housing starts. These tend to by quite noisy, so we go to annual frequency instead of monthly. We can adapt the code above for data acquisition and graphing into one chunk.</p>
-<div class="cell" data-hash="under_construction_cache/html/unnamed-chunk-4_bb9ac2988a8da88f789f41c6e623c637">
+<div class="cell" data-hash="under_construction_cache/html/unnamed-chunk-4_90fc5d04b6608a21e7e99be2053494f9">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cmhc</span>(<span class="at">survey =</span> <span class="st">"Scss"</span>, </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">series =</span> <span class="st">"Starts"</span>, </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">dimension =</span> <span class="st">"Dwelling Type"</span>, </span>
@@ -385,13 +385,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"City of Toronto dwelling unit starts"</span>,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,<span class="at">y=</span><span class="st">"Number of units"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,<span class="at">y=</span><span class="st">"Number of units"</span>, <span class="at">caption=</span><span class="st">"CMHC Scss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="under_construction_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Starts have increased, but not that much. Something else must be at play too, let’s look at how length of construction has changed over this timeframe, again using annual data to cut down on noise.</p>
-<div class="cell" data-hash="under_construction_cache/html/unnamed-chunk-5_191c995969717ae2b35b909d76babf37">
+<div class="cell" data-hash="under_construction_cache/html/unnamed-chunk-5_f24dee5391a15e6ba861120b0c286bd3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cmhc</span>(<span class="at">survey =</span> <span class="st">"Scss"</span>, </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">series =</span> <span class="st">"Length of Construction"</span>, </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">dimension =</span> <span class="st">"Dwelling Type"</span>, </span>
@@ -402,13 +402,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"City of Toronto dwelling unit starts"</span>,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,<span class="at">y=</span><span class="st">"Average length of construction (months)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,<span class="at">y=</span><span class="st">"Average length of construction (months)"</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"CMHC Scss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="under_construction_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>And indeed, the length of construction shot up a lot, for apartments from around 13 months in the late 90s to about 30 months around 2020. That means we now have over twice as many construction sites for the same number of units coming to market compared to the late 90s.</p>
-<p>The sharp increase in construction time for Semi-detached and row houses might well be a data anomaly, where dropping number of starts of such units can be disproportionally impacted by a couple of stalled projects.</p>
+<p>The sharp increase in construction time for Semi-detached and row houses might well be a data anomaly, where low and dropping number of starts of such units can be disproportionally impacted by a couple of stalled projects.</p>
 </section>
 <section id="interpretation" class="level2" data-number="8.6">
 <h2 data-number="8.6" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">8.6</span> Interpretation</h2>

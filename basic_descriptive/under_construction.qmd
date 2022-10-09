@@ -19,7 +19,7 @@ CMHC tracks information on housing starts and completions. And the number of hom
 
 The [**cmhc** package](https://mountainmath.github.io/cmhc/) facilitates importing data from CMHC. This pries data out the [Housing Market Information Portal](https://www03.cmhc-schl.gc.ca/hmip-pimh/en) where data is organized across a variety of tables. The easiest way to locate a table of interest is to use the `select_cmhc_table()` function from the **cmhc** package in the console to interactively step through the process. In our case, we are interested in data from the Starts and Completions Survey (**Scss**), look at the **Under Construction** series, after which we can select to have data broken down by B**edroom Type** or I**ntended Market**, where we select the former. Lastly we need to decide the breakdown type, either a level of geography or **Historical Time Periods** for a fixed geography, which is what we are interested in.
 
-Going through this process gives us the code we need to access the data, all we need to do is fill in the geographic identifier. The **cmhc** package is designed to work in conjunction with other census data, so it uses the same geographic identifiers and translates them to CMHC's own internal geographic identifiers under the hood. For Toronto, we need to decided if we are interested in the City of the metro area and grab the geographic identifier from the CensusMapper API tool. We will query data for the City of Toronto.
+Going through this process gives us the code we need to access the data, all we need to do is fill in the geographic identifier. The **cmhc** package is designed to work in conjunction with other census data, so it uses the same geographic identifiers and translates them to CMHC's own internal geographic identifiers under the hood. For Toronto, we need to decided if we are interested in the City of the metro area and grab the geographic identifier from the [CensusMapper API tool](https://censusmapper.ca/api/). We will query data for the City of Toronto with standard StatCan geographic identifier "3520005" .
 
 ```{r}
 library(tidyverse)
@@ -48,7 +48,7 @@ ggplot(under_construction, aes(x=Date,y=Value,colour=`Dwelling Type`)) +
   geom_line() +
   scale_y_continuous(labels=scales::comma) +
   labs(title="City of Toronto dwelling units under construction",
-       x=NULL,y="Number of units")
+       x=NULL,y="Number of units", caption="CMHC Scss")
 ```
 
 It looks like the number of units under construction, especially apartment units, has increased considerably over time. Let's cross-check that against housing starts. These tend to by quite noisy, so we go to annual frequency instead of monthly. We can adapt the code above for data acquisition and graphing into one chunk.
@@ -64,7 +64,7 @@ get_cmhc(survey = "Scss",
   geom_line() +
   scale_y_continuous(labels=scales::comma) +
   labs(title="City of Toronto dwelling unit starts",
-       x=NULL,y="Number of units")
+       x=NULL,y="Number of units", caption="CMHC Scss")
 ```
 
 Starts have increased, but not that much. Something else must be at play too, let's look at how length of construction has changed over this timeframe, again using annual data to cut down on noise.
@@ -80,12 +80,13 @@ get_cmhc(survey = "Scss",
   geom_line() +
   scale_y_continuous(labels=scales::comma) +
   labs(title="City of Toronto dwelling unit starts",
-       x=NULL,y="Average length of construction (months)")
+       x=NULL,y="Average length of construction (months)",
+       caption="CMHC Scss")
 ```
 
 And indeed, the length of construction shot up a lot, for apartments from around 13 months in the late 90s to about 30 months around 2020. That means we now have over twice as many construction sites for the same number of units coming to market compared to the late 90s.
 
-The sharp increase in construction time for Semi-detached and row houses might well be a data anomaly, where dropping number of starts of such units can be disproportionally impacted by a couple of stalled projects.
+The sharp increase in construction time for Semi-detached and row houses might well be a data anomaly, where low and dropping number of starts of such units can be disproportionally impacted by a couple of stalled projects.
 
 ## Interpretation
 

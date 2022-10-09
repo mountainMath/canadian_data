@@ -4,13 +4,25 @@ project:
 
 book:
   title: "Analyzing Canadian Demographic and Housing Data"
-  author: "Jens von Bergmann"
+  publisher: "MountainMath Software and Analytics"
+  author: 
+    - name: "Jens von Bergmann"
+      email: "jens@mountainmath.ca"
+      corresponding: true
+      affiliations:
+        - name: "MountainMath Software and Analytics"
+          city: "Vancouver"
+          state: "British Columbia"
   date: "2022-04-01"
-  description: "Building skills and community to analyze Canadian demographic and housing data."
+  subtitle: "Building skills and community to analyze Canadian demographic and housing data"
   search: true
-  twitter-card: true
-  image: cover.png
-  card-style: summary_large_image
+  twitter-card:
+    description: "Building skills and community to analyze Canadian demographic and housing data"
+    card-style: summary_large_image
+    image: cover.png
+  open-graph:
+    description: "Building skills and community to analyze Canadian demographic and housing data"
+    image: cover.png
   site-url: "https://mountainmath.github.io/canadian_data/"
   downloads: [pdf, epub]
   citations-hover: true
@@ -22,7 +34,7 @@ book:
   # fig-format: png
   sidebar:
     style: docked
-    background: light
+    #background: light
     logo: cover.png
   top-level-division: part
   code-fold: show
@@ -73,12 +85,36 @@ format:
     fig-responsive: true
     #theme: cosmo
     theme:
-      light: flatly
       dark: darkly
+      light: flatly
     code-copy: true
-  pdf:
-    documentclass: scrreprt
+  titlepage-pdf:
     fig-format: png
+    titlepage: classic-lined
+    documentclass: scrbook
+    titlepage-logo: cover.png
+    classoption: ["oneside", "open=any"]
+    number-sections: true
+    titlepage-theme:
+      page-align: "center"
+      elements:
+        - "\\titleblock"
+        - "\\authorblock"
+        - "\\vfill"
+        - "\\logoblock"
+        - "\\footerblock"
+      # elements:
+      #   - "\\titleblock"
+      #   - "\\authorblock"
+      #   - "\\vfill"
+      #   - "Building skills and community to analyze"
+      #   - "Canadian demographic and housing data"
+      #   - "\\vspace{0.8cm}"
+      #   - "\\logoblock"
+      #   - "\\footerblock"
+  # pdf:
+  #   documentclass: scrreprt
+  #   fig-format: png
   epub:
     cover-image: cover.png
     fig-format: png

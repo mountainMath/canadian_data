@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Building skills and community to analyze Canadian demographic and housing data.">
 
-<title>Analyzing Canadian Demographic and Housing Data - 3&nbsp; Introduction to cancensus</title>
+<title>Analyzing Canadian Demographic and Housing Data - 3&nbsp; Introduction to the cancensus package</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -102,11 +101,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -128,12 +127,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 }</script>
 
 
-<meta name="twitter:title" content="Analyzing Canadian Demographic and Housing Data - 3&nbsp; Introduction to cancensus">
-<meta name="twitter:description" content="Building skills and community to analyze Canadian demographic and housing data.">
+<meta property="og:title" content="Analyzing Canadian Demographic and Housing Data - 3&nbsp; Introduction to the cancensus package">
+<meta property="og:description" content="Building skills and community to analyze Canadian demographic and housing data">
+<meta property="og:image" content="https://mountainmath.github.io/canadian_data/cover.png">
+<meta property="og:site-name" content="Analyzing Canadian Demographic and Housing Data">
+<meta property="og:image:height" content="1300">
+<meta property="og:image:width" content="1450">
+<meta name="twitter:title" content="Analyzing Canadian Demographic and Housing Data - 3&nbsp; Introduction to the cancensus package">
+<meta name="twitter:description" content="Building skills and community to analyze Canadian demographic and housing data">
 <meta name="twitter:image" content="https://mountainmath.github.io/canadian_data/cover.png">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image-height" content="1300">
 <meta name="twitter:image-width" content="1450">
-<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar docked">
@@ -142,7 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to cancensus</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cancensus</strong> package</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -206,22 +211,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro/intro_cansim.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to cansim</span></a>
+  <a href="../intro/intro_cansim.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cansim</strong> package</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro/intro_cancensus.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to cancensus</span></a>
+  <a href="../intro/intro_cancensus.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cancensus</strong> package</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro/intro_cmhc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to cmhc</span></a>
+  <a href="../intro/intro_cmhc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cmhc</strong> package</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro/tongfen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">tongfen</span></a>
+  <a href="../intro/tongfen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to the <strong>tongfen</strong> pacakge</span></a>
   </div>
 </li>
       </ul>
@@ -281,27 +286,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#the-cancensus-r-package" id="toc-the-cancensus-r-package" class="nav-link active" data-scroll-target="#the-cancensus-r-package"><span class="toc-section-number">3.1</span>  The cancensus R package</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to cancensus</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cancensus</strong> package</span></h1>
 </div>
 
-<div>
-  <div class="description">
-    Building skills and community to analyze Canadian demographic and housing data.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -313,8 +307,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="the-cancensus-r-package" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="the-cancensus-r-package"><span class="header-section-number">3.1</span> The cancensus R package</h2>
 <p><img src="images/cancensus-sticker.png" id="cancensus-logo" class="img-fluid" style="float:right;margin-left:3em;" alt="cancensus" width="250"></p>
 <p>The <strong>cancensus</strong> R package interfaces with the CensusMapper API server. It can be queried for</p>
 <ul>
@@ -326,8 +318,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>A slight complication, the <a href="https://mountainmath.github.io/cancensus/"><strong>cancensus</strong> package</a>needs an API key. You can sign up for one for free on <a href="https://censusmapper.ca/users/sign_up">CensusMapper</a>.</p>
 <p>Once you have your API key it’s useful to store it as an environment variable in your .Renviron configuration file so it’s available in all your R sessions.</p>
-<div class="cell" data-hash="intro_cancensus_cache/html/unnamed-chunk-1_e27f35e34c5cfd7ad2a2b39b39045e75">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cancensus<span class="sc">::</span><span class="fu">set_api_key</span>(<span class="at">key =</span> <span class="st">"CensusMapper_XXXX...XXXX"</span>, <span class="at">install=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="intro_cancensus_cache/html/unnamed-chunk-1_c94d8b1d748b988e94dc61c187d42db6">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"cancensus"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>cancensus<span class="sc">::</span><span class="fu">set_api_key</span>(<span class="at">key =</span> <span class="st">"CensusMapper_XXXX...XXXX"</span>, <span class="at">install=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>By default {cancensus} cached downloaded census data, which makes it easier and faster to re-run analysis and protects from overusing the CensusMapper API quota. To use caching an local path needs to be designated for data caching. The cache is shared across R sessions.</p>
 <div class="cell" data-hash="intro_cancensus_cache/html/unnamed-chunk-2_7e922320ec3f49ff7f32197430e2c200">
@@ -363,7 +357,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -475,7 +468,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  let localAlternateSentinel = 'alternate';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
@@ -580,12 +573,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../intro/intro_cansim.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to cansim</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cansim</strong> package</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../intro/intro_cmhc.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to cmhc</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cmhc</strong> package</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

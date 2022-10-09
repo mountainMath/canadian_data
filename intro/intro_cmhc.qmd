@@ -1,8 +1,6 @@
 ---
-title: "Introduction to cmhc"
+title: "Introduction to the **cmhc** package"
 ---
-
-## The cmhc R package
 
 ![](images/cmhc-sticker.png){#cansim-logo style="float:right;margin-left:3em;" width="250"}
 
@@ -19,5 +17,11 @@ The [cmhc R package](https://mountainmath.github.io/cmhc/) interfaces with the C
 -   Census data (Census), which holds several housing related cross-tabulations.
 
 The package is designed to work in conjunction with the **cancensus** package and census geographic identifiers.
+
+To install the package from CRAN use.
+
+```{r eval = FALSE}
+install.packages("cmhc")
+```
 
 The nature of the CMHC backend makes it at times challenging to find data, the **cmhc** package has several convenience functions to facilitate data discovery. The `list_…` functions, for example `list_cmhc_surveys()` list options. The `select_cmhc_table()` allows the interactive selection of data tables in the console, and returns the syntax for the desired function call to acquire the data.

@@ -1,8 +1,6 @@
 ---
-title: "Introduction to cancensus"
+title: "Introduction to the **cancensus** package"
 ---
-
-## The cancensus R package
 
 ![](images/cancensus-sticker.png){#cancensus-logo style="float:right;margin-left:3em;" fig-alt="cancensus" width="250"}
 
@@ -23,6 +21,8 @@ A slight complication, the [**cancensus** package](https://mountainmath.github.i
 Once you have your API key it's useful to store it as an environment variable in your .Renviron configuration file so it's available in all your R sessions.
 
 ```{r eval = FALSE}
+install.packages("cancensus")
+
 cancensus::set_api_key(key = "CensusMapper_XXXX...XXXX", install=TRUE)
 ```
 

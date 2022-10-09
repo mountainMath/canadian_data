@@ -1,8 +1,6 @@
 ---
-title: "Introduction to cansim"
+title: "Introduction to the **cansim** package"
 ---
-
-## The cansim R package
 
 ![](images/cansim-sticker.png){#cansim-logo style="float:right;margin-left:3em;" width="250"}
 
@@ -29,3 +27,9 @@ The data is accessed via `get_cansim` function, or alternatively the `get_cansim
 Metadata added by the **cansim** package includes converting the dimension values to factors and adding information on the hierarchical structure of the levels. Moreover, the package creates a native `Date` field and a `val_norm` field with normalized values. The values shipped by StatCan are sometimes expressed in "thousands of units", the `val_norm` converts this to base units for easier interpretation and uniformity across tables.
 
 More information can be found in the [package documentation](https://mountainmath.github.io/cansim/) and the package vignettes.
+
+To install the package from cran use
+
+```{r eval = FALSE}
+install.packages("cansim")
+```

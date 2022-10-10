@@ -83,6 +83,25 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -308,7 +327,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <p><img src="images/cmhc-sticker.png" id="cansim-logo" class="img-fluid" style="float:right;margin-left:3em;" width="250"></p>
-<p>The <a href="https://mountainmath.github.io/cmhc/">cmhc R package</a> interfaces with the CMHC Housing Market Information Portal (HMIP) and allows programmatic and reproducible access to CMHC data. This gives access to data from four major CMHC surveys</p>
+<p>The <a href="https://mountainmath.github.io/cmhc/">cmhc R package</a> <span class="citation" data-cites="cmhc">(<a href="../references.html#ref-cmhc" role="doc-biblioref">von Bergmann 2022</a>)</span> interfaces with the CMHC Housing Market Information Portal (HMIP) and allows programmatic and reproducible access to CMHC data. This gives access to data from four major CMHC surveys</p>
 <ul>
 <li><p>Starts and Completions Survey (Scss), which has data on housing construction covering starts, completions, units under construction, length of construction, absorbed and unabsorbed units and their prices.</p></li>
 <li><p>Rental Market Survey (Rms), which surveys the purpose-built rental market on an annual (and for some time twice-annual) basis. It has data on vacancy rates, availability rates, rents, fixed sample rent change and the overall rental universe by bedroom type, structure size, and year of construction.</p></li>
@@ -324,6 +343,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The nature of the CMHC backend makes it at times challenging to find data, the <strong>cmhc</strong> package has several convenience functions to facilitate data discovery. The <code>list_…</code> functions, for example <code>list_cmhc_surveys()</code> list options. The <code>select_cmhc_table()</code> allows the interactive selection of data tables in the console, and returns the syntax for the desired function call to acquire the data.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-cmhc" class="csl-entry" role="doc-biblioentry">
+von Bergmann, Jens. 2022. <em>Cmhc: R Package to Access, Retrieve, and Work with CMHC Data</em>. <a href="https://mountainmath.github.io/cmhc/">https://mountainmath.github.io/cmhc/</a>.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

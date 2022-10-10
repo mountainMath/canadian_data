@@ -10,11 +10,9 @@ In this book we will maintain a strong emphasis on reproducible and adaptable wo
 
 ## Under construction
 
-At this point this book is more aspirational than reality, It will take time to build this out so that it can be used as a standalone resource to cover basic data analysis and visualization workflows in R, as well as be a comprehensive introduction into Canadian data sources.![](baustelle.png){#baustelle style="float:right;margin-left:3em;max-width:50%;"}
+At this point this book is more aspirational than reality, It will take time to build this out so that it can be used as a standalone resource to cover basic data analysis and visualization workflows in R, as well as be a comprehensive introduction into Canadian data sources.![](baustelle.png){#baustelle style="float:right;margin-left:3em;" width="150"}
 
 We are planning to add to this book as we find time and come across good examples that are simple enough to slowly build skills, as well as interesting enough to be engaging and motivating to the reader. Until that point the order of sections will change as we add new material, and we will come back and revise existing sections as we receive feedback from readers, which we encourage and is ideally submitted as a [GitHub issue](https://github.com/mountainMath/canadian_data/issues).
-
-This book is hoping to foster a community of collaborative Canadian data analysis, and it welcomes submissions for chapters by anyone, following the basic step-by-step process described below that all examples in this book are built on. Ideally contributions are made as pull requests.
 
 ## Project based approach
 

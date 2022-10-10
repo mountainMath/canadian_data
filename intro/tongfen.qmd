@@ -5,7 +5,7 @@ editor: visual
 
 ![](images/tongfen-sticker.png){#tongfen-logo style="float:right;margin-left:3em;" width="250"}
 
-The [tongfen](https://mountainmath.github.io/tongfen/index.html) R package facilitates making data on different geometries comparable.
+The [tongfen](https://mountainmath.github.io/tongfen/index.html) R package [@tongfen] facilitates making data on different geometries comparable.
 
 TongFen (通分) means to convert two fractions to the least common denominator, typically in preparation for further manipulation like addition or subtraction. In English, that's a mouthful and sounds complicated. But in Chinese there is a word for this, TongFen, which makes this process appear very simple.
 

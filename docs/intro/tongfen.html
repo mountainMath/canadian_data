@@ -83,6 +83,25 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -308,7 +327,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <p><img src="images/tongfen-sticker.png" id="tongfen-logo" class="img-fluid" style="float:right;margin-left:3em;" width="250"></p>
-<p>The <a href="https://mountainmath.github.io/tongfen/index.html">tongfen</a> R package facilitates making data on different geometries comparable.</p>
+<p>The <a href="https://mountainmath.github.io/tongfen/index.html">tongfen</a> R package <span class="citation" data-cites="tongfen">(<a href="../references.html#ref-tongfen" role="doc-biblioref">von Bergmann 2021</a>)</span> facilitates making data on different geometries comparable.</p>
 <p>TongFen (通分) means to convert two fractions to the least common denominator, typically in preparation for further manipulation like addition or subtraction. In English, that’s a mouthful and sounds complicated. But in Chinese there is a word for this, TongFen, which makes this process appear very simple.</p>
 <p>When working with geospatial datasets we often want to compare data that is given on different regions. For example census data and election data. Or data from two different censuses. To properly compare this data we first need to convert it to a common geography. The process to do this is quite analogous to the process of TongFen for fractions, so we appropriate this term to give it a simple name. Using the&nbsp;<strong>tongfen</strong>&nbsp;package, preparing data on disparate geographies for comparison by converting them to a common geography is as easy as typing&nbsp;<code>tongfen</code>.</p>
 <p>In particular, the package has a number of convenience functions to facilitate making Canadian census data comparable through time, making it easy to perform longitudinal analysis on fine geographies based on the Canadian Census. Essentially, the <strong>tongfen</strong> package creates a semi-custom tabulation based on Dissemination Block, Dissemination Area, or Census Tract geographies.</p>
@@ -325,6 +344,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-tongfen" class="csl-entry" role="doc-biblioentry">
+von Bergmann, Jens. 2021. <em>Tongfen: R Package to Make Data Based on Different Geographies Comparable</em>. <a href="https://mountainmath.github.io/tongfen/">https://mountainmath.github.io/tongfen/</a>.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

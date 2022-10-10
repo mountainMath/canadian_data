@@ -4,7 +4,7 @@ title: "Introduction to the **cancensus** package"
 
 ![](images/cancensus-sticker.png){#cancensus-logo style="float:right;margin-left:3em;" fig-alt="cancensus" width="250"}
 
-The **cancensus** R package interfaces with the CensusMapper API server. It can be queried for
+The [**cancensus** R package](https://mountainmath.github.io/cancensus/) [@cancensus] interfaces with the CensusMapper API server. It can be queried for
 
 -   census geographies for census years 1996 through 2021
 

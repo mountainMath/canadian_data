@@ -1,0 +1,8 @@
+---
+title: "Getting started"
+editor: visual
+---
+
+Before we dive into data projections we want to give a quick overview over R, RStudio, tidyverse and the main data acquisition and processing packages for Canadian data that we will use.
+
+Statistics Canada produces a lot of high quality demographic and economic data for Canada. CMHC complements this with housing data, and municipalities across Canada often provide relevant data through their Open Data portals.

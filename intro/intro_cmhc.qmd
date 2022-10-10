@@ -10,11 +10,13 @@ The [cmhc R package](https://mountainmath.github.io/cmhc/) [@cmhc] interfaces wi
 
 -   Rental Market Survey (Rms), which surveys the purpose-built rental market on an annual (and for some time twice-annual) basis. It has data on vacancy rates, availability rates, rents, fixed sample rent change and the overall rental universe by bedroom type, structure size, and year of construction.
 
--   Secondary Rental Market Survey (Srms), which covers parts of the secondary market rental market with data on condominium apartment vacancy ratesm rents, and number and share of rented units, as well as some information on other secondary rentals.
+-   Secondary Rental Market Survey (Srms), which covers parts of the secondary market rental market with data on condominium apartment vacancy rates, rents, and number and share of rented units, as well as some information on other secondary rentals.
 
 -   Senior's housing (Seniors), which gives data on seniors housing of various levels of assistance.
 
 -   Census data (Census), which holds several housing related cross-tabulations.
+
+-   Core Housing Need (Core Housing Need) related cross-tabulations.
 
 The package is designed to work in conjunction with the **cancensus** package and census geographic identifiers.
 

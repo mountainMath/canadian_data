@@ -50,8 +50,9 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
-    - part: intro/intro_to_r.qmd
+    - part: intro/getting_started.qmd
       chapters:
+      - intro/intro_to_r.qmd
       - intro/intro_cansim.qmd
       - intro/intro_cancensus.qmd
       - intro/intro_cmhc.qmd

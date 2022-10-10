@@ -2,70 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mountainmath.github.io/canadian_data/index.html</loc>
-    <lastmod>2022-10-10T17:47:37.235Z</lastmod>
+    <lastmod>2022-10-10T21:41:00.830Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/intro.html</loc>
-    <lastmod>2022-10-10T17:47:37.237Z</lastmod>
+    <lastmod>2022-10-10T21:41:00.832Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mountainmath.github.io/canadian_data/intro/getting_started.html</loc>
+    <lastmod>2022-10-10T21:41:00.833Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/intro/intro_to_r.html</loc>
-    <lastmod>2022-10-10T17:47:37.238Z</lastmod>
+    <lastmod>2022-10-10T21:41:00.835Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/intro/intro_cansim.html</loc>
-    <lastmod>2022-10-10T17:47:37.239Z</lastmod>
+    <lastmod>2022-10-10T21:41:00.836Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/intro/intro_cancensus.html</loc>
-    <lastmod>2022-10-10T17:47:37.239Z</lastmod>
+    <lastmod>2022-10-10T21:41:00.837Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/intro/intro_cmhc.html</loc>
-    <lastmod>2022-10-10T17:47:37.240Z</lastmod>
+    <lastmod>2022-10-10T21:41:00.840Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/intro/tongfen.html</loc>
-    <lastmod>2022-10-10T17:47:37.240Z</lastmod>
+    <lastmod>2022-10-10T21:41:00.842Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/basic_descriptive/basic_descriptive.html</loc>
-    <lastmod>2022-10-10T17:47:37.241Z</lastmod>
+    <lastmod>2022-10-10T21:41:00.842Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/basic_descriptive/cerb.html</loc>
-    <lastmod>2022-10-10T17:47:37.242Z</lastmod>
+    <lastmod>2022-10-10T21:41:00.845Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/basic_descriptive/cars_vs_suvs.html</loc>
-    <lastmod>2022-10-10T17:47:37.244Z</lastmod>
+    <lastmod>2022-10-10T21:41:00.847Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/basic_descriptive/under_construction.html</loc>
-    <lastmod>2022-10-10T17:47:37.245Z</lastmod>
+    <lastmod>2022-10-10T21:41:00.848Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/basic_descriptive/geography_of_income_change.html</loc>
-    <lastmod>2022-10-10T17:47:37.246Z</lastmod>
+    <lastmod>2022-10-10T21:41:00.850Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/advanced_descriptive/advanced_descriptive.html</loc>
-    <lastmod>2022-10-10T17:47:37.247Z</lastmod>
+    <lastmod>2022-10-10T21:41:00.851Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/advanced_descriptive/advanced_descriptive_bc_migration.html</loc>
-    <lastmod>2022-10-10T17:47:37.249Z</lastmod>
+    <lastmod>2022-10-10T21:41:00.853Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/references.html</loc>
-    <lastmod>2022-10-10T17:47:37.249Z</lastmod>
+    <lastmod>2022-10-10T21:41:00.853Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/Analyzing-Canadian-Demographic-and-Housing-Data.pdf</loc>
-    <lastmod>2022-10-10T17:47:34.482Z</lastmod>
+    <lastmod>2022-10-10T21:40:57.753Z</lastmod>
   </url>
   <url>
     <loc>https://mountainmath.github.io/canadian_data/Analyzing-Canadian-Demographic-and-Housing-Data.epub</loc>
-    <lastmod>2022-10-10T17:47:36.829Z</lastmod>
+    <lastmod>2022-10-10T21:41:00.338Z</lastmod>
   </url>
 </urlset>

@@ -1,4 +1,4 @@
-# Getting started with R and RStudio
+# R, RStudio, and the tidyverse
 
 Statistics Canada produces a lot of high quality demographic and economic data for Canada. CMHC complements this with housing data, and municipalities across Canada often provide relevant data through their Open Data portals.
 
@@ -18,9 +18,21 @@ install.packages("tidyverse")
 
 into the R console. This will install or upgrade the package and required dependencies. To make the functionality, for example the `tibble` function from the **tibble** package that is part of **tidyverse**, available to use we can then either access functions from the package using the `::` namespace selector `tibble::tibble()` or first load the **tibble** or **tidyverse** package via `library(tidyverse)` that makes the `tibble()` function available without having to use the namespace selector.
 
+Additionally, we will need a number of packages that handle data acquisition and processing for Canadian data.
+
+```{r eval=FALSE}
+install.packages(c("cancensus","cansim","cmhc","tongfen"))
+```
+
 ## Basic data manipulation patterns
 
 There are several basic data manipulation patterns that we will use throughout, and we want to give a quick overview using the Palmer Penguins dataset from the **palmerpenguins** package.
+
+```{r eval=FALSE}
+install.packages("palmerpenguins") # install the package if needed
+```
+
+We will at times require additional packages like this to accomplish specialized tasks, installing packages in R is generally a simple and pain-free procedure.
 
 ```{r}
 # install.packages("palmerpenguins") # install the package if needed

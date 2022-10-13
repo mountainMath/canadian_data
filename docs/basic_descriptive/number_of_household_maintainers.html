@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Analyzing Canadian Demographic and Housing Data - 12&nbsp; Number of Household Maintainers</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../advanced_descriptive/advanced_descriptive.html" rel="next">
+<link href="../basic_descriptive/toronto_children.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<meta property="og:title" content="Analyzing Canadian Demographic and Housing Data - 12&nbsp; Number of Household Maintainers">
+<meta property="og:description" content="Building skills and community to analyze Canadian demographic and housing data">
+<meta property="og:image" content="https://mountainmath.github.io/canadian_data/cover.png">
+<meta property="og:site-name" content="Analyzing Canadian Demographic and Housing Data">
+<meta property="og:image:height" content="1300">
+<meta property="og:image:width" content="1450">
+<meta name="twitter:title" content="Analyzing Canadian Demographic and Housing Data - 12&nbsp; Number of Household Maintainers">
+<meta name="twitter:description" content="Building skills and community to analyze Canadian demographic and housing data">
+<meta name="twitter:image" content="https://mountainmath.github.io/canadian_data/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="1300">
+<meta name="twitter:image-width" content="1450">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Number of Household Maintainers</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../" class="sidebar-logo-link">
+      <img src="../cover.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Analyzing Canadian Demographic and Housing Data</a> 
+        <div class="sidebar-tools-main">
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="../Analyzing-Canadian-Demographic-and-Housing-Data.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="../Analyzing-Canadian-Demographic-and-Housing-Data.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../intro/getting_started.html" class="sidebar-item-text sidebar-link">Getting started</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../intro/intro_to_r.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R, RStudio, and the tidyverse</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../intro/intro_cansim.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cansim</strong> package</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../intro/intro_cancensus.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cancensus</strong> package</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../intro/intro_cmhc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cmhc</strong> package</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../intro/tongfen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to the <strong>tongfen</strong> package</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../basic_descriptive/basic_descriptive.html" class="sidebar-item-text sidebar-link">Basic descriptive analysis</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_descriptive/cerb.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Geography of CERB</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_descriptive/cars_vs_suvs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Cars vs SUVs in Canada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_descriptive/under_construction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Under construction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_descriptive/geography_of_income_change.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Geography of income change</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_descriptive/toronto_children.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Toronto children</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_descriptive/number_of_household_maintainers.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Number of Household Maintainers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../advanced_descriptive/advanced_descriptive.html" class="sidebar-item-text sidebar-link">Advanced descriptive analysis</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../advanced_descriptive/advanced_descriptive_bc_migration.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">BC migration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question"><span class="toc-section-number">12.1</span>  Question</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="toc-section-number">12.2</span>  Data sources</a></li>
+  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition"><span class="toc-section-number">12.3</span>  Data acquisition</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="toc-section-number">12.4</span>  Data preparation</a></li>
+  <li><a href="#analysis-and-visualization" id="toc-analysis-and-visualization" class="nav-link" data-scroll-target="#analysis-and-visualization"><span class="toc-section-number">12.5</span>  Analysis and visualization</a></li>
+  <li><a href="#analysis-revisited" id="toc-analysis-revisited" class="nav-link" data-scroll-target="#analysis-revisited"><span class="toc-section-number">12.6</span>  Analysis (revisited)</a></li>
+  <li><a href="#data-acquisition-revisited" id="toc-data-acquisition-revisited" class="nav-link" data-scroll-target="#data-acquisition-revisited"><span class="toc-section-number">12.7</span>  Data acquisition (revisited)</a></li>
+  <li><a href="#visualization-revisited" id="toc-visualization-revisited" class="nav-link" data-scroll-target="#visualization-revisited"><span class="toc-section-number">12.8</span>  Visualization (revisited)</a></li>
+  <li><a href="#data-sources-revisited" id="toc-data-sources-revisited" class="nav-link" data-scroll-target="#data-sources-revisited"><span class="toc-section-number">12.9</span>  Data sources (revisited)</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="toc-section-number">12.10</span>  Interpretation</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Number of Household Maintainers</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>In a <a href="https://www.theglobeandmail.com/real-estate/vancouver/article-in-vancouver-the-rental-crisis-worsens/">recent newspaper article</a> it was reported that</p>
+<blockquote class="blockquote">
+<p>New Statistics Canada data show that households with three or more people contributing to shelter costs and other expenses grew 61 per cent compared with the overall household growth in the City of Vancouver in the past five years.</p>
+</blockquote>
+<p>Reading this we might be interested in more context.</p>
+<section id="question" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="question"><span class="header-section-number">12.1</span> Question</h2>
+<p><strong>How has the number of household maintainers changed in other municipalities, and what does this mean?</strong></p>
+</section>
+<section id="data-sources" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">12.2</span> Data sources</h2>
+<p>The number of household maintainers is <a href="https://www12.statcan.gc.ca/census-recensement/2021/ref/dict/az/Definition-eng.cfm?ID=households-menage008">reported in the census</a>:</p>
+<blockquote class="blockquote">
+<p>Refers to whether or not a person residing in the household is responsible for paying the rent, or the mortgage, or the taxes, or the electricity or other services or utilities. Where a number of people may contribute to the payments, more than one person in the household may be identified as a household maintainer. If no person in the household is identified as making such payments, the reference person is identified by default.</p>
+</blockquote>
+<p>The census dictionary indicates that the ability to identify more than one household maintainer started with the 1996 census moving forward.</p>
+</section>
+<section id="data-acquisition" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="data-acquisition"><span class="header-section-number">12.3</span> Data acquisition</h2>
+<p>We need the <strong>tidyverse</strong> and <strong>cancensus</strong> packages,</p>
+<div class="cell" data-hash="number_of_household_maintainers_cache/html/unnamed-chunk-1_acca35f4cbf3a13fc18e04e4f5eda7aa">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cancensus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and choose the appropriate census variables and decide what regions we are interested in. Moreover, we need to decide how long a timeframe we are interested in, the news article only referred to the 2016-2021 timeframe, but it might be worthwhile to also consider longer timeframes. The standard census profile data does not report on this before 2011 though, to keep things simple we collect data for the censuses 2011 and onward. We start by collecting the relevant census variables, labelled by <strong>base</strong> for the base number of households, and One, Two, and Three+ for 1, 2 or 3+ household maintainers.</p>
+<div class="cell" data-hash="number_of_household_maintainers_cache/html/unnamed-chunk-2_e32f3b06454a8605e104aa1d5dfc25e0">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>vectors <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2011"</span><span class="ot">=</span><span class="fu">c</span>(<span class="at">base=</span><span class="st">"v_CA11N_2259"</span>,<span class="at">One=</span><span class="st">"v_CA11N_2260"</span>,<span class="at">Two=</span><span class="st">"v_CA11N_2261"</span>,<span class="st">"Three+"</span><span class="ot">=</span><span class="st">"v_CA11N_2262"</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2016"</span><span class="ot">=</span><span class="fu">c</span>(<span class="at">base=</span><span class="st">"v_CA16_4873"</span>,<span class="at">One=</span><span class="st">"v_CA16_4874"</span>,<span class="at">Two=</span><span class="st">"v_CA16_4875"</span>,<span class="st">"Three+"</span><span class="ot">=</span><span class="st">"v_CA16_4876"</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2021"</span><span class="ot">=</span><span class="fu">c</span>(<span class="at">base=</span><span class="st">"v_CA21_4275"</span>,<span class="at">One=</span><span class="st">"v_CA21_4276"</span>,<span class="at">Two=</span><span class="st">"v_CA21_4277"</span>,<span class="st">"Three+"</span><span class="ot">=</span><span class="st">"v_CA21_4278"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Selecting regions to compare Vancouver to is somewhat subjective. We go with a mix of larger cities in Metro Vancouver, as well as some from other provinces. One complication is that census geographies can change over time, so we need to be mindful of this. It is good practice to check this against the list of cities that changed <a href="https://www.statcan.gc.ca/eng/subjects/standard/sgc/2016/concordance-2011-2016">2011 to 2016</a> and <a href="https://www150.statcan.gc.ca/n1/pub/92f0009x/92f0009x2021001-eng.htm">2016 to 2021</a>, or explicitly inspect the geographies for changes.</p>
+<p>We select from the list of all cities of at least 205k people (a number chosen to separate Richmond, BC from Richmond Hill, ON), and within that list narrow it down by matching by name.</p>
+<div class="cell" data-hash="number_of_household_maintainers_cache/html/unnamed-chunk-3_7e75594bbb35ea0b0f38f423eb7d9651">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>regions <span class="ot">&lt;-</span> <span class="fu">list_census_regions</span>(<span class="st">"CA21"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(level<span class="sc">==</span><span class="st">"CSD"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>         pop<span class="sc">&gt;</span><span class="dv">205000</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">grepl</span>(<span class="st">"Vancouver|Surrey|Burnaby|Richmond|Toronto|Calgary|Edmonton|Halifax|Winnipeg|Saskatoon|Montréal|Ottawa|Laval"</span>,name))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>regions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 13 × 8
+   region  name      level     pop municipal_status CMA_UID CD_UID PR_UID
+   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;            &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; 
+ 1 3520005 Toronto   CSD   2794356 C                35535   3520   35    
+ 2 2466023 Montréal  CSD   1762949 V                24462   2466   24    
+ 3 4806016 Calgary   CSD   1306784 CY               48825   4806   48    
+ 4 3506008 Ottawa    CSD   1017449 CV               505     3506   35    
+ 5 4811061 Edmonton  CSD   1010899 CY               48835   4811   48    
+ 6 4611040 Winnipeg  CSD    749607 CY               46602   4611   46    
+ 7 5915022 Vancouver CSD    662248 CY               59933   5915   59    
+ 8 5915004 Surrey    CSD    568322 CY               59933   5915   59    
+ 9 1209034 Halifax   CSD    439819 RGM              12205   1209   12    
+10 2465005 Laval     CSD    438366 V                24462   2465   24    
+11 4711066 Saskatoon CSD    266141 CY               47725   4711   47    
+12 5915025 Burnaby   CSD    249125 CY               59933   5915   59    
+13 5915015 Richmond  CSD    209937 CY               59933   5915   59    </code></pre>
+</div>
+</div>
+<p>This leaves us with 13 cities, and manual inspection shows that only Edmonton had a boundary change affecting population, resulting in a gain of 542 people 2016-2021. This should not make a noticeable difference for our analysis, so we will ignore this.</p>
+<div class="cell" data-hash="number_of_household_maintainers_cache/html/unnamed-chunk-4_0772879e6f447455a159a781345aea2b">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>maintainer_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_census</span>(<span class="st">"CA11"</span>,<span class="at">regions=</span><span class="fu">as_census_region_list</span>(regions), <span class="at">vectors=</span>vectors[[<span class="st">"2011"</span>]]) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Year=</span><span class="st">"2011"</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_census</span>(<span class="st">"CA16"</span>,<span class="at">regions=</span><span class="fu">as_census_region_list</span>(regions), <span class="at">vectors=</span>vectors[[<span class="st">"2016"</span>]]) <span class="sc">|&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Year=</span><span class="st">"2016"</span>),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_census</span>(<span class="st">"CA11"</span>,<span class="at">regions=</span><span class="fu">as_census_region_list</span>(regions), <span class="at">vectors=</span>vectors[[<span class="st">"2021"</span>]]) <span class="sc">|&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Year=</span><span class="st">"2021"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(GeoUID,Year,base,One,Two,<span class="st">`</span><span class="at">Three+</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(regions <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="at">GeoUID=</span>region,<span class="at">Name=</span>name),<span class="at">by=</span><span class="st">"GeoUID"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Getting the data for the three censuses and our selection of regions is easy, we join on the region names to make sure we have a uniform way to format and spell the names.</p>
+</section>
+<section id="data-preparation" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">12.4</span> Data preparation</h2>
+<p>We are interested in shares rather than absolute numbers, for this we change the three different maintainer categories to <strong>long form</strong> and compute shares.</p>
+<div class="cell" data-hash="number_of_household_maintainers_cache/html/unnamed-chunk-5_ad3eb500e779796746f87c886c97b9f5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>maintainer_levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"One"</span>,<span class="st">"Two"</span>,<span class="st">"Three+"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> maintainer_data <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(maintainer_levels, <span class="at">names_to=</span><span class="st">"Maintainers"</span>,<span class="at">values_to =</span> <span class="st">"Value"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Share=</span>Value<span class="sc">/</span>base) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="analysis-and-visualization" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="analysis-and-visualization"><span class="header-section-number">12.5</span> Analysis and visualization</h2>
+<p>To visualize the data it can be useful to be deliberate about the order of variables. In <strong>R</strong> we preferably use <strong>factors</strong> to deal with categorical data, and the factor levels can be set to fix their order in visualizations.</p>
+<div class="cell" data-hash="number_of_household_maintainers_cache/html/unnamed-chunk-6_3808a20533f4821d528f4015135f1dfd">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>name_order <span class="ot">&lt;-</span> plot_data <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year<span class="sc">==</span><span class="st">"2021"</span>,Maintainers<span class="sc">==</span><span class="st">"One"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Value) <span class="sc">|&gt;</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(Name)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> plot_data <span class="sc">|&gt;</span> </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Name=</span><span class="fu">factor</span>(Name,name_order)) <span class="sc">|&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Maintainers=</span><span class="fu">factor</span>(Maintainers, <span class="at">levels =</span> maintainer_levels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>With that in place we can plot the data. We are in particular interested in the change from 2016 to 2021, so we add in an arrow to emphasize this.</p>
+<div class="cell" data-hash="number_of_household_maintainers_cache/html/unnamed-chunk-7_5212999115a06a586b3b4179160b05df">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plot_data <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Name,Year,Maintainers,Share) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>Name, <span class="at">x=</span>Share)) <span class="sc">+</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour=</span>Year)) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values=</span>sanzo<span class="sc">::</span>trios<span class="sc">$</span>c157)  <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Maintainers,<span class="at">scales=</span><span class="st">"free_x"</span>) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data=</span><span class="sc">~</span><span class="fu">pivot_wider</span>(.,<span class="at">names_from =</span> Year,<span class="at">values_from =</span> Share),</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">2016</span><span class="st">`</span>,<span class="at">xend=</span><span class="st">`</span><span class="at">2021</span><span class="st">`</span>,<span class="at">yend=</span>Name),</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>,<span class="st">"inches"</span>))) <span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Number of household maintainers by municipality"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="cn">NULL</span>,<span class="at">x=</span><span class="st">"Share of households by number of household maintainers"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour=</span><span class="cn">NULL</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Census 2021, 2016"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="number_of_household_maintainers_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>To add the segments we took the plot data and pivoted it wider by <strong>Year</strong>, allowing us to select the start and endpoints for our arrows indicating the movement 2016 to 2021.</p>
+<p>Looking at the graph for 2011 to 2016 we notice a general decrease in the share of one-person maintainer households, coupled with an increase in both two and three-person maintainer households. But this trend is not uniform and is at least partially reversed for some cities, for example Saskatoon or Halifax. But for 2016 to 2021 the trends are very large and uniform. To the extend that one gets suspicious, demographic changes usually happen gradually and don’t show strong across the board changes like this. Either something big has happened, or we have some data issues.</p>
+<p>At this point we should go back a step and try to understand what is going on here.</p>
+</section>
+<section id="analysis-revisited" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="analysis-revisited"><span class="header-section-number">12.6</span> Analysis (revisited)</h2>
+<p>Let’s try and understand what processes could be driving differences or changes in the number of household maintainers. Household size is a large factor, one person households can have at most one household maintainer. Similarly, a two-person household can have at most two household maintainers. We can try to filter some of this effect out by looking only at two or more person households, that might give a clearer picture of what is going on.</p>
+</section>
+<section id="data-acquisition-revisited" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="data-acquisition-revisited"><span class="header-section-number">12.7</span> Data acquisition (revisited)</h2>
+<p>For this we need data on the number of one-person households for the three years. The process is easily adapted from the code above.</p>
+<div class="cell" data-hash="number_of_household_maintainers_cache/html/unnamed-chunk-8_a9dc73abbe796de7757dc49ceed3a580">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>vectors2 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2011"</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">`</span><span class="at">One person households</span><span class="st">`</span><span class="ot">=</span><span class="st">"v_CA11F_210"</span>),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2016"</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">`</span><span class="at">One person households</span><span class="st">`</span><span class="ot">=</span><span class="st">"v_CA16_419"</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2021"</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">`</span><span class="at">One person households</span><span class="st">`</span><span class="ot">=</span><span class="st">"v_CA21_444"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>household_size_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_census</span>(<span class="st">"CA11"</span>,<span class="at">regions=</span><span class="fu">as_census_region_list</span>(regions), <span class="at">vectors=</span>vectors2[[<span class="st">"2011"</span>]]) <span class="sc">|&gt;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Year=</span><span class="st">"2011"</span>),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_census</span>(<span class="st">"CA16"</span>,<span class="at">regions=</span><span class="fu">as_census_region_list</span>(regions), <span class="at">vectors=</span>vectors2[[<span class="st">"2016"</span>]]) <span class="sc">|&gt;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Year=</span><span class="st">"2016"</span>),</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_census</span>(<span class="st">"CA11"</span>,<span class="at">regions=</span><span class="fu">as_census_region_list</span>(regions), <span class="at">vectors=</span>vectors2[[<span class="st">"2021"</span>]]) <span class="sc">|&gt;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Year=</span><span class="st">"2021"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(GeoUID,Year,<span class="st">`</span><span class="at">One person households</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we need to combine the data on household maintainers with the data on one-person households, which we do by joining the data frames by geographic identifier and year. Then we subtract out one-person households from the denominator and the numerator of single maintainer households, and proceed as before.</p>
+<div class="cell" data-hash="number_of_household_maintainers_cache/html/unnamed-chunk-9_757d427a0e1777239c03205845d95689">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plot_data2 <span class="ot">&lt;-</span> maintainer_data <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(household_size_data,<span class="at">by=</span><span class="fu">c</span>(<span class="st">"GeoUID"</span>,<span class="st">"Year"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">base=</span>base<span class="sc">-</span><span class="st">`</span><span class="at">One person households</span><span class="st">`</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">One</span><span class="st">`</span><span class="ot">=</span><span class="st">`</span><span class="at">One</span><span class="st">`</span><span class="sc">-</span><span class="st">`</span><span class="at">One person households</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(maintainer_levels, <span class="at">names_to=</span><span class="st">"Maintainers"</span>,<span class="at">values_to =</span> <span class="st">"Value"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Share=</span>Value<span class="sc">/</span>base) <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Name=</span><span class="fu">factor</span>(Name,<span class="fu">filter</span>(.,Year<span class="sc">==</span><span class="st">"2021"</span>,Maintainers<span class="sc">==</span><span class="st">"One"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">arrange</span>(Value) <span class="sc">|&gt;</span> </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">pull</span>(Name))) <span class="sc">|&gt;</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Maintainers=</span><span class="fu">factor</span>(Maintainers, <span class="at">levels =</span> maintainer_levels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="visualization-revisited" class="level2" data-number="12.8">
+<h2 data-number="12.8" class="anchored" data-anchor-id="visualization-revisited"><span class="header-section-number">12.8</span> Visualization (revisited)</h2>
+<p>For visualization we copy the code from before and add in a subtitle to indicate that we excluded one-person households.</p>
+<div class="cell" data-hash="number_of_household_maintainers_cache/html/unnamed-chunk-10_caf077e8942e95130b62fb041f0eda99">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plot_data2 <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Name,Year,Maintainers,Share) <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>Name, <span class="at">x=</span>Share)) <span class="sc">+</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour=</span>Year)) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values=</span>sanzo<span class="sc">::</span>trios<span class="sc">$</span>c157)  <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Maintainers,<span class="at">scales=</span><span class="st">"free_x"</span>) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data=</span><span class="sc">~</span><span class="fu">pivot_wider</span>(.,<span class="at">names_from =</span> Year,<span class="at">values_from =</span> Share),</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">2016</span><span class="st">`</span>,<span class="at">xend=</span><span class="st">`</span><span class="at">2021</span><span class="st">`</span>,<span class="at">yend=</span>Name),</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>,<span class="st">"inches"</span>))) <span class="sc">+</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Number of household maintainers by municipality"</span>,</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Excluding one-person households"</span>,</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="cn">NULL</span>,<span class="at">x=</span><span class="st">"Share of households by number of household maintainers"</span>,</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour=</span><span class="cn">NULL</span>,</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"StatCan Census 2021, 2016"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="number_of_household_maintainers_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Dropping one-person households does remove some of the variation between cities, but it amplifies the effect of the drop in single maintainer households 2016-2021, while the change for 2011-2016 is still ambiguous, although in most cases also dropping. It’s hard to imagine what processes could cause such large change across all these cities. Shifting demographics, like Millennials aging into family formation years and coupling up could have some effect, but not of this magnitude. Changes in housing affordability, and people coupling or tripling up to pay for housing could also cause some shift, but these kind of shifts happen more gradually and won’t affect such a large share of households.</p>
+<p>This is a bit of a puzzle, time to dig a little deeper at the data sources.</p>
+</section>
+<section id="data-sources-revisited" class="level2" data-number="12.9">
+<h2 data-number="12.9" class="anchored" data-anchor-id="data-sources-revisited"><span class="header-section-number">12.9</span> Data sources (revisited)</h2>
+<p>We have looked through the census dictionary and found no indication that the concept of the number of household maintainers changed over our time period, with a minor caveat that 2011 data is from the voluntary National Household Survey instead of the mandatory long form census.</p>
+<p>For the <a href="https://www23.statcan.gc.ca/imdb/p3Instr.pl?Function=assembleInstr&amp;Item_Id=114641&amp;lang=en&amp;db=imdb&amp;adm=8&amp;dis=2">2011 NHS</a> and <a href="https://www12.statcan.gc.ca/nhs-enm/2016/ref/questionnaires/questions-eng.cfm">2016 census</a> the information on the number of household maintainers comes from the first question on the dwelling section, Question E1 and F1, respectively.</p>
+<p>In the 2011 NHS the question reads:</p>
+<blockquote class="blockquote">
+<p><strong>E1</strong> Who pays the rent or mortgage, taxes, electricity, etc., for this dwelling?</p>
+<ul>
+<li><p>1: Person 1</p></li>
+<li><p>2: Person 2</p></li>
+<li><p>3: Person 3</p></li>
+<li><p>4: Person 4</p></li>
+<li><p>5: Person 5</p></li>
+<li><p>6: A person who is listed on another questionnaire for this dwelling</p></li>
+<li><p>7: A person who does not live here</p></li>
+</ul>
+</blockquote>
+<p>In the 2016 census the question reads identical, except it received an additional instruction on how to answer if more than one person contributes.</p>
+<blockquote class="blockquote">
+<p>F1. Who pays the rent or mortgage, taxes, electricity,&nbsp;etc., for this dwelling?</p>
+<p>If more than one person contributes to such payments, mark as many circles as apply.</p>
+<ul>
+<li><p>1: Person 1</p></li>
+<li><p>2: Person 2</p></li>
+<li><p>3: Person 3</p></li>
+<li><p>4: Person 4</p></li>
+<li><p>5: Person 5</p></li>
+<li><p>6: A person who is listed on another questionnaire for this dwelling</p></li>
+<li><p>7: A person who does not live here</p></li>
+</ul>
+</blockquote>
+<p>This change in instruction could impact how people answer this question, plausibly increasing the number of people listing multiple people as household maintainers. This taints the overall drop in single household maintainers that we observed in the data 2011-2016.</p>
+<p>For the 2021 census the <a href="https://www.statcan.gc.ca/en/statistical-programs/instrument/3901_Q2_V6">question on household maintainers</a> has been removed from the dwelling section and added to the section that is to be separately filled out for every person in the household. It is not question 58 of part D, which reads.</p>
+<blockquote class="blockquote">
+<p><strong>58.</strong>&nbsp;Does this person pay, partly or entirely, the rent or mortgage, taxes, electricity, etc. for this dwelling?</p>
+<p>Mark “Yes” if this person pays the rent or mortgage, taxes, electricity, etc. for this dwelling, even if more than one person contributes to such payments.</p>
+<p>A&nbsp;<strong>dwelling</strong>&nbsp;is a separate set of living quarters with a&nbsp;<strong>private entrance</strong>&nbsp;from the outside or from a common hallway or stairway inside the building. This entrance should not be through someone else’s living quarters.</p>
+<p><strong>Do not consider</strong>&nbsp;payments for&nbsp;<strong>other dwellings</strong>&nbsp;such as the school residence of a child, the residence of a former spouse, or another dwelling that you may own or rent.</p>
+<ul>
+<li><p>Yes</p></li>
+<li><p>No</p></li>
+</ul>
+</blockquote>
+<p>This change is substantial, in 2021 the status as a household maintainer needed to be explicitly determined for every person, whereas in the previous years it had to be marked on a list of people that some respondents may have misread as just requiring to list the main contributor to rent or mortgage, taxes, electricity, etc.</p>
+</section>
+<section id="interpretation" class="level2" data-number="12.10">
+<h2 data-number="12.10" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">12.10</span> Interpretation</h2>
+<p>The number of household maintainer variable is not comparable across the 2016 to 2021 censuses, and may also be somewhat tainted for comparisons 2011 to 2016. We observe large changes in the shares of single and multiple household maintainer households 2016 to 2021 that are very likely dominated by changes to the census questionnaire.</p>
+<p>Comparisons across regions for fixed years can still be informative, with data prior to 2021 likely being tainted by people misreading the question and selecting only one household maintainer where they should have selected more than one. Composition of households by household size also matter, removing one-person household when computing shares can remove some of the bias introduced by some municipalities having a significantly higher share of one-person households than others. This effect is particularly strong when comparing Vancouver and Surrey.</p>
+<p>It would be worthwhile to look deeper into what drives three or more household maintainer households, either using cross tabulations or PUMF data. <a href="https://censusmapper.ca/maps/3575">Surrey’s high share of multigenerational households</a> is a likely contributor to Surrey’s high share of three or more household maintainer households.</p>
+<p>This exercise serves as a good reminder to be suspicious of implausibly large effects in data. Most probably these arise as a result of errors in the data analysis process, but may also come about due to changes in definitions or in the data generation process, in this case the questionnaire.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'alternate';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../basic_descriptive/toronto_children.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Toronto children</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../advanced_descriptive/advanced_descriptive.html" class="pagination-link">
+        <span class="nav-page-text">Advanced descriptive analysis</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2022, Jens von Bergmann</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/mountainmath">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/vb_jens">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/vb-jens/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

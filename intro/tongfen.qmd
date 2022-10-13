@@ -1,6 +1,6 @@
 ---
 title: "Introduction to the **tongfen** package"
-editor: visual
+label: tongfen-intro
 ---
 
 ![](images/tongfen-sticker.png){#tongfen-logo style="float:right;margin-left:3em;" width="250"}

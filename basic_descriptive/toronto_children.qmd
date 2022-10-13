@@ -40,7 +40,6 @@ search_census_regions("Toronto","CA21")
 Now we have everything in place to get the data on a harmonized geography based on census tracts.
 
 ```{r}
-
 toronto_children <- get_tongfen_ca_census(regions=list(CSD="3520005"), meta=meta, 
                                           level = "CT", na.rm = TRUE)
 ```

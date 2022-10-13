@@ -65,6 +65,7 @@ book:
       - basic_descriptive/under_construction.qmd
       - basic_descriptive/geography_of_income_change.qmd
       - basic_descriptive/toronto_children.qmd
+      - basic_descriptive/number_of_household_maintainers.qmd
     - part: advanced_descriptive/advanced_descriptive.qmd
       chapters:
       - advanced_descriptive/advanced_descriptive_bc_migration.qmd
@@ -105,15 +106,6 @@ format:
         - "\\vfill"
         - "\\logoblock"
         - "\\footerblock"
-      # elements:
-      #   - "\\titleblock"
-      #   - "\\authorblock"
-      #   - "\\vfill"
-      #   - "Building skills and community to analyze"
-      #   - "Canadian demographic and housing data"
-      #   - "\\vspace{0.8cm}"
-      #   - "\\logoblock"
-      #   - "\\footerblock"
   # pdf:
   #   documentclass: scrreprt
   #   fig-format: png

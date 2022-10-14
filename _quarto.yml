@@ -37,7 +37,6 @@ book:
     #background: light
     logo: cover.png
   top-level-division: part
-  code-fold: show
   page-footer: 
     left: "Copyright 2022, Jens von Bergmann" 
     right: 
@@ -86,6 +85,10 @@ format:
     fig-height: 6
     fig-format: png
     fig-responsive: true
+    code-fold: show
+    code-tools: true
+    code-summary: "Code"
+    code-link: true
     #theme: cosmo
     theme:
       dark: darkly

@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.1.251">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Analyzing Canadian Demographic and Housing Data - 2&nbsp; R, RStudio, and the tidyverse</title>
 <style>
 code{white-space: pre-wrap;}
@@ -85,7 +82,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -105,8 +101,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -125,8 +120,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
-
-
 <meta property="og:title" content="Analyzing Canadian Demographic and Housing Data - 2&nbsp; R, RStudio, and the tidyverse">
 <meta property="og:description" content="Building skills and community to analyze Canadian demographic and housing data">
 <meta property="og:image" content="https://mountainmath.github.io/canadian_data/cover.png">
@@ -140,34 +133,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:image-height" content="1300">
 <meta name="twitter:image-width" content="1450">
 </head>
-
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R, RStudio, and the tidyverse</span></h1>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">
+<span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R, RStudio, and the tidyverse</span>
+</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../" class="sidebar-logo-link">
-      <img src="../cover.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+      <img src="../cover.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Analyzing Canadian Demographic and Housing Data</a> 
         <div class="sidebar-tools-main">
     <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
+<li>
           <a class="dropdown-item sidebar-tools-main-item" href="../Analyzing-Canadian-Demographic-and-Housing-Data.pdf">
             <i class="bi bi-bi-file-pdf pe-1"></i>
           Download PDF
@@ -180,7 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </a>
         </li>
     </ul>
-  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+<a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
@@ -191,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">Preface</a>
   </div>
@@ -208,8 +195,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../intro/intro_to_r.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R, RStudio, and the tidyverse</span></a>
   </div>
@@ -235,7 +222,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../basic_descriptive/basic_descriptive.html" class="sidebar-item-text sidebar-link">Basic descriptive analysis</a>
@@ -243,8 +230,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../basic_descriptive/cerb.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Geography of CERB</span></a>
   </div>
@@ -275,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../advanced_descriptive/advanced_descriptive.html" class="sidebar-item-text sidebar-link">Advanced descriptive analysis</a>
@@ -283,47 +270,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../advanced_descriptive/advanced_descriptive_bc_migration.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">BC migration</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+</div>
+</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#r-and-rstudio" id="toc-r-and-rstudio" class="nav-link active" data-scroll-target="#r-and-rstudio"><span class="toc-section-number">2.1</span>  R and RStudio</a></li>
+<li><a href="#r-and-rstudio" id="toc-r-and-rstudio" class="nav-link active" data-scroll-target="#r-and-rstudio"><span class="toc-section-number">2.1</span>  R and RStudio</a></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="toc-section-number">2.2</span>  Packages</a></li>
-  <li><a href="#basic-data-manipulation-patterns" id="toc-basic-data-manipulation-patterns" class="nav-link" data-scroll-target="#basic-data-manipulation-patterns"><span class="toc-section-number">2.3</span>  Basic data manipulation patterns</a>
+  <li>
+<a href="#basic-data-manipulation-patterns" id="toc-basic-data-manipulation-patterns" class="nav-link" data-scroll-target="#basic-data-manipulation-patterns"><span class="toc-section-number">2.3</span>  Basic data manipulation patterns</a>
   <ul class="collapse">
-  <li><a href="#exploring-the-data" id="toc-exploring-the-data" class="nav-link" data-scroll-target="#exploring-the-data"><span class="toc-section-number">2.3.1</span>  Exploring the data</a></li>
+<li><a href="#exploring-the-data" id="toc-exploring-the-data" class="nav-link" data-scroll-target="#exploring-the-data"><span class="toc-section-number">2.3.1</span>  Exploring the data</a></li>
   <li><a href="#basic-data-manipulation" id="toc-basic-data-manipulation" class="nav-link" data-scroll-target="#basic-data-manipulation"><span class="toc-section-number">2.3.2</span>  Basic data manipulation</a></li>
   <li><a href="#visualizing-data" id="toc-visualizing-data" class="nav-link" data-scroll-target="#visualizing-data"><span class="toc-section-number">2.3.3</span>  Visualizing data</a></li>
   <li><a href="#more-data-manipulations" id="toc-more-data-manipulations" class="nav-link" data-scroll-target="#more-data-manipulations"><span class="toc-section-number">2.3.4</span>  More data manipulations</a></li>
-  </ul></li>
-  <li><a href="#canadian-data-packages" id="toc-canadian-data-packages" class="nav-link" data-scroll-target="#canadian-data-packages"><span class="toc-section-number">2.4</span>  Canadian data packages</a></li>
   </ul>
-</nav>
+</li>
+  <li><a href="#canadian-data-packages" id="toc-canadian-data-packages" class="nav-link" data-scroll-target="#canadian-data-packages"><span class="toc-section-number">2.4</span>  Canadian data packages</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R, RStudio, and the tidyverse</span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">
+<span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R, RStudio, and the tidyverse</span>
+</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -335,44 +319,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
-</header>
-
-<p>Statistics Canada produces a lot of high quality demographic and economic data for Canada. CMHC complements this with housing data, and municipalities across Canada often provide relevant data through their Open Data portals.</p>
-<section id="r-and-rstudio" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="r-and-rstudio"><span class="header-section-number">2.1</span> R and RStudio</h2>
+</header><p>Statistics Canada produces a lot of high quality demographic and economic data for Canada. CMHC complements this with housing data, and municipalities across Canada often provide relevant data through their Open Data portals.</p>
+<section id="r-and-rstudio" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="r-and-rstudio">
+<span class="header-section-number">2.1</span> R and RStudio</h2>
 <p>We will be working in R and the <a href="https://www.rstudio.com/products/rstudio/download/" title="Download RStudio">RStudio IDE</a>, although using a different editor like <a href="https://visualstudio.microsoft.com">Visual Studio Code</a> works just as well, especially if you are already familiar with it. Within R we will be operating within the <a href="https://www.tidyverse.org">tidyverse framework</a>, a group of R packages that work well together and allow for intuitive operations on data via pipes.</p>
 <p>While an introduction to R is part of the goal of this book, an we will slowly build up skills as we go, we not give a systematic introduction but rather build up skills slowly as we work on concrete examples. It may be beneficial to supplement this with a <a href="https://r4ds.had.co.nz/index.html">more principled introduction to <strong>R</strong> and the <strong>tidyverse</strong></a><strong>.</strong></p>
-</section>
-<section id="packages" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="packages"><span class="header-section-number">2.2</span> Packages</h2>
+</section><section id="packages" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="packages">
+<span class="header-section-number">2.2</span> Packages</h2>
 <p>Packages are bundled sets of functionality that expand base R. We install or upgrade packages with the <code>install.packages`</code>. For example, to install the <a href="https://www.tidyverse.org">tidyverse framework</a> we type</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-1_ce1f36f71bcb84f0fc7477e7128176b3">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<p>into the R console. This will install or upgrade the package and required dependencies. To make the functionality, for example the <code>tibble</code> function from the <strong>tibble</strong> package that is part of <strong>tidyverse</strong>, available to use we can then either access functions from the package using the <code>::</code> namespace selector <code>tibble::tibble()</code> or first load the <strong>tibble</strong> or <strong>tidyverse</strong> package via <code>library(tidyverse)</code> that makes the <code>tibble()</code> function available without having to use the namespace selector.</p>
+<p>into the R console. This will install or upgrade the package and required dependencies. To make the functionality, for example the <code>tibble</code> function from the <strong>tibble</strong> package that is part of <strong>tidyverse</strong>, available to use we can then either access functions from the package using the <code>::</code> namespace selector <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble::tibble()</a></code> or first load the <strong>tibble</strong> or <strong>tidyverse</strong> package via <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> that makes the <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble()</a></code> function available without having to use the namespace selector.</p>
 <p>Additionally, we will need a number of packages that handle data acquisition and processing for Canadian data.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-2_c2960a650848eba0b59cfcbd531134e9">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"cancensus"</span>,<span class="st">"cansim"</span>,<span class="st">"cmhc"</span>,<span class="st">"tongfen"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cancensus"</span>,<span class="st">"cansim"</span>,<span class="st">"cmhc"</span>,<span class="st">"tongfen"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-</section>
-<section id="basic-data-manipulation-patterns" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="basic-data-manipulation-patterns"><span class="header-section-number">2.3</span> Basic data manipulation patterns</h2>
+</section><section id="basic-data-manipulation-patterns" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="basic-data-manipulation-patterns">
+<span class="header-section-number">2.3</span> Basic data manipulation patterns</h2>
 <p>There are several basic data manipulation patterns that we will use throughout, and we want to give a quick overview using the Palmer Penguins dataset from the <strong>palmerpenguins</strong> package.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-3_ea0b760eb7a8d7696f137a657f31deea">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"palmerpenguins"</span>) <span class="co"># install the package if needed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"palmerpenguins"</span><span class="op">)</span> <span class="co"># install the package if needed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>We will at times require additional packages like this to accomplish specialized tasks, installing packages in R is generally a simple and pain-free procedure.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-4_c15fdd710f65f118e8f18c3e349cf75e">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("palmerpenguins") # install the package if needed</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># install.packages("palmerpenguins") # install the package if needed</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Now we have all the functionality of the <strong>palmerpenguins</strong> package available.</p>
-<section id="exploring-the-data" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="exploring-the-data"><span class="header-section-number">2.3.1</span> Exploring the data</h3>
-<p>With the <strong>palmerpenguins</strong> package comes the <code>penguins</code> dataset, we can expect the first few rows using the <code>head()</code> function which displays the first few rows.</p>
+<section id="exploring-the-data" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="exploring-the-data">
+<span class="header-section-number">2.3.1</span> Exploring the data</h3>
+<p>With the <strong>palmerpenguins</strong> package comes the <code>penguins</code> dataset, we can expect the first few rows using the <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> function which displays the first few rows.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-5_9f190c88bc1acdd840b0d2c36cbd90be">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 8
   species island    bill_length_mm bill_depth_mm flipper_l…¹ body_…² sex    year
   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;       &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
@@ -385,10 +369,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g</code></pre>
 </div>
 </div>
-<p>The <code>str()</code> function offers another convenient way to get an overview over the data.</p>
+<p>The <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> function offers another convenient way to get an overview over the data.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-6_258ed61fbfddc17f90e7d2d133c5140c">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
  $ species          : Factor w/ 3 levels "Adelie","Chinstrap",..: 1 1 1 1 1 1 1 1 1 1 ...
  $ island           : Factor w/ 3 levels "Biscoe","Dream",..: 3 3 3 3 3 3 3 3 3 3 ...
@@ -401,20 +385,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>We can also type <code>View(penguins)</code> into the console to view the dataset in a spreadsheet form.</p>
-</section>
-<section id="basic-data-manipulation" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="basic-data-manipulation"><span class="header-section-number">2.3.2</span> Basic data manipulation</h3>
+</section><section id="basic-data-manipulation" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="basic-data-manipulation">
+<span class="header-section-number">2.3.2</span> Basic data manipulation</h3>
 <p>To manipulate and visualize the data we load the tidyverse package.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-7_c641b1938853dbede4964c3f36ffcdc8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>We will explore some common data manipulation and visualization workflows.</p>
-<section id="count-groups" class="level4" data-number="2.3.2.1">
-<h4 data-number="2.3.2.1" class="anchored" data-anchor-id="count-groups"><span class="header-section-number">2.3.2.1</span> Count groups</h4>
-<p>To see how many rows there are for each species we ‘pipe’ the <code>penguins</code> dataset into the <code>count()</code> verb. Pipes are how we can stepwise transform data, the pipe operator is given by <code>%&gt;%</code> withing the <strong>tidyverse</strong> framework and now also available natively in base R via <code>|&gt;</code>. These two function (almost) the same way, and we will use both in this book.</p>
+<section id="count-groups" class="level4" data-number="2.3.2.1"><h4 data-number="2.3.2.1" class="anchored" data-anchor-id="count-groups">
+<span class="header-section-number">2.3.2.1</span> Count groups</h4>
+<p>To see how many rows there are for each species we ‘pipe’ the <code>penguins</code> dataset into the <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> verb. Pipes are how we can stepwise transform data, the pipe operator is given by <code>%&gt;%</code> withing the <strong>tidyverse</strong> framework and now also available natively in base R via <code>|&gt;</code>. These two function (almost) the same way, and we will use both in this book.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-8_40543b5f805c5b2eb601eb89b10b2298">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> <span class="fu">count</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   species       n
   &lt;fct&gt;     &lt;int&gt;
@@ -423,16 +407,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 3 Gentoo      124</code></pre>
 </div>
 </div>
-<p>This gives us the count of each species in the dataset, the pipe <code>|&gt;</code> inserts the left hand side as the first argument in the <code>count()</code> function. We could have equivalently written this without the pipe operator as <code>count(penguins,species)</code>.</p>
-</section>
-<section id="group-and-summarize" class="level4" data-number="2.3.2.2">
-<h4 data-number="2.3.2.2" class="anchored" data-anchor-id="group-and-summarize"><span class="header-section-number">2.3.2.2</span> Group and summarize</h4>
+<p>This gives us the count of each species in the dataset, the pipe <code>|&gt;</code> inserts the left hand side as the first argument in the <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> function. We could have equivalently written this without the pipe operator as <code>count(penguins,species)</code>.</p>
+</section><section id="group-and-summarize" class="level4" data-number="2.3.2.2"><h4 data-number="2.3.2.2" class="anchored" data-anchor-id="group-and-summarize">
+<span class="header-section-number">2.3.2.2</span> Group and summarize</h4>
 <p>The usefulness of the pipe operator becomes clear when we chain several data transformation. If we want to know the mean bill length by species, we group by species and summarize the data.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-9_92e8b5b4e8196cd85eac650e0c56e81c">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">bill_length_mm=</span><span class="fu">mean</span>(bill_length_mm, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>bill_length_mm<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   species   bill_length_mm
   &lt;fct&gt;              &lt;dbl&gt;
@@ -442,72 +425,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>Here we explicitly specify how missing values should be treated when summarizing, <code>na.rm=TRUE</code> says that NA values should be ignored when computing the mean.</p>
-</section>
-</section>
-<section id="visualizing-data" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="visualizing-data"><span class="header-section-number">2.3.3</span> Visualizing data</h3>
-<p>We can visualize the data using <code>ggplot</code>. For this we have to specify the mapping aesthetics, we plot the bill length on the x-axis, the depth on the y-axis, colour by species and plot the data as points. The <code>labs()</code> function allows us to customize the graph labels.</p>
+</section></section><section id="visualizing-data" class="level3" data-number="2.3.3"><h3 data-number="2.3.3" class="anchored" data-anchor-id="visualizing-data">
+<span class="header-section-number">2.3.3</span> Visualizing data</h3>
+<p>We can visualize the data using <code>ggplot</code>. For this we have to specify the mapping aesthetics, we plot the bill length on the x-axis, the depth on the y-axis, colour by species and plot the data as points. The <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> function allows us to customize the graph labels.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-10_32f6cee4b563446e70c2759d306f3874">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins,<span class="fu">aes</span>(<span class="at">x=</span>bill_length_mm,<span class="at">y=</span>bill_depth_mm,<span class="at">colour=</span>species)) <span class="sc">+</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Penguin bill length vs depth"</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Bill length  (mm)"</span>,<span class="at">y=</span><span class="st">"Bill depth (mm)"</span>,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour=</span><span class="st">"Penguin species"</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"Palmer Station Antarctica LTER"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">penguins</span>,<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">bill_length_mm</span>,y<span class="op">=</span><span class="va">bill_depth_mm</span>,colour<span class="op">=</span><span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title<span class="op">=</span><span class="st">"Penguin bill length vs depth"</span>,</span>
+<span>       x<span class="op">=</span><span class="st">"Bill length  (mm)"</span>,y<span class="op">=</span><span class="st">"Bill depth (mm)"</span>,</span>
+<span>       colour<span class="op">=</span><span class="st">"Penguin species"</span>,</span>
+<span>       caption<span class="op">=</span><span class="st">"Palmer Station Antarctica LTER"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 <p><img src="intro_to_r_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid"></p>
 </div>
 </div>
-<section id="add-regression-lines" class="level4" data-number="2.3.3.1">
-<h4 data-number="2.3.3.1" class="anchored" data-anchor-id="add-regression-lines"><span class="header-section-number">2.3.3.1</span> Add regression lines</h4>
+<section id="add-regression-lines" class="level4" data-number="2.3.3.1"><h4 data-number="2.3.3.1" class="anchored" data-anchor-id="add-regression-lines">
+<span class="header-section-number">2.3.3.1</span> Add regression lines</h4>
 <p>As an aside we note the Simpson’s paradox, in the overall dataset the bill depth declines with length, but if we look separately within each species the bill depth increases with bill length. To make that explicit we can add regression lines using the <code>geom_smooth</code> function using <code>lm</code> (linear model) as the smoothing method.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-11_b9fdbfdb4584fe7eb918fae83a266da4">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins,<span class="fu">aes</span>(<span class="at">x=</span>bill_length_mm,<span class="at">y=</span>bill_depth_mm,<span class="at">colour=</span>species)) <span class="sc">+</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>) <span class="sc">+</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Penguin bill length vs depth"</span>,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Bill length  (mm)"</span>,<span class="at">y=</span><span class="st">"Bill depth (mm)"</span>,</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour=</span><span class="st">"Penguin species"</span>,</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"Palmer Station Antarctica LTER"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">penguins</span>,<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">bill_length_mm</span>,y<span class="op">=</span><span class="va">bill_depth_mm</span>,colour<span class="op">=</span><span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method<span class="op">=</span><span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method<span class="op">=</span><span class="st">"lm"</span>, colour<span class="op">=</span><span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title<span class="op">=</span><span class="st">"Penguin bill length vs depth"</span>,</span>
+<span>       x<span class="op">=</span><span class="st">"Bill length  (mm)"</span>,y<span class="op">=</span><span class="st">"Bill depth (mm)"</span>,</span>
+<span>       colour<span class="op">=</span><span class="st">"Penguin species"</span>,</span>
+<span>       caption<span class="op">=</span><span class="st">"Palmer Station Antarctica LTER"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 <p><img src="intro_to_r_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>The first <code>geom_smooth()</code> function will add a regression line for each species, distinguished by colour in the plot aesthetics. Overriding the <code>colour</code> argument in the second <code>geom_smooth()</code> function will forget that the data was coloured by species and add the black regression line run on the entire dataset.</p>
-</section>
-</section>
-<section id="more-data-manipulations" class="level3" data-number="2.3.4">
-<h3 data-number="2.3.4" class="anchored" data-anchor-id="more-data-manipulations"><span class="header-section-number">2.3.4</span> More data manipulations</h3>
+<p>The first <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> function will add a regression line for each species, distinguished by colour in the plot aesthetics. Overriding the <code>colour</code> argument in the second <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> function will forget that the data was coloured by species and add the black regression line run on the entire dataset.</p>
+</section></section><section id="more-data-manipulations" class="level3" data-number="2.3.4"><h3 data-number="2.3.4" class="anchored" data-anchor-id="more-data-manipulations">
+<span class="header-section-number">2.3.4</span> More data manipulations</h3>
 <p>There are several common data manipulation steps that we will employ frequently.</p>
-<section id="filtering-rows" class="level4" data-number="2.3.4.1">
-<h4 data-number="2.3.4.1" class="anchored" data-anchor-id="filtering-rows"><span class="header-section-number">2.3.4.1</span> Filtering rows</h4>
+<section id="filtering-rows" class="level4" data-number="2.3.4.1"><h4 data-number="2.3.4.1" class="anchored" data-anchor-id="filtering-rows">
+<span class="header-section-number">2.3.4.1</span> Filtering rows</h4>
 <p>Often we are only interested in subsets of the data, we can filter the rows in the dataset by using the <code>filter</code> verb from the <strong>dplyr</strong> package that is part of <strong>tidyverse</strong>. For example, if we want to take the previous plot but only show it for penguins on the island of Biscoe we can filter the data accordingly before plotting it.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-12_b8fe26d90d51fd5ff53d6d75f4a1684e">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(island<span class="sc">==</span><span class="st">"Biscoe"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>bill_length_mm,<span class="at">y=</span>bill_depth_mm,<span class="at">colour=</span>species)) <span class="sc">+</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>) <span class="sc">+</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Penguin bill length vs depth"</span>,</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Biscoe island only"</span>,</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Bill length  (mm)"</span>,<span class="at">y=</span><span class="st">"Bill depth (mm)"</span>,</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour=</span><span class="st">"Penguin species"</span>,</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"Palmer Station Antarctica LTER"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">island</span><span class="op">==</span><span class="st">"Biscoe"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">bill_length_mm</span>,y<span class="op">=</span><span class="va">bill_depth_mm</span>,colour<span class="op">=</span><span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method<span class="op">=</span><span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method<span class="op">=</span><span class="st">"lm"</span>, colour<span class="op">=</span><span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title<span class="op">=</span><span class="st">"Penguin bill length vs depth"</span>,</span>
+<span>       subtitle<span class="op">=</span><span class="st">"Biscoe island only"</span>,</span>
+<span>       x<span class="op">=</span><span class="st">"Bill length  (mm)"</span>,y<span class="op">=</span><span class="st">"Bill depth (mm)"</span>,</span>
+<span>       colour<span class="op">=</span><span class="st">"Penguin species"</span>,</span>
+<span>       caption<span class="op">=</span><span class="st">"Palmer Station Antarctica LTER"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 <p><img src="intro_to_r_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid"></p>
 </div>
 </div>
-</section>
-<section id="selecting-columns" class="level4" data-number="2.3.4.2">
-<h4 data-number="2.3.4.2" class="anchored" data-anchor-id="selecting-columns"><span class="header-section-number">2.3.4.2</span> Selecting columns</h4>
+</section><section id="selecting-columns" class="level4" data-number="2.3.4.2"><h4 data-number="2.3.4.2" class="anchored" data-anchor-id="selecting-columns">
+<span class="header-section-number">2.3.4.2</span> Selecting columns</h4>
 <p>Instead of filtering rows It can be useful to select a subset of the columns to remove columns we don’t need and de-clutter the dataset. This is especially useful when producing tables. If we want a table of the numeric data fields of all female Adelie penguins on the island of Biscoe observed in 2007 we can filter by sex and island and select the columns we want.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-13_a48ae4a90af4f1d713f478ab9e79b0b3">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(island<span class="sc">==</span><span class="st">"Biscoe"</span>, sex<span class="sc">==</span><span class="st">"female"</span>, species<span class="sc">==</span><span class="st">"Adelie"</span>, year<span class="sc">==</span><span class="dv">2007</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric),<span class="sc">-</span>year) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">island</span><span class="op">==</span><span class="st">"Biscoe"</span>, <span class="va">sex</span><span class="op">==</span><span class="st">"female"</span>, <span class="va">species</span><span class="op">==</span><span class="st">"Adelie"</span>, <span class="va">year</span><span class="op">==</span><span class="fl">2007</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>,<span class="op">-</span><span class="va">year</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 4
   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
@@ -518,18 +496,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 5           37.9          18.6               172        3150</code></pre>
 </div>
 </div>
-</section>
-<section id="mutating-data" class="level4" data-number="2.3.4.3">
-<h4 data-number="2.3.4.3" class="anchored" data-anchor-id="mutating-data"><span class="header-section-number">2.3.4.3</span> Mutating data</h4>
+</section><section id="mutating-data" class="level4" data-number="2.3.4.3"><h4 data-number="2.3.4.3" class="anchored" data-anchor-id="mutating-data">
+<span class="header-section-number">2.3.4.3</span> Mutating data</h4>
 <p>We often want to change data fields, or compute new columns from existing ones. For example, if we want to convert the body mass from <em>g</em> to <em>kg</em> we can add a new column using <code>mutate</code> for that.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-14_bee6a1a1b981941f668c4b2a6be0277b">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>penguin_selection <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(island<span class="sc">==</span><span class="st">"Biscoe"</span>, sex<span class="sc">==</span><span class="st">"female"</span>, species<span class="sc">==</span><span class="st">"Adelie"</span>, year<span class="sc">==</span><span class="dv">2007</span>) <span class="sc">|&gt;</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">body_mass_kg=</span>body_mass_g<span class="sc">/</span><span class="dv">1000</span>) <span class="sc">|&gt;</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric),<span class="sc">-</span>year,<span class="sc">-</span>body_mass_g)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>penguin_selection</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguin_selection</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">island</span><span class="op">==</span><span class="st">"Biscoe"</span>, <span class="va">sex</span><span class="op">==</span><span class="st">"female"</span>, <span class="va">species</span><span class="op">==</span><span class="st">"Adelie"</span>, <span class="va">year</span><span class="op">==</span><span class="fl">2007</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>body_mass_kg<span class="op">=</span><span class="va">body_mass_g</span><span class="op">/</span><span class="fl">1000</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>,<span class="op">-</span><span class="va">year</span>,<span class="op">-</span><span class="va">body_mass_g</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">penguin_selection</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 4
   bill_length_mm bill_depth_mm flipper_length_mm body_mass_kg
            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;        &lt;dbl&gt;
@@ -540,17 +517,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 5           37.9          18.6               172         3.15</code></pre>
 </div>
 </div>
-</section>
-<section id="pivoting-data" class="level4" data-number="2.3.4.4">
-<h4 data-number="2.3.4.4" class="anchored" data-anchor-id="pivoting-data"><span class="header-section-number">2.3.4.4</span> Pivoting data</h4>
+</section><section id="pivoting-data" class="level4" data-number="2.3.4.4"><h4 data-number="2.3.4.4" class="anchored" data-anchor-id="pivoting-data">
+<span class="header-section-number">2.3.4.4</span> Pivoting data</h4>
 <p>The data in our <code>penguin_selection</code> dataset above is in <strong>wide form</strong>, all the different variables are in their own column. Often it is useful to convert it to <strong>long form</strong>, where we only have one value column with the numeric values and another column specifying the type of measurement. In this case it is useful to add an identification column so that we know which measurements belong to the same penguin. We can just label the penguins by row number.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-15_0320551bdaec7a05c2e92c6fc7881b61">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>penguin_selection_long <span class="ot">&lt;-</span> penguin_selection <span class="sc">|&gt;</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ID=</span><span class="fu">row_number</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>ID,<span class="at">names_to=</span><span class="st">"Metric"</span>,<span class="at">values_to=</span><span class="st">"Value"</span>)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>penguin_selection_long <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguin_selection_long</span> <span class="op">&lt;-</span> <span class="va">penguin_selection</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>ID<span class="op">=</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/ranking.html">row_number</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="op">-</span><span class="va">ID</span>,names_to<span class="op">=</span><span class="st">"Metric"</span>,values_to<span class="op">=</span><span class="st">"Value"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">penguin_selection_long</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
      ID Metric            Value
   &lt;int&gt; &lt;chr&gt;             &lt;dbl&gt;
@@ -564,9 +540,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>We can do the reverse transformation, going <strong>from long</strong> form to <strong>wide form</strong>, using <code>pivot_wider</code>.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-16_ac4839e5835c1aae9762c3cf3f91c9a1">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>penguin_selection_long <span class="sc">|&gt;</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Metric,<span class="at">values_from =</span> Value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguin_selection_long</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">Metric</span>,values_from <span class="op">=</span> <span class="va">Value</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 5
      ID bill_length_mm bill_depth_mm flipper_length_mm body_mass_kg
   &lt;int&gt;          &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;        &lt;dbl&gt;
@@ -578,18 +554,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>This recovers the previous form of the data, with the added <code>ID</code> column.</p>
-</section>
-</section>
-</section>
-<section id="canadian-data-packages" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="canadian-data-packages"><span class="header-section-number">2.4</span> Canadian data packages</h2>
+</section></section></section><section id="canadian-data-packages" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="canadian-data-packages">
+<span class="header-section-number">2.4</span> Canadian data packages</h2>
 <p>During the course of this book we will make heavy use of several R packages to facilitate data access to Canadian data, we will introduce them in this chapter.</p>
 
 
-</section>
+<!-- -->
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -750,6 +722,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -799,9 +822,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     });
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../intro/getting_started.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Getting started</span>
       </a>          
@@ -811,14 +832,205 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cansim</strong> package</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb25" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># R, RStudio, and the tidyverse</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>Statistics Canada produces a lot of high quality demographic and economic data for Canada. CMHC complements this with housing data, and municipalities across Canada often provide relevant data through their Open Data portals.</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## R and RStudio</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>We will be working in R and the <span class="co">[</span><span class="ot">RStudio IDE</span><span class="co">](https://www.rstudio.com/products/rstudio/download/ "Download RStudio")</span>, although using a different editor like <span class="co">[</span><span class="ot">Visual Studio Code</span><span class="co">](https://visualstudio.microsoft.com)</span> works just as well, especially if you are already familiar with it. Within R we will be operating within the <span class="co">[</span><span class="ot">tidyverse framework</span><span class="co">](https://www.tidyverse.org)</span>, a group of R packages that work well together and allow for intuitive operations on data via pipes.</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>While an introduction to R is part of the goal of this book, an we will slowly build up skills as we go, we not give a systematic introduction but rather build up skills slowly as we work on concrete examples. It may be beneficial to supplement this with a <span class="co">[</span><span class="ot">more principled introduction to **R** and the **tidyverse**</span><span class="co">](https://r4ds.had.co.nz/index.html)</span>**.**</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Packages</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>Packages are bundled sets of functionality that expand base R. We install or upgrade packages with the `<span class="in">` install.packages`</span> ``. For example, to install the <span class="co">[</span><span class="ot">tidyverse framework</span><span class="co">](https://www.tidyverse.org)</span> we type</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>into the R console. This will install or upgrade the package and required dependencies. To make the functionality, for example the <span class="in">`tibble`</span> function from the **tibble** package that is part of **tidyverse**, available to use we can then either access functions from the package using the `::` namespace selector `tibble::tibble()` or first load the **tibble** or **tidyverse** package via <span class="in">`library(tidyverse)`</span> that makes the <span class="in">`tibble()`</span> function available without having to use the namespace selector.</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>Additionally, we will need a number of packages that handle data acquisition and processing for Canadian data.</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"cancensus"</span>,<span class="st">"cansim"</span>,<span class="st">"cmhc"</span>,<span class="st">"tongfen"</span>))</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Basic data manipulation patterns</span></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>There are several basic data manipulation patterns that we will use throughout, and we want to give a quick overview using the Palmer Penguins dataset from the **palmerpenguins** package.</span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"palmerpenguins"</span>) <span class="co"># install the package if needed</span></span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a>We will at times require additional packages like this to accomplish specialized tasks, installing packages in R is generally a simple and pain-free procedure.</span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("palmerpenguins") # install the package if needed</span></span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>Now we have all the functionality of the **palmerpenguins** package available.</span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exploring the data</span></span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a>With the **palmerpenguins** package comes the <span class="in">`penguins`</span> dataset, we can expect the first few rows using the <span class="in">`head()`</span> function which displays the first few rows.</span>
+<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins)</span>
+<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a>The <span class="in">`str()`</span> function offers another convenient way to get an overview over the data.</span>
+<span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(penguins)</span>
+<span id="cb25-62"><a href="#cb25-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-63"><a href="#cb25-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-64"><a href="#cb25-64" aria-hidden="true" tabindex="-1"></a>We can also type <span class="in">`View(penguins)`</span> into the console to view the dataset in a spreadsheet form.</span>
+<span id="cb25-65"><a href="#cb25-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-66"><a href="#cb25-66" aria-hidden="true" tabindex="-1"></a><span class="fu">### Basic data manipulation</span></span>
+<span id="cb25-67"><a href="#cb25-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-68"><a href="#cb25-68" aria-hidden="true" tabindex="-1"></a>To manipulate and visualize the data we load the tidyverse package.</span>
+<span id="cb25-69"><a href="#cb25-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-70"><a href="#cb25-70" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE}</span></span>
+<span id="cb25-71"><a href="#cb25-71" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb25-72"><a href="#cb25-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-73"><a href="#cb25-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-74"><a href="#cb25-74" aria-hidden="true" tabindex="-1"></a>We will explore some common data manipulation and visualization workflows.</span>
+<span id="cb25-75"><a href="#cb25-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-76"><a href="#cb25-76" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Count groups</span></span>
+<span id="cb25-77"><a href="#cb25-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-78"><a href="#cb25-78" aria-hidden="true" tabindex="-1"></a>To see how many rows there are for each species we 'pipe' the <span class="in">`penguins`</span> dataset into the <span class="in">`count()`</span> verb. Pipes are how we can stepwise transform data, the pipe operator is given by <span class="in">`%&gt;%`</span> withing the **tidyverse** framework and now also available natively in base R via <span class="in">`|&gt;`</span>. These two function (almost) the same way, and we will use both in this book.</span>
+<span id="cb25-79"><a href="#cb25-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-82"><a href="#cb25-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-83"><a href="#cb25-83" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> <span class="fu">count</span>(species)</span>
+<span id="cb25-84"><a href="#cb25-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-85"><a href="#cb25-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-86"><a href="#cb25-86" aria-hidden="true" tabindex="-1"></a>This gives us the count of each species in the dataset, the pipe <span class="in">`|&gt;`</span> inserts the left hand side as the first argument in the <span class="in">`count()`</span> function. We could have equivalently written this without the pipe operator as <span class="in">`count(penguins,species)`</span>.</span>
+<span id="cb25-87"><a href="#cb25-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-88"><a href="#cb25-88" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Group and summarize</span></span>
+<span id="cb25-89"><a href="#cb25-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-90"><a href="#cb25-90" aria-hidden="true" tabindex="-1"></a>The usefulness of the pipe operator becomes clear when we chain several data transformation. If we want to know the mean bill length by species, we group by species and summarize the data.</span>
+<span id="cb25-91"><a href="#cb25-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-94"><a href="#cb25-94" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-95"><a href="#cb25-95" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb25-96"><a href="#cb25-96" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
+<span id="cb25-97"><a href="#cb25-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">bill_length_mm=</span><span class="fu">mean</span>(bill_length_mm, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb25-98"><a href="#cb25-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-99"><a href="#cb25-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-100"><a href="#cb25-100" aria-hidden="true" tabindex="-1"></a>Here we explicitly specify how missing values should be treated when summarizing, <span class="in">`na.rm=TRUE`</span> says that NA values should be ignored when computing the mean.</span>
+<span id="cb25-101"><a href="#cb25-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-102"><a href="#cb25-102" aria-hidden="true" tabindex="-1"></a><span class="fu">### Visualizing data</span></span>
+<span id="cb25-103"><a href="#cb25-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-104"><a href="#cb25-104" aria-hidden="true" tabindex="-1"></a>We can visualize the data using <span class="in">`ggplot`</span>. For this we have to specify the mapping aesthetics, we plot the bill length on the x-axis, the depth on the y-axis, colour by species and plot the data as points. The <span class="in">`labs()`</span> function allows us to customize the graph labels.</span>
+<span id="cb25-105"><a href="#cb25-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-106"><a href="#cb25-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE}</span></span>
+<span id="cb25-107"><a href="#cb25-107" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins,<span class="fu">aes</span>(<span class="at">x=</span>bill_length_mm,<span class="at">y=</span>bill_depth_mm,<span class="at">colour=</span>species)) <span class="sc">+</span></span>
+<span id="cb25-108"><a href="#cb25-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb25-109"><a href="#cb25-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Penguin bill length vs depth"</span>,</span>
+<span id="cb25-110"><a href="#cb25-110" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Bill length  (mm)"</span>,<span class="at">y=</span><span class="st">"Bill depth (mm)"</span>,</span>
+<span id="cb25-111"><a href="#cb25-111" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour=</span><span class="st">"Penguin species"</span>,</span>
+<span id="cb25-112"><a href="#cb25-112" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"Palmer Station Antarctica LTER"</span>)</span>
+<span id="cb25-113"><a href="#cb25-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-114"><a href="#cb25-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-115"><a href="#cb25-115" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Add regression lines</span></span>
+<span id="cb25-116"><a href="#cb25-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-117"><a href="#cb25-117" aria-hidden="true" tabindex="-1"></a>As an aside we note the Simpson's paradox, in the overall dataset the bill depth declines with length, but if we look separately within each species the bill depth increases with bill length. To make that explicit we can add regression lines using the <span class="in">`geom_smooth`</span> function using <span class="in">`lm`</span> (linear model) as the smoothing method.</span>
+<span id="cb25-118"><a href="#cb25-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-119"><a href="#cb25-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE, message=FALSE}</span></span>
+<span id="cb25-120"><a href="#cb25-120" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins,<span class="fu">aes</span>(<span class="at">x=</span>bill_length_mm,<span class="at">y=</span>bill_depth_mm,<span class="at">colour=</span>species)) <span class="sc">+</span></span>
+<span id="cb25-121"><a href="#cb25-121" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb25-122"><a href="#cb25-122" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb25-123"><a href="#cb25-123" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb25-124"><a href="#cb25-124" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Penguin bill length vs depth"</span>,</span>
+<span id="cb25-125"><a href="#cb25-125" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Bill length  (mm)"</span>,<span class="at">y=</span><span class="st">"Bill depth (mm)"</span>,</span>
+<span id="cb25-126"><a href="#cb25-126" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour=</span><span class="st">"Penguin species"</span>,</span>
+<span id="cb25-127"><a href="#cb25-127" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"Palmer Station Antarctica LTER"</span>)</span>
+<span id="cb25-128"><a href="#cb25-128" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-129"><a href="#cb25-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-130"><a href="#cb25-130" aria-hidden="true" tabindex="-1"></a>The first <span class="in">`geom_smooth()`</span> function will add a regression line for each species, distinguished by colour in the plot aesthetics. Overriding the <span class="in">`colour`</span> argument in the second <span class="in">`geom_smooth()`</span> function will forget that the data was coloured by species and add the black regression line run on the entire dataset.</span>
+<span id="cb25-131"><a href="#cb25-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-132"><a href="#cb25-132" aria-hidden="true" tabindex="-1"></a><span class="fu">### More data manipulations</span></span>
+<span id="cb25-133"><a href="#cb25-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-134"><a href="#cb25-134" aria-hidden="true" tabindex="-1"></a>There are several common data manipulation steps that we will employ frequently.</span>
+<span id="cb25-135"><a href="#cb25-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-136"><a href="#cb25-136" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Filtering rows</span></span>
+<span id="cb25-137"><a href="#cb25-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-138"><a href="#cb25-138" aria-hidden="true" tabindex="-1"></a>Often we are only interested in subsets of the data, we can filter the rows in the dataset by using the <span class="in">`filter`</span> verb from the **dplyr** package that is part of **tidyverse**. For example, if we want to take the previous plot but only show it for penguins on the island of Biscoe we can filter the data accordingly before plotting it.</span>
+<span id="cb25-139"><a href="#cb25-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-140"><a href="#cb25-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE, message=FALSE}</span></span>
+<span id="cb25-141"><a href="#cb25-141" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb25-142"><a href="#cb25-142" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(island<span class="sc">==</span><span class="st">"Biscoe"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb25-143"><a href="#cb25-143" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>bill_length_mm,<span class="at">y=</span>bill_depth_mm,<span class="at">colour=</span>species)) <span class="sc">+</span></span>
+<span id="cb25-144"><a href="#cb25-144" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb25-145"><a href="#cb25-145" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb25-146"><a href="#cb25-146" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb25-147"><a href="#cb25-147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Penguin bill length vs depth"</span>,</span>
+<span id="cb25-148"><a href="#cb25-148" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Biscoe island only"</span>,</span>
+<span id="cb25-149"><a href="#cb25-149" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Bill length  (mm)"</span>,<span class="at">y=</span><span class="st">"Bill depth (mm)"</span>,</span>
+<span id="cb25-150"><a href="#cb25-150" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour=</span><span class="st">"Penguin species"</span>,</span>
+<span id="cb25-151"><a href="#cb25-151" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"Palmer Station Antarctica LTER"</span>)</span>
+<span id="cb25-152"><a href="#cb25-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-153"><a href="#cb25-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-154"><a href="#cb25-154" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Selecting columns</span></span>
+<span id="cb25-155"><a href="#cb25-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-156"><a href="#cb25-156" aria-hidden="true" tabindex="-1"></a>Instead of filtering rows It can be useful to select a subset of the columns to remove columns we don't need and de-clutter the dataset. This is especially useful when producing tables. If we want a table of the numeric data fields of all female Adelie penguins on the island of Biscoe observed in 2007 we can filter by sex and island and select the columns we want.</span>
+<span id="cb25-157"><a href="#cb25-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-160"><a href="#cb25-160" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-161"><a href="#cb25-161" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb25-162"><a href="#cb25-162" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(island<span class="sc">==</span><span class="st">"Biscoe"</span>, sex<span class="sc">==</span><span class="st">"female"</span>, species<span class="sc">==</span><span class="st">"Adelie"</span>, year<span class="sc">==</span><span class="dv">2007</span>) <span class="sc">|&gt;</span></span>
+<span id="cb25-163"><a href="#cb25-163" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric),<span class="sc">-</span>year) </span>
+<span id="cb25-164"><a href="#cb25-164" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-165"><a href="#cb25-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-166"><a href="#cb25-166" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Mutating data</span></span>
+<span id="cb25-167"><a href="#cb25-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-168"><a href="#cb25-168" aria-hidden="true" tabindex="-1"></a>We often want to change data fields, or compute new columns from existing ones. For example, if we want to convert the body mass from *g* to *kg* we can add a new column using <span class="in">`mutate`</span> for that.</span>
+<span id="cb25-169"><a href="#cb25-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-172"><a href="#cb25-172" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-173"><a href="#cb25-173" aria-hidden="true" tabindex="-1"></a>penguin_selection <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<span id="cb25-174"><a href="#cb25-174" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(island<span class="sc">==</span><span class="st">"Biscoe"</span>, sex<span class="sc">==</span><span class="st">"female"</span>, species<span class="sc">==</span><span class="st">"Adelie"</span>, year<span class="sc">==</span><span class="dv">2007</span>) <span class="sc">|&gt;</span></span>
+<span id="cb25-175"><a href="#cb25-175" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">body_mass_kg=</span>body_mass_g<span class="sc">/</span><span class="dv">1000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb25-176"><a href="#cb25-176" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric),<span class="sc">-</span>year,<span class="sc">-</span>body_mass_g)</span>
+<span id="cb25-177"><a href="#cb25-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-178"><a href="#cb25-178" aria-hidden="true" tabindex="-1"></a>penguin_selection</span>
+<span id="cb25-179"><a href="#cb25-179" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-180"><a href="#cb25-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-181"><a href="#cb25-181" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Pivoting data</span></span>
+<span id="cb25-182"><a href="#cb25-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-183"><a href="#cb25-183" aria-hidden="true" tabindex="-1"></a>The data in our <span class="in">`penguin_selection`</span> dataset above is in **wide form**, all the different variables are in their own column. Often it is useful to convert it to **long form**, where we only have one value column with the numeric values and another column specifying the type of measurement. In this case it is useful to add an identification column so that we know which measurements belong to the same penguin. We can just label the penguins by row number.</span>
+<span id="cb25-184"><a href="#cb25-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-187"><a href="#cb25-187" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-188"><a href="#cb25-188" aria-hidden="true" tabindex="-1"></a>penguin_selection_long <span class="ot">&lt;-</span> penguin_selection <span class="sc">|&gt;</span></span>
+<span id="cb25-189"><a href="#cb25-189" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ID=</span><span class="fu">row_number</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb25-190"><a href="#cb25-190" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>ID,<span class="at">names_to=</span><span class="st">"Metric"</span>,<span class="at">values_to=</span><span class="st">"Value"</span>)</span>
+<span id="cb25-191"><a href="#cb25-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-192"><a href="#cb25-192" aria-hidden="true" tabindex="-1"></a>penguin_selection_long <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
+<span id="cb25-193"><a href="#cb25-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-194"><a href="#cb25-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-195"><a href="#cb25-195" aria-hidden="true" tabindex="-1"></a>We can do the reverse transformation, going **from long** form to **wide form**, using <span class="in">`pivot_wider`</span>.</span>
+<span id="cb25-196"><a href="#cb25-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-199"><a href="#cb25-199" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-200"><a href="#cb25-200" aria-hidden="true" tabindex="-1"></a>penguin_selection_long <span class="sc">|&gt;</span></span>
+<span id="cb25-201"><a href="#cb25-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Metric,<span class="at">values_from =</span> Value)</span>
+<span id="cb25-202"><a href="#cb25-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-203"><a href="#cb25-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-204"><a href="#cb25-204" aria-hidden="true" tabindex="-1"></a>This recovers the previous form of the data, with the added <span class="in">`ID`</span> column.</span>
+<span id="cb25-205"><a href="#cb25-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-206"><a href="#cb25-206" aria-hidden="true" tabindex="-1"></a><span class="fu">## Canadian data packages</span></span>
+<span id="cb25-207"><a href="#cb25-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-208"><a href="#cb25-208" aria-hidden="true" tabindex="-1"></a>During the course of this book we will make heavy use of several R packages to facilitate data access to Canadian data, we will introduce them in this chapter.</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">Copyright 2022, Jens von Bergmann</div>   
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/mountainmath">
       <i class="bi bi-github" role="img">
 </i> 
@@ -837,10 +1049,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
 </ul>
-    </div>
+</div>
   </div>
 </footer>
-
 
 
 </body></html>

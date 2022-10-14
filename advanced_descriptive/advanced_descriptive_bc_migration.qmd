@@ -175,7 +175,7 @@ net_interprovincial <- migration_data_interprovinicial |>
 
 migration_data_interprovinicial |> 
   filter(GEO!="Canada") |>
-  filter(Date==max(Date)) |>
+  filter(Date==as.Date("2022-01-01")) |>
   ggplot(aes(y=GEO,x=annual)) +
   geom_bar(stat="identity",
            aes(fill=fct_rev(`Components of population growth`))) +
@@ -184,7 +184,7 @@ migration_data_interprovinicial |>
                  filter(Date==max(Date))) +
   scale_fill_manual(values=migration_colours[grepl("Interprov",names(migration_colours))]) +
   scale_x_continuous(labels=scales::comma) +
-  labs(title="Most recent year migration",
+  labs(title="Year migration Q1 2021 to Q1 2022",
        fill="Components of population growth",
        y=NULL,x="Year over year change",
        caption="StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009")
@@ -195,7 +195,7 @@ In absolute number B.C. indeed has both the highest interprovincial in-migration
 ```{r}
 migration_data_interprovinicial |> 
   filter(GEO!="Canada") |>
-  filter(Date==max(Date)) |>
+  filter(Date==as.Date("2022-01-01")) |>
   ggplot(aes(y=GEO,x=annual/Population)) +
   geom_bar(stat="identity",
            aes(fill=fct_rev(`Components of population growth`))) +
@@ -204,7 +204,7 @@ migration_data_interprovinicial |>
                  filter(Date==max(Date))) +
   scale_fill_manual(values=migration_colours[grepl("Interprov",names(migration_colours))]) +
   scale_x_continuous(labels=scales::percent) +
-  labs(title="Most recent year migration",
+  labs(title="Year migration Q1 2021 to Q1 2022",
        fill="Components of population growth",
        y=NULL,x="Year over year change per capita",
        caption="StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009")
@@ -217,7 +217,7 @@ For completeness we can also just show the full graph that includes the internat
 ```{r}
 migration_data |> 
   left_join(pop_data, by=c("GEO","Date")) |>
-  filter(Date==max(Date)) |>
+  filter(Date==as.Date("2022-01-01")) |>
   ggplot(aes(y=GEO,x=annual/Population)) +
   geom_bar(stat="identity",aes(fill=fct_rev(`Components of population growth`))) +
   geom_boxplot(data=net_migration |> 
@@ -225,7 +225,7 @@ migration_data |>
                  filter(Date==max(Date))) +
   scale_fill_manual(values=migration_colours) +
   scale_x_continuous(labels=scales::percent) +
-  labs(title="Most recent year migration",
+  labs(title="Year migration Q1 2021 to Q1 2022",
        fill="Components of population growth",
        y=NULL,x="Year over year change per capita",
        caption="StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009")

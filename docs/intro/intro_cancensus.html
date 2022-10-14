@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.1.251">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Analyzing Canadian Demographic and Housing Data - 4&nbsp; Introduction to the cancensus package</title>
 <style>
 code{white-space: pre-wrap;}
@@ -104,7 +101,6 @@ div.csl-indent {
 }
 </style>
 
-
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -124,8 +120,7 @@ div.csl-indent {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -144,8 +139,6 @@ div.csl-indent {
     "search-submit-button-title": "Submit"
   }
 }</script>
-
-
 <meta property="og:title" content="Analyzing Canadian Demographic and Housing Data - 4&nbsp; Introduction to the cancensus package">
 <meta property="og:description" content="Building skills and community to analyze Canadian demographic and housing data">
 <meta property="og:image" content="https://mountainmath.github.io/canadian_data/cover.png">
@@ -159,34 +152,28 @@ div.csl-indent {
 <meta name="twitter:image-height" content="1300">
 <meta name="twitter:image-width" content="1450">
 </head>
-
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cancensus</strong> package</span></h1>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">
+<span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cancensus</strong> package</span>
+</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../" class="sidebar-logo-link">
-      <img src="../cover.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+      <img src="../cover.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Analyzing Canadian Demographic and Housing Data</a> 
         <div class="sidebar-tools-main">
     <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
+<li>
           <a class="dropdown-item sidebar-tools-main-item" href="../Analyzing-Canadian-Demographic-and-Housing-Data.pdf">
             <i class="bi bi-bi-file-pdf pe-1"></i>
           Download PDF
@@ -199,7 +186,7 @@ div.csl-indent {
           </a>
         </li>
     </ul>
-  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+<a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
@@ -210,7 +197,7 @@ div.csl-indent {
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">Preface</a>
   </div>
@@ -227,8 +214,8 @@ div.csl-indent {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../intro/intro_to_r.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R, RStudio, and the tidyverse</span></a>
   </div>
@@ -254,7 +241,7 @@ div.csl-indent {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../basic_descriptive/basic_descriptive.html" class="sidebar-item-text sidebar-link">Basic descriptive analysis</a>
@@ -262,8 +249,8 @@ div.csl-indent {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../basic_descriptive/cerb.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Geography of CERB</span></a>
   </div>
@@ -294,7 +281,7 @@ div.csl-indent {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../advanced_descriptive/advanced_descriptive.html" class="sidebar-item-text sidebar-link">Advanced descriptive analysis</a>
@@ -302,32 +289,29 @@ div.csl-indent {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../advanced_descriptive/advanced_descriptive_bc_migration.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">BC migration</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cancensus</strong> package</span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">
+<span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cancensus</strong> package</span>
+</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -339,9 +323,7 @@ div.csl-indent {
   </div>
   
 
-</header>
-
-<p><img src="images/cancensus-sticker.png" id="cancensus-logo" class="img-fluid" style="float:right;margin-left:3em;" alt="cancensus" width="250"></p>
+</header><p><img src="images/cancensus-sticker.png" id="cancensus-logo" class="img-fluid" style="float:right;margin-left:3em;" alt="cancensus" width="250"></p>
 <p>The <a href="https://mountainmath.github.io/cancensus/"><strong>cancensus</strong> R package</a> <span class="citation" data-cites="cancensus">(<a href="../references.html#ref-cancensus" role="doc-biblioref">von Bergmann, Shkolnik, and Jacobs 2022</a>)</span> interfaces with the CensusMapper API server. It can be queried for</p>
 <ul>
 <li><p>census geographies for census years 1996 through 2021</p></li>
@@ -353,34 +335,36 @@ div.csl-indent {
 <p>A slight complication, the <a href="https://mountainmath.github.io/cancensus/"><strong>cancensus</strong> package</a>needs an API key. You can sign up for one for free on <a href="https://censusmapper.ca/users/sign_up">CensusMapper</a>.</p>
 <p>Once you have your API key it’s useful to store it as an environment variable in your .Renviron configuration file so it’s available in all your R sessions.</p>
 <div class="cell" data-hash="intro_cancensus_cache/html/unnamed-chunk-1_c94d8b1d748b988e94dc61c187d42db6">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"cancensus"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>cancensus<span class="sc">::</span><span class="fu">set_api_key</span>(<span class="at">key =</span> <span class="st">"CensusMapper_XXXX...XXXX"</span>, <span class="at">install=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"cancensus"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">cancensus</span><span class="fu">::</span><span class="fu">set_api_key</span><span class="op">(</span>key <span class="op">=</span> <span class="st">"CensusMapper_XXXX...XXXX"</span>, install<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>By default {cancensus} cached downloaded census data, which makes it easier and faster to re-run analysis and protects from overusing the CensusMapper API quota. To use caching an local path needs to be designated for data caching. The cache is shared across R sessions.</p>
 <div class="cell" data-hash="intro_cancensus_cache/html/unnamed-chunk-2_7e922320ec3f49ff7f32197430e2c200">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cancensus<span class="sc">::</span><span class="fu">set_cache_path</span>(<span class="at">cache_path =</span> <span class="st">"&lt;local path ot cache data&gt;"</span>, <span class="at">install=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">cancensus</span><span class="fu">::</span><span class="fu">set_cache_path</span><span class="op">(</span>cache_path <span class="op">=</span> <span class="st">"&lt;local path ot cache data&gt;"</span>, install<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>{cancensus} provides convenient access to census data. Calls to {cancensus} require to spectify</p>
 <ul>
-<li><p>The <code>dataset</code>, for example “CA21” for the 2021 Canadian census. A list of available datasets can be accessed via <code>cancensus::list_census_datasets()</code>.</p></li>
+<li><p>The <code>dataset</code>, for example “CA21” for the 2021 Canadian census. A list of available datasets can be accessed via <code><a href="https://mountainmath.github.io/cancensus/reference/list_census_datasets.html">cancensus::list_census_datasets()</a></code>.</p></li>
 <li><p>The <code>regions</code> to access the data for, this is a list keyed by geographic levels. For example, to access data for the Vancouver census metropolitan area it would be <code>list(CMA="59933")</code>, for the City of Toronto it would be <code>list(CSD="3520005")</code>. Region parameters can contain several regions of the same type or mix regions of different type. For example, to access data for the region covered by the Vancouver School Board, we need to assemble two CSDs and three CTs <code>list(CSD=c("5915022","5915803"),CT=c("9330069.04","9330069.03","9330069.02"))</code>. This allows pinpointing what geographic region we are interested in.</p></li>
-<li><p>The geographic <code>level</code> to query the data for. This simply be the regions specified in the <code>regions</code> parameter, but it could also be any geographic level equal to or lower than the lowest level geographic region specified in the <code>regions</code> parameter. Valid level identifiers are <code>DB</code> for dissemination blocks, <code>DA</code> for dissemination areas, <code>EA</code> for enumeration areas for the 1996 census, <code>CT</code> for census tracts, <code>CSD</code> for census subdivisions, <code>CMA</code> for census metropolitan areas or census agglormerations, <code>CD</code> for census districts, <code>PR</code> for provinces or territories and <code>C</code> for country level data. Geographic regions can also be assembled using the <a href="http://localhost:3000/api#api_region">CensusMapper API GUI tool</a>, CSD and higher level geographies can be explored or searched programmatically via the <code>list_census_regions()</code> or <code>search_census_regions()</code> functions.</p></li>
-<li><p>The <code>vectors</code> parameter allows to specify which census variables to query. By default the data comes with population, dwelling and household counts, other census variables can be explored and selected via the <a href="http://localhost:3000/api#api_variable">CensusMapper API GUI tool</a> or explored or searched programmatically via the <code>list_census_vectors()</code> or <code>find_census_vectors()</code> functions. There are also helper function to select variables using the internal CensusMapper metadata and hierarchy of census variables via the <code>child_census_vectors()</code> function. For finer control over the names of the names of the returned census variable the <code>vectors</code> parameter can be a named vector.</p></li>
+<li><p>The geographic <code>level</code> to query the data for. This simply be the regions specified in the <code>regions</code> parameter, but it could also be any geographic level equal to or lower than the lowest level geographic region specified in the <code>regions</code> parameter. Valid level identifiers are <code>DB</code> for dissemination blocks, <code>DA</code> for dissemination areas, <code>EA</code> for enumeration areas for the 1996 census, <code>CT</code> for census tracts, <code>CSD</code> for census subdivisions, <code>CMA</code> for census metropolitan areas or census agglormerations, <code>CD</code> for census districts, <code>PR</code> for provinces or territories and <code>C</code> for country level data. Geographic regions can also be assembled using the <a href="http://localhost:3000/api#api_region">CensusMapper API GUI tool</a>, CSD and higher level geographies can be explored or searched programmatically via the <code><a href="https://mountainmath.github.io/cancensus/reference/list_census_regions.html">list_census_regions()</a></code> or <code><a href="https://mountainmath.github.io/cancensus/reference/search_census_regions.html">search_census_regions()</a></code> functions.</p></li>
+<li><p>The <code>vectors</code> parameter allows to specify which census variables to query. By default the data comes with population, dwelling and household counts, other census variables can be explored and selected via the <a href="http://localhost:3000/api#api_variable">CensusMapper API GUI tool</a> or explored or searched programmatically via the <code><a href="https://mountainmath.github.io/cancensus/reference/list_census_vectors.html">list_census_vectors()</a></code> or <code><a href="https://mountainmath.github.io/cancensus/reference/find_census_vectors.html">find_census_vectors()</a></code> functions. There are also helper function to select variables using the internal CensusMapper metadata and hierarchy of census variables via the <code><a href="https://mountainmath.github.io/cancensus/reference/child_census_vectors.html">child_census_vectors()</a></code> function. For finer control over the names of the names of the returned census variable the <code>vectors</code> parameter can be a named vector.</p></li>
 <li><p>The <code>geo_format</code> parameters allows to select if geographic data should also be downloaded, and if yes, in what format. In this post we will only access data via the modern “sf” format, but data can also be accessed in the legacy “sp” spatial data format.</p></li>
 </ul>
 <p>As an example we will retried the share of the population in Toronto, Mississauga, and Brampton spending 30% or more of income on shelter costs in 2016.</p>
 <div class="cell" data-hash="intro_cancensus_cache/html/unnamed-chunk-3_f8b888a83b463666df8373f2c11b49c4">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cancensus)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>regions <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">CSD=</span><span class="fu">c</span>(<span class="st">"3520005"</span>,<span class="st">"3521005"</span>,<span class="st">"3521010"</span>))</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>vectors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">shelter_cost_burdened=</span><span class="st">"v_CA16_4889"</span>, <span class="at">shelter_base =</span> <span class="st">"v_CA16_4886"</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_census</span>(<span class="at">dataset =</span> <span class="st">"CA16"</span>, <span class="at">regions=</span>regions, <span class="at">vectors=</span>vectors)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Share shelter cost burdened</span><span class="st">`</span><span class="ot">=</span>shelter_cost_burdened<span class="sc">/</span>shelter_base) <span class="sc">|&gt;</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(GeoUID,<span class="st">`</span><span class="at">Region Name</span><span class="st">`</span>,<span class="st">`</span><span class="at">Share shelter cost burdened</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mountainMath/cancensus">cancensus</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="va">regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>CSD<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"3520005"</span>,<span class="st">"3521005"</span>,<span class="st">"3521010"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">vectors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>shelter_cost_burdened<span class="op">=</span><span class="st">"v_CA16_4889"</span>, shelter_base <span class="op">=</span> <span class="st">"v_CA16_4886"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mountainmath.github.io/cancensus/reference/get_census.html">get_census</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="st">"CA16"</span>, regions<span class="op">=</span><span class="va">regions</span>, vectors<span class="op">=</span><span class="va">vectors</span><span class="op">)</span></span>
+<span><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>`Share shelter cost burdened`<span class="op">=</span><span class="va">shelter_cost_burdened</span><span class="op">/</span><span class="va">shelter_base</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">GeoUID</span>,<span class="va">`Region Name`</span>,<span class="va">`Share shelter cost burdened`</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   GeoUID  `Region Name`    `Share shelter cost burdened`
   &lt;chr&gt;   &lt;fct&gt;                                    &lt;dbl&gt;
@@ -391,14 +375,15 @@ div.csl-indent {
 </div>
 
 
+<!-- -->
+
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
 <div id="ref-cancensus" class="csl-entry" role="doc-biblioentry">
 von Bergmann, Jens, Dmitry Shkolnik, and Aaron Jacobs. 2022. <em>Cancensus: R Package to Access, Retrieve, and Work with Canadian Census Data and Geography</em>. <a href="https://mountainmath.github.io/cancensus/">https://mountainmath.github.io/cancensus/</a>.
 </div>
 </div>
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -559,6 +544,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -608,9 +644,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     });
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../intro/intro_cansim.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cansim</strong> package</span></span>
       </a>          
@@ -620,14 +654,73 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to the <strong>cmhc</strong> package</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Introduction to the **cancensus** package"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/cancensus-sticker.png)</span>{#cancensus-logo style="float:right;margin-left:3em;" fig-alt="cancensus" width="250"}</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">**cancensus** R package</span><span class="co">](https://mountainmath.github.io/cancensus/)</span> <span class="co">[</span><span class="ot">@cancensus</span><span class="co">]</span> interfaces with the CensusMapper API server. It can be queried for</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>census geographies for census years 1996 through 2021</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>census profile data for census years 1996 through 2021</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>some census custom tabulations</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>hierarchical metadata of census variables</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>some non-census data that comes on census geographies, e.g. T1FF taxfiler data</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>A slight complication, the <span class="co">[</span><span class="ot">**cancensus** package</span><span class="co">](https://mountainmath.github.io/cancensus/)</span>needs an API key. You can sign up for one for free on <span class="co">[</span><span class="ot">CensusMapper</span><span class="co">](https://censusmapper.ca/users/sign_up)</span>.</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>Once you have your API key it's useful to store it as an environment variable in your .Renviron configuration file so it's available in all your R sessions.</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = FALSE}</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"cancensus"</span>)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>cancensus<span class="sc">::</span><span class="fu">set_api_key</span>(<span class="at">key =</span> <span class="st">"CensusMapper_XXXX...XXXX"</span>, <span class="at">install=</span><span class="cn">TRUE</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>By default {cancensus} cached downloaded census data, which makes it easier and faster to re-run analysis and protects from overusing the CensusMapper API quota. To use caching an local path needs to be designated for data caching. The cache is shared across R sessions.</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = FALSE}</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>cancensus<span class="sc">::</span><span class="fu">set_cache_path</span>(<span class="at">cache_path =</span> <span class="st">"&lt;local path ot cache data&gt;"</span>, <span class="at">install=</span><span class="cn">TRUE</span>)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>{cancensus} provides convenient access to census data. Calls to {cancensus} require to spectify</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The <span class="in">`dataset`</span>, for example "CA21" for the 2021 Canadian census. A list of available datasets can be accessed via <span class="in">`cancensus::list_census_datasets()`</span>.</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The <span class="in">`regions`</span> to access the data for, this is a list keyed by geographic levels. For example, to access data for the Vancouver census metropolitan area it would be <span class="in">`list(CMA="59933")`</span>, for the City of Toronto it would be <span class="in">`list(CSD="3520005")`</span>. Region parameters can contain several regions of the same type or mix regions of different type. For example, to access data for the region covered by the Vancouver School Board, we need to assemble two CSDs and three CTs <span class="in">`list(CSD=c("5915022","5915803"),CT=c("9330069.04","9330069.03","9330069.02"))`</span>. This allows pinpointing what geographic region we are interested in.</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The geographic <span class="in">`level`</span> to query the data for. This simply be the regions specified in the <span class="in">`regions`</span> parameter, but it could also be any geographic level equal to or lower than the lowest level geographic region specified in the <span class="in">`regions`</span> parameter. Valid level identifiers are <span class="in">`DB`</span> for dissemination blocks, <span class="in">`DA`</span> for dissemination areas, <span class="in">`EA`</span> for enumeration areas for the 1996 census, <span class="in">`CT`</span> for census tracts, <span class="in">`CSD`</span> for census subdivisions, <span class="in">`CMA`</span> for census metropolitan areas or census agglormerations, <span class="in">`CD`</span> for census districts, <span class="in">`PR`</span> for provinces or territories and <span class="in">`C`</span> for country level data. Geographic regions can also be assembled using the <span class="co">[</span><span class="ot">CensusMapper API GUI tool</span><span class="co">](http://localhost:3000/api#api_region)</span>, CSD and higher level geographies can be explored or searched programmatically via the <span class="in">`list_census_regions()`</span> or <span class="in">`search_census_regions()`</span> functions.</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The <span class="in">`vectors`</span> parameter allows to specify which census variables to query. By default the data comes with population, dwelling and household counts, other census variables can be explored and selected via the <span class="co">[</span><span class="ot">CensusMapper API GUI tool</span><span class="co">](http://localhost:3000/api#api_variable)</span> or explored or searched programmatically via the <span class="in">`list_census_vectors()`</span> or <span class="in">`find_census_vectors()`</span> functions. There are also helper function to select variables using the internal CensusMapper metadata and hierarchy of census variables via the <span class="in">`child_census_vectors()`</span> function. For finer control over the names of the names of the returned census variable the <span class="in">`vectors`</span> parameter can be a named vector.</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The <span class="in">`geo_format`</span> parameters allows to select if geographic data should also be downloaded, and if yes, in what format. In this post we will only access data via the modern "sf" format, but data can also be accessed in the legacy "sp" spatial data format.</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>As an example we will retried the share of the population in Toronto, Mississauga, and Brampton spending 30% or more of income on shelter costs in 2016.</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE}</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cancensus)</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>regions <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">CSD=</span><span class="fu">c</span>(<span class="st">"3520005"</span>,<span class="st">"3521005"</span>,<span class="st">"3521010"</span>))</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>vectors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">shelter_cost_burdened=</span><span class="st">"v_CA16_4889"</span>, <span class="at">shelter_base =</span> <span class="st">"v_CA16_4886"</span>)</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_census</span>(<span class="at">dataset =</span> <span class="st">"CA16"</span>, <span class="at">regions=</span>regions, <span class="at">vectors=</span>vectors)</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Share shelter cost burdened</span><span class="st">`</span><span class="ot">=</span>shelter_cost_burdened<span class="sc">/</span>shelter_base) <span class="sc">|&gt;</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(GeoUID,<span class="st">`</span><span class="at">Region Name</span><span class="st">`</span>,<span class="st">`</span><span class="at">Share shelter cost burdened</span><span class="st">`</span>)</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">Copyright 2022, Jens von Bergmann</div>   
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/mountainmath">
       <i class="bi bi-github" role="img">
 </i> 
@@ -646,10 +739,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
 </ul>
-    </div>
+</div>
   </div>
 </footer>
-
 
 
 </body></html>

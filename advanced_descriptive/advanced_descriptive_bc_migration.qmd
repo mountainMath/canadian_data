@@ -151,7 +151,7 @@ migration_data |>
               filter(GEO=="British Columbia"),
             aes(x=Date,y=annual/Population)) +
   scale_fill_manual(values=migration_colours) +
-  labs(title="BC Year over year BC Year over year migration",
+  labs(title="BC Year over year migration",
        y="Year over year change per population",x=NULL,
        fill="Components of population change",
        caption="StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009")
@@ -159,7 +159,11 @@ migration_data |>
 
 Here the picture looks a little different. Net migration per capita is at its highest since the 90s, but the past 60 years there were several periods where it was larger.
 
-The press report also mentioned that B.C.'s interprovincial migration numbers are higher than any other province. This is easy to check now.
+The press report also mentioned that B.C.'s interprovincial migration numbers are higher than any other province. This is easy to check now. In line with the press release that prompted our question we are pinning the data at the forth quarter of 2021.
+
+```{r}
+pinned_date <- as.Date("2021-10-01")
+```
 
 ```{r}
 migration_data_interprovinicial <- migration_data |>
@@ -175,7 +179,7 @@ net_interprovincial <- migration_data_interprovinicial |>
 
 migration_data_interprovinicial |> 
   filter(GEO!="Canada") |>
-  filter(Date==as.Date("2022-01-01")) |>
+  filter(Date==pinned_date) |>
   ggplot(aes(y=GEO,x=annual)) +
   geom_bar(stat="identity",
            aes(fill=fct_rev(`Components of population growth`))) +
@@ -184,7 +188,7 @@ migration_data_interprovinicial |>
                  filter(Date==max(Date))) +
   scale_fill_manual(values=migration_colours[grepl("Interprov",names(migration_colours))]) +
   scale_x_continuous(labels=scales::comma) +
-  labs(title="Year migration Q1 2021 to Q1 2022",
+  labs(title="Interprovincial migration Q4 2020 to Q4 2021",
        fill="Components of population growth",
        y=NULL,x="Year over year change",
        caption="StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009")
@@ -195,7 +199,7 @@ In absolute number B.C. indeed has both the highest interprovincial in-migration
 ```{r}
 migration_data_interprovinicial |> 
   filter(GEO!="Canada") |>
-  filter(Date==as.Date("2022-01-01")) |>
+  filter(Date==pinned_date) |>
   ggplot(aes(y=GEO,x=annual/Population)) +
   geom_bar(stat="identity",
            aes(fill=fct_rev(`Components of population growth`))) +
@@ -204,7 +208,7 @@ migration_data_interprovinicial |>
                  filter(Date==max(Date))) +
   scale_fill_manual(values=migration_colours[grepl("Interprov",names(migration_colours))]) +
   scale_x_continuous(labels=scales::percent) +
-  labs(title="Year migration Q1 2021 to Q1 2022",
+  labs(title="Interprovincial migration Q4 2020 to Q4 2021",
        fill="Components of population growth",
        y=NULL,x="Year over year change per capita",
        caption="StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009")
@@ -217,7 +221,7 @@ For completeness we can also just show the full graph that includes the internat
 ```{r}
 migration_data |> 
   left_join(pop_data, by=c("GEO","Date")) |>
-  filter(Date==as.Date("2022-01-01")) |>
+  filter(Date==pinned_date) |>
   ggplot(aes(y=GEO,x=annual/Population)) +
   geom_bar(stat="identity",aes(fill=fct_rev(`Components of population growth`))) +
   geom_boxplot(data=net_migration |> 
@@ -225,7 +229,7 @@ migration_data |>
                  filter(Date==max(Date))) +
   scale_fill_manual(values=migration_colours) +
   scale_x_continuous(labels=scales::percent) +
-  labs(title="Year migration Q1 2021 to Q1 2022",
+  labs(title="Migration Q4 2020 to Q4 2021",
        fill="Components of population growth",
        y=NULL,x="Year over year change per capita",
        caption="StatCan Tables 17-10-0020, 17-10-0040, 17-10-0009")
@@ -233,8 +237,10 @@ migration_data |>
 
 ## Interpretation
 
-This answers our question, the latest annual net migration edges over the 100,000 people mark, and in absolute terms this is the highest it's been over at least 60 years. And B.C.'s interprovincial (net) in-migration was the highest in Canada in absolute terms. But what can we learn from that?
+This answers our question, the Q4 2021 year over year net migration edges over the 100,000 people mark, and in absolute terms this is the highest it's been over at least 60 years. (And it climbed even higher in the following quarters.) And B.C.'s interprovincial (gross) in-migration was the highest in Canada in absolute terms. But what can we learn from that?
 
 B.C. 60 years ago is very different from B.C. today. To account for that we can normalize by population, and the relative net migration has been higher at several times during the past 60 years, most recently in the 90s.
+
+Viewed relative to population size we note that other provinces, in particular some of the Atlantic Provinces, vastly outperform BC's interprovincial net as well as gross in-migration in that timeframe, mostly fuelled by the 50k people that left Ontario during that time period.
 
 We also note that big dip in net-migration during COVID-19. It is not clear if the current heights are a bounce-back to make up for the comparatively low net in-migration during the pandemic, or if it is simply reverting back to the increasing trend we have seen over the past 10 years.

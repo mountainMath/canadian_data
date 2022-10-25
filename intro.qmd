@@ -13,9 +13,7 @@ This is best understood by walking through a simple example of what analysis of 
 If you don't understand all the code now, don't worry, that's part of the point of this book. We will work out and explain these examples in detail in the first chapter of the book. What's important right now is to illustrate the principle of reproducible and adaptable code, and how this can function to foster a community of Canadian data analysis. And to note how little code is needed to make this work.
 
 ::: {.content-visible when-format="html"}
-
-If the code becomes a bit overwhelming, it's also ok just just collapse individual code blocks for now, or all code blocks using the "Code" dropdown menu at the top right of this page, and just follow along without it.
-
+If the code becomes a bit overwhelming, it's also ok just just collapse individual code blocks for now, or all code blocks using the "\</\>Code" dropdown menu at the top right of this page, and just follow along without it.
 :::
 
 ## A hypothetical example

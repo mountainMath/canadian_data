@@ -194,7 +194,13 @@ This is a bit of a puzzle, time to dig a little deeper at the data sources.
 
 We have looked through the census dictionary and found no indication that the concept of the number of household maintainers changed over our time period, with a minor caveat that 2011 data is from the voluntary National Household Survey instead of the mandatory long form census.
 
-For the [2011 NHS](https://www23.statcan.gc.ca/imdb/p3Instr.pl?Function=assembleInstr&Item_Id=114641&lang=en&db=imdb&adm=8&dis=2) and [2016 census](https://www12.statcan.gc.ca/nhs-enm/2016/ref/questionnaires/questions-eng.cfm) the information on the number of household maintainers comes from the first question on the dwelling section, Question E1 and F1, respectively.
+But the [Housing Characteristics Reference Guide](https://www12.statcan.gc.ca/census-recensement/2021/ref/98-500/005/98-500-x2021005-eng.cfm#a11) shows that StatCan flagged this issue of lack of ability to compare this concept over time. They write:
+
+> In 2021, the household maintainer question was asked for every member of the household aged 15 years or older. Previously, in 2016, the question had a mark-all-that-apply format for the first five persons listed on the paper questionnaire. This alteration to the paper questionnaire brings better visual resemblance between the electronic and paper questionnaires. The wording was also modified to include a qualifying statement of \"partly or entirely\" when referring to the payments. The result of these changes is the capture of more [household maintainers](https://www12.statcan.gc.ca/census-recensement/2021/ref/dict/az/Definition-eng.cfm?ID=households-menage008) who are not the [primary household maintainer](https://www12.statcan.gc.ca/census-recensement/2021/ref/dict/az/Definition-eng.cfm?ID=households-menage020). 
+>
+> The growth rate of the number of primary household maintainers since the 2016 Census of Population was 6.4%, the same as the growth rate of private occupied dwellings, because every private occupied dwelling has one primary maintainer. At the same time, the growth rate of other household maintainers over the same period was 34.1%, indicating more comprehensive coverage of all household maintainers. This has not affected the characteristics of the primary household maintainer, which are often used to derive statistics such as the homeownership rates of different generations. However, the more complete coverage of other maintainers will allow for future analysis of the characteristics of these other household members contributing to housing payments.
+
+We can track this further by looking at the [2011 NHS](https://www23.statcan.gc.ca/imdb/p3Instr.pl?Function=assembleInstr&Item_Id=114641&lang=en&db=imdb&adm=8&dis=2) and [2016 census](https://www12.statcan.gc.ca/nhs-enm/2016/ref/questionnaires/questions-eng.cfm) questionnaires, where the information on the number of household maintainers comes from the first question on the dwelling section, Question E1 and F1, respectively.
 
 In the 2011 NHS the question reads:
 
@@ -249,8 +255,6 @@ For the 2021 census the [question on household maintainers](https://www.statcan.
 > -   Yes
 >
 > -   No
-
-This change is substantial, in 2021 the status as a household maintainer needed to be explicitly determined for every person, whereas in the previous years it had to be marked on a list of people that some respondents may have misread as just requiring to list the main contributor to rent or mortgage, taxes, electricity, etc.
 
 ## Interpretation
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.2.262">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Analyzing Canadian Demographic and Housing Data - 2&nbsp; R, RStudio, and the tidyverse</title>
 <style>
@@ -147,7 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../" class="sidebar-logo-link">
+      <a href="../index.html" class="sidebar-logo-link">
       <img src="../cover.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Analyzing Canadian Demographic and Housing Data</a> 
@@ -315,6 +315,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -395,7 +396,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We will explore some common data manipulation and visualization workflows.</p>
 <section id="count-groups" class="level4" data-number="2.3.2.1"><h4 data-number="2.3.2.1" class="anchored" data-anchor-id="count-groups">
 <span class="header-section-number">2.3.2.1</span> Count groups</h4>
-<p>To see how many rows there are for each species we ‘pipe’ the <code>penguins</code> dataset into the <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> verb. Pipes are how we can stepwise transform data, the pipe operator is given by <code>%&gt;%</code> withing the <strong>tidyverse</strong> framework and now also available natively in base R via <code>|&gt;</code>. These two function (almost) the same way, and we will use both in this book.</p>
+<p>To see how many rows there are for each species we ‘pipe’ the <code>penguins</code> dataset into the <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> verb. Pipes are how we can stepwise transform data, the pipe operator is given by <code>%&gt;%</code> within the <strong>tidyverse</strong> framework and now also available natively in base R via <code>|&gt;</code>. These two function (almost) the same way, and we will use both in this book.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-8_40543b5f805c5b2eb601eb89b10b2298">
 <details open=""><summary>Code</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
@@ -410,7 +411,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This gives us the count of each species in the dataset, the pipe <code>|&gt;</code> inserts the left hand side as the first argument in the <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> function. We could have equivalently written this without the pipe operator as <code>count(penguins,species)</code>.</p>
 </section><section id="group-and-summarize" class="level4" data-number="2.3.2.2"><h4 data-number="2.3.2.2" class="anchored" data-anchor-id="group-and-summarize">
 <span class="header-section-number">2.3.2.2</span> Group and summarize</h4>
-<p>The usefulness of the pipe operator becomes clear when we chain several data transformation. If we want to know the mean bill length by species, we group by species and summarize the data.</p>
+<p>The usefulness of the pipe operator becomes clear when we chain several data transformations. If we want to know the mean bill length by species, we group by species and summarize the data.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-9_92e8b5b4e8196cd85eac650e0c56e81c">
 <details open=""><summary>Code</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -480,7 +481,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section><section id="selecting-columns" class="level4" data-number="2.3.4.2"><h4 data-number="2.3.4.2" class="anchored" data-anchor-id="selecting-columns">
 <span class="header-section-number">2.3.4.2</span> Selecting columns</h4>
-<p>Instead of filtering rows It can be useful to select a subset of the columns to remove columns we don’t need and de-clutter the dataset. This is especially useful when producing tables. If we want a table of the numeric data fields of all female Adelie penguins on the island of Biscoe observed in 2007 we can filter by sex and island and select the columns we want.</p>
+<p>Instead of filtering rows it can be useful to select a subset of the columns to remove columns we don’t need and de-clutter the dataset. This is especially useful when producing tables. If we want a table of the numeric data fields of all female Adelie penguins on the island of Biscoe observed in 2007 we can filter by sex and island and select the columns we want.</p>
 <div class="cell" data-hash="intro_to_r_cache/html/unnamed-chunk-13_a48ae4a90af4f1d713f478ab9e79b0b3">
 <details open=""><summary>Code</summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">island</span><span class="op">==</span><span class="st">"Biscoe"</span>, <span class="va">sex</span><span class="op">==</span><span class="st">"female"</span>, <span class="va">species</span><span class="op">==</span><span class="st">"Adelie"</span>, <span class="va">year</span><span class="op">==</span><span class="fl">2007</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -693,7 +694,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   // Switch to dark mode if need be
   if (hasAlternateSentinel()) {
     toggleColorMode(true);
-  } 
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -715,7 +718,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -802,24 +822,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
@@ -904,7 +942,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-75"><a href="#cb25-75" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-76"><a href="#cb25-76" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Count groups</span></span>
 <span id="cb25-77"><a href="#cb25-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-78"><a href="#cb25-78" aria-hidden="true" tabindex="-1"></a>To see how many rows there are for each species we 'pipe' the <span class="in">`penguins`</span> dataset into the <span class="in">`count()`</span> verb. Pipes are how we can stepwise transform data, the pipe operator is given by <span class="in">`%&gt;%`</span> withing the **tidyverse** framework and now also available natively in base R via <span class="in">`|&gt;`</span>. These two function (almost) the same way, and we will use both in this book.</span>
+<span id="cb25-78"><a href="#cb25-78" aria-hidden="true" tabindex="-1"></a>To see how many rows there are for each species we 'pipe' the <span class="in">`penguins`</span> dataset into the <span class="in">`count()`</span> verb. Pipes are how we can stepwise transform data, the pipe operator is given by <span class="in">`%&gt;%`</span> within the **tidyverse** framework and now also available natively in base R via <span class="in">`|&gt;`</span>. These two function (almost) the same way, and we will use both in this book.</span>
 <span id="cb25-79"><a href="#cb25-79" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-82"><a href="#cb25-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb25-83"><a href="#cb25-83" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> <span class="fu">count</span>(species)</span>
@@ -914,7 +952,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-87"><a href="#cb25-87" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-88"><a href="#cb25-88" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Group and summarize</span></span>
 <span id="cb25-89"><a href="#cb25-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-90"><a href="#cb25-90" aria-hidden="true" tabindex="-1"></a>The usefulness of the pipe operator becomes clear when we chain several data transformation. If we want to know the mean bill length by species, we group by species and summarize the data.</span>
+<span id="cb25-90"><a href="#cb25-90" aria-hidden="true" tabindex="-1"></a>The usefulness of the pipe operator becomes clear when we chain several data transformations. If we want to know the mean bill length by species, we group by species and summarize the data.</span>
 <span id="cb25-91"><a href="#cb25-91" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-94"><a href="#cb25-94" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb25-95"><a href="#cb25-95" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
@@ -978,7 +1016,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-153"><a href="#cb25-153" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-154"><a href="#cb25-154" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Selecting columns</span></span>
 <span id="cb25-155"><a href="#cb25-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-156"><a href="#cb25-156" aria-hidden="true" tabindex="-1"></a>Instead of filtering rows It can be useful to select a subset of the columns to remove columns we don't need and de-clutter the dataset. This is especially useful when producing tables. If we want a table of the numeric data fields of all female Adelie penguins on the island of Biscoe observed in 2007 we can filter by sex and island and select the columns we want.</span>
+<span id="cb25-156"><a href="#cb25-156" aria-hidden="true" tabindex="-1"></a>Instead of filtering rows it can be useful to select a subset of the columns to remove columns we don't need and de-clutter the dataset. This is especially useful when producing tables. If we want a table of the numeric data fields of all female Adelie penguins on the island of Biscoe observed in 2007 we can filter by sex and island and select the columns we want.</span>
 <span id="cb25-157"><a href="#cb25-157" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-160"><a href="#cb25-160" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb25-161"><a href="#cb25-161" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>

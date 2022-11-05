@@ -25,9 +25,9 @@ book:
     image: cover.png
   site-url: "https://mountainmath.github.io/canadian_data/"
   downloads: [pdf, epub]
-  citations-hover: true
-  citeproc: true
-  fig-responsive: true
+  # citations-hover: true
+  # citeproc: true
+  # fig-responsive: true
   # fig-dpi: 150
   # fig-width: 8
   # fig-height: 6
@@ -36,7 +36,7 @@ book:
     style: docked
     #background: light
     logo: cover.png
-  top-level-division: part
+  # top-level-division: part
   page-footer: 
     left: "Copyright 2022, Jens von Bergmann" 
     right: 
@@ -80,6 +80,8 @@ execute:
 
 format:
   html:
+    citeproc: true
+    citations-hover: true
     fig-dpi: 150
     fig-width: 8
     fig-height: 6

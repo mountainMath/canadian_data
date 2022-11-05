@@ -69,7 +69,7 @@ We will explore some common data manipulation and visualization workflows.
 
 #### Count groups
 
-To see how many rows there are for each species we 'pipe' the `penguins` dataset into the `count()` verb. Pipes are how we can stepwise transform data, the pipe operator is given by `%>%` withing the **tidyverse** framework and now also available natively in base R via `|>`. These two function (almost) the same way, and we will use both in this book.
+To see how many rows there are for each species we 'pipe' the `penguins` dataset into the `count()` verb. Pipes are how we can stepwise transform data, the pipe operator is given by `%>%` within the **tidyverse** framework and now also available natively in base R via `|>`. These two function (almost) the same way, and we will use both in this book.
 
 ```{r}
 penguins |> count(species)
@@ -79,7 +79,7 @@ This gives us the count of each species in the dataset, the pipe `|>` inserts th
 
 #### Group and summarize
 
-The usefulness of the pipe operator becomes clear when we chain several data transformation. If we want to know the mean bill length by species, we group by species and summarize the data.
+The usefulness of the pipe operator becomes clear when we chain several data transformations. If we want to know the mean bill length by species, we group by species and summarize the data.
 
 ```{r}
 penguins |> 
@@ -143,7 +143,7 @@ ggplot(aes(x=bill_length_mm,y=bill_depth_mm,colour=species)) +
 
 #### Selecting columns
 
-Instead of filtering rows It can be useful to select a subset of the columns to remove columns we don't need and de-clutter the dataset. This is especially useful when producing tables. If we want a table of the numeric data fields of all female Adelie penguins on the island of Biscoe observed in 2007 we can filter by sex and island and select the columns we want.
+Instead of filtering rows it can be useful to select a subset of the columns to remove columns we don't need and de-clutter the dataset. This is especially useful when producing tables. If we want a table of the numeric data fields of all female Adelie penguins on the island of Biscoe observed in 2007 we can filter by sex and island and select the columns we want.
 
 ```{r}
 penguins |>

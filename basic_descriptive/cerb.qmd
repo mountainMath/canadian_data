@@ -57,7 +57,7 @@ To make this a little nicer we add labels, remove the coordinate grid and choose
 
 ```{r}
 ggplot(plot_data) +
-  geom_sf(aes(fill=Share), size=0.1) +
+  geom_sf(aes(fill=Share)) +
   scale_fill_viridis_c(labels=scales::percent) +
   coord_sf(datum=NA) +
   labs(title="CERB recipients in the City of Ottawa",
@@ -75,7 +75,7 @@ get_census("CA21",regions=list(CMA="505"),
                           level="CT", geo_format="sf") |>
   mutate(Share=cerb/base) |>
   ggplot() +
-  geom_sf(aes(fill=Share), size=0.1) +
+  geom_sf(aes(fill=Share)) +
   scale_fill_viridis_c(labels=scales::percent) +
   coord_sf(datum=NA, xlim=c(-76,-75.5), ylim=c(45.3,45.5)) +
   labs(title="CERB recipients in Ottawa",
@@ -91,7 +91,7 @@ get_census("CA21",regions=list(CMA="505"),
                           level="DA", geo_format="sf") |>
   mutate(Share=cerb/base) |>
   ggplot() +
-  geom_sf(aes(fill=Share), size=0.1) +
+  geom_sf(aes(fill=Share)) +
   scale_fill_viridis_c(labels=scales::percent) +
   coord_sf(datum=NA, xlim=c(-76,-75.5), ylim=c(45.3,45.5)) +
   labs(title="CERB recipients in Ottawa",

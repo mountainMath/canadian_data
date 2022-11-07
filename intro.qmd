@@ -78,7 +78,7 @@ lico_yvr_da <- get_census("CA16",regions=list(CSD="5915022"), vectors=c(lico="v_
                         level="DA",geo_format="sf")
 
 ggplot(lico_yvr_da, aes(fill=(lico/100))) +
-  geom_sf(size=0.1) +
+  geom_sf() +
   scale_fill_viridis_c(labels=scales::percent) +
   coord_sf(datum=NA) +
   labs(title="Children in low income (LICO-AT)",
@@ -99,7 +99,7 @@ yvr_city <- get_census("CA16",regions=list(CSD="5915022"),geo_format="sf")
 
 ggplot(lico_dots_yvr) +
   geom_sf(data = yvr_city) +
-  geom_sf(size=0.25,colour="brown",alpha=0.1) +
+  geom_sf(colour="brown",alpha=0.1) +
   coord_sf(datum=NA) +
   labs(title="Children in low income (LICO-AT)",
        fill="Share",

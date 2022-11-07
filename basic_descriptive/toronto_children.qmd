@@ -71,7 +71,7 @@ Here we need to simply map the difference in children.
 
 ```{r}
 ggplot(plot_data, aes(fill=children_2021-children_2001)) +
-  geom_sf(size=0.1) +
+  geom_sf() +
   scale_fill_gradient2(labels=scales::comma) +
   coord_sf(datum=NA) +
   labs(title="City of Toronto change in number of children under 15 between 2001 to 2021",
@@ -83,7 +83,7 @@ Another view into this is to look at the change in the share of children in each
 
 ```{r}
 ggplot(plot_data, aes(fill=children_2021/Population_CA21-children_2001/Population_CA01)) +
-  geom_sf(size=0.1) +
+  geom_sf() +
   scale_fill_gradient2(labels=scales::percent) +
   coord_sf(datum=NA) +
   labs(title="City of Toronto change in share of children under 15 between 2001 to 2021",

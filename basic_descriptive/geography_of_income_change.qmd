@@ -35,8 +35,7 @@ To facilitate the data import we write a wrapper function to acquire the census 
 ```{r}
 get_census_data <- function(year){
   year <- as.character(year)
-  dataset <- paste0("CA",substr(year,3,4))
-  get_census(dataset,regions=regions,
+  get_census(year,regions=regions,
              vectors=c("ef_income"=as.character(income_vectors[year])),
              geo_format="sf",level="CT") |>
     select(GeoUID,ef_income) |>
@@ -57,7 +56,7 @@ Let's take a quick look.
 
 ```{r}
 ggplot(income_data) +
-  geom_sf(aes(fill=ef_income),size=0.1) +
+  geom_sf(aes(fill=ef_income)) +
   scale_fill_viridis_c(option="inferno", labels=scales::dollar) +
   facet_wrap(~Year) +
   coord_sf(datum=NA) +
@@ -95,7 +94,7 @@ Now we just join the inflation data onto our income data by year, this adds the 
 income_data |>
   left_join(inflation,by="Year") |>
   ggplot() +
-  geom_sf(aes(fill=ef_income/CPI),size=0.1) +
+  geom_sf(aes(fill=ef_income/CPI)) +
   scale_fill_viridis_c(option="inferno", labels=scales::dollar) +
   facet_wrap(~Year) +
   coord_sf(datum=NA) +
@@ -140,7 +139,7 @@ With that we can simply plot the data, mapping the inflation-adjusted percent ch
 ```{r}
 unified_income_data |>
   ggplot() +
-  geom_sf(aes(fill=`2021`/`2006`*inflation_2006_2021-1),size=0.1) +
+  geom_sf(aes(fill=`2021`/`2006`*inflation_2006_2021-1)) +
   scale_fill_viridis_c(option="cividis", labels=scales::percent) +
   coord_sf(datum=NA) +
   labs(title="Change in economic family income",

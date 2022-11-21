@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.262">
+<meta name="generator" content="quarto-1.2.269">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Analyzing Canadian Demographic and Housing Data - 10&nbsp; Geography of income change</title>
 <style>
@@ -337,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span>                    <span class="st">"2006"</span><span class="op">=</span><span class="st">"v_CA06_1741"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>To facilitate the data import we write a wrapper function to acquire the census data for each of our four years. For a given census year we create the corresponding dataset identifier and select the appropriate income variable. to reduce clutter we select just the income variable and also keep the geographic identifier, and add the census year to the table.</p>
+<p>To facilitate the data import we write a wrapper function to acquire the census data for each of our four years. For a given census year we create the corresponding dataset identifier and select the appropriate income variable. To reduce clutter we select just the income variable and also keep the geographic identifier, and add the census year to the table.</p>
 <div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-2_dd0ea8c99426ea46663c7fc717453af1">
 <details open=""><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">get_census_data</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span></span>
@@ -399,7 +399,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>CPI<span class="op">=</span><span class="va">CPI</span><span class="op">/</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html">last</a></span><span class="op">(</span><span class="va">CPI</span>,order_by <span class="op">=</span> <span class="va">Year</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Now we just join the inflation data onto our income data by year, this adds the <code>CPI</code> column from the inflation data farme to our income with the CPI value corresponding to the value in the <code>Year</code> column in each of the two data frames. We then colour by inflation-adjusted income using the same code for graphing as above.</p>
+<p>Now we just join the inflation data onto our income data by year, this adds the <code>CPI</code> column from the inflation data frame to our income with the CPI value corresponding to the value in the <code>Year</code> column in each of the two data frames. We then colour by inflation-adjusted income using the same code for graphing as above.</p>
 <div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-7_62438b86d3cbb51bc86e96f2ce2256fe">
 <details open=""><summary>Code</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">income_data</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">inflation</span>,by<span class="op">=</span><span class="st">"Year"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -447,7 +447,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section><section id="analysis-and-visualization-1" class="level2" data-number="10.7"><h2 data-number="10.7" class="anchored" data-anchor-id="analysis-and-visualization-1">
 <span class="header-section-number">10.7</span> Analysis and visualization</h2>
-<p>In line with what we did before we want look at inflation-adjusted income change. To this end we extract the adjustment factor for the 2006-2021 timeframe.</p>
+<p>In line with what we did before we look at inflation-adjusted income change. To this end we extract the adjustment factor for the 2006-2021 timeframe.</p>
 <div class="cell" data-hash="geography_of_income_change_cache/html/unnamed-chunk-10_577735381f8e939f3822d3335be3d3a5">
 <details open=""><summary>Code</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">inflation_2006_2021</span> <span class="op">&lt;-</span> <span class="va">inflation</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Year</span><span class="op">==</span><span class="st">"2006"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -470,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section><section id="interpretation" class="level2" data-number="10.8"><h2 data-number="10.8" class="anchored" data-anchor-id="interpretation">
 <span class="header-section-number">10.8</span> Interpretation</h2>
-<p>In summary we see that income of economic families changed fasted in the Downtown Eastside, Grandview-Woodlands and Strathcona neighbourhoods, effectively doubling. Incomes increased least on the West Side, where they were already quite high to start with, and increased by about 50% throughout much of the East Side.</p>
+<p>In summary we see that income of economic families changed fastest in the Downtown Eastside, Grandview-Woodlands and Strathcona neighbourhoods, effectively doubling. Incomes increased least on the West Side, where they were already quite high to start with, and increased by about 50% throughout much of the East Side.</p>
 
 
 <!-- -->
@@ -816,7 +816,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"2006"</span><span class="ot">=</span><span class="st">"v_CA06_1741"</span>)</span>
 <span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>To facilitate the data import we write a wrapper function to acquire the census data for each of our four years. For a given census year we create the corresponding dataset identifier and select the appropriate income variable. to reduce clutter we select just the income variable and also keep the geographic identifier, and add the census year to the table.</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>To facilitate the data import we write a wrapper function to acquire the census data for each of our four years. For a given census year we create the corresponding dataset identifier and select the appropriate income variable. To reduce clutter we select just the income variable and also keep the geographic identifier, and add the census year to the table.</span>
 <span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>get_census_data <span class="ot">&lt;-</span> <span class="cf">function</span>(year){</span>
@@ -874,7 +874,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb14-100"><a href="#cb14-100" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">CPI=</span>CPI<span class="sc">/</span><span class="fu">last</span>(CPI,<span class="at">order_by =</span> Year))</span>
 <span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a>Now we just join the inflation data onto our income data by year, this adds the <span class="in">`CPI`</span> column from the inflation data farme to our income with the CPI value corresponding to the value in the <span class="in">`Year`</span> column in each of the two data frames. We then colour by inflation-adjusted income using the same code for graphing as above.</span>
+<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a>Now we just join the inflation data onto our income data by year, this adds the <span class="in">`CPI`</span> column from the inflation data frame to our income with the CPI value corresponding to the value in the <span class="in">`Year`</span> column in each of the two data frames. We then colour by inflation-adjusted income using the same code for graphing as above.</span>
 <span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-107"><a href="#cb14-107" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb14-108"><a href="#cb14-108" aria-hidden="true" tabindex="-1"></a>income_data <span class="sc">|&gt;</span></span>
@@ -912,7 +912,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb14-144"><a href="#cb14-144" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-145"><a href="#cb14-145" aria-hidden="true" tabindex="-1"></a><span class="fu">## Analysis and visualization</span></span>
 <span id="cb14-146"><a href="#cb14-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-147"><a href="#cb14-147" aria-hidden="true" tabindex="-1"></a>In line with what we did before we want look at inflation-adjusted income change. To this end we extract the adjustment factor for the 2006-2021 timeframe.</span>
+<span id="cb14-147"><a href="#cb14-147" aria-hidden="true" tabindex="-1"></a>In line with what we did before we look at inflation-adjusted income change. To this end we extract the adjustment factor for the 2006-2021 timeframe.</span>
 <span id="cb14-148"><a href="#cb14-148" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-151"><a href="#cb14-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb14-152"><a href="#cb14-152" aria-hidden="true" tabindex="-1"></a>inflation_2006_2021 <span class="ot">&lt;-</span> inflation <span class="sc">|&gt;</span></span>
@@ -935,7 +935,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb14-171"><a href="#cb14-171" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-172"><a href="#cb14-172" aria-hidden="true" tabindex="-1"></a><span class="fu">## Interpretation</span></span>
 <span id="cb14-173"><a href="#cb14-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-174"><a href="#cb14-174" aria-hidden="true" tabindex="-1"></a>In summary we see that income of economic families changed fasted in the Downtown Eastside, Grandview-Woodlands and Strathcona neighbourhoods, effectively doubling. Incomes increased least on the West Side, where they were already quite high to start with, and increased by about 50% throughout much of the East Side.</span>
+<span id="cb14-174"><a href="#cb14-174" aria-hidden="true" tabindex="-1"></a>In summary we see that income of economic families changed fastest in the Downtown Eastside, Grandview-Woodlands and Strathcona neighbourhoods, effectively doubling. Incomes increased least on the West Side, where they were already quite high to start with, and increased by about 50% throughout much of the East Side.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

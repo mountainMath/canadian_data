@@ -30,7 +30,7 @@ income_vectors <- c("2021"="v_CA21_965",
                     "2006"="v_CA06_1741")
 ```
 
-To facilitate the data import we write a wrapper function to acquire the census data for each of our four years. For a given census year we create the corresponding dataset identifier and select the appropriate income variable. to reduce clutter we select just the income variable and also keep the geographic identifier, and add the census year to the table.
+To facilitate the data import we write a wrapper function to acquire the census data for each of our four years. For a given census year we create the corresponding dataset identifier and select the appropriate income variable. To reduce clutter we select just the income variable and also keep the geographic identifier, and add the census year to the table.
 
 ```{r}
 get_census_data <- function(year){
@@ -88,7 +88,7 @@ inflation <- inflation |>
   mutate(CPI=CPI/last(CPI,order_by = Year))
 ```
 
-Now we just join the inflation data onto our income data by year, this adds the `CPI` column from the inflation data farme to our income with the CPI value corresponding to the value in the `Year` column in each of the two data frames. We then colour by inflation-adjusted income using the same code for graphing as above.
+Now we just join the inflation data onto our income data by year, this adds the `CPI` column from the inflation data frame to our income with the CPI value corresponding to the value in the `Year` column in each of the two data frames. We then colour by inflation-adjusted income using the same code for graphing as above.
 
 ```{r}
 income_data |>
@@ -126,7 +126,7 @@ unified_income_data <- get_tongfen_ca_census(regions,meta)
 
 ## Analysis and visualization
 
-In line with what we did before we want look at inflation-adjusted income change. To this end we extract the adjustment factor for the 2006-2021 timeframe.
+In line with what we did before we look at inflation-adjusted income change. To this end we extract the adjustment factor for the 2006-2021 timeframe.
 
 ```{r}
 inflation_2006_2021 <- inflation |>
@@ -149,4 +149,4 @@ unified_income_data |>
 
 ## Interpretation
 
-In summary we see that income of economic families changed fasted in the Downtown Eastside, Grandview-Woodlands and Strathcona neighbourhoods, effectively doubling. Incomes increased least on the West Side, where they were already quite high to start with, and increased by about 50% throughout much of the East Side.
+In summary we see that income of economic families changed fastest in the Downtown Eastside, Grandview-Woodlands and Strathcona neighbourhoods, effectively doubling. Incomes increased least on the West Side, where they were already quite high to start with, and increased by about 50% throughout much of the East Side.

@@ -19,7 +19,7 @@ CMHC tracks information on housing starts and completions. And the number of hom
 
 The [**cmhc** package](https://mountainmath.github.io/cmhc/) facilitates importing data from CMHC. This pries data out the [Housing Market Information Portal](https://www03.cmhc-schl.gc.ca/hmip-pimh/en) where data is organized across a variety of tables. The easiest way to locate a table of interest is to use the `select_cmhc_table()` function from the **cmhc** package in the console to interactively step through the process. In our case, we are interested in data from the Starts and Completions Survey (**Scss**), look at the **Under Construction** series, after which we can select to have data broken down by B**edroom Type** or I**ntended Market**, where we select the former. Lastly we need to decide the breakdown type, either a level of geography or **Historical Time Periods** for a fixed geography, which is what we are interested in.
 
-Going through this process gives us the code we need to access the data, all we need to do is fill in the geographic identifier. The **cmhc** package is designed to work in conjunction with other census data, so it uses the same geographic identifiers and translates them to CMHC's own internal geographic identifiers under the hood. For Toronto, we need to decided if we are interested in the City of the metro area and grab the geographic identifier from the [CensusMapper API tool](https://censusmapper.ca/api/). We will query data for the City of Toronto with standard StatCan geographic identifier "3520005" .
+Going through this process gives us the code we need to access the data, all we need to do is fill in the geographic identifier. The **cmhc** package is designed to work in conjunction with other census data, so it uses the same geographic identifiers and translates them to CMHC's own internal geographic identifiers under the hood. For Toronto, we need to decide if we are interested in the City of the metro area and grab the geographic identifier from the [CensusMapper API tool](https://censusmapper.ca/api/). We will query data for the City of Toronto with standard StatCan geographic identifier "3520005" .
 
 ```{r}
 library(tidyverse)
@@ -51,7 +51,7 @@ ggplot(under_construction, aes(x=Date,y=Value,colour=`Dwelling Type`)) +
        x=NULL,y="Number of units", caption="CMHC Scss")
 ```
 
-It looks like the number of units under construction, especially apartment units, has increased considerably over time. Let's cross-check that against housing starts. These tend to by quite noisy, so we go to annual frequency instead of monthly. We can adapt the code above for data acquisition and graphing into one chunk.
+It looks like the number of units under construction, especially apartment units, has increased considerably over time. Let's cross-check that against housing starts. These tend to be quite noisy, so we go to annual frequency instead of monthly. We can adapt the code above for data acquisition and graphing into one chunk.
 
 ```{r}
 get_cmhc(survey = "Scss", 

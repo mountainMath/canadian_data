@@ -3,7 +3,7 @@ title: "Toronto children"
 editor: visual
 ---
 
-We keep [reading in the news](https://www.thestar.com/opinion/contributors/2022/10/10/an-exodus-of-families-torontos-decline-in-children-should-be-an-election-issue.html) that the number (and share) of children under the age of 15 declined in the City of Toronto, a fate that's [shared by the City of Vancouver](https://doodles.mountainmath.ca/blog/2022/05/11/children-are-good-actually/). But is this happening uniformly across the city or are the geographic differences?
+We keep [reading in the news](https://www.thestar.com/opinion/contributors/2022/10/10/an-exodus-of-families-torontos-decline-in-children-should-be-an-election-issue.html) that the number (and share) of children under the age of 15 declined in the City of Toronto, a fate that's [shared by the City of Vancouver](https://doodles.mountainmath.ca/blog/2022/05/11/children-are-good-actually/). But is this happening uniformly across the city or are there geographic differences?
 
 ## Question
 
@@ -11,7 +11,7 @@ We keep [reading in the news](https://www.thestar.com/opinion/contributors/2022/
 
 ## Data sources
 
-In Canada have data on the number of children from two main data sources and their derived products. The census and T1FF taxfiler data. Both are available at sub-city level, although that's a custom tabulation for T1FF taxfiler data. For this post we will go with census data since the T1FF custom tabulations we have on CensusMapper only go up to 2018.
+In Canada we have data on the number of children from two main data sources and their derived products. The census and T1FF taxfiler data. Both are available at sub-city level, although that's a custom tabulation for T1FF taxfiler data. For this post we will go with census data since the T1FF custom tabulations we have on CensusMapper only go up to 2018.
 
 ## Data acquisition
 
@@ -55,7 +55,7 @@ plot_data <- toronto_children |>
   select(matches("children_\\d{4}|Population"))
 ```
 
-Sometimes it can be tedious to spell out all the variables we want to add up, and we can use more abstract selections to specify what and how to add. In this case that's complicated by also having geographic data attached, that we need to drop in order to perform row wise summation on our variables of interest. For reference, here is an alternative way to perform this summation that generalized to more complex scenarios.
+Sometimes it can be tedious to spell out all the variables we want to add up, and we can use more abstract selections to specify what and how to add. In this case that's complicated by also having geographic data attached, that we need to drop in order to perform row wise summation on our variables of interest. For reference, here is an alternative way to perform this summation that generalizes to more complex scenarios.
 
 ```{r}
 plot_data <- toronto_children %>%

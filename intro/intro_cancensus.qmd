@@ -16,7 +16,7 @@ The [**cancensus** R package](https://mountainmath.github.io/cancensus/) [@cance
 
 -   some non-census data that comes on census geographies, e.g. T1FF taxfiler data
 
-A slight complication, the [**cancensus** package](https://mountainmath.github.io/cancensus/)needs an API key. You can sign up for one for free on [CensusMapper](https://censusmapper.ca/users/sign_up).
+A slight complication, the [**cancensus** package](https://mountainmath.github.io/cancensus/) needs an API key. You can sign up for one for free on [CensusMapper](https://censusmapper.ca/users/sign_up).
 
 Once you have your API key it's useful to store it as an environment variable in your .Renviron configuration file so it's available in all your R sessions.
 
@@ -26,10 +26,10 @@ install.packages("cancensus")
 cancensus::set_api_key(key = "CensusMapper_XXXX...XXXX", install=TRUE)
 ```
 
-By default {cancensus} cached downloaded census data, which makes it easier and faster to re-run analysis and protects from overusing the CensusMapper API quota. To use caching an local path needs to be designated for data caching. The cache is shared across R sessions.
+By default {cancensus} caches downloaded census data, which makes it easier and faster to re-run analysis and protects from overusing the CensusMapper API quota. To use caching a local path needs to be designated for data caching. The cache is shared across R sessions.
 
 ```{r eval = FALSE}
-cancensus::set_cache_path(cache_path = "<local path ot cache data>", install=TRUE)
+cancensus::set_cache_path(cache_path = "<local path of cache data>", install=TRUE)
 ```
 
 {cancensus} provides convenient access to census data. Calls to {cancensus} require to spectify
@@ -38,13 +38,13 @@ cancensus::set_cache_path(cache_path = "<local path ot cache data>", install=TRU
 
 -   The `regions` to access the data for, this is a list keyed by geographic levels. For example, to access data for the Vancouver census metropolitan area it would be `list(CMA="59933")`, for the City of Toronto it would be `list(CSD="3520005")`. Region parameters can contain several regions of the same type or mix regions of different type. For example, to access data for the region covered by the Vancouver School Board, we need to assemble two CSDs and three CTs `list(CSD=c("5915022","5915803"),CT=c("9330069.04","9330069.03","9330069.02"))`. This allows pinpointing what geographic region we are interested in.
 
--   The geographic `level` to query the data for. This simply be the regions specified in the `regions` parameter, but it could also be any geographic level equal to or lower than the lowest level geographic region specified in the `regions` parameter. Valid level identifiers are `DB` for dissemination blocks, `DA` for dissemination areas, `EA` for enumeration areas for the 1996 census, `CT` for census tracts, `CSD` for census subdivisions, `CMA` for census metropolitan areas or census agglormerations, `CD` for census districts, `PR` for provinces or territories and `C` for country level data. Geographic regions can also be assembled using the [CensusMapper API GUI tool](http://localhost:3000/api#api_region), CSD and higher level geographies can be explored or searched programmatically via the `list_census_regions()` or `search_census_regions()` functions.
+-   The geographic `level` to query the data for. This simply are the regions specified in the `regions` parameter, but it could also be any geographic level equal to or lower than the lowest level geographic region specified in the `regions` parameter. Valid level identifiers are `DB` for dissemination blocks, `DA` for dissemination areas, `EA` for enumeration areas for the 1996 census, `CT` for census tracts, `CSD` for census subdivisions, `CMA` for census metropolitan areas or census agglormerations, `CD` for census districts, `PR` for provinces or territories and `C` for country level data. Geographic regions can also be assembled using the [CensusMapper API GUI tool](http://censusmapper.ca/api#api_region), CSD and higher level geographies can be explored or searched programmatically via the `list_census_regions()` or `search_census_regions()` functions.
 
--   The `vectors` parameter allows to specify which census variables to query. By default the data comes with population, dwelling and household counts, other census variables can be explored and selected via the [CensusMapper API GUI tool](http://localhost:3000/api#api_variable) or explored or searched programmatically via the `list_census_vectors()` or `find_census_vectors()` functions. There are also helper function to select variables using the internal CensusMapper metadata and hierarchy of census variables via the `child_census_vectors()` function. For finer control over the names of the names of the returned census variable the `vectors` parameter can be a named vector.
+-   The `vectors` parameter allows to specify which census variables to query. By default the data comes with population, dwelling and household counts, other census variables can be explored and selected via the [CensusMapper API GUI tool](http://localhost:3000/api#api_variable) or explored or searched programmatically via the `list_census_vectors()` or `find_census_vectors()` functions. There are also helper functions to select variables using the internal CensusMapper metadata and hierarchy of census variables via the `child_census_vectors()` function. For finer control over the names of the returned census variable the `vectors` parameter can be a named vector.
 
 -   The `geo_format` parameters allows to select if geographic data should also be downloaded, and if yes, in what format. In this post we will only access data via the modern "sf" format, but data can also be accessed in the legacy "sp" spatial data format.
 
-As an example we will retried the share of the population in Toronto, Mississauga, and Brampton spending 30% or more of income on shelter costs in 2016.
+As an example we will retrieve the share of the population in Toronto, Mississauga, and Brampton spending 30% or more of income on shelter costs in 2016.
 
 ```{r warning=FALSE}
 library(cancensus)

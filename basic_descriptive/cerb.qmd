@@ -3,7 +3,7 @@ title: "Geography of CERB"
 editor: visual
 ---
 
-In 2020 Canada introduced the COVID-19 Emergency Recovery Benefit (CERB), a program to support people with who lost income during the pandemic.
+In 2020 Canada introduced the COVID-19 Emergency Recovery Benefit (CERB), a program to support people ring the pandemic.
 
 ## Question
 
@@ -67,7 +67,7 @@ ggplot(plot_data) +
 
 It is difficult to see the central parts, we might want to zoom in a little. At the same time, it might be useful to add in Gatineau and surrounding municipalities, so maybe we want the data for the entire metro area.
 
-To do this we copy the code from above and paste it into a single pip, from data acquisition (using the CMA 505 for Ottawa CMA) and cut the region to the central parts by looking at the grid from the first map.
+To do this we copy and paste the code from above and chain it into a single pipe, from data acquisition (using the CMA 505 for Ottawa CMA), computing the share, to plotting and cutting the region to the central parts by looking at the grid from the first map.
 
 ```{r}
 get_census("CA21",regions=list(CMA="505"),

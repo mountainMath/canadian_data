@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.262">
+<meta name="generator" content="quarto-1.2.269">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Analyzing Canadian Demographic and Housing Data - 8&nbsp; Cars vs SUVs in Canada</title>
 <style>
@@ -314,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
-</header><p>Private motor vehicles in Canada seem to be getting larger and it feels like SUVs and light trucks are taking over. This subjective feeling prompts us to ask the following question to check if this is just our imagination or a real phemominon.</p>
+</header><p>Private motor vehicles in Canada seem to be getting larger and it feels like SUVs and light trucks are taking over. This subjective feeling prompts us to ask the following question to check if this is just our imagination or a real phenominon.</p>
 <section id="question" class="level2" data-number="8.1"><h2 data-number="8.1" class="anchored" data-anchor-id="question">
 <span class="header-section-number">8.1</span> Question</h2>
 <p><strong>Are SUVs and light trucks taking over in Canada?</strong></p>
@@ -430,7 +430,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This looks like it fits what we need, we want to compare unit sales of Passenger cars to Light trucks.</p>
 </section><section id="data-acquisition" class="level2" data-number="8.3"><h2 data-number="8.3" class="anchored" data-anchor-id="data-acquisition">
 <span class="header-section-number">8.3</span> Data acquisition</h2>
-<p>Getting the data is easy now. The {cansim} package will automatically add a native <code>Date</code> column, to convert annual data to dates it defaults to July 1st of that year. While it is a sensible default to assign a mid-year date to annual data, later on for plotting it will be more convenient for us to set the date at January 1st, so we change override the default using the optional <code>default_month</code> argument.</p>
+<p>Getting the data is easy now. The {cansim} package will automatically add a native <code>Date</code> column, to convert annual data to dates it defaults to July 1st of that year. While it is a sensible default to assign a mid-year date to annual data, later on for plotting it will be more convenient for us to set the date at January 1st, so we override the default using the optional <code>default_month</code> argument.</p>
 <div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-6_d105cc512df0449cc45da608eeaa3c86">
 <details open=""><summary>Code</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mountainmath.github.io/cansim/reference/get_cansim.html">get_cansim</a></span><span class="op">(</span><span class="st">"20-10-0002"</span>, default_month <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
@@ -507,7 +507,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="cars_vs_suvs_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>There is a strong seasonal pattern in vehicle sales, for now we will just aggregate it to annual sales so we can compare it with the previous data. For this we extract they <code>Year</code> from the <code>Date</code> column, group by <code>Year</code> and <code>Vehicle type</code> and summarize by adding up the `VALUE` column. We added a count column to keep track how many months we added up so we can later ensure we are only showing years for which we have complete data.</p>
+<p>There is a strong seasonal pattern in vehicle sales, for now we will just aggregate it to annual sales so we can compare it with the previous data. For this we extract the <code>Year</code> from the <code>Date</code> column, group by <code>Year</code> and <code>Vehicle type</code> and summarize by adding up the `VALUE` column. We added a count column to keep track how many months we added up so we can later ensure we are only showing years for which we have complete data.</p>
 <div class="cell" data-hash="cars_vs_suvs_cache/html/unnamed-chunk-12_da520f510c7982c6d8b4e63a81c9617e">
 <details open=""><summary>Code</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">plot_data2_annual</span> <span class="op">&lt;-</span> <span class="va">plot_data2</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Year<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/strptime.html">strftime</a></span><span class="op">(</span><span class="va">Date</span>,<span class="st">"%Y"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -886,7 +886,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb18" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cars vs SUVs in Canada</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>Private motor vehicles in Canada seem to be getting larger and it feels like SUVs and light trucks are taking over. This subjective feeling prompts us to ask the following question to check if this is just our imagination or a real phemominon.</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>Private motor vehicles in Canada seem to be getting larger and it feels like SUVs and light trucks are taking over. This subjective feeling prompts us to ask the following question to check if this is just our imagination or a real phenominon.</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Question</span></span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
@@ -945,7 +945,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data acquisition</span></span>
 <span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a>Getting the data is easy now. The {cansim} package will automatically add a native <span class="in">`Date`</span> column, to convert annual data to dates it defaults to July 1st of that year. While it is a sensible default to assign a mid-year date to annual data, later on for plotting it will be more convenient for us to set the date at January 1st, so we change override the default using the optional <span class="in">`default_month`</span> argument.</span>
+<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a>Getting the data is easy now. The {cansim} package will automatically add a native <span class="in">`Date`</span> column, to convert annual data to dates it defaults to July 1st of that year. While it is a sensible default to assign a mid-year date to annual data, later on for plotting it will be more convenient for us to set the date at January 1st, so we override the default using the optional <span class="in">`default_month`</span> argument.</span>
 <span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_cansim</span>(<span class="st">"20-10-0002"</span>, <span class="at">default_month =</span> <span class="dv">1</span>)</span>
@@ -1015,7 +1015,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb18-149"><a href="#cb18-149" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span>
 <span id="cb18-150"><a href="#cb18-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-151"><a href="#cb18-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-152"><a href="#cb18-152" aria-hidden="true" tabindex="-1"></a>There is a strong seasonal pattern in vehicle sales, for now we will just aggregate it to annual sales so we can compare it with the previous data. For this we extract they <span class="in">`Year`</span> from the <span class="in">`Date`</span> column, group by <span class="in">`Year`</span> and <span class="in">`Vehicle type`</span> and summarize by adding up the <span class="sc">\`</span>VALUE<span class="sc">\`</span> column. We added a count column to keep track how many months we added up so we can later ensure we are only showing years for which we have complete data.</span>
+<span id="cb18-152"><a href="#cb18-152" aria-hidden="true" tabindex="-1"></a>There is a strong seasonal pattern in vehicle sales, for now we will just aggregate it to annual sales so we can compare it with the previous data. For this we extract the <span class="in">`Year`</span> from the <span class="in">`Date`</span> column, group by <span class="in">`Year`</span> and <span class="in">`Vehicle type`</span> and summarize by adding up the <span class="sc">\`</span>VALUE<span class="sc">\`</span> column. We added a count column to keep track how many months we added up so we can later ensure we are only showing years for which we have complete data.</span>
 <span id="cb18-153"><a href="#cb18-153" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-156"><a href="#cb18-156" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb18-157"><a href="#cb18-157" aria-hidden="true" tabindex="-1"></a>plot_data2_annual <span class="ot">&lt;-</span> plot_data2 <span class="sc">|&gt;</span></span>

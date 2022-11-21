@@ -16,7 +16,7 @@ It encodes the metadata and allows to work with the internal hierarchical struct
 
 Larger tables can also be imported into a local SQLite database for reuse across sessions without the need to re-download the data, and better performance when subsetting the data or performing other basic data operations at the database level before loading the data into memory.
 
-Data discovery is can be cumbersome, the `list_cansim_cubes` function from the **cansim** package fetches the newest list of all available tables and can be filtered by survey, release date or dates of data coverage. The table list is cached for the duration of the R session. The `seach_cansim_cubes` function provides a convenient shortcut to narrow down this list.
+Data discovery can be cumbersome, the `list_cansim_cubes` function from the **cansim** package fetches the newest list of all available tables and can be filtered by survey, release date or dates of data coverage. The table list is cached for the duration of the R session. The `search_cansim_cubes` function provides a convenient shortcut to narrow down this list.
 
 In some cases searching the web for "StatCan Table xxxx", where "xxxx" contains search phrases for the data of interest, is sometimes a useful way to discover data. In reverse, we can bring up the StatCan webpage for a specific table number using the `view_cansim_webpage` function and explore the data via the web interface. Especially for large datasets this can be a faster way to determine if a specific table contains the information we are interested in without first having to download the data.
 

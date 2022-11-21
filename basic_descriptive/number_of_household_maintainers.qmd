@@ -57,11 +57,11 @@ This leaves us with 13 cities, and manual inspection shows that only Edmonton ha
 
 ```{r}
 maintainer_data <- bind_rows(
-  get_census("CA11",regions=as_census_region_list(regions), vectors=vectors[["2011"]]) |>
+  get_census("2011",regions=as_census_region_list(regions), vectors=vectors[["2011"]]) |>
     mutate(Year="2011"),
-  get_census("CA16",regions=as_census_region_list(regions), vectors=vectors[["2016"]]) |>
+  get_census("2016",regions=as_census_region_list(regions), vectors=vectors[["2016"]]) |>
     mutate(Year="2016"),
-  get_census("CA11",regions=as_census_region_list(regions), vectors=vectors[["2021"]]) |>
+  get_census("2021",regions=as_census_region_list(regions), vectors=vectors[["2021"]]) |>
     mutate(Year="2021")
 ) |>
   select(GeoUID,Year,base,One,Two,`Three+`) |>

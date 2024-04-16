@@ -3,7 +3,7 @@ title: "Introduction to the **tongfen** package"
 label: tongfen-intro
 ---
 
-![](images/tongfen-sticker.png){#tongfen-logo style="float:right;margin-left:3em;" width="250"}
+![](images/tongfen-sticker.png){#fig-tongfen-logo style="float:right;margin-left:3em;" width="250"}
 
 The [tongfen](https://mountainmath.github.io/tongfen/index.html) R package [@tongfen] facilitates making data on different geometries comparable.
 

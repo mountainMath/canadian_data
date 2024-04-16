@@ -2,7 +2,7 @@
 title: "Introduction to the **cansim** package"
 ---
 
-![](images/cansim-sticker.png){#cansim-logo style="float:right;margin-left:3em;" width="250"}
+![](images/cansim-sticker.png){#fig-cansim-logo style="float:right;margin-left:3em;" width="250"}
 
 The [**cansim** R package](https://mountainmath.github.io/cansim/) [@cansim] interfaces with the StatCan NDM that replaces the former CANSIM tables. It can be queried for
 

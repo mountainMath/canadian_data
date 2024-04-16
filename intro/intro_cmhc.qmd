@@ -2,7 +2,7 @@
 title: "Introduction to the **cmhc** package"
 ---
 
-![](images/cmhc-sticker.png){#cansim-logo style="float:right;margin-left:3em;" width="250"}
+![](images/cmhc-sticker.png){#fig-cmhc-logo style="float:right;margin-left:3em;" width="250"}
 
 The [cmhc R package](https://mountainmath.github.io/cmhc/) [@cmhc] interfaces with the CMHC Housing Market Information Portal (HMIP) and allows programmatic and reproducible access to CMHC data. This gives access to data from four major CMHC surveys
 

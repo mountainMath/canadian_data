@@ -332,14 +332,7 @@ div.csl-indent {
   
 
 
-</header><div id="fig-cancensus-logo" class="quarto-figure quarto-figure-center quarto-float anchored" style="float:right;margin-left:3em;" alt="cancensus" width="250">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-cancensus-logo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/cancensus-sticker.png" id="fig-cancensus-logo" class="img-fluid figure-img" style="float:right;margin-left:3em;" alt="cancensus" width="250">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cancensus-logo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.1
-</figcaption></figure>
-</div>
+</header><p><img src="images/cancensus-sticker.png" id="cancensus-logo" class="img-fluid" style="float:right;margin-left:3em;" alt="cancensus" width="250"></p>
 <p>The <a href="https://mountainmath.github.io/cancensus/"><strong>cancensus</strong> R package</a> <span class="citation" data-cites="cancensus">(<a href="../references.html#ref-cancensus" role="doc-biblioref">von Bergmann, Shkolnik, and Jacobs 2022</a>)</span> interfaces with the CensusMapper API server. It can be queried for</p>
 <ul>
 <li><p>census geographies for census years 1996 through 2021</p></li>
@@ -350,14 +343,14 @@ Figure&nbsp;4.1
 </ul>
 <p>A slight complication, the <a href="https://mountainmath.github.io/cancensus/"><strong>cancensus</strong> package</a> needs an API key. You can sign up for one for free on <a href="https://censusmapper.ca/users/sign_up">CensusMapper</a>.</p>
 <p>Once you have your API key it’s useful to store it as an environment variable in your .Renviron configuration file so it’s available in all your R sessions.</p>
-<div class="cell">
+<div class="cell" data-hash="intro_cancensus_cache/html/unnamed-chunk-1_c94d8b1d748b988e94dc61c187d42db6">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"cancensus"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">cancensus</span><span class="fu">::</span><span class="fu">set_api_key</span><span class="op">(</span>key <span class="op">=</span> <span class="st">"CensusMapper_XXXX...XXXX"</span>, install<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>By default {cancensus} caches downloaded census data, which makes it easier and faster to re-run analysis and protects from overusing the CensusMapper API quota. To use caching a local path needs to be designated for data caching. The cache is shared across R sessions.</p>
-<div class="cell">
+<div class="cell" data-hash="intro_cancensus_cache/html/unnamed-chunk-2_ea6a73a1cff8a9129acf49c7a650b8bf">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">cancensus</span><span class="fu">::</span><span class="fu">set_cache_path</span><span class="op">(</span>cache_path <span class="op">=</span> <span class="st">"&lt;local path of cache data&gt;"</span>, install<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -370,7 +363,7 @@ Figure&nbsp;4.1
 <li><p>The <code>geo_format</code> parameters allows to select if geographic data should also be downloaded, and if yes, in what format. In this post we will only access data via the modern “sf” format, but data can also be accessed in the legacy “sp” spatial data format.</p></li>
 </ul>
 <p>As an example we will retrieve the share of the population in Toronto, Mississauga, and Brampton spending 30% or more of income on shelter costs in 2016.</p>
-<div class="cell">
+<div class="cell" data-hash="intro_cancensus_cache/html/unnamed-chunk-3_f8b888a83b463666df8373f2c11b49c4">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mountainMath/cancensus">cancensus</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span><span class="va">regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>CSD<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"3520005"</span>,<span class="st">"3521005"</span>,<span class="st">"3521010"</span><span class="op">)</span><span class="op">)</span></span>

@@ -332,14 +332,7 @@ div.csl-indent {
   
 
 
-</header><div id="fig-cansim-logo" class="quarto-figure quarto-figure-center quarto-float anchored" style="float:right;margin-left:3em;" width="250">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-cansim-logo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/cansim-sticker.png" id="fig-cansim-logo" class="img-fluid figure-img" style="float:right;margin-left:3em;" width="250">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cansim-logo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1
-</figcaption></figure>
-</div>
+</header><p><img src="images/cansim-sticker.png" id="cansim-logo" class="img-fluid" style="float:right;margin-left:3em;" width="250"></p>
 <p>The <a href="https://mountainmath.github.io/cansim/"><strong>cansim</strong> R package</a> <span class="citation" data-cites="cansim">(<a href="../references.html#ref-cansim" role="doc-biblioref">von Bergmann and Shkolnik 2021</a>)</span> interfaces with the StatCan NDM that replaces the former CANSIM tables. It can be queried for</p>
 <ul>
 <li><p>whole tables</p></li>
@@ -355,7 +348,7 @@ Figure&nbsp;3.1
 <p>Metadata added by the <strong>cansim</strong> package includes converting the dimension values to factors and adding information on the hierarchical structure of the levels. Moreover, the package creates a native <code>Date</code> field and a <code>val_norm</code> field with normalized values. The values shipped by StatCan are sometimes expressed in “thousands of units”, the <code>val_norm</code> converts this to base units for easier interpretation and uniformity across tables.</p>
 <p>More information can be found in the <a href="https://mountainmath.github.io/cansim/">package documentation</a> and the package vignettes.</p>
 <p>To install the package from cran use</p>
-<div class="cell">
+<div class="cell" data-hash="intro_cansim_cache/html/unnamed-chunk-1_cef8b898942bc902cc6abd9aecae0612">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"cansim"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>

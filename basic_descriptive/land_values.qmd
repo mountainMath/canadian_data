@@ -10,13 +10,16 @@ The [Globe and Mail reported](https://www.theglobeandmail.com/real-estate/vancou
 To anyone familiar with Vancouver during this time frame the claim that "building values stayed the same" seems questionable. This brings us to our question.
 
 ## Question
-** How have land and building values in Vancouver changed since 2005 (2006 tax assessment year)? **
+
+**How have land and building values in Vancouver changed since 2005 (2006 tax assessment year)?**
 
 ## Data sources
-Land and building values are assessed separately by BC Assessment, and we will piggy-back of their estimates instead of trying to estimate them ourselves. The City of Vancouver makes assessment data for the City [available on their Open Data Portal](https://opendata.vancouver.ca/pages/home/). 
+
+Land and building values are assessed separately by BC Assessment, and we will piggy-back of their estimates instead of trying to estimate them ourselves. The City of Vancouver makes assessment data for the City [available on their Open Data Portal](https://opendata.vancouver.ca/pages/home/).
 
 ## Data acquisition
-The [VanouvR package](https://mountainmath.github.io/VancouvR/) makes it easy to access this data in R and [one of the package vignettes](https://mountainmath.github.io/VancouvR/articles/Demo.html) has code that does pretty much what we need.
+
+The VanouvR package [@vancouvr2019] makes it easy to access this data in R and [one of the package vignettes](https://mountainmath.github.io/VancouvR/articles/Demo.html) has code that does pretty much what we need.
 
 ```{r setup}
 library(tidyverse)
@@ -44,16 +47,16 @@ land_building_data_raw <-search_cov_datasets("property-tax-report") |>
   arrange(Year)
 ```
 
-
 This gives us a simple data frame with land and building values for each year. We check on the tax years in question, as well as the most recent one.
 
-```{r}
+```{r tab-land_building_data_raw}
 land_building_data_raw |> 
   filter(Year %in% c(2006,2022,max(Year))) |>
   tinytable::tt()
 ```
 
 ## Data preparation
+
 There is not much to do here, we remember that assessments are pegged to July 1st in the previous year and reshape the data into long form.
 
 ```{r}
@@ -62,11 +65,11 @@ land_building_data <- land_building_data_raw |>
     pivot_longer(c("Land","Building"),names_to = "Component")
 ```
 
-
 ## Analysis and visualization
+
 Let's take a quick look what that data looks like.
 
-```{r}
+```{r fig-land_building_data}
 ggplot(land_building_data,aes(x=Date,y=value,colour=Component)) +
   geom_line() +
   scale_y_continuous(labels=\(x)scales::dollar(x,scale=10^-9,suffix="bn")) +
@@ -79,7 +82,7 @@ ggplot(land_building_data,aes(x=Date,y=value,colour=Component)) +
 
 So far so good, but we should probably account for inflation. We borrow code from the [section on income change](/canadian_data/basic_descriptive/geography_of_income_change.html) to pull CPI data and fold it in.
 
-```{r}
+```{r fig-land_building_data_inflation}
 library(cansim)
 inflation <- get_cansim_vector("v41693271") |>
   mutate(Date=Date %m+% months(6)) |>
@@ -101,7 +104,7 @@ ggplot(aes(x=Date,y=value/CPI,colour=Component)) +
 
 As we might have expected, values rose faster than inflation, but they did so for buildings as well as for land. The land value change is impressive, but it's hard to judge that against the building value change, which started at a much lower value. The article looked at percentage change, so let's do the same.
 
-```{r}
+```{r fig-land_building_data_ratio}
 plot_data <- land_building_data |>
   left_join(inflation,by="Date") |>
   mutate(real_value=value/CPI) |>
@@ -118,18 +121,17 @@ ggplot(plot_data,aes(x=Date,y=real_ratio,colour=Component)) +
        caption="CoV Open Data")
 ```
 
-Since this is ratio data we chose a logarithmic scale on the y-axis. This shows that between 2005 and 2021 (so using assessment years 2006 and 2022) real land values increased by `r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Land")$real_ratio)` and building values by `r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Building")$real_ratio)`  . Maybe the article was using nominal value increases, in nominal terms land increased by `r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Land")$ratio)` and building values by `r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Building")$ratio)`. 
+Since this is ratio data we chose a logarithmic scale on the y-axis. This shows that between 2005 and 2021 (so using assessment years 2006 and 2022) real land values increased by `r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Land")$real_ratio)` and building values by `r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Building")$real_ratio)` . Maybe the article was using nominal value increases, in nominal terms land increased by `r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Land")$ratio)` and building values by `r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Building")$ratio)`.
 
 ## Interpretation
+
 The increase in land values is lower than the "more than 500 per cent" claimed in the article, and the claim that "building values stayed the same" is clearly false.
 
-What is clear is that land values have risen faster than building values, likely in large part because restrictive zoning has prevented buildings from making adequate use of the land they are on. 
-
+What is clear is that land values have risen faster than building values, likely in large part because restrictive zoning has prevented buildings from making adequate use of the land they are on.
 
 It could be that the article mis-quoted its sources and the claim was about a sub-set of Vancouver properties, maybe just residential properties, or just single-family properties. We make a rather crude estimate by filtering the data on RS-1 and R1-1 zoning districts. This will under-estimate the growth a bit as properties that got rezoned within this timeframe will be included in the earlier years but not in the later ones.
 
-
-```{r}
+```{r fig-land_building_data_ratio_rs}
 search_cov_datasets("property-tax-report") |>
     pull(dataset_id) |>
     map_df(function(ds) aggregate_cov_data(
@@ -155,5 +157,3 @@ ggplot(aes(x=Date,y=real_ratio,colour=Component)) +
 ```
 
 Again, the claim that building values stayed the same has no basis in reality. Readers interested in more detail are encouraged to use individual property data and match individual lots over time to further refine these estimates.
-
-

@@ -51,7 +51,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
@@ -328,13 +348,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To anyone familiar with Vancouver during this time frame the claim that “building values stayed the same” seems questionable. This brings us to our question.</p>
 <section id="question" class="level2" data-number="13.1"><h2 data-number="13.1" class="anchored" data-anchor-id="question">
 <span class="header-section-number">13.1</span> Question</h2>
-<p>** How have land and building values in Vancouver changed since 2005 (2006 tax assessment year)? **</p>
+<p><strong>How have land and building values in Vancouver changed since 2005 (2006 tax assessment year)?</strong></p>
 </section><section id="data-sources" class="level2" data-number="13.2"><h2 data-number="13.2" class="anchored" data-anchor-id="data-sources">
 <span class="header-section-number">13.2</span> Data sources</h2>
 <p>Land and building values are assessed separately by BC Assessment, and we will piggy-back of their estimates instead of trying to estimate them ourselves. The City of Vancouver makes assessment data for the City <a href="https://opendata.vancouver.ca/pages/home/">available on their Open Data Portal</a>.</p>
 </section><section id="data-acquisition" class="level2" data-number="13.3"><h2 data-number="13.3" class="anchored" data-anchor-id="data-acquisition">
 <span class="header-section-number">13.3</span> Data acquisition</h2>
-<p>The <a href="https://mountainmath.github.io/VancouvR/">VanouvR package</a> makes it easy to access this data in R and <a href="https://mountainmath.github.io/VancouvR/articles/Demo.html">one of the package vignettes</a> has code that does pretty much what we need.</p>
+<p>The VanouvR package <span class="citation" data-cites="vancouvr2019">(<a href="../references.html#ref-vancouvr2019" role="doc-biblioref"><span>“VancouvR: Access the ’City of Vancouver’ Open Data API”</span> 2019</a>)</span> makes it easy to access this data in R and <a href="https://mountainmath.github.io/VancouvR/articles/Demo.html">one of the package vignettes</a> has code that does pretty much what we need.</p>
 <div class="cell">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mountainMath/VancouvR">VancouvR</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -487,9 +507,13 @@ window.addEventListener('load', function () { styleCell_tinytable_gb4g9k1bbrpip2
 <span>       x<span class="op">=</span><span class="cn">NULL</span>,</span>
 <span>       caption<span class="op">=</span><span class="st">"CoV Open Data"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="land_values_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div id="fig-land_building_data" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-land_building_data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="land_values_files/figure-html/fig-land_building_data-1.png" id="fig-land_building_data" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-land_building_data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.1
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -513,9 +537,13 @@ window.addEventListener('load', function () { styleCell_tinytable_gb4g9k1bbrpip2
 <span>       x<span class="op">=</span><span class="cn">NULL</span>,</span>
 <span>       caption<span class="op">=</span><span class="st">"CoV Open Data"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="land_values_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div id="fig-land_building_data_inflation" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-land_building_data_inflation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="land_values_files/figure-html/fig-land_building_data_inflation-1.png" id="fig-land_building_data_inflation" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-land_building_data_inflation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.2
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -536,9 +564,13 @@ window.addEventListener('load', function () { styleCell_tinytable_gb4g9k1bbrpip2
 <span>       x<span class="op">=</span><span class="cn">NULL</span>,</span>
 <span>       caption<span class="op">=</span><span class="st">"CoV Open Data"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="land_values_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div id="fig-land_building_data_ratio" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-land_building_data_ratio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="land_values_files/figure-html/fig-land_building_data_ratio-1.png" id="fig-land_building_data_ratio" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-land_building_data_ratio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.3
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -572,9 +604,13 @@ window.addEventListener('load', function () { styleCell_tinytable_gb4g9k1bbrpip2
 <span>       x<span class="op">=</span><span class="cn">NULL</span>,</span>
 <span>       caption<span class="op">=</span><span class="st">"CoV Open Data"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="land_values_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div id="fig-land_building_data_ratio_rs" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-land_building_data_ratio_rs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="land_values_files/figure-html/fig-land_building_data_ratio_rs-1.png" id="fig-land_building_data_ratio_rs" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-land_building_data_ratio_rs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.4
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -583,6 +619,11 @@ window.addEventListener('load', function () { styleCell_tinytable_gb4g9k1bbrpip2
 
 <!-- -->
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-vancouvr2019" class="csl-entry" role="listitem">
+<span>“VancouvR: Access the ’City of Vancouver’ Open Data API.”</span> 2019. The R Foundation. <a href="https://doi.org/10.32614/cran.package.vancouvr">https://doi.org/10.32614/cran.package.vancouvr</a>.
+</div>
+</div>
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1209,152 +1250,153 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>To anyone familiar with Vancouver during this time frame the claim that "building values stayed the same" seems questionable. This brings us to our question.</span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## Question</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>** How have land and building values in Vancouver changed since 2005 (2006 tax assessment year)? **</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data sources</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>Land and building values are assessed separately by BC Assessment, and we will piggy-back of their estimates instead of trying to estimate them ourselves. The City of Vancouver makes assessment data for the City <span class="co">[</span><span class="ot">available on their Open Data Portal</span><span class="co">](https://opendata.vancouver.ca/pages/home/)</span>. </span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>**How have land and building values in Vancouver changed since 2005 (2006 tax assessment year)?**</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data sources</span></span>
 <span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data acquisition</span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">VanouvR package</span><span class="co">](https://mountainmath.github.io/VancouvR/)</span> makes it easy to access this data in R and <span class="co">[</span><span class="ot">one of the package vignettes</span><span class="co">](https://mountainmath.github.io/VancouvR/articles/Demo.html)</span> has code that does pretty much what we need.</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup}</span></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="in">library(VancouvR)</span></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>The datasets in question are the <span class="in">`property-tax-report`</span>, due to size the data is split over several datasets.</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="fu">search_cov_datasets</span>(<span class="st">"property-tax-report"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dataset_id,title)</span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>The first tax assessment year in the dataset is for 2006, the last one is for the current year, 2024 as of the writing of this. Assessments are pegged to July 1st of the previous year, so we have data for all years from July 2005 through 2023. This is likely the same data source that news article used, except that the article did not adjust to the date the assessments are pegged to.</span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>For our purposes all we need is aggregates for each year, the Open Data Portal allows server side aggregation of data and the R package supports that. This cuts down on time and the amount of data we need to transfer. We simply group by tax assessment year and aggregate up the assessed land and building values for each year.</span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>land_building_data_raw <span class="ot">&lt;-</span><span class="fu">search_cov_datasets</span>(<span class="st">"property-tax-report"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(dataset_id) <span class="sc">|&gt;</span></span>
-<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">map_df</span>(<span class="cf">function</span>(ds) <span class="fu">aggregate_cov_data</span>(</span>
-<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>      ds,</span>
-<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>      <span class="at">group_by=</span><span class="st">"tax_assessment_year as Year"</span>,</span>
-<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">select=</span><span class="st">"sum(current_land_value) as Land, sum(current_improvement_value) as Building"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Year)</span>
-<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>This gives us a simple data frame with land and building values for each year. We check on the tax years in question, as well as the most recent one.</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>Land and building values are assessed separately by BC Assessment, and we will piggy-back of their estimates instead of trying to estimate them ourselves. The City of Vancouver makes assessment data for the City <span class="co">[</span><span class="ot">available on their Open Data Portal</span><span class="co">](https://opendata.vancouver.ca/pages/home/)</span>.</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data acquisition</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>The VanouvR package <span class="co">[</span><span class="ot">@vancouvr2019</span><span class="co">]</span> makes it easy to access this data in R and <span class="co">[</span><span class="ot">one of the package vignettes</span><span class="co">](https://mountainmath.github.io/VancouvR/articles/Demo.html)</span> has code that does pretty much what we need.</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup}</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="in">library(VancouvR)</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>The datasets in question are the <span class="in">`property-tax-report`</span>, due to size the data is split over several datasets.</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="fu">search_cov_datasets</span>(<span class="st">"property-tax-report"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dataset_id,title)</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>The first tax assessment year in the dataset is for 2006, the last one is for the current year, 2024 as of the writing of this. Assessments are pegged to July 1st of the previous year, so we have data for all years from July 2005 through 2023. This is likely the same data source that news article used, except that the article did not adjust to the date the assessments are pegged to.</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>For our purposes all we need is aggregates for each year, the Open Data Portal allows server side aggregation of data and the R package supports that. This cuts down on time and the amount of data we need to transfer. We simply group by tax assessment year and aggregate up the assessed land and building values for each year.</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>land_building_data_raw <span class="ot">&lt;-</span><span class="fu">search_cov_datasets</span>(<span class="st">"property-tax-report"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(dataset_id) <span class="sc">|&gt;</span></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">map_df</span>(<span class="cf">function</span>(ds) <span class="fu">aggregate_cov_data</span>(</span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>      ds,</span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>      <span class="at">group_by=</span><span class="st">"tax_assessment_year as Year"</span>,</span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>      <span class="at">select=</span><span class="st">"sum(current_land_value) as Land, sum(current_improvement_value) as Building"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Year)</span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a>land_building_data_raw <span class="sc">|&gt;</span> </span>
-<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2006</span>,<span class="dv">2022</span>,<span class="fu">max</span>(Year))) <span class="sc">|&gt;</span></span>
-<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a>  tinytable<span class="sc">::</span><span class="fu">tt</span>()</span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>This gives us a simple data frame with land and building values for each year. We check on the tax years in question, as well as the most recent one.</span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{r tab-land_building_data_raw}</span></span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a><span class="in">land_building_data_raw |&gt; </span></span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a><span class="in">  filter(Year %in% c(2006,2022,max(Year))) |&gt;</span></span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a><span class="in">  tinytable::tt()</span></span>
 <span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data preparation</span></span>
-<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>There is not much to do here, we remember that assessments are pegged to July 1st in the previous year and reshape the data into long form.</span>
-<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a>land_building_data <span class="ot">&lt;-</span> land_building_data_raw <span class="sc">|&gt;</span></span>
-<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Date=</span><span class="fu">as.Date</span>(<span class="fu">paste0</span>(<span class="fu">as.integer</span>(Year)<span class="sc">-</span><span class="dv">1</span>,<span class="st">"-07-01"</span>))) <span class="sc">|&gt;</span></span>
-<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="fu">c</span>(<span class="st">"Land"</span>,<span class="st">"Building"</span>),<span class="at">names_to =</span> <span class="st">"Component"</span>)</span>
-<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a>There is not much to do here, we remember that assessments are pegged to July 1st in the previous year and reshape the data into long form.</span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>land_building_data <span class="ot">&lt;-</span> land_building_data_raw <span class="sc">|&gt;</span></span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Date=</span><span class="fu">as.Date</span>(<span class="fu">paste0</span>(<span class="fu">as.integer</span>(Year)<span class="sc">-</span><span class="dv">1</span>,<span class="st">"-07-01"</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="fu">c</span>(<span class="st">"Land"</span>,<span class="st">"Building"</span>),<span class="at">names_to =</span> <span class="st">"Component"</span>)</span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a><span class="fu">## Analysis and visualization</span></span>
-<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a>Let's take a quick look what that data looks like.</span>
-<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(land_building_data,<span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>value,<span class="at">colour=</span>Component)) <span class="sc">+</span></span>
-<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>\(x)scales<span class="sc">::</span><span class="fu">dollar</span>(x,<span class="at">scale=</span><span class="dv">10</span><span class="sc">^-</span><span class="dv">9</span>,<span class="at">suffix=</span><span class="st">"bn"</span>)) <span class="sc">+</span></span>
-<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">y=</span><span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"City of Vancouver assessed land and building values"</span>,</span>
-<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Assessed value"</span>,</span>
-<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,</span>
-<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"CoV Open Data"</span>)</span>
-<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a>So far so good, but we should probably account for inflation. We borrow code from the <span class="co">[</span><span class="ot">section on income change</span><span class="co">](/canadian_data/basic_descriptive/geography_of_income_change.html)</span> to pull CPI data and fold it in.</span>
-<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cansim)</span>
-<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a>inflation <span class="ot">&lt;-</span> <span class="fu">get_cansim_vector</span>(<span class="st">"v41693271"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Date=</span>Date <span class="sc">%m+%</span> <span class="fu">months</span>(<span class="dv">6</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Date,<span class="at">CPI=</span>val_norm) <span class="sc">|&gt;</span></span>
-<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Date <span class="sc">%in%</span> land_building_data<span class="sc">$</span>Date) <span class="sc">|&gt;</span></span>
-<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">CPI=</span>CPI<span class="sc">/</span><span class="fu">last</span>(CPI,<span class="at">order_by =</span> Date))</span>
-<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a>land_building_data <span class="sc">|&gt;</span></span>
-<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(inflation,<span class="at">by=</span><span class="st">"Date"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>value<span class="sc">/</span>CPI,<span class="at">colour=</span>Component)) <span class="sc">+</span></span>
-<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>\(x)scales<span class="sc">::</span><span class="fu">dollar</span>(x,<span class="at">scale=</span><span class="dv">10</span><span class="sc">^-</span><span class="dv">9</span>,<span class="at">suffix=</span><span class="st">"bn"</span>)) <span class="sc">+</span></span>
-<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">y=</span><span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"City of Vancouver assessed land and building values"</span>,</span>
-<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Assessed value (July 2023 dollars)"</span>,</span>
-<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,</span>
-<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"CoV Open Data"</span>)</span>
-<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a>As we might have expected, values rose faster than inflation, but they did so for buildings as well as for land. The land value change is impressive, but it's hard to judge that against the building value change, which started at a much lower value. The article looked at percentage change, so let's do the same.</span>
-<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> land_building_data <span class="sc">|&gt;</span></span>
-<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(inflation,<span class="at">by=</span><span class="st">"Date"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">real_value=</span>value<span class="sc">/</span>CPI) <span class="sc">|&gt;</span></span>
-<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">real_ratio =</span> real_value<span class="sc">/</span><span class="fu">first</span>(real_value,<span class="at">order_by=</span>Date),</span>
-<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a>         <span class="at">ratio =</span> value<span class="sc">/</span><span class="fu">first</span>(value,<span class="at">order_by=</span>Date),</span>
-<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a>         <span class="at">.by=</span>Component)</span>
-<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_data,<span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>real_ratio,<span class="at">colour=</span>Component)) <span class="sc">+</span></span>
-<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>percent,<span class="at">trans=</span><span class="st">"log"</span>,<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">5</span>)) <span class="sc">+</span></span>
-<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"City of Vancouver assessed land and building values"</span>,</span>
-<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Real change since July 1, 2005"</span>,</span>
-<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,</span>
-<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"CoV Open Data"</span>)</span>
-<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a>Since this is ratio data we chose a logarithmic scale on the y-axis. This shows that between 2005 and 2021 (so using assessment years 2006 and 2022) real land values increased by <span class="in">`r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Land")$real_ratio)`</span> and building values by <span class="in">`r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Building")$real_ratio)`</span>  . Maybe the article was using nominal value increases, in nominal terms land increased by <span class="in">`r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Land")$ratio)`</span> and building values by <span class="in">`r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Building")$ratio)`</span>. </span>
-<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a><span class="fu">## Interpretation</span></span>
-<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a>The increase in land values is lower than the "more than 500 per cent" claimed in the article, and the claim that "building values stayed the same" is clearly false.</span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a>Let's take a quick look what that data looks like.</span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-land_building_data}</span></span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(land_building_data,aes(x=Date,y=value,colour=Component)) +</span></span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_line() +</span></span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a><span class="in">  scale_y_continuous(labels=\(x)scales::dollar(x,scale=10^-9,suffix="bn")) +</span></span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a><span class="in">  expand_limits(y=0) +</span></span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a><span class="in">  labs(title="City of Vancouver assessed land and building values",</span></span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a><span class="in">       y="Assessed value",</span></span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a><span class="in">       x=NULL,</span></span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a><span class="in">       caption="CoV Open Data")</span></span>
+<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a>So far so good, but we should probably account for inflation. We borrow code from the <span class="co">[</span><span class="ot">section on income change</span><span class="co">](/canadian_data/basic_descriptive/geography_of_income_change.html)</span> to pull CPI data and fold it in.</span>
+<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-land_building_data_inflation}</span></span>
+<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a><span class="in">library(cansim)</span></span>
+<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a><span class="in">inflation &lt;- get_cansim_vector("v41693271") |&gt;</span></span>
+<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(Date=Date %m+% months(6)) |&gt;</span></span>
+<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a><span class="in">  select(Date,CPI=val_norm) |&gt;</span></span>
+<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a><span class="in">  filter(Date %in% land_building_data$Date) |&gt;</span></span>
+<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(CPI=CPI/last(CPI,order_by = Date))</span></span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a><span class="in">land_building_data |&gt;</span></span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a><span class="in">  left_join(inflation,by="Date") |&gt;</span></span>
+<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(aes(x=Date,y=value/CPI,colour=Component)) +</span></span>
+<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_line() +</span></span>
+<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a><span class="in">  scale_y_continuous(labels=\(x)scales::dollar(x,scale=10^-9,suffix="bn")) +</span></span>
+<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a><span class="in">  expand_limits(y=0) +</span></span>
+<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a><span class="in">  labs(title="City of Vancouver assessed land and building values",</span></span>
+<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a><span class="in">       y="Assessed value (July 2023 dollars)",</span></span>
+<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a><span class="in">       x=NULL,</span></span>
+<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a><span class="in">       caption="CoV Open Data")</span></span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a>As we might have expected, values rose faster than inflation, but they did so for buildings as well as for land. The land value change is impressive, but it's hard to judge that against the building value change, which started at a much lower value. The article looked at percentage change, so let's do the same.</span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-land_building_data_ratio}</span></span>
+<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a><span class="in">plot_data &lt;- land_building_data |&gt;</span></span>
+<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a><span class="in">  left_join(inflation,by="Date") |&gt;</span></span>
+<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(real_value=value/CPI) |&gt;</span></span>
+<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(real_ratio = real_value/first(real_value,order_by=Date),</span></span>
+<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a><span class="in">         ratio = value/first(value,order_by=Date),</span></span>
+<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a><span class="in">         .by=Component)</span></span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(plot_data,aes(x=Date,y=real_ratio,colour=Component)) +</span></span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_line() +</span></span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a><span class="in">  scale_y_continuous(labels=scales::percent,trans="log",breaks=seq(1,5)) +</span></span>
+<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a><span class="in">  labs(title="City of Vancouver assessed land and building values",</span></span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a><span class="in">       y="Real change since July 1, 2005",</span></span>
+<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a><span class="in">       x=NULL,</span></span>
+<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a><span class="in">       caption="CoV Open Data")</span></span>
+<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a>Since this is ratio data we chose a logarithmic scale on the y-axis. This shows that between 2005 and 2021 (so using assessment years 2006 and 2022) real land values increased by <span class="in">`r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Land")$real_ratio)`</span> and building values by <span class="in">`r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Building")$real_ratio)`</span> . Maybe the article was using nominal value increases, in nominal terms land increased by <span class="in">`r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Land")$ratio)`</span> and building values by <span class="in">`r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Building")$ratio)`</span>.</span>
+<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a><span class="fu">## Interpretation</span></span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a>The increase in land values is lower than the "more than 500 per cent" claimed in the article, and the claim that "building values stayed the same" is clearly false.</span>
+<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a>What is clear is that land values have risen faster than building values, likely in large part because restrictive zoning has prevented buildings from making adequate use of the land they are on.</span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a>It could be that the article mis-quoted its sources and the claim was about a sub-set of Vancouver properties, maybe just residential properties, or just single-family properties. We make a rather crude estimate by filtering the data on RS-1 and R1-1 zoning districts. This will under-estimate the growth a bit as properties that got rezoned within this timeframe will be included in the earlier years but not in the later ones.</span>
 <span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a>What is clear is that land values have risen faster than building values, likely in large part because restrictive zoning has prevented buildings from making adequate use of the land they are on. </span>
-<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a>It could be that the article mis-quoted its sources and the claim was about a sub-set of Vancouver properties, maybe just residential properties, or just single-family properties. We make a rather crude estimate by filtering the data on RS-1 and R1-1 zoning districts. This will under-estimate the growth a bit as properties that got rezoned within this timeframe will be included in the earlier years but not in the later ones.</span>
-<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a><span class="fu">search_cov_datasets</span>(<span class="st">"property-tax-report"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(dataset_id) <span class="sc">|&gt;</span></span>
-<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a>    <span class="fu">map_df</span>(<span class="cf">function</span>(ds) <span class="fu">aggregate_cov_data</span>(</span>
-<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a>      ds,</span>
-<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a>      <span class="at">group_by=</span><span class="st">"tax_assessment_year as Year"</span>,</span>
-<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a>      <span class="at">where=</span><span class="st">"zoning_district like 'RS-' or zoning_district like 'R1-1'"</span>,</span>
-<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a>      <span class="at">select=</span><span class="st">"sum(current_land_value) as Land, sum(current_improvement_value) as Building"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Date=</span><span class="fu">as.Date</span>(<span class="fu">paste0</span>(<span class="fu">as.integer</span>(Year)<span class="sc">-</span><span class="dv">1</span>,<span class="st">"-07-01"</span>))) <span class="sc">|&gt;</span></span>
-<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="fu">c</span>(<span class="st">"Land"</span>,<span class="st">"Building"</span>),<span class="at">names_to =</span> <span class="st">"Component"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(inflation,<span class="at">by=</span><span class="st">"Date"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">real_value=</span>value<span class="sc">/</span>CPI) <span class="sc">|&gt;</span></span>
-<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">real_ratio =</span> real_value<span class="sc">/</span><span class="fu">first</span>(real_value,<span class="at">order_by=</span>Date),</span>
-<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a>         <span class="at">ratio =</span> value<span class="sc">/</span><span class="fu">first</span>(value,<span class="at">order_by=</span>Date),</span>
-<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a>         <span class="at">.by=</span>Component) <span class="sc">|&gt;</span></span>
-<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Date,<span class="at">y=</span>real_ratio,<span class="at">colour=</span>Component)) <span class="sc">+</span></span>
-<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>percent,<span class="at">trans=</span><span class="st">"log"</span>,<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">5</span>)) <span class="sc">+</span></span>
-<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">y=</span><span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"City of Vancouver assessed land and building values in RS/R1-1 zones"</span>,</span>
-<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Real change since July 1, 2005"</span>,</span>
-<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="cn">NULL</span>,</span>
-<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"CoV Open Data"</span>)</span>
-<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a>Again, the claim that building values stayed the same has no basis in reality. Readers interested in more detail are encouraged to use individual property data and match individual lots over time to further refine these estimates.</span>
-<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-land_building_data_ratio_rs}</span></span>
+<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a><span class="in">search_cov_datasets("property-tax-report") |&gt;</span></span>
+<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a><span class="in">    pull(dataset_id) |&gt;</span></span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a><span class="in">    map_df(function(ds) aggregate_cov_data(</span></span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a><span class="in">      ds,</span></span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a><span class="in">      group_by="tax_assessment_year as Year",</span></span>
+<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a><span class="in">      where="zoning_district like 'RS-' or zoning_district like 'R1-1'",</span></span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a><span class="in">      select="sum(current_land_value) as Land, sum(current_improvement_value) as Building")) %&gt;% </span></span>
+<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a><span class="in">    mutate(Date=as.Date(paste0(as.integer(Year)-1,"-07-01"))) |&gt;</span></span>
+<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a><span class="in">    pivot_longer(c("Land","Building"),names_to = "Component") |&gt;</span></span>
+<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a><span class="in">  left_join(inflation,by="Date") |&gt;</span></span>
+<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(real_value=value/CPI) |&gt;</span></span>
+<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(real_ratio = real_value/first(real_value,order_by=Date),</span></span>
+<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a><span class="in">         ratio = value/first(value,order_by=Date),</span></span>
+<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a><span class="in">         .by=Component) |&gt;</span></span>
+<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(aes(x=Date,y=real_ratio,colour=Component)) +</span></span>
+<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_line() +</span></span>
+<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a><span class="in">  scale_y_continuous(labels=scales::percent,trans="log",breaks=seq(1,5)) +</span></span>
+<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a><span class="in">  expand_limits(y=0) +</span></span>
+<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a><span class="in">  labs(title="City of Vancouver assessed land and building values in RS/R1-1 zones",</span></span>
+<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a><span class="in">       y="Real change since July 1, 2005",</span></span>
+<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a><span class="in">       x=NULL,</span></span>
+<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a><span class="in">       caption="CoV Open Data")</span></span>
+<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a>Again, the claim that building values stayed the same has no basis in reality. Readers interested in more detail are encouraged to use individual property data and match individual lots over time to further refine these estimates.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

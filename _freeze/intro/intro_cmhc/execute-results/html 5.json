@@ -1,0 +1,14 @@
+{
+  "hash": "26430ea1b49d56efda49894208af2fa2",
+  "result": {
+    "markdown": "---\ntitle: \"Introduction to the **cmhc** package\"\n---\n\n\n![](images/cmhc-sticker.png){#cansim-logo style=\"float:right;margin-left:3em;\" width=\"250\"}\n\nThe [cmhc R package](https://mountainmath.github.io/cmhc/) [@cmhc] interfaces with the CMHC Housing Market Information Portal (HMIP) and allows programmatic and reproducible access to CMHC data. This gives access to data from four major CMHC surveys\n\n-   Starts and Completions Survey (Scss), which has data on housing construction covering starts, completions, units under construction, length of construction, absorbed and unabsorbed units and their prices.\n\n-   Rental Market Survey (Rms), which surveys the purpose-built rental market on an annual (and for some time twice-annual) basis. It has data on vacancy rates, availability rates, rents, fixed sample rent change and the overall rental universe by bedroom type, structure size, and year of construction.\n\n-   Secondary Rental Market Survey (Srms), which covers parts of the secondary market rental market with data on condominium apartment vacancy rates, rents, and number and share of rented units, as well as some information on other secondary rentals.\n\n-   Senior's housing (Seniors), which gives data on seniors housing of various levels of assistance.\n\n-   Census data (Census), which holds several housing related cross-tabulations.\n\n-   Core Housing Need (Core Housing Need) related cross-tabulations.\n\nThe package is designed to work in conjunction with the **cancensus** package and census geographic identifiers.\n\nTo install the package from CRAN use.\n\n\n::: {.cell hash='intro_cmhc_cache/html/unnamed-chunk-1_86a8ef9bc5ed44228718810f4c125f34'}\n\n```{.r .cell-code}\ninstall.packages(\"cmhc\")\n```\n:::\n\n\nThe nature of the CMHC backend makes it at times challenging to find data, the **cmhc** package has several convenience functions to facilitate data discovery. The `list_…` functions, for example `list_cmhc_surveys()` list options. The `select_cmhc_table()` allows the interactive selection of data tables in the console, and returns the syntax for the desired function call to acquire the data.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

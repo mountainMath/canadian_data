@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.554">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Analyzing Canadian Demographic and Housing Data - 13&nbsp; BC migration</title>
+<title>Analyzing Canadian Demographic and Housing Data - 14&nbsp; BC migration</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,11 +99,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<meta property="og:title" content="Analyzing Canadian Demographic and Housing Data - 13&nbsp; BC migration">
+<meta property="og:title" content="Analyzing Canadian Demographic and Housing Data - 14&nbsp; BC migration">
 <meta property="og:description" content="Building skills and community to analyze Canadian demographic and housing data">
 <meta property="og:image" content="https://mountainmath.github.io/canadian_data/advanced_descriptive/cover.png">
 <meta property="og:site_name" content="Analyzing Canadian Demographic and Housing Data">
-<meta name="twitter:title" content="Analyzing Canadian Demographic and Housing Data - 13&nbsp; BC migration">
+<meta name="twitter:title" content="Analyzing Canadian Demographic and Housing Data - 14&nbsp; BC migration">
 <meta name="twitter:description" content="Building skills and community to analyze Canadian demographic and housing data">
 <meta name="twitter:image" content="https://mountainmath.github.io/canadian_data/advanced_descriptive/cover.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../advanced_descriptive/advanced_descriptive.html">Advanced descriptive analysis</a></li><li class="breadcrumb-item"><a href="../advanced_descriptive/advanced_descriptive_bc_migration.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">BC migration</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../advanced_descriptive/advanced_descriptive.html">Advanced descriptive analysis</a></li><li class="breadcrumb-item"><a href="../advanced_descriptive/advanced_descriptive_bc_migration.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">BC migration</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -256,6 +256,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Number of Household Maintainers</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_descriptive/land_values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Land values</span></span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -270,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../advanced_descriptive/advanced_descriptive_bc_migration.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">BC migration</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">BC migration</span></span></a>
   </div>
 </li>
       </ul>
@@ -289,18 +295,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question"><span class="header-section-number">13.1</span> Question</a></li>
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="header-section-number">13.2</span> Data sources</a></li>
-  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition"><span class="header-section-number">13.3</span> Data acquisition</a></li>
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="header-section-number">13.4</span> Data preparation</a></li>
-  <li><a href="#analysis-and-visualization" id="toc-analysis-and-visualization" class="nav-link" data-scroll-target="#analysis-and-visualization"><span class="header-section-number">13.5</span> Analysis and visualization</a></li>
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">13.6</span> Interpretation</a></li>
+<li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question"><span class="header-section-number">14.1</span> Question</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="header-section-number">14.2</span> Data sources</a></li>
+  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition"><span class="header-section-number">14.3</span> Data acquisition</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="header-section-number">14.4</span> Data preparation</a></li>
+  <li><a href="#analysis-and-visualization" id="toc-analysis-and-visualization" class="nav-link" data-scroll-target="#analysis-and-visualization"><span class="header-section-number">14.5</span> Analysis and visualization</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">14.6</span> Interpretation</a></li>
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../advanced_descriptive/advanced_descriptive.html">Advanced descriptive analysis</a></li><li class="breadcrumb-item"><a href="../advanced_descriptive/advanced_descriptive_bc_migration.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">BC migration</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../advanced_descriptive/advanced_descriptive.html">Advanced descriptive analysis</a></li><li class="breadcrumb-item"><a href="../advanced_descriptive/advanced_descriptive_bc_migration.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">BC migration</span></a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">
-<span class="chapter-number">13</span>&nbsp; <span class="chapter-title">BC migration</span>
+<span class="chapter-number">14</span>&nbsp; <span class="chapter-title">BC migration</span>
 </h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
@@ -318,11 +324,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header><p>This example is motivated by a <a href="https://news.gov.bc.ca/releases/2022PREM0019-000505">BC government press release</a> titled “<strong>B.C. welcomes more than 100,000 people – the most in 60 years</strong>”. This is the type of attention-grabbing headline where our gut reaction usually is to question if this is true.</p>
 <p>Let’s first try and understand what the headline really means. B.C. “welcoming” people refers to people moving to the province from elsewhere, either from other provinces or internationally. So this is referring to gross in-migration. But reading the text of the press release it immediately pivots to a different concept, saying that “B.C.’s net migration reached 100,797 people in 2021”. It helpfully explains that net migration is the difference between people moving here and people moving away. Which is quite different from the number of people B.C. “welcomed” that year, or the number of people “moving to the province in 2021” as implied by the title and the first sentence of the press release.</p>
 <p>So here comes the first difficulty, the press release is contradicting itself by mixing two concepts. That leads us to formulate a fairly broad question that should help clear this up.</p>
-<section id="question" class="level2" data-number="13.1"><h2 data-number="13.1" class="anchored" data-anchor-id="question">
-<span class="header-section-number">13.1</span> Question</h2>
+<section id="question" class="level2" data-number="14.1"><h2 data-number="14.1" class="anchored" data-anchor-id="question">
+<span class="header-section-number">14.1</span> Question</h2>
 <p><strong>How many people has B.C. welcomed, net and gross, how has that changed over the last 6 decades, and how should this be interpreted?</strong></p>
-</section><section id="data-sources" class="level2" data-number="13.2"><h2 data-number="13.2" class="anchored" data-anchor-id="data-sources">
-<span class="header-section-number">13.2</span> Data sources</h2>
+</section><section id="data-sources" class="level2" data-number="14.2"><h2 data-number="14.2" class="anchored" data-anchor-id="data-sources">
+<span class="header-section-number">14.2</span> Data sources</h2>
 <p>To start, let’s figure out where that data point comes from.</p>
 <p>The press release references StatCan as the source, let’s search through the StatCan tables. Google usually works reasonably well, but we can also search programmatically. We are looking for migration estimates from the quarterly demographic estimates to get the most up-to-data population estimates from StatCan. For results we just need the first two columns, that table number and the title.</p>
 <div class="cell">
@@ -342,8 +348,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>It looks like Table 17-10-0020 and 17-10-0040 are what we are looking for. Let’s load in the data and inspect the first couple of rows for BC.</p>
-</section><section id="data-acquisition" class="level2" data-number="13.3"><h2 data-number="13.3" class="anchored" data-anchor-id="data-acquisition">
-<span class="header-section-number">13.3</span> Data acquisition</h2>
+</section><section id="data-acquisition" class="level2" data-number="14.3"><h2 data-number="14.3" class="anchored" data-anchor-id="data-acquisition">
+<span class="header-section-number">14.3</span> Data acquisition</h2>
 <div class="cell">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">interprovincial</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mountainmath.github.io/cansim/reference/get_cansim.html">get_cansim</a></span><span class="op">(</span><span class="st">"17-10-0020"</span><span class="op">)</span></span>
 <span><span class="va">international</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mountainmath.github.io/cansim/reference/get_cansim.html">get_cansim</a></span><span class="op">(</span><span class="st">"17-10-0040"</span><span class="op">)</span></span>
@@ -383,8 +389,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Here we get immigrants, emigrants, returning emigrants, but for temporary emigrants and non-permanent residents we only get net change. That puts a bit of a damper on our ambition to look at gross migration, for those last two categories net is all we have.</p>
-</section><section id="data-preparation" class="level2" data-number="13.4"><h2 data-number="13.4" class="anchored" data-anchor-id="data-preparation">
-<span class="header-section-number">13.4</span> Data preparation</h2>
+</section><section id="data-preparation" class="level2" data-number="14.4"><h2 data-number="14.4" class="anchored" data-anchor-id="data-preparation">
+<span class="header-section-number">14.4</span> Data preparation</h2>
 <p>Next we got to wrangle this data into a useful format. We are interested in all of these components, so we need to join these two data series together. We will retain the <code>GeoUID</code>, <code>GEO</code>, <code>Components of population growth</code>, <code>Date</code> and <code>val_norm</code> columns, which requires some renaming and then defining factor levels so that they stack nicely later in our plots. We also flip the sign on out-migrants and emigrants, as these are out-flows. To make sure those two time series start at the same time we cut it off appropriately.</p>
 <p>The press release talked about annual change, so we do a rolling sum over 4 quarters, right-aligning the data so it’s for the period of the preceding year.</p>
 <div class="cell">
@@ -425,8 +431,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>`Components of population growth`<span class="op">=</span><span class="st">"Net migration"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section><section id="analysis-and-visualization" class="level2" data-number="13.5"><h2 data-number="13.5" class="anchored" data-anchor-id="analysis-and-visualization">
-<span class="header-section-number">13.5</span> Analysis and visualization</h2>
+</section><section id="analysis-and-visualization" class="level2" data-number="14.5"><h2 data-number="14.5" class="anchored" data-anchor-id="analysis-and-visualization">
+<span class="header-section-number">14.5</span> Analysis and visualization</h2>
 <p>Time to make a graph.</p>
 <div class="cell">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">migration_colours</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="fu">MetBrewer</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MetBrewer/man/met.brewer.html">met.brewer</a></span><span class="op">(</span><span class="st">"Archambault"</span>,<span class="fl">7</span><span class="op">)</span>,</span>
@@ -585,8 +591,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section><section id="interpretation" class="level2" data-number="13.6"><h2 data-number="13.6" class="anchored" data-anchor-id="interpretation">
-<span class="header-section-number">13.6</span> Interpretation</h2>
+</section><section id="interpretation" class="level2" data-number="14.6"><h2 data-number="14.6" class="anchored" data-anchor-id="interpretation">
+<span class="header-section-number">14.6</span> Interpretation</h2>
 <p>This answers our question, the Q4 2021 year over year net migration edges over the 100,000 people mark, and in absolute terms this is the highest it’s been over at least 60 years. (And it climbed even higher in the following quarters.) And B.C.’s interprovincial (gross) in-migration was the highest in Canada in absolute terms. But what can we learn from that?</p>
 <p>B.C. 60 years ago is very different from B.C. today. To account for that we can normalize by population, and the relative net migration has been higher at several times during the past 60 years, most recently in the 90s.</p>
 <p>Viewed relative to population size we note that other provinces, in particular some of the Atlantic Provinces, vastly outperform BC’s interprovincial net as well as gross in-migration in that timeframe, mostly fuelled by the 50k people that left Ontario during that time period.</p>

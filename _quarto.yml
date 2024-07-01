@@ -65,6 +65,7 @@ book:
       - basic_descriptive/geography_of_income_change.qmd
       - basic_descriptive/toronto_children.qmd
       - basic_descriptive/number_of_household_maintainers.qmd
+      - basic_descriptive/land_values.qmd
     - part: advanced_descriptive/advanced_descriptive.qmd
       chapters:
       - advanced_descriptive/advanced_descriptive_bc_migration.qmd
@@ -77,6 +78,7 @@ execute:
   message: false
   warning: false
   cache: true
+  freeze: true
 
 format:
   html:

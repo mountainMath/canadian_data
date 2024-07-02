@@ -1,5 +1,5 @@
 ---
-title: "Land values"
+title: "Land and building values"
 editor: visual
 ---
 
@@ -114,18 +114,19 @@ plot_data <- land_building_data |>
 
 ggplot(plot_data,aes(x=Date,y=real_ratio,colour=Component)) +
   geom_line() +
-  scale_y_continuous(labels=scales::percent,trans="log",breaks=seq(1,5)) +
+  scale_y_continuous(labels=\(x)scales::percent(x-1),
+                     trans="log",breaks=seq(1,5)) +
   labs(title="City of Vancouver assessed land and building values",
        y="Real change since July 1, 2005",
        x=NULL,
        caption="CoV Open Data")
 ```
 
-Since this is ratio data we chose a logarithmic scale on the y-axis. This shows that between 2005 and 2021 (so using assessment years 2006 and 2022) real land values increased by `r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Land")$real_ratio)` and building values by `r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Building")$real_ratio)` . Maybe the article was using nominal value increases, in nominal terms land increased by `r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Land")$ratio)` and building values by `r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Building")$ratio)`.
+Since this is ratio data we chose a logarithmic scale on the y-axis. This shows that between 2005 and 2021 (so using assessment years 2006 and 2022) real land values increased by `r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Land")$real_ratio-1)` and building values by `r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Building")$real_ratio-1)` . Maybe the article was using nominal value increases, in nominal terms land increased by `r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Land")$ratio-1)` and building values by `r scales::percent(filter(plot_data,Date=="2021-07-01",Component=="Building")$ratio-1)`.
 
 ## Interpretation
 
-The increase in land values is lower than the "more than 500 per cent" claimed in the article, and the claim that "building values stayed the same" is clearly false.
+The increase in land values is substantially lower than the "more than 500 per cent" claimed in the article, and the claim that "building values stayed the same" is clearly false.
 
 What is clear is that land values have risen faster than building values, likely in large part because restrictive zoning has prevented buildings from making adequate use of the land they are on.
 
@@ -148,7 +149,8 @@ search_cov_datasets("property-tax-report") |>
          .by=Component) |>
 ggplot(aes(x=Date,y=real_ratio,colour=Component)) +
   geom_line() +
-  scale_y_continuous(labels=scales::percent,trans="log",breaks=seq(1,5)) +
+  scale_y_continuous(labels=\(x)scales::percent(x-1),,
+                     trans="log",breaks=seq(1,5)) +
   expand_limits(y=0) +
   labs(title="City of Vancouver assessed land and building values in RS/R1-1 zones",
        y="Real change since July 1, 2005",

@@ -117,7 +117,7 @@ ggplot(plot_data,aes(x=Date,y=real_ratio,colour=Component)) +
   scale_y_continuous(labels=\(x)scales::percent(x-1),
                      trans="log",breaks=seq(1,5)) +
   labs(title="City of Vancouver assessed land and building values",
-       y="Real change since July 1, 2005",
+       y="Real change since July 1, 2005 (log scale)",
        x=NULL,
        caption="CoV Open Data")
 ```
@@ -153,7 +153,7 @@ ggplot(aes(x=Date,y=real_ratio,colour=Component)) +
                      trans="log",breaks=seq(1,5)) +
   expand_limits(y=0) +
   labs(title="City of Vancouver assessed land and building values in RS/R1-1 zones",
-       y="Real change since July 1, 2005",
+       y="Real change since July 1, 2005 (log scale)",
        x=NULL,
        caption="CoV Open Data")
 ```

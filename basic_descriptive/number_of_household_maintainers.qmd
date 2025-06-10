@@ -138,11 +138,11 @@ vectors2 <- list(
 )
 
 household_size_data <- bind_rows(
-  get_census("CA11",regions=as_census_region_list(regions), vectors=vectors2[["2011"]]) |>
+  get_census("2011",regions=as_census_region_list(regions), vectors=vectors2[["2011"]]) |>
     mutate(Year="2011"),
-  get_census("CA16",regions=as_census_region_list(regions), vectors=vectors2[["2016"]]) |>
+  get_census("2016",regions=as_census_region_list(regions), vectors=vectors2[["2016"]]) |>
     mutate(Year="2016"),
-  get_census("CA11",regions=as_census_region_list(regions), vectors=vectors2[["2021"]]) |>
+  get_census("2021",regions=as_census_region_list(regions), vectors=vectors2[["2021"]]) |>
     mutate(Year="2021")
 ) |>
   select(GeoUID,Year,`One person households`)
@@ -159,7 +159,7 @@ plot_data2 <- maintainer_data |>
   mutate(Share=Value/base) %>%
   mutate(Name=factor(Name,filter(.,Year=="2021",Maintainers=="One") |> 
                        arrange(Value) |> 
-                       pull(Name))) |>
+                       pull(Name))) |> 
   mutate(Maintainers=factor(Maintainers, levels = maintainer_levels))
 ```
 

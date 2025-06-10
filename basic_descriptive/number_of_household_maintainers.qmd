@@ -145,7 +145,7 @@ household_size_data <- bind_rows(
   get_census("2021",regions=as_census_region_list(regions), vectors=vectors2[["2021"]]) |>
     mutate(Year="2021")
 ) |>
-  select(GeoUID,Year,`One person households`)
+  select(GeoUID,Year,`One person households`) 
 ```
 
 Now we need to combine the data on household maintainers with the data on one-person households, which we do by joining the data frames by geographic identifier and year. Then we subtract out one-person households from the denominator and the numerator of single maintainer households, and proceed as before.

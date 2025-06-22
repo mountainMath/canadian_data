@@ -1,8 +1,8 @@
 # Preface {.unnumbered}
 
-This book is intended for people interested in learning how to access, process, analyze, and visualize Canadian demographic, economic, and housing data using R. The target audience we have in mind ranges from individuals interested in understanding their environment through data, community activists and community groups interested in introducing data-based approached into their work, journalists who want to report on data in their stories or aim to incorporate their own descriptive data analysis, non-profits or people involved in policy who are looking for data-based answers to their questions.
+This book is for people eager to learn how to access, process, analyze, and visualize Canadian demographic, economic, and housing data using R. You could be an individual intrigued in understanding their environment through data, or a community activist who wants to introduce data-based approaches into their work. Maybe you are a journalist who is eager to report on data in their stories by incorporating their own descriptive data analysis, or perhaps you're involved with a non-profit that looks for data-based answers to their questions.
 
-The most important prerequisite is a keen interest in using data to help understand how housing and demographics shape cities and rural areas in Canada, and a willingness to learn. Prior knowledge of R is not necessary, but may be beneficial.
+Even if you don't fall under those demographics, the only prerequisite for this book is a keen interest in using data to help understand how housing and demographics shape cities and rural areas in Canada. Prior knowledge of R is not necessary.
 
 Canada has high quality demographic, economic and housing data. While significant data gaps exist, the available data often remains under-utilized in policy and planning analyses. Moreover, many analyses that do come out go quickly out of date and can't easily be updated because they rely on non-reproducible and non-adaptable workflows.
 
@@ -10,35 +10,55 @@ In this book we will maintain a strong emphasis on reproducible and adaptable wo
 
 ## Under construction
 
-At this point this book is more aspirational than reality, It will take time to build this out so that it can be used as a standalone resource to cover basic data analysis and visualization workflows in R, as well as be a comprehensive introduction into Canadian data sources.![](baustelle.png){#baustelle style="float:right;margin-left:3em;" width="150"}
+At this point this publication is more an aspiration than reality, It will take time to build this out so that it can be used as a standalone resource to cover basic data analysis and visualization workflows in R, as well as be a comprehensive introduction into Canadian data sources.![](baustelle.png){#baustelle style="float:right;margin-left:3em;" width="150"}
 
-We are planning to add to this book as we find time and come across good examples that are simple enough to slowly build skills, as well as interesting enough to be engaging and motivating to the reader. Until that point the order of sections will change as we add new material, and we will come back and revise existing sections as we receive feedback from readers, which we encourage and is ideally submitted as a [GitHub issue](https://github.com/mountainMath/canadian_data/issues).
+We are planning to add to this book by substituting superb examples that are both simple and engaging in order to practically baby step skills while motivating the reader via intriguing content. Until that point, the order of sections will change as we add new material, and we will come back and revise existing sections as we receive feedback from readers, which we encourage and is submitted as a [GitHub issue](https://github.com/mountainMath/canadian_data/issues).
 
 ## Project based approach
 
-This book will take a project based approach to teach through examples, with one project per section. Each project will be loosely broken up into four parts.
+We will take a project based approach to teach through examples, with one project per section. Each project will be scaffolded into distinct parts.
 
-1.  **Formulating the question.** What is the question we are interested in? Asking a clear question will help focus our efforts and ensure that we don't aimlessly trawl through data.
-2.  **Identifying possible data sources.** Here we try to identify data sources that can speak to our question. We will also take the time to read up on definitions and background concepts to better understand the data and prepare us for data analysis, and understand how well the concepts in the data match our original question from step 1.
-3.  **Data acquisition.** In this step we will import the data into our current working session. This could be as simple as an API call, or more complicated like scraping a table from the web, or involve even more complex techniques to acquire the data.
-4.  **Data preparation.** In this step we will reshape and filter the data to prepare it for analysis.
-5.  **Analysis.** This step could be as simple as computing percentages or even doing nothing, if the quantities we are interested in already come with the dataset, if our question can be answered by a simple descriptive analysis. In other cases, when our question is more complex, this step may be much more involved. The book will try to slowly build up analysis skills along the way, with increasing complexity of questions and required analysis.
-6.  **Visualization.** The final step in the analysis process is to visualize and communicate the results. In some cases this can be done via a table or a couple of paragraphs of text explaining the results, but in most cases it is useful to produce graphs or maps or even interactive visualizations to effectively communicate the results.
-7.  **Interpretation.** What's left to wrap this up is to interpret the results. How does this answer our question, where does it fall short. What does this mean in the real-world context? What new questions emerge from this?
+1.  **Formulating the question.**
 
-While we won't always follow this step by step process to the letter, it will be our guiding principle throughout the book. Sometimes things won't go so clean, where after the visualization step we notice that something looks off or is unexpected, and we may jump back up a couple of steps and add more data and redo parts of the analysis to better understand our data and how it speaks to our initial questions. We might even come to understand that our initial question was not helpful or was ill-posed, and we will come back to refine it.
+    What is the question we are interested in? Asking a clear question will help focus our efforts and ensure that we don't aimlessly trawl through data.
+
+2.  **Identifying possible data sources.**
+
+    Here we try to identify data sources that can speak to our question. We will also take the time to read up on definitions and background concepts to better understand the data and prepare us for data analysis, and understand how well the concepts in the data match our original question from step 1.
+
+3.  **Data acquisition.**
+
+    In this step we will import the data into our current working session. This could be as simple as an API call, or more complicated like scraping a table from the web, or involve even more complex techniques to acquire the data.
+
+4.  **Data preparation.**
+
+    In this step we will reshape and filter the data to prepare it for analysis.
+
+5.  **Analysis.**
+
+    This step could be as simple as computing percentages or even doing nothing, if the quantities we are interested in already come with the data set, if our question can be answered by a simple descriptive analysis. In other cases, when our question is more complex, this step may be much more involved. The book will try to slowly build up analysis skills along the way, with increasing complexity of questions and required analysis.
+
+6.  **Visualization.**
+
+    The final step in the analysis process is to visualize and communicate the results. In some cases this can be done via a table or a couple of paragraphs of text explaining the results, but in most cases it is useful to produce graphs or maps or even interactive visualizations to effectively communicate the results.
+
+7.  **Interpretation.**
+
+    What's left to wrap this up is to interpret the results. How does this answer our question, where does it fall short. What does this mean in the real-world context? What new questions emerge from this?
+
+While we won't always follow this step by step process verbatim, it will be our guiding principle throughout the book. Sometimes things won't go so clean, where after the visualization step we notice that something looks off or is unexpected, causing us to jump back steps and add data to redo parts of the analysis, allowing us to better understand our data and initial questions. We might even come to understand that our initial question was not helpful or was ill-posed, strengthening our original aim.
 
 ## Goals
 
 By taking this approach we have several goals in mind:
 
--   Stay motivated by using real world Canada-focused and (hopefully) interesting examples.
+-   Stay motivated by using real world Canada-focused captivating examples.
 
--   Teach basic data literacy, appreciate definitions and quirks in the data.
+-   Teach basic data literacy while fostering an appreciation for definitions and quirks in the data.
 
--   Expose the world of Canadian data and make it more accessible.
+-   Expose the world of Canadian data and increase accessibility.
 
--   Learn how data can be interpreted in different ways, and data and analysis is not necessarily "neutral".
+-   Learn how data can be interpreted in different ways, and that data and analysis is not necessarily “neutral”.
 
 -   Learn how to effectively communicate results.
 
@@ -50,25 +70,23 @@ By taking this approach we have several goals in mind:
 
 -   Raise the level of understanding of Canadian data and data analysis so we are better equipped to tackle the problems Canada faces.
 
-This is setting a very high goal for this book, and we are not sure we can achieve all of this. But we will try our best to be accessible and interesting as possible.
+This is setting a very high goal for this book, and we are not sure we can achieve all of this, but we’ll do everything we can to keep it accessible and genuinely interesting.
 
 ## Why use R?
 
-Most people reading this book will not have used R before, or only used it peripherally, maybe during a college course many years in the past. Instead, readers may be familiar with working through housing and demographic data in Excel or similar tools. Or making maps in QGIS or similar tools when dealing with spatial data. And the type of analysis outlined above that this book will teach can in general terms be accomplished using these tools.
+Some readers may be familiar with working through housing and demographic data in Excel or QGIS, making maps and dealing with spatial data. This type of analysis using those tools can theoretically accomplish the goals of this book. However, tools like spreadsheets and desktop GIS consistently fall short in **transparency**, **reproducibility**, and **adaptability**, each a vital component of this book..
 
-But where tools like spreadsheets and desktop GIS fall short is in another important focus of this book: **transparency**, **reproducibility**, and **adaptability**.
+An analysis in a spreadsheet or desktop GIS typically involves a lot of manual steps, the work is not **reproducible** without repeating these steps. We can't easily inspect how the result was derived, the analysis lacks **transparency**. When we just compute a ratio or percentage this may not be sub par, but trying to understand how a more complex analysis was done in a spreadsheet easily turns into a nightmare. Analysis that involves a lot of manual steps is not audit able without putting in the work to repeat those manual steps.
 
-An analysis in a spreadsheet or desktop GIS typically involves a lot of manual steps, the work is not **reproducible** without repeating these steps. We can't easily inspect how the result was derived, the analysis lacks **transparency**. When we just compute a ratio or percentage this may not be so bad, but trying to understand how a more complex analysis was done in a spreadsheet easily turns into a nightmare. Analysis that involves a lot of manual steps is not auditable without putting in the work to repeat those manual steps.
+But why does this matter? It's always been this way, some experts produce analysis and produce a glossy paper to present the results. One can argue if this was an adequate modus operandi in the past, but that is not the case in today's world. The lines between experts and non-experts has become blurred, and the value we place on lived experience has increased relative to more formal expertise. We argue this positions different demands on policy-relevant analysis, it needs to be open and transparent, in principle anyone should be able to understand how the analysis was done and the conclusions were reached. That's where reproducibility and transparency come in. Additionally, it requires bringing up data analysis skills in the broader population, so that the ability to reproduce and critique an analysis in principle can be realized in practice.
 
-But why does this matter? It's always been this way, some experts produce analysis and produce a glossy paper to present the results. One can argue if this was an adequate modus operandi in the past, but we feel strongly that it's not in today's world. The lines between experts and non-experts has become blurred, and the value we place on lived experience has increased relative to more formal expertise. We argue this places different demands on policy-relevant analysis, it needs to be open and transparent, in principle anyone should be able to understand how the analysis was done and the conclusions were reached. That's where reproducibility and transparency come in. And it also requires bringing up data analysis skills in the broader population, so that the ability to reproduce and critique an analysis in principle can be realized in practice.
+The remaining reason for using R, **adaptability**, has likewise, become increasingly important. The amount of data available to the average person has increased tremendously, but our collective ability to analyse data and extract information has not kept up. Doing analysis in R allows us to efficiently reuse previous analysis to perform a similar one. Or to build on previous analysis to deepen it. Which turbocharges our ability to do analysis, covering more ground and going deeper.
 
-The remaining reason for using R, **adaptability**, has also become increasingly important. The amount of data available to us has increased tremendously, but our collective ability to analyse data and extract information has not kept up. Doing analysis in R allows us to efficiently reuse previous analysis to perform a similar one. Or to build on previous analysis to deepen it. Which turbocharges our ability to do analysis, covering more ground and going deeper.
-
-R is not the only framework to do this in, there are other options like python or julia. But we believe that R is best suited for people transitioning into this space, and we can rely on an existing ecosystem of packages to access and process Canadian data. People already proficient in python will have no problem translating what we do into their preferred framework, or dynamically switch back and forth between R, python or whatever other tools they prefer as needed and convenient.
+R is not the only framework to do this in, there are other options like python or julia. But we believe that R is best suited for people transitioning into this space, and we can rely on an existing ecosystem of packages to access and process Canadian data.
 
 ## Building a Canadian data community
 
-Which brings us to our most ambitious goal, to help create a community around Canadian data analysis. When analysis is transparent, reproducible and adaptable people can piggy-back of each other's work, reusing parts of analysis others have done and building and improving upon it. Or Critiquing and correcting analysis, or taking it toward a different direction. A community that grows in their understanding of data, and a community using a shared set of tools to access and process Canadian data, enabling discussions to move forward instead of in circles. A community that builds up expertise from the bottom up.
+With this in mid we set the stage to revisit our most ambitious goal, "to help create a community around Canadian data analysis". When analysis is transparent, reproducible and adaptable people can piggy-back of each others work, reusing parts of analysis others have done while building and improving upon it. Furthermore, they could critique and correct analysis, taking it toward a different direction. A community that grows in their understanding of data, and a community using a shared set of tools to access and process Canadian data, enables discussions to move forward instead of in circles. A community that builds up expertise from the bottom up.
 
 The book tries to address both of these requirements for building a Canadian data community, a principled approach to data and data analysis, while introducing R as a common framework to work in hoping that the reader will come away with
 

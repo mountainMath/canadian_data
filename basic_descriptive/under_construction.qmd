@@ -79,7 +79,7 @@ get_cmhc(survey = "Scss",
   ggplot(aes(x=Date,y=Value,colour=`Dwelling Type`)) +
   geom_line() +
   scale_y_continuous(labels=scales::comma) +
-  labs(title="City of Toronto dwelling unit starts",
+  labs(title="City of Toronto length of construction",
        x=NULL,y="Average length of construction (months)",
        caption="CMHC Scss")
 ```
